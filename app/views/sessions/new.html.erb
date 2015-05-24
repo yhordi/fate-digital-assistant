@@ -1,0 +1,7 @@
+<% if session[:id] == nil %>
+  <%= form_tag '/sessions' do |f| %>
+    <%= text_field_tag :name, nil, :placeholder => "Userneame" %>
+    <%= password_field_tag :password, nil, :placeholder => "Password" %>
+    <%= submit_tag "Log In" %>
+  <% end %>
+<% end %> 
