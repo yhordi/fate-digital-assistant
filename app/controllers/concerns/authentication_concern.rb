@@ -10,7 +10,7 @@ module AuthenticationConcern
 
   def login(user)
     session[:id] = user.id
-    session[:username] = user.username
+    session[:name] = user.name
   end
 
 end

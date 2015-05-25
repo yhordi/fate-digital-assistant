@@ -1,7 +1,17 @@
 <% if session[:id] == nil %>
   <%= form_tag '/sessions' do |f| %>
-    <%= text_field_tag :name, nil, :placeholder => "Userneame" %>
+    <%= text_field_tag :name, nil, :placeholder => "Username" %>
     <%= password_field_tag :password, nil, :placeholder => "Password" %>
     <%= submit_tag "Log In" %>
   <% end %>
+  <% else  %>
+  <p>
+    <%= "Welcomes, #{user.name}" %>
+  </p>
 <% end %> 
+<p class="error">
+  <%= flash[:error]  %>
+</p>
+<p class="notice">
+  <%= flash[:notice] %>
+</p>

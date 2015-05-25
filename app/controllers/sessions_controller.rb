@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   protect_from_forgery with: :exception
 
   def create
-    user = User.find_by(username: params[:username])
+    user = User.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
       login(user)
-      # redirect_to root_path
+      redirect_to root_path
     else
       redirect_to root_path, :flash => { :error => "Incorrect user name or password. Please try again." }
     end
