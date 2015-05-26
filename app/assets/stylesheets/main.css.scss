@@ -3,7 +3,6 @@ $heading: #7128C1;
 
 .top{
   background-color: $heading;
-  color: $bright;
   margin: 0;
 }
 
@@ -12,4 +11,17 @@ $heading: #7128C1;
 }
 .notice{
   colorr: yellow;
+}
+.right{
+  text-align: right;
+}
+.header{
+  color: $bright;
+  font-size: 2em;
+}
+.pad-left{
+  padding-left: 1%
+}
+.pad-right{
+  padding-right: 1%
 }
