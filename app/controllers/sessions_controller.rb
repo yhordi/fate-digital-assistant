@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
   end
 
   def new
+    @user = current_user
     # ENV['PASSWORD']
   end
 
@@ -20,8 +21,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # session[:id] = nil
-    # redirect_to root_path
+    session[:id] = nil
+    redirect_to root_path
   end
 
 end

@@ -7,10 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1 class="top"> FATE digital assistant </h1>
-<div class="container">
-<%= yield %>
-</div>
+  <h1 class="top">
+    FATE Digital Assistant 
+  </h1>
+  <%= render "sessions/new" %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
