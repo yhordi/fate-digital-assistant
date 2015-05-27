@@ -217,8 +217,8 @@
       "/Users/apprentice/projects/indie/fate-digital-assistant/spec/factories.rb": [
         1,
         1,
-        3,
-        3,
+        2,
+        2,
         null,
         null
       ],
@@ -233,10 +233,9 @@
         1,
         null
       ],
-      "/Users/apprentice/projects/indie/fate-digital-assistant/spec/controllers/sessions_controller_spec.rb": [
+      "/Users/apprentice/projects/indie/fate-digital-assistant/spec/controllers/users_controller_spec.rb": [
         1,
-        3,
-        1,
+        2,
         1,
         1,
         2,
@@ -250,45 +249,24 @@
         null,
         1,
         1,
-        2,
-        null,
         1,
         1,
         null,
         1,
         1,
-        1,
-        null,
         null,
         null,
         null
       ],
-      "/Users/apprentice/projects/indie/fate-digital-assistant/app/controllers/sessions_controller.rb": [
+      "/Users/apprentice/projects/indie/fate-digital-assistant/app/controllers/users_controller.rb": [
         1,
         1,
         1,
-        null,
-        1,
-        4,
-        4,
-        2,
-        2,
-        null,
         2,
         null,
         null,
-        null,
         1,
-        null,
-        null,
-        null,
         1,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
         null,
         null
       ],
@@ -311,8 +289,8 @@
         null,
         null,
         1,
-        2,
-        2,
+        0,
+        0,
         null,
         null,
         null
@@ -324,6 +302,6 @@
         null
       ]
     },
-    "timestamp": 1432592300
+    "timestamp": 1432754954
   }
 }
