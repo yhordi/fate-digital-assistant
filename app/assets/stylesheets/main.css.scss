@@ -5,7 +5,9 @@ $heading: #7128C1;
   background-color: $heading;
   margin: 0;
 }
-
+div{
+  // border: 1px solid red;
+}
 .error{
   color: red;
 }
@@ -24,4 +26,9 @@ $heading: #7128C1;
 }
 .pad-right{
   padding-right: 1%
+}
+.new_user{
+  display: inline;
+}
+.form{
 }
