@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include AuthenticationConcern
 
   def create
-    if params[:user][:password] === params[:user][:password_again]
+    if passwords_match? == true
       user = User.create(name: params[:user][:name], password: params[:user][:password])
       flash[:notice] = "Account created. You may now log in."
       redirect_to root_path

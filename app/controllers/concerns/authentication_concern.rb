@@ -13,4 +13,8 @@ module AuthenticationConcern
     session[:name] = user.name
   end
 
+  def passwords_match?
+    params[:user][:password] == params[:user][:password_again]
+  end
+
 end
