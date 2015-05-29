@@ -20,4 +20,9 @@ describe UsersController do
       expect(assigns(:user).id).to eq(user.id)
     end
   end
+  context '#create' do
+    it 'saves a new user to the database' do
+      expect{post :create, {user: {name: user.name, password: user.password, password_again: user.password}}}.to change{User.count}.by(1)
+    end
+  end
 end
