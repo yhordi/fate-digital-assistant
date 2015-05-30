@@ -1,0 +1,24 @@
+<div class="col span-4-d form">
+  <p> Not a user? Sign up below!</p>
+  <%= form_for @user do |f| %>
+  <div>
+    <%= f.label "Username:"  %>
+  </div>
+    <%= f.text_field :name %>
+    <div class="block">
+      <div>
+      <%= f.label "Password:" %>
+      </div>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+    <%= f.label "Repeat Password:" %>
+    </div>
+    <%= f.password_field :password_again %>
+    <div>
+      <%= f.submit  %>
+    </div>
+  <% end %>
+</div>
+<div class="col span-8-d">
+</div>

@@ -51,6 +51,9 @@ GEM
     database_cleaner (1.4.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     erubis (2.7.0)
     execjs (2.5.2)
     factory_girl (4.5.0)
@@ -178,6 +181,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.0.0)
   database_cleaner
+  dotenv-rails
   factory_girl_rails
   faker
   jbuilder (~> 2.0)

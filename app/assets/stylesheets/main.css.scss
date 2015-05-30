@@ -1,0 +1,37 @@
+$bright: #E1E0E0;
+$heading: #7128C1;
+
+.top{
+  background-color: $heading;
+  margin: 0;
+}
+div{
+  // border: 1px solid red;
+}
+.error{
+  color: red;
+}
+.notice{
+  colorr: yellow;
+}
+.right{
+  text-align: right;
+}
+.header{
+  color: $bright;
+  font-size: 2em;
+}
+.pad-top{
+  padding-top: .3em;
+}
+.pad-left{
+  padding-left: 1%
+}
+.pad-right{
+  padding-right: 1%
+}
+.new_user{
+  display: inline;
+}
+.form{
+}
