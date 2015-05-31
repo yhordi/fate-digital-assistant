@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+System.create(name: "test", description: "A test system.")
+User.create(name: "user", password: ENV["PASSWORD"])
