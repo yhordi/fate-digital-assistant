@@ -4,6 +4,7 @@ class SystemsController < ApplicationController
   end
 
   def index
-    @system = System.all
+    @systems = System.all
+    render json: @systems
   end
 end
