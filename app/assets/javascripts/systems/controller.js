@@ -5,17 +5,17 @@ var Controller = function(model, view) {
 
 Controller.prototype = {
   bindListeners: function(event) {
-    // var controller = this
-    // $('li a:first-child').on('click', function(e){
-    //   e.preventDefault()
-    //   var url = $(this).attr('href')
-    //   controller.getSystems(url)
-    // })
+    var controller = this
+    $('.newSystem').on('click', function(e){
+      e.preventDefault()
+      var url = $(this).attr('href')
+      controller.getForm(url)
+    })
   },
-  getSystems: function(url){
+  getForm: function(url){
     this.model.getSystems(url, this.sendSystems.bind(this))
   },
   sendSystems: function(response){
-    this.view.appendSystem(response)
+    this.view.appendForm(response)
   }
 }

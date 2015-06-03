@@ -1,3 +1,6 @@
+<%= link_to "Create a new system", new_system_path, class: "newSystem" %>
+<div class="content">
+</div>
 <% @systems.each do |system| %>
   <h3><%= link_to "#{system.name}", system_path(system) %></h3>
   <div class=".content">

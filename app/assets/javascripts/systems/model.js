@@ -4,7 +4,8 @@ Model.prototype = {
   getSystems: function(url, callback) {
     var request = $.ajax({
       url: url,
-      type: 'get'
+      type: 'get',
+      dataType: 'html'
     })
     request.done(function(response){
       callback(response)
