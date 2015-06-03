@@ -20,6 +20,10 @@ div{
 .header{
   color: $bright;
   font-size: 2em;
+  a {
+    text-decoration: none;
+    color: $bright;
+  }
 }
 .pad-top{
   padding-top: .3em;

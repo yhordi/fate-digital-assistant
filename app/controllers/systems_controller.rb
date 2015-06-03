@@ -5,7 +5,7 @@ class SystemsController < ApplicationController
 
   def index #get '/'
     @systems = System.all
-    render json: @systems
+    # render json: @systems
     #@systems.to_json
   end
 end

@@ -5,12 +5,12 @@ var Controller = function(model, view) {
 
 Controller.prototype = {
   bindListeners: function(event) {
-    var controller = this
-    $('li a:first-child').on('click', function(e){
-      e.preventDefault()
-      var url = $(this).attr('href')
-      controller.getSystems(url)
-    })
+    // var controller = this
+    // $('li a:first-child').on('click', function(e){
+    //   e.preventDefault()
+    //   var url = $(this).attr('href')
+    //   controller.getSystems(url)
+    // })
   },
   getSystems: function(url){
     this.model.getSystems(url, this.sendSystems.bind(this))

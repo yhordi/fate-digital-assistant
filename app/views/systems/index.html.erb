@@ -1,0 +1,6 @@
+<% @systems.each do |system| %>
+  <h3><%= link_to "#{system.name}", system_path(system) %></h3>
+  <div class=".content">
+  <div>
+  <p><%= system.description %></p>
+<% end %>
