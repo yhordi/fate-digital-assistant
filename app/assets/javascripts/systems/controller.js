@@ -1,4 +1,7 @@
-var Controller = function(model, view) {}
+var Controller = function(model, view) {
+  this.view = view
+  this.model = model
+}
 
 Controller.prototype = {
   bindListeners: function(event) {
@@ -10,12 +13,9 @@ Controller.prototype = {
     })
   },
   getSystems: function(url){
-    $.ajax({
-      url: url,
-      method: 'GET',
-      dataType: 'json'
-    }).done(function(data){
-      console.log('hello')
-    })
+    this.model.getSystems(url, this.sendSystems.bind(this))
+  },
+  sendSystems: function(response){
+    this.view.appendSystem(response)
   }
 }

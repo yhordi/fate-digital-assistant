@@ -3,8 +3,9 @@ class SystemsController < ApplicationController
     @system = System.new
   end
 
-  def index
+  def index #get '/'
     @systems = System.all
     render json: @systems
+    #@systems.to_json
   end
 end
