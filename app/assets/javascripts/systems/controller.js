@@ -8,6 +8,7 @@ Controller.prototype = {
     var controller = this
     $('.newSystem').on('click', function(e){
       e.preventDefault()
+      controller.view.hideFormLink()
       var url = $(this).attr('href')
       controller.getForm(url)
     })
