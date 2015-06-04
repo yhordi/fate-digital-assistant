@@ -10,5 +10,15 @@ Model.prototype = {
     request.done(function(response){
       callback(response)
     });
+  },
+  create: function(url, data, callback) {
+    var request = $.ajax({
+      url: url,
+      type: 'post',
+      data, data
+    })
+    request.done(function(response){
+      callback(response)
+    });
   }
 }

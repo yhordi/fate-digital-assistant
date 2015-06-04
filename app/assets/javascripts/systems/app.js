@@ -3,5 +3,4 @@ $(document).ready(function(){
   var model = new Model()
   var controller = new Controller(model, view)
   controller.bindListeners()
-  // controller.getSystems('/systems')
 })
