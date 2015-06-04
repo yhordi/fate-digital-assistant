@@ -14,6 +14,9 @@ Controller.prototype = {
     });
     $('.content').on('submit', '#new_system', function(e){
       e.preventDefault()
+      debugger
+      controller.view.hideForm()
+      controller.view.showFormLink()
       var url = this.action
       var data = $(this).serialize()
       controller.create(url, data)
