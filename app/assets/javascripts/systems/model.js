@@ -20,5 +20,6 @@ Model.prototype = {
     request.done(function(response){
       callback(response)
     });
+
   }
 }

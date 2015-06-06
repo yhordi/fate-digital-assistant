@@ -5,15 +5,13 @@ class SystemsController < ApplicationController
   end
 
   def create
-    p "*"*100
-    p params
     system = System.new
     system.name = params[:system][:name]
     system.description = params[:system][:description]
-    if system.save!
+    if system.save
       render json: System.last
     else
-      flash[:errors] = "System info invalidd"
+      render json: system.errors.full_messages
     end
   end
 
@@ -22,7 +20,7 @@ class SystemsController < ApplicationController
     @system.to_json
   end
 
-  def index #get '/'
+  def index
     @systems = System.all
   end
 end
