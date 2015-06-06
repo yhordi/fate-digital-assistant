@@ -5,13 +5,13 @@ class SystemsController < ApplicationController
   end
 
   def create
-    system = System.new
-    system.name = params[:system][:name]
-    system.description = params[:system][:description]
-    if system.save
+    @system = System.new
+    @system.name = params[:system][:name]
+    @system.description = params[:system][:description]
+    if @system.save
       render json: System.last
     else
-      render json: system.errors.full_messages
+      render json: @system.errors.full_messages
     end
   end
 

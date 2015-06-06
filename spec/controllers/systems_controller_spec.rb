@@ -1,5 +1,6 @@
 describe SystemsController do
   let(:user) { FactoryGirl.create :user }
+  let(:saved_system) { FactoryGirl.create :system }
   let(:system) {FactoryGirl.build :system }
   describe '#index' do
     before(:each) do
@@ -20,15 +21,35 @@ describe SystemsController do
       it 'saves a new system to the database' do
         expect(System.last.name).to eq(system.name)
       end
-      it 'renders a json object containing the saved system info' do
+      it 'responds with a json object containing the saved system info' do
         expect(response.body).to eq(System.last.to_json)
       end
     end
     context 'on invalid params' do
-      it "repsonds with an error" do
+      it "repsonds with a json object containing ActiveRecord Validation errors" do
         post :create, { system: {} }
-        expect(flash[:error]).to be_present
+        expect(response.body).to eq(assigns(:system).errors.full_messages.to_json)
       end
+    end
+  end
+  describe '#new' do
+    before(:each) do
+      get :new
+    end
+    it 'assigns the @system instance variable as a new system' do
+      expect(assigns(:system)).to be_a_new(System)
+    end
+    it 'renders the _new partial' do
+      expect(response).to render_template(partial: 'systems/_new')
+    end
+  end
+  describe '#show' do
+    before(:each) do
+      session[:id] = user.id
+      get :show, {id: saved_system.id}
+    end
+    it 'assigns the @system instance variable as a specific system' do
+      expect(assigns(:system)).to eq(saved_system)
     end
   end
 end
