@@ -51,5 +51,8 @@ describe SystemsController do
     it 'assigns the @system instance variable as a specific system' do
       expect(assigns(:system)).to eq(saved_system)
     end
+    it 'renders the _show partial' do
+      expect(response).to render_template(partial: 'systems/_show')
+    end
   end
 end

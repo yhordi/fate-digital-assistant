@@ -17,7 +17,8 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
-    @system.to_json
+    # @system.to_json
+    render partial: 'show'
   end
 
   def index

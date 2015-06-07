@@ -24,5 +24,8 @@ View.prototype = {
   },
   removeErrors: function(data) {
     $('.error').remove()
+  },
+  showSystem: function(data, id) {
+    $('#system' + id).prepend(data)
   }
 }

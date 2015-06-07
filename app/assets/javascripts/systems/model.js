@@ -1,14 +1,14 @@
 var Model = function() {}
 
 Model.prototype = {
-  getSystems: function(url, callback) {
+  getRequest: function(url, callback, id) {
     var request = $.ajax({
       url: url,
       type: 'get',
       dataType: 'html'
     })
     request.done(function(response){
-      callback(response)
+      callback(response, id)
     });
   },
   create: function(url, data, callback) {
@@ -20,6 +20,5 @@ Model.prototype = {
     request.done(function(response){
       callback(response)
     });
-
   }
 }
