@@ -27,9 +27,15 @@ Controller.prototype = {
       var id = $(this).attr('href').slice([-1])
       controller.getSystem(url, id)
     });
-    $('#editSystem').on('click', function(e) {
+    $('#system1').on('submit', function(e) {
       e.preventDefault()
-    })
+      var url = $('form').attr('action')
+      debugger
+      edit(url)
+    });
+  },
+  edit: function(url, data){
+    // build ajax call in model
   },
   create: function(url, data) {
     this.model.create(url, data, this.checkResponse.bind(this))
