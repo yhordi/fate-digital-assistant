@@ -27,5 +27,9 @@ View.prototype = {
   },
   showSystem: function(data, id) {
     $('#system' + id).prepend(data)
+  },
+  editForm: function(data) {
+    $('.editSystem').hide()
+    $('.systemContent').append(data)
   }
 }

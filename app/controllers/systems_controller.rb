@@ -24,6 +24,11 @@ class SystemsController < ApplicationController
     @systems = System.all
   end
 
+  def edit
+    @system = System.find(params[:id])
+    render partial: 'edit'
+  end
+
   def update
     system = System.find(params[:id])
     system.update_attributes(post_params)

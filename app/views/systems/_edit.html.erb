@@ -1,0 +1,12 @@
+
+<%= form_for @system do |f|  %>
+    <%= f.label "name" %>
+  <div>
+    <%= f.text_field "name" %>
+  </div>
+    <%= f.label "description"  %>
+  <div>
+    <%= f.text_area "description", size: '40x6' %>
+  </div>
+  <%= f.submit  %>
+<% end %>

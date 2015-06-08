@@ -28,23 +28,20 @@ Controller.prototype = {
       controller.getSystem(url, id)
     });
     $('#system1').on('submit', function(e) {
+      // will have to dynamically update the id selector
       e.preventDefault()
       var url = $('form').attr('action')
-      debugger
-      edit(url)
+      controller.getEdit(url)
     });
   },
-  edit: function(url, data){
-    // build ajax call in model
+  getEdit: function(url){
+    this.model.getRequest(url, this.sendEditForm.bind(this))
   },
   create: function(url, data) {
     this.model.create(url, data, this.checkResponse.bind(this))
   },
   getForm: function(url) {
     this.model.getRequest(url, this.sendForm.bind(this))
-  },
-  sendForm: function(response) {
-    this.view.appendForm(response)
   },
   getSystem: function(url, id) {
     if ($('#system' + id + ' > .systemContent')[0] == undefined) {
@@ -63,10 +60,16 @@ Controller.prototype = {
       this.sendSystems(response)
     }
   },
+  sendForm: function(response) {
+    this.view.appendForm(response)
+  },
   sendErrors: function(response) {
     this.view.errors(response)
   },
   sendSystems: function(response) {
     this.view.appendSystem(response)
+  },
+  sendEditForm: function(response) {
+    this.view.editForm(response)
   }
 }
