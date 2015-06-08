@@ -23,19 +23,25 @@ describe 'System', js: true do
     it 'can see a list of systems' do
       expect(page).to have_content(system.name)
     end
-    it 'can click on a system and see the system info' do
+    it 'can click on a system name and see the system info' do
       click_on system.name
       expect(page).to have_content(system.description)
     end
-    it 'can create a new system by filling out a form' do
-      # probably have to reimplement wait_for_ajax
-      click_link 'Create a new system'
-      within 'form' do
-        fill_in '#system_name', with: system_attributes.name
-        fill_in '#system_description', with: system_attributes.description
-        click_on 'Create System'
+    describe 'creating a new form' do
+      before(:each) do
+        click_link 'Create a new system'
       end
-      expect(page).to have_content(system_attributes.name)
+      it 'can see a form redered on click of the create a new system link' do
+        expect(page).to have_css('#new_system')
+      end
+      it 'can fill out a form and create a new system on button click' do
+        within '#new_system' do
+          fill_in 'system_name', with: system_attributes.name
+          fill_in 'system_description', with: system_attributes.description
+          click_on 'Create System'
+        end
+        expect(page).to have_content(system_attributes.name)
+      end
     end
   end
 end
