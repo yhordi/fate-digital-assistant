@@ -26,6 +26,9 @@ Controller.prototype = {
       var url = this.href
       var id = $(this).attr('href').slice([-1])
       controller.getSystem(url, id)
+    });
+    $('#editSystem').on('click', function(e) {
+      e.preventDefault()
     })
   },
   create: function(url, data) {
@@ -38,7 +41,7 @@ Controller.prototype = {
     this.view.appendForm(response)
   },
   getSystem: function(url, id) {
-    if ($('#system' + id + ' > p')[0] == undefined) {
+    if ($('#system' + id + ' > .systemContent')[0] == undefined) {
       this.model.getRequest(url, this.showSystem.bind(this), id)
     } else {
       $('#system' + id).children().remove()

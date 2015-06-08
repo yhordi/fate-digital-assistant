@@ -23,4 +23,10 @@ class SystemsController < ApplicationController
   def index
     @systems = System.all
   end
+
+  def update
+    system = System.find(params[:id])
+    system.update_attributes(post_params)
+    render json: system
+  end
 end
