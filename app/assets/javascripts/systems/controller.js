@@ -13,7 +13,7 @@ Controller.prototype = {
       var url = $(this).attr('href')
       controller.getForm(url)
     });
-    $('.content').on('submit', '#new_system', function(e) {
+    $('#createFormContainer').on('submit', '#new_system', function(e) {
       e.preventDefault()
       controller.view.hideForm()
       controller.view.showFormLink()
@@ -24,21 +24,35 @@ Controller.prototype = {
     $('.system').on('click', function(e) {
       e.preventDefault()
       var url = this.href
-      var id = $(this).attr('href').slice([-1])
+      var id = url.slice([-1])
       controller.getSystem(url, id)
+      controller.bindEdit(e, controller, id)
     });
+  },
+  bindEdit: function(e, controller, id, url) {
     $('#system1').on('submit', function(e) {
-      // will have to dynamically update the id selector
       e.preventDefault()
       var url = $('form').attr('action')
       controller.getEdit(url)
+      controller.bindUpdate(e, controller, id, url)
     });
+  },
+  bindUpdate: function(e, controller, id, url) {
+    $('#system1Update').on('submit', function(e) {
+      e.preventDefault()
+      var url = this.childNodes[2].action
+      var data = $(this.childNodes[2]).serialize()
+      controller.update(url, data, id)
+    })
   },
   getEdit: function(url){
     this.model.getRequest(url, this.sendEditForm.bind(this))
   },
   create: function(url, data) {
     this.model.create(url, data, this.checkResponse.bind(this))
+  },
+  update: function(url, data, id) {
+    this.model.update(url, data)
   },
   getForm: function(url) {
     this.model.getRequest(url, this.sendForm.bind(this))
@@ -71,5 +85,5 @@ Controller.prototype = {
   },
   sendEditForm: function(response) {
     this.view.editForm(response)
-  }
+  },
 }

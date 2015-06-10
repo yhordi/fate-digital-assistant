@@ -2,7 +2,7 @@ var View = function() {}
 
 View.prototype = {
   appendForm: function(data) {
-    $('.content').prepend(data)
+    $('#createFormContainer').prepend(data)
   },
   hideFormLink: function() {
     $('.newSystem').hide()
@@ -14,8 +14,7 @@ View.prototype = {
     $('.new_system').hide()
   },
   appendSystem: function(data){
-    $('.container').append("<h3><a href='systems/" + data.id + "'>" + data.name + "</a></h3>")
-    $('.container').append("<p>" + data.description + "</p>")
+    $('.container').append("<h3><a class='system' href='systems/" + data.id + "'>" + data.name + "</a></h3>")
   },
   errors: function(data) {
     for(var i = 0 in data ) {
@@ -30,6 +29,6 @@ View.prototype = {
   },
   editForm: function(data) {
     $('.editSystem').hide()
-    $('.systemContent').append(data)
+    $('#system1Update').append(data)
   }
 }

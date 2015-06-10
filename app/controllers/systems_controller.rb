@@ -30,8 +30,15 @@ class SystemsController < ApplicationController
   end
 
   def update
+    p "*"*50
     system = System.find(params[:id])
-    system.update_attributes(post_params)
+    system.update_attributes(system_params)
     render json: system
+  end
+
+  private
+
+  def system_params
+    params.require(:system).permit(:name, :description)
   end
 end

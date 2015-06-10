@@ -1,12 +1,14 @@
 <% if session[:id] != nil  %>
 <%= link_to "Create a new system", new_system_path, class: "newSystem" %>
-<div class="content">
+<div id="createFormContainer">
 </div>
   <% @systems.each do |system| %>
     <h3>
       <%= link_to "#{system.name}", system_path(system), class: "system" %>
     </h3>
     <div id="system<%= system.id %>">
+    </div>
+    <div id="system<%= system.id %>Update">
     </div>
   <% end %>
   <% else %>

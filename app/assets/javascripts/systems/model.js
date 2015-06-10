@@ -20,5 +20,15 @@ Model.prototype = {
     request.done(function(response){
       callback(response)
     });
+  },
+  update: function(url, data, callback) {
+    var request = $.ajax({
+      url: url,
+      type: 'patch',
+      data, data
+    })
+    request.done(function(response){
+      callback(response)
+    });
   }
 }
