@@ -21,7 +21,7 @@ class SystemsController < ApplicationController
   end
 
   def index
-    @systems = System.all
+    @systems = System.order(created_at: :desc)
   end
 
   def edit
@@ -31,9 +31,9 @@ class SystemsController < ApplicationController
 
   def update
     p "*"*50
-    system = System.find(params[:id])
-    system.update_attributes(system_params)
-    render json: system
+    @system = System.find(params[:id])
+    @system.update_attributes(system_params)
+    render json: @system
   end
 
   private

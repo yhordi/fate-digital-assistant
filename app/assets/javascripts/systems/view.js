@@ -30,5 +30,15 @@ View.prototype = {
   editForm: function(data) {
     $('.editSystem').hide()
     $('#system1Update').append(data)
+  },
+  hideSystems: function() {
+    $('.system').hide()
+  },
+  showBackLink: function(){
+    $('.container').append('<a href="/systems">Back</a>')
+  },
+  showUpdate: function(data) {
+    $('.systemContent').html("")
+    $('.systemContent').append("<h4>About " + data.name + "</h4><p>"+ data.description + "</p>")
   }
 }

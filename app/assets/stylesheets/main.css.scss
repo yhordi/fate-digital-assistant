@@ -35,14 +35,20 @@ $heading: #7128C1;
 .pad-right{
   padding-right: 1%
 }
+.m-btm{
+  margin-bottom: 1%;
+}
 .new_user{
   display: inline;
 }
 .form{
 }
-// .nav{
-//   background-color: #A19DA3;
-// }
+.nav{
+  background-color: #A19DA3;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+}
 .navlist{
   font-family: 'Verdana';
   list-style-type: none;

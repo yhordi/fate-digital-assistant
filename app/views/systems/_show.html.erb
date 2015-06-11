@@ -5,5 +5,7 @@
   <p>
     <%= @system.description %>
   </p>
-  <%= button_to 'edit', edit_system_path(@system.id), class: 'editSystem'  %>
+  <!-- make this a HTML button -->
+  <button class= 'editSystem' href=<%= edit_system_path(@system.id) %>>edit</button>
+
 </div>

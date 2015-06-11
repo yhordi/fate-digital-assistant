@@ -30,9 +30,9 @@ Controller.prototype = {
     });
   },
   bindEdit: function(e, controller, id, url) {
-    $('#system1').on('submit', function(e) {
+    $('#system1').on('click', 'button', function(e) {
       e.preventDefault()
-      var url = $('form').attr('action')
+      var url = $(this).attr('href')
       controller.getEdit(url)
       controller.bindUpdate(e, controller, id, url)
     });
@@ -40,9 +40,9 @@ Controller.prototype = {
   bindUpdate: function(e, controller, id, url) {
     $('#system1Update').on('submit', function(e) {
       e.preventDefault()
-      var url = this.childNodes[2].action
-      var data = $(this.childNodes[2]).serialize()
-      controller.update(url, data, id)
+      var url = $(this).children(1).attr('action')
+      var data = $(this).children().serialize()
+      controller.update(url, data)
     })
   },
   getEdit: function(url){
@@ -51,8 +51,8 @@ Controller.prototype = {
   create: function(url, data) {
     this.model.create(url, data, this.checkResponse.bind(this))
   },
-  update: function(url, data, id) {
-    this.model.update(url, data)
+  update: function(url, data) {
+    this.model.update(url, data, this.sendUpdate.bind(this))
   },
   getForm: function(url) {
     this.model.getRequest(url, this.sendForm.bind(this))
@@ -66,6 +66,8 @@ Controller.prototype = {
   },
   showSystem: function(response, id) {
     this.view.showSystem(response, id)
+    this.view.hideSystems()
+    this.view.showBackLink()
   },
   checkResponse: function(response){
     if(response.id == undefined) {
@@ -73,6 +75,9 @@ Controller.prototype = {
     } else {
       this.sendSystems(response)
     }
+  },
+  sendUpdate: function(response) {
+    this.view.showUpdate(response)
   },
   sendForm: function(response) {
     this.view.appendForm(response)
