@@ -55,4 +55,15 @@ describe SystemsController do
       expect(response).to render_template(partial: 'systems/_show')
     end
   end
+  describe '#update' do
+    it 'assigns the @system instance variable as a specific system' do
+      patch :update, {system: {name: saved_system.name, description: saved_system.description}, id: saved_system.id}
+      p saved_system
+      expect(assigns(:system)).to eq(saved_system)
+    end
+    xit 'updates the attributes of a saved system' do
+    end
+    xit 'renders JSON to the view' do
+    end
+  end
 end
