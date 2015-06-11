@@ -30,10 +30,11 @@ class SystemsController < ApplicationController
   end
 
   def update
-    p "*"*50
     @system = System.find(params[:id])
-    @system.update_attributes(system_params)
-    render json: @system
+    if @system.update_attributes(system_params)
+      p flash[:notice] = "System updated successfully"
+      render json: @system
+    end
   end
 
   private

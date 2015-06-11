@@ -6,10 +6,12 @@ var Controller = function(model, view) {
 Controller.prototype = {
   bindListeners: function(event) {
     var controller = this
+    $(document).on('click', function(){
+      controller.view.removeErrors()
+    })
     $('.newSystem').on('click', function(e){
       e.preventDefault()
       controller.view.hideFormLink()
-      controller.view.removeErrors()
       var url = $(this).attr('href')
       controller.getForm(url)
     });
