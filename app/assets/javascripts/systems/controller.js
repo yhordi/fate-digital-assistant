@@ -30,11 +30,11 @@ Controller.prototype = {
     });
   },
   bindEdit: function(e, controller, id, url) {
-    $('#system1').on('click', 'button', function(e) {
+    $('#system' + id).on('click', 'button', function(e) {
       e.preventDefault()
       var url = $(this).attr('href')
-      var id = url.slice([-1])
-      controller.getEdit(url)
+      var id = url[9]
+      controller.getEdit(url, id)
       controller.bindUpdate(e, controller, id, url)
     });
   },
@@ -43,17 +43,17 @@ Controller.prototype = {
       e.preventDefault()
       var url = $(this).children(1).attr('action')
       var data = $(this).children().serialize()
-      controller.update(url, data)
+      controller.update(url, data, id)
     })
   },
-  getEdit: function(url){
-    this.model.getRequest(url, this.sendEditForm.bind(this))
+  getEdit: function(url, id){
+    this.model.getRequest(url, this.sendEditForm.bind(this), id)
   },
   create: function(url, data) {
     this.model.create(url, data, this.checkResponse.bind(this))
   },
-  update: function(url, data) {
-    this.model.update(url, data, this.sendUpdate.bind(this))
+  update: function(url, data, id) {
+    this.model.update(url, data, this.sendUpdate.bind(this), id)
   },
   getForm: function(url) {
     this.model.getRequest(url, this.sendForm.bind(this))
@@ -77,8 +77,8 @@ Controller.prototype = {
       this.sendSystems(response)
     }
   },
-  sendUpdate: function(response) {
-    this.view.showUpdate(response)
+  sendUpdate: function(response, id) {
+    this.view.showUpdate(response, id)
   },
   sendForm: function(response) {
     this.view.appendForm(response)
@@ -89,7 +89,7 @@ Controller.prototype = {
   sendSystems: function(response) {
     this.view.appendSystem(response)
   },
-  sendEditForm: function(response) {
-    this.view.editForm(response)
+  sendEditForm: function(response, id) {
+    this.view.editForm(response, id)
   },
 }

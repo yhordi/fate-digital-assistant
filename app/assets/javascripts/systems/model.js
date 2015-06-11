@@ -21,7 +21,7 @@ Model.prototype = {
       callback(response)
     });
   },
-  update: function(url, data, callback) {
+  update: function(url, data, callback, id) {
     var request = $.ajax({
       url: url,
       type: 'patch',

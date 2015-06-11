@@ -26,10 +26,12 @@ View.prototype = {
   },
   showSystem: function(data, id) {
     $('#system' + id).prepend(data)
+    $('.newSystem').hide()
   },
-  editForm: function(data) {
+  editForm: function(data, id) {
     $('.editSystem').hide()
-    $('#system1Update').append(data)
+    $('.newSystem').hide()
+    $('#system'+ id +'Update').append(data)
   },
   hideSystems: function() {
     $('.system').hide()
