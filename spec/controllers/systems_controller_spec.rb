@@ -56,14 +56,20 @@ describe SystemsController do
     end
   end
   describe '#update' do
-    it 'assigns the @system instance variable as a specific system' do
-      patch :update, {system: {name: saved_system.name, description: saved_system.description}, id: saved_system.id}
-      p saved_system
-      expect(assigns(:system)).to eq(saved_system)
+    it 'updates the attributes of a saved system' do
+      patch :update, {system: {name: "Fighting Time", description: saved_system.description}, id: saved_system.id}
+      expect(System.last.name).to eq('Fighting Time')
     end
-    xit 'updates the attributes of a saved system' do
-    end
-    xit 'renders JSON to the view' do
+    context 'with unchanged data' do
+      before(:each) do
+         patch :update, {system: {name: saved_system.name, description: saved_system.description}, id: saved_system.id}
+      end
+      it 'assigns the @system instance variable as a specific system' do
+        expect(assigns(:system)).to eq(saved_system)
+      end
+      it 'responds with a JSON object containing the updated system info' do
+        expect(response.body).to eq(System.last.to_json)
+      end
     end
   end
 end
