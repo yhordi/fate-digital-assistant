@@ -23,6 +23,7 @@ View.prototype = {
   },
   removeErrors: function(data) {
     $('.error').remove()
+    $('.notice').remove()
   },
   showSystem: function(data, id) {
     $('#system' + id).prepend(data)
@@ -41,6 +42,7 @@ View.prototype = {
   },
   showUpdate: function(data) {
     $('.systemContent').html("")
-    $('.systemContent').append("<h4>About " + data.name + "</h4><p>"+ data.description + "</p>")
+    $('.systemContent').append("<h4>About " + data.name + ":</h4><p>"+ data.description + "</p>")
+    $('.systemContent').append('<div class="notice dark">System updated successfully!</div>')
   }
 }
