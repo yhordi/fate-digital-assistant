@@ -33,12 +33,13 @@ Controller.prototype = {
     $('#system1').on('click', 'button', function(e) {
       e.preventDefault()
       var url = $(this).attr('href')
+      var id = url.slice([-1])
       controller.getEdit(url)
       controller.bindUpdate(e, controller, id, url)
     });
   },
   bindUpdate: function(e, controller, id, url) {
-    $('#system1Update').on('submit', function(e) {
+    $('#system'+ id +'Update').on('submit', function(e) {
       e.preventDefault()
       var url = $(this).children(1).attr('action')
       var data = $(this).children().serialize()
