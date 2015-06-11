@@ -72,4 +72,15 @@ describe SystemsController do
       end
     end
   end
+  describe '#edit' do
+    before(:each) do
+      get :edit, id: saved_system.id
+    end
+    it 'assigns the @system instance variable' do
+      expect(assigns(:system)).to eq(saved_system)
+    end
+    it 'renders the edit form to the view' do
+      expect(response).to render_template(partial: 'systems/_edit')
+    end
+  end
 end
