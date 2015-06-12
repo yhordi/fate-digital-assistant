@@ -30,5 +30,14 @@ Model.prototype = {
     request.done(function(response){
       callback(response)
     });
+  },
+  delete: function(url, callback) {
+    var request = $.ajax({
+      url: url,
+      type: 'delete'
+    })
+    request.done(function(response){
+      callback(response)
+    })
   }
 }

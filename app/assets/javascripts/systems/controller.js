@@ -25,20 +25,28 @@ Controller.prototype = {
     });
     $('.system').on('click', function(e) {
       e.preventDefault()
-      var url = this.href
-      var id = url.slice([-1])
+      var url = $(this).attr('href')
+      var id = url.match(/\+?\d+/)
       controller.getSystem(url, id)
       controller.bindEdit(e, controller, id)
+      controller.bindDelete(e, controller, id)
     });
   },
   bindEdit: function(e, controller, id, url) {
-    $('#system' + id).on('click', 'button', function(e) {
+    $('#system' + id).on('click', '.editSystem', function(e) {
       e.preventDefault()
       var url = $(this).attr('href')
-      var id = url[9]
+      var id = url.match(/\+?\d+/)
       controller.getEdit(url, id)
       controller.bindUpdate(e, controller, id, url)
     });
+  },
+  bindDelete: function(e, controller, id, url) {
+    $('#system' + id).on('click', '.deleteSystem', function(e) {
+      var url = $(this).attr('href')
+      var id = url[9]
+      controller.delete(url, id)
+    })
   },
   bindUpdate: function(e, controller, id, url) {
     $('#system'+ id +'Update').on('submit', function(e) {
@@ -56,6 +64,9 @@ Controller.prototype = {
   },
   update: function(url, data, id) {
     this.model.update(url, data, this.sendUpdate.bind(this), id)
+  },
+  delete: function(url) {
+    this.model.delete(url, this.sendDelete.bind(this))
   },
   getForm: function(url) {
     this.model.getRequest(url, this.sendForm.bind(this))
@@ -78,6 +89,9 @@ Controller.prototype = {
     } else {
       this.sendSystems(response)
     }
+  },
+  sendDelete: function(response, id) {
+    this.view.deleteMessage(response, id)
   },
   sendUpdate: function(response, id) {
     this.view.showUpdate(response, id)

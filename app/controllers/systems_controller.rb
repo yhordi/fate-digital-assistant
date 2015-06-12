@@ -35,6 +35,12 @@ class SystemsController < ApplicationController
     render json: @system
   end
 
+  def destroy
+    system = System.find(params[:id])
+    system.delete
+    render html: "System deleted"
+  end
+
   private
 
   def system_params

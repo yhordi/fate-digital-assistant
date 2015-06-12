@@ -44,5 +44,9 @@ View.prototype = {
     $('.systemContent').html("")
     $('.systemContent').append("<h4>About " + data.name + ":</h4><p>"+ data.description + "</p>")
     $('.systemContent').append('<div class="notice dark">System updated successfully!</div>')
+  },
+  deleteMessage: function(data) {
+    $('.systemContent').fadeOut(500)
+    $('.container').append('<h1 class="notice dark">'+ data +'</h1>')
   }
 }
