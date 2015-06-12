@@ -25,14 +25,14 @@ describe SessionsController do
       end
     end
   end
-  context '#destroy' do
+  describe '#destroy' do
     it 'redirects to the root path' do
       post :create, { name: user.name, password: user.password }
       delete :destroy, id: session[:id]
       expect(response.status).to eq(302)
     end
   end
-  context '#show' do
+  describe '#show' do
     it 'assigns the @user instance variable to current_user' do
       post :create, { name: user.name, password: user.password }
       get :show, id: session[:id]

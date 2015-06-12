@@ -1,6 +1,6 @@
 describe SystemsController do
   let(:user) { FactoryGirl.create :user }
-  let(:saved_system) { FactoryGirl.create :system }
+  let!(:saved_system) { FactoryGirl.create :system }
   let(:system) {FactoryGirl.build :system }
   describe '#index' do
     before(:each) do
@@ -81,6 +81,15 @@ describe SystemsController do
     end
     it 'renders the edit form to the view' do
       expect(response).to render_template(partial: 'systems/_edit')
+    end
+  end
+  describe '#destroy' do
+    it 'deletes a system in the database' do
+      expect{delete :destroy, id: saved_system.id}.to change{System.all.count}.by(-1)
+    end
+    it 'responds with a string in html' do
+      delete :destroy, id: saved_system.id
+      expect(response.body).to eq("System deleted")
     end
   end
 end
