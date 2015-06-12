@@ -27,7 +27,7 @@ describe 'System', js: true do
       click_on system.name
       expect(page).to have_content(system.description)
     end
-    context 'creating a new form' do
+    describe 'creating a new form' do
       before(:each) do
         click_link 'Create a new system'
       end
@@ -43,7 +43,7 @@ describe 'System', js: true do
         expect(page).to have_content(system_attributes.name)
       end
     end
-    context 'editing an existing system' do
+    describe 'editing an existing system' do
       before(:each) do
         click_link system.name
         click_on 'edit'
@@ -58,6 +58,18 @@ describe 'System', js: true do
       it 'sees a success notification' do
         click_on 'Update System'
         expect(page).to have_content("System updated successfully!")
+      end
+    end
+    describe 'deletes an existing system' do
+      before(:each) do
+        click_link system.name
+        click_on 'Delete'
+      end
+      it 'no longer sees the system displayed' do
+        expect(page).to_not have_content(system.name)
+      end
+      it 'sees a success message' do
+        expect(page).to have_content("System deleted")
       end
     end
   end
