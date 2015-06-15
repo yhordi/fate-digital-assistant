@@ -1,6 +1,12 @@
 var View = function() {}
 
 View.prototype = {
+  // template: function(source) {
+  //   Handlebars.compile(source)
+  // },
+  sources: {
+    systemName: "<h3><a class='system' href='systems/{{id}}'>{{name}}</a></h3>"
+  },
   appendForm: function(data) {
     $('#createFormContainer').prepend(data)
   },
@@ -14,7 +20,9 @@ View.prototype = {
     $('.new_system').hide()
   },
   appendSystem: function(data){
-    $('.container').append("<h3><a class='system' href='systems/" + data.id + "'>" + data.name + "</a></h3>")
+    var template = Handlebars.compile(this.sources.systemName)
+    var result = template(data)
+    $('.container').append(result)
   },
   errors: function(data) {
     for(var i = 0 in data ) {
