@@ -1,11 +1,10 @@
-var View = function() {}
+var View = function() {
+}
 
 View.prototype = {
-  // template: function(source) {
-  //   Handlebars.compile(source)
-  // },
   sources: {
-    systemName: "<h3><a class='system' href='systems/{{id}}'>{{name}}</a></h3>"
+    systemName: "<h3><a class='system' href='systems/{{id}}'>{{name}}</a></h3>",
+    systemInfo: "<h4>About {{name}}:</h4><p>{{description}}</p>",
   },
   appendForm: function(data) {
     $('#createFormContainer').prepend(data)
@@ -22,7 +21,7 @@ View.prototype = {
   appendSystem: function(data){
     var template = Handlebars.compile(this.sources.systemName)
     var result = template(data)
-    $('.container').append(result)
+    $('#systems').prepend(result)
   },
   errors: function(data) {
     for(var i = 0 in data ) {
@@ -32,10 +31,6 @@ View.prototype = {
   removeErrors: function(data) {
     $('.error').remove()
     $('.notice').remove()
-  },
-  showSystem: function(data, id) {
-    $('#system' + id).prepend(data)
-    $('.newSystem').hide()
   },
   editForm: function(data, id) {
     $('.editSystem').hide()
@@ -50,7 +45,9 @@ View.prototype = {
   },
   showUpdate: function(data) {
     $('.systemContent').html("")
-    $('.systemContent').append("<h4>About " + data.name + ":</h4><p>"+ data.description + "</p>")
+    var template = Handlebars.compile(this.sources.systemName)
+    var result = template(data)
+    $('.systemContent').append(result)
     $('.systemContent').append('<div class="notice dark">System updated successfully!</div>')
   },
   deleteMessage: function(data) {
