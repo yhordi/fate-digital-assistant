@@ -1,0 +1,10 @@
+<div class='systemContent'>
+  <h4>
+    About <%= @system.name %>:
+  </h4>
+  <p>
+    <%= @system.description %>
+  </p>
+  <button class= 'editSystem' href=<%= edit_system_path(@system.id) %>>edit</button>
+  <button class='deleteSystem' href=<%= system_path(@system.id)%>>Delete</button>
+</div>

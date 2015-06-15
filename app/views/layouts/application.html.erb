@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FateDigitalAssistant</title>
+  <title>FATE: Dimensions</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- <div class="container"> -->
-    <div class="top row">
-      <div class="pad-left col span-7-d span-7-t">
-        <span class="header">FATE Digital Assistant </span>
-      </div>
-      <div class="pad-right col span-5-d span-5-t right">
-        <%= render "sessions/new" %>
-      </div>
+  <div class="top row">
+    <div class="pad-left col span-7-d span-7-t">
+      <span class="header"> <%= link_to "FATE: Dimensions", root_path %> </span>
     </div>
-  <!-- </div> -->
+    <div class="pad-right col span-5-d span-5-t right pad-top">
+      <% if session[:id] == nil %>
+        <%= render "sessions/new" %>
+      <% else %>
+        <%= render "sessions/show" %>
+      <% end %>
+    </div>
+  </div>
+  <div class= "nav row m-btm">
+    <ul class= "navlist">
+      <li>
+        <%= link_to "Systems", systems_path %>
+      </li>
+      <!-- <li>Charaters</li> -->
+      <!-- <li>Games</li> -->
+      <!-- <li>My Profile</li> -->
+    </ul>
+  </div>
   <div class="container">
     <%= yield %>
+  </div>
+  <div id="target">
   </div>
 
 </body>

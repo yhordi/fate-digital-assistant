@@ -12,15 +12,13 @@ class SessionsController < ApplicationController
     end
   end
 
-  def new
-    @user = current_user
-  end
-
   def show
+    @user = current_user
+    render partial: 'show'
   end
 
   def destroy
-    session[:id] = nil
+    logout
     redirect_to root_path
   end
 

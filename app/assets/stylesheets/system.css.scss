@@ -1,0 +1,13 @@
+$bright: #E1E0E0;
+$highlight: #BBFF00;
+
+.systemContent{
+  background-color: $bright;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+}
+.system{
+  text-decoration: none;
+  color: #778899;
+}

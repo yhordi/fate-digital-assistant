@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       flash[:error] = "Passwords don't match"
       redirect_to root_path
     end
-      
   end
 
   def new

@@ -1,13 +1,10 @@
 <% if session[:id] == nil %>
-  <%= form_tag '/sessions', class: 'pad-top' do |f| %>
+  <%= form_tag '/sessions' do |f| %>
     <%= text_field_tag :name, nil, :placeholder => "Username" %>
     <%= password_field_tag :password, nil, :placeholder => "Password" %>
     <%= submit_tag "Log In" %>
   <% end %>
   <% else  %>
-  <p>
-    <%= render partial: "sessions/show" %>
-  </p>
 <% end %>
 <p class="error">
   <%= flash[:error]  %>

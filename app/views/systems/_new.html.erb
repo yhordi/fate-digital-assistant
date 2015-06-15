@@ -1,0 +1,11 @@
+<%= form_for @system do |f|  %>
+    <%= f.label "name" %>
+  <div>
+    <%= f.text_field "name", placeholder: "Your system name" %>
+  </div>
+    <%= f.label "description"  %>
+  <div>
+    <%= f.text_area "description", size: '30x5', placeholder: 'a short description about your system' %>
+  </div>
+  <%= f.submit  %>
+<% end %>
