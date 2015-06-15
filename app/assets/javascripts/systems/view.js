@@ -15,8 +15,8 @@ View.prototype = {
   showFormLink: function() {
     $('.newSystem').show()
   },
-  hideForm: function() {
-    $('.new_system').hide()
+  hideForm: function(form) {
+    $(form).hide()
   },
   appendSystem: function(data){
     var template = Handlebars.compile(this.sources.systemName)
@@ -32,6 +32,10 @@ View.prototype = {
     $('.error').remove()
     $('.notice').remove()
   },
+  showSystem: function(data, id) {
+    $('#system' + id).prepend(data)
+    $('.newSystem').hide()
+  },
   editForm: function(data, id) {
     $('.editSystem').hide()
     $('.newSystem').hide()
@@ -45,7 +49,7 @@ View.prototype = {
   },
   showUpdate: function(data) {
     $('.systemContent').html("")
-    var template = Handlebars.compile(this.sources.systemName)
+    var template = Handlebars.compile(this.sources.systemInfo)
     var result = template(data)
     $('.systemContent').append(result)
     $('.systemContent').append('<div class="notice dark">System updated successfully!</div>')

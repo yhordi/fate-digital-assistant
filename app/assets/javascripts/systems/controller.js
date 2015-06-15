@@ -12,12 +12,12 @@ Controller.prototype = {
     $('.newSystem').on('click', function(e){
       e.preventDefault()
       controller.view.hideFormLink()
+      controller.view.hideForm('.newSystem')
       var url = $(this).attr('href')
       controller.getForm(url)
     });
     $('#createFormContainer').on('submit', '#new_system', function(e) {
       e.preventDefault()
-      controller.view.hideForm()
       controller.view.showFormLink()
       var url = this.action
       var data = $(this).serialize()
@@ -27,6 +27,7 @@ Controller.prototype = {
       e.preventDefault()
       var url = $(this).attr('href')
       var id = url.match(/\+?\d+/)
+      controller.view.hideForm('.new_system')
       controller.getSystem(url, id)
       controller.bindEdit(e, controller, id)
       controller.bindDelete(e, controller, id)
@@ -53,6 +54,7 @@ Controller.prototype = {
       e.preventDefault()
       var url = $(this).children(1).attr('action')
       var data = $(this).children().serialize()
+      controller.view.hideForm('.edit_system')
       controller.update(url, data, id)
     })
   },
