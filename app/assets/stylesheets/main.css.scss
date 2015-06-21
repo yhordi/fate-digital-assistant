@@ -1,7 +1,9 @@
 $bright: #E1E0E0;
 $heading: #7128C1;
 $dark: #8D8989;
-
+body{
+  background: image_url("grey_wash_wall.png")
+}
 .top{
   background-color: $heading;
   margin: 0;
