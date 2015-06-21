@@ -18,6 +18,8 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
+    p params
+    @user = User.find(@system.user_id)
     render partial: 'show'
   end
 

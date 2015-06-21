@@ -4,6 +4,17 @@ $dark: #8D8989;
 body{
   background: image_url("grey_wash_wall.png")
 }
+a {
+  color: $bright;
+  text-decoration: none;
+  transition: color, text-shadow, .5s
+}
+a:hover{
+  text-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+  color: white;
+  transition: color, text-shadow, .5s
+}
+
 .top{
   background-color: $heading;
   margin: 0;
