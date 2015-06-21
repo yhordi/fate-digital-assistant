@@ -6,6 +6,7 @@ class SystemsController < ApplicationController
 
   def create
     @system = System.new
+    @system.user_id = session[:id]
     @system.name = params[:system][:name]
     @system.description = params[:system][:description]
     if @system.save

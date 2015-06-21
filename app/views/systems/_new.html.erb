@@ -7,5 +7,7 @@
   <div>
     <%= f.text_area "description", size: '30x5', placeholder: 'a short description about your system' %>
   </div>
+  <%= f.label "make public?"%>
+  <%= f.check_box :public %>
   <%= f.submit  %>
 <% end %>
