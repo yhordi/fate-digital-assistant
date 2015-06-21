@@ -44,6 +44,6 @@ class SystemsController < ApplicationController
   private
 
   def system_params
-    params.require(:system).permit(:name, :description)
+    params.require(:system).permit(:name, :description, :public)
   end
 end

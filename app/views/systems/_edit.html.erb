@@ -8,5 +8,7 @@
   <div>
     <%= f.text_area "description", size: '40x6' %>
   </div>
+  <%= f.label "make public?"%>
+  <%= f.check_box :public %>
   <%= f.submit  %>
 <% end %>
