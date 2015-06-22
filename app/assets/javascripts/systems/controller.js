@@ -83,7 +83,6 @@ Controller.prototype = {
   showSystem: function(response, id) {
     this.view.showSystem(response, id)
     this.view.hideSystems()
-    this.view.showBackLink()
   },
   checkResponse: function(response){
     if(response.id == undefined) {

@@ -44,9 +44,6 @@ View.prototype = {
   hideSystems: function() {
     $('.system').hide()
   },
-  showBackLink: function(){
-    $('.container').append('<a href="/systems">Back</a>')
-  },
   showUpdate: function(data) {
     $('.systemContent').html("")
     var template = Handlebars.compile(this.sources.systemInfo)
