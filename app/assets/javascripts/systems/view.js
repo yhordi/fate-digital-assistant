@@ -54,5 +54,8 @@ View.prototype = {
   deleteMessage: function(data) {
     $('.systemContent').fadeOut(500)
     $('.container').append('<h1 class="notice dark">'+ data +'</h1>')
+  },
+  newSystemDiv: function(id) {
+    $('#systems').prepend('<div id="system' + id + '"></div>')
   }
 }
