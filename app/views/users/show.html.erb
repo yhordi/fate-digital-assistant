@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col span-3-t pic">
+  <div class="col span-3-d span-4-t pic">
     <h2>
       <%= "#{@user.name.titleize}'s profile"  %>
     </h2>
@@ -11,10 +11,13 @@
       Birthday: <%= @user.birthday %>
     </p>
   </div>
-  <div class="col span-9-t">
+  <div class="col span-9-d span-8-t">
     <h4> About <%= "#{@user.name.titleize}" %> </h4>
     <p>
       <%= @user.bio %>
     </p>
+    <h4>
+      <%= "#{@user.name.titleize}'s games:"%>
+    </h4>
   </div>
 </div>
