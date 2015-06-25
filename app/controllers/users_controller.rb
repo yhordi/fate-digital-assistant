@@ -14,7 +14,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if session[:id] == nil
+      @user = User.new
+    else
+      redirect_to user_path(session[:id])
+    end
   end
 
   def show

@@ -1,3 +1,20 @@
-<div>
-  <%= @user.name  %>
+<div class="row">
+  <div class="col span-3-t pic">
+    <h2>
+      <%= "#{@user.name.titleize}'s profile"  %>
+    </h2>
+    <%= image_tag("no-image.png") %>
+    <p>
+      Member since <%= format_time(@user.created_at)  %>
+    </p>
+    <p>
+      Birthday: <%= @user.birthday %>
+    </p>
+  </div>
+  <div class="col span-9-t">
+    <h4> About <%= "#{@user.name.titleize}" %> </h4>
+    <p>
+      <%= @user.bio %>
+    </p>
+  </div>
 </div>

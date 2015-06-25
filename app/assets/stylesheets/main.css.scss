@@ -1,6 +1,11 @@
 $bright: #E1E0E0;
 $heading: #7128C1;
 $dark: #8D8989;
+$bodytext: #CCCBCB;
+
+body{
+  color: $bodytext
+}
 
 @font-face {
   font-family: 'Roboto';
