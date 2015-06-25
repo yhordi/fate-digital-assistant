@@ -1,2 +1,2 @@
-<%= "Welcome, #{ session[:name].titleize }." %>
+Welcome, <%= link_to "#{session[:name].titleize}!", user_path(session[:id]) %>
 <%= link_to "Log out", session_path(session[:id]), method: "delete" %>
