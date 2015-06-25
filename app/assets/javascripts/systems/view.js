@@ -1,6 +1,11 @@
-var View = function() {}
+var View = function() {
+}
 
 View.prototype = {
+  sources: {
+    systemName: "<h3><a class='system' href='systems/{{id}}'>{{name}}</a></h3>",
+    systemInfo: "<h4>About {{name}}:</h4><p>{{description}}</p>",
+  },
   appendForm: function(data) {
     $('#createFormContainer').prepend(data)
   },
@@ -10,11 +15,13 @@ View.prototype = {
   showFormLink: function() {
     $('.newSystem').show()
   },
-  hideForm: function() {
-    $('.new_system').hide()
+  hideForm: function(form) {
+    $(form).hide()
   },
   appendSystem: function(data){
-    $('.container').append("<h3><a class='system' href='systems/" + data.id + "'>" + data.name + "</a></h3>")
+    var template = Handlebars.compile(this.sources.systemName)
+    var result = template(data)
+    $('#systems').prepend(result)
   },
   errors: function(data) {
     for(var i = 0 in data ) {
@@ -37,16 +44,18 @@ View.prototype = {
   hideSystems: function() {
     $('.system').hide()
   },
-  showBackLink: function(){
-    $('.container').append('<a href="/systems">Back</a>')
-  },
   showUpdate: function(data) {
     $('.systemContent').html("")
-    $('.systemContent').append("<h4>About " + data.name + ":</h4><p>"+ data.description + "</p>")
+    var template = Handlebars.compile(this.sources.systemInfo)
+    var result = template(data)
+    $('.systemContent').append(result)
     $('.systemContent').append('<div class="notice dark">System updated successfully!</div>')
   },
   deleteMessage: function(data) {
     $('.systemContent').fadeOut(500)
     $('.container').append('<h1 class="notice dark">'+ data +'</h1>')
+  },
+  newSystemDiv: function(id) {
+    $('#systems').prepend('<div id="system' + id + '"></div>')
   }
 }

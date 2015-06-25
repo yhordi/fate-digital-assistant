@@ -2,6 +2,27 @@ $bright: #E1E0E0;
 $heading: #7128C1;
 $dark: #8D8989;
 
+@font-face {
+  font-family: 'Roboto';
+  url: font-url('RobotoCondensed-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  background: image_url("grey_wash_wall.png")
+}
+a {
+  color: $bright;
+  text-decoration: none;
+  transition: color, text-shadow, .5s
+}
+a:hover{
+  text-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+  color: white;
+  transition: color, text-shadow, .5s
+}
+
 .top{
   background-color: $heading;
   margin: 0;
@@ -29,6 +50,9 @@ $dark: #8D8989;
     color: $bright;
   }
 }
+.pad{
+  padding: 1%;
+}
 .pad-top{
   padding-top: .3em;
 }
@@ -53,7 +77,7 @@ $dark: #8D8989;
   box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
 }
 .navlist{
-  font-family: 'Verdana';
+  font-family: 'Roboto';
   list-style-type: none;
   display: inline;
   li {

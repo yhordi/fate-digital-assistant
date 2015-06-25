@@ -12,12 +12,12 @@ Controller.prototype = {
     $('.newSystem').on('click', function(e){
       e.preventDefault()
       controller.view.hideFormLink()
+      controller.view.hideForm('.newSystem')
       var url = $(this).attr('href')
       controller.getForm(url)
     });
     $('#createFormContainer').on('submit', '#new_system', function(e) {
       e.preventDefault()
-      controller.view.hideForm()
       controller.view.showFormLink()
       var url = this.action
       var data = $(this).serialize()
@@ -27,6 +27,7 @@ Controller.prototype = {
       e.preventDefault()
       var url = $(this).attr('href')
       var id = url.match(/\+?\d+/)
+      controller.view.hideForm('.new_system')
       controller.getSystem(url, id)
       controller.bindEdit(e, controller, id)
       controller.bindDelete(e, controller, id)
@@ -53,7 +54,19 @@ Controller.prototype = {
       e.preventDefault()
       var url = $(this).children(1).attr('action')
       var data = $(this).children().serialize()
+      controller.view.hideForm('.edit_system')
       controller.update(url, data, id)
+    })
+  },
+  bindNewSystem: function(controller) {
+    $('.system:first-child').on('click', function(e){
+      e.preventDefault()
+      var url = $(this).attr('href')
+      var id = url.match(/\+?\d+/)
+      controller.view.hideForm('.new_system')
+      controller.getSystem(url, id)
+      controller.bindEdit(e, controller, id)
+      controller.bindDelete(e, controller, id)
     })
   },
   getEdit: function(url, id){
@@ -79,15 +92,14 @@ Controller.prototype = {
     }
   },
   showSystem: function(response, id) {
-    this.view.showSystem(response, id)
     this.view.hideSystems()
-    this.view.showBackLink()
+    this.view.showSystem(response, id)
   },
   checkResponse: function(response){
     if(response.id == undefined) {
       this.sendErrors(response)
     } else {
-      this.sendSystems(response)
+      this.sendSystems(response, response.id)
     }
   },
   sendDelete: function(response, id) {
@@ -102,8 +114,10 @@ Controller.prototype = {
   sendErrors: function(response) {
     this.view.errors(response)
   },
-  sendSystems: function(response) {
+  sendSystems: function(response, id) {
     this.view.appendSystem(response)
+    this.view.newSystemDiv(id)
+    this.bindNewSystem(this)
   },
   sendEditForm: function(response, id) {
     this.view.editForm(response, id)

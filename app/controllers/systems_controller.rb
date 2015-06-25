@@ -6,6 +6,7 @@ class SystemsController < ApplicationController
 
   def create
     @system = System.new
+    @system.user_id = session[:id]
     @system.name = params[:system][:name]
     @system.description = params[:system][:description]
     if @system.save
@@ -17,6 +18,7 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
+    @user = User.find(@system.user_id)
     render partial: 'show'
   end
 
@@ -44,6 +46,6 @@ class SystemsController < ApplicationController
   private
 
   def system_params
-    params.require(:system).permit(:name, :description)
+    params.require(:system).permit(:name, :description, :public)
   end
 end

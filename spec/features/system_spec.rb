@@ -7,7 +7,7 @@ describe 'System', js: true do
   end
   context 'A guest user' do
     it 'sees a description on the systems page' do
-      expect(page).to have_content("The FATE digital assistant allows")
+      expect(page).to have_content("FATE: Dimensions is a tool")
     end
     it 'cannot see private systems' do
       expect(page).to_not have_content(system.name)
@@ -18,7 +18,7 @@ describe 'System', js: true do
       fill_in 'Username', with: user.name
       fill_in 'Password', with: user.password
       click_on 'Log In'
-      click_on 'Systems'
+      click_on 'SYSTEMS'
     end
     it 'sees a list of systems' do
       expect(page).to have_content(system.name)
@@ -60,15 +60,15 @@ describe 'System', js: true do
         expect(page).to have_content("System updated successfully!")
       end
     end
-    describe 'deletes an existing system' do
+    describe 'deleting an existing system' do
       before(:each) do
         click_link system.name
         click_on 'Delete'
       end
-      it 'no longer sees the system displayed' do
+      it 'will no longer see the system displayed' do
         expect(page).to_not have_content(system.name)
       end
-      it 'sees a success message' do
+      it 'can see a success message' do
         expect(page).to have_content("System deleted")
       end
     end
