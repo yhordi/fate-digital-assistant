@@ -1,9 +1,12 @@
 <div class="row">
   <div class="col span-3-d span-4-t pic">
-    <h2>
+    <h2 class="no-m-btm">
       <%= "#{@user.name.titleize}'s profile"  %>
     </h2>
-    <%= image_tag("no-image.png") %>
+    <div class="pad-btm-m">
+      <%= link_to("edit", edit_user_path(@user.id)) %>
+    </div>
+      <%= image_tag("no-image.png") %>
     <p>
       Member since <%= format_time(@user.created_at)  %>
     </p>
