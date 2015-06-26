@@ -4,14 +4,11 @@
       <%= "#{@user.name.titleize}'s profile"  %>
     </h2>
     <div class="pad-btm-m">
-      <%= link_to("edit", edit_user_path(@user.id)) %>
+      <%= link_to("Edit Profile/Account Details", edit_user_path(@user.id), class: "edit_user") %>
     </div>
       <%= image_tag("no-image.png") %>
     <p>
       Member since <%= format_time(@user.created_at)  %>
-    </p>
-    <p>
-      Birthday: <%= @user.birthday %>
     </p>
   </div>
   <div class="col span-9-d span-8-t">

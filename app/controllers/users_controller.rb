@@ -13,6 +13,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    render partial: "edit"
+  end
+
+  def update
+    p params
+  end
+
   def new
     if session[:id] == nil
       @user = User.new

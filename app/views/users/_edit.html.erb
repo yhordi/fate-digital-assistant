@@ -1,0 +1,7 @@
+<%= form_for @user do |f|  %>
+    <%= f.label "Bio" %>
+  <div>
+    <%= f.text_area "bio", size: '40x6' %>
+  </div>
+  <%= f.submit  %>
+<% end %>
