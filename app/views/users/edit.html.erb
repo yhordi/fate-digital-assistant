@@ -1,3 +1,9 @@
+<p class="error">
+    <%= flash[:error] %>
+</p>
+<p class="notice">
+  <%= flash[:notice] %>
+</p>
 <div class="row card">
   <%= form_for @user do |f|  %>
   <div class='col span-8-t span-6-d'>

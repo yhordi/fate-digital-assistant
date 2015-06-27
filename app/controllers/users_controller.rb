@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   include AuthenticationConcern
-
+  include ErrorsHelper
+  include AuthHelper
   def create
     user = User.new(name: params[:user][:name], password: params[:user][:password])
     if passwords_match? == true && user.valid? == true
@@ -20,7 +21,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    p params
+    user = User.find(params[:id])
+    
+    if validate_user(user)
+      redirect_to user_path(user.id)
+    else
+      redirect_to edit_user_path(user.id)
+    end
   end
 
   def new
@@ -34,4 +41,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:id])  
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:password)
+  end
+
 end
