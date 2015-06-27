@@ -79,9 +79,7 @@ a:hover{
 .m-btm{
   margin-bottom: 1%;
 }
-.new_user{
-  display: inline;
-}
+
 
 .nav{
   background-color: #A19DA3;
@@ -96,4 +94,16 @@ a:hover{
   li {
     display: inline;
   }
+}
+
+.card{
+  padding: 1%;
+  background-color: $bright;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.hidden{
+  display: none;
 }

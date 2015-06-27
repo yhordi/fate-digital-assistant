@@ -1,0 +1,25 @@
+<div class="row card">
+  <%= form_for @user do |f|  %>
+  <div class='col span-8-t span-6-d'>
+    <%= f.label "Bio" %>
+      <div>
+        <%= f.text_area "bio", size: '50x6' %>
+      </div>
+  </div>
+    <div class=" col span-4-t span-6-d">
+    <div class="newAuth ">
+      <div>
+        <label for="old_password">Old Password</label>
+        <input type="password" name="old_password"></input>
+      </div>
+      <div>
+        <%= f.label(:password, "New Password") %>
+        <%= f.password_field(:password) %>
+      </div>
+      <label for="password_again">New Password Again</label>
+      <input type="password" name="password_again"></input>
+    </div>
+    </div>
+    <%= f.submit  %>
+  <% end %>
+<div>
