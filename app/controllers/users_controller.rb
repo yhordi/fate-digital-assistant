@@ -21,11 +21,12 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    
-    if validate_user(user)
+    if fields_empty?
+      flash[:notice] == "Details updated"
+      user.update_attributes(user_params)
       redirect_to user_path(user.id)
     else
-      redirect_to edit_user_path(user.id)
+      validation_redirect(user)
     end
   end
 

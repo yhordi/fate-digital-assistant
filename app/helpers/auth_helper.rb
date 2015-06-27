@@ -16,6 +16,18 @@ module AuthHelper
     end
   end
 
+  def fields_empty?
+    params["user"]["password"] == "" && params["old_password"] == "" && params["password_again"] == ""
+  end
+
+  def validation_redirect(user)
+    if validate_user(user)
+      redirect_to user_path(user.id)
+    else
+      redirect_to edit_user_path(user.id)
+    end
+  end
+
   def validate_new_passwords(user)
     if new_passwords_match?
       user.password = params[:user][:password]
