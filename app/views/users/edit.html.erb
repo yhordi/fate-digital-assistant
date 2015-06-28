@@ -5,18 +5,14 @@
   <%= flash[:notice] %>
 </p>
 <div class="row card">
-  <%= form_for @user do |f|  %>
+  <%= form_for @user, multipart: true do |f|  %>
   <div class='col span-8-t span-6-d'>
     <%= f.label "Bio" %>
       <div>
         <%= f.text_area "bio", size: '50x6' %>
       </div>
-      <div>
-        <label for="pic">
-          Upload a profile picture:
-        </label>
-      </div>
-    <%= f.file_field :picture %>
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
   </div>
     <div class=" col span-4-t span-6-d">
     <div class="newAuth ">
