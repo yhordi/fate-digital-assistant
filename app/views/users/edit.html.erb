@@ -11,6 +11,12 @@
       <div>
         <%= f.text_area "bio", size: '50x6' %>
       </div>
+      <div>
+        <label for="pic">
+          Upload a profile picture:
+        </label>
+      </div>
+    <%= f.file_field :picture %>
   </div>
     <div class=" col span-4-t span-6-d">
     <div class="newAuth ">
