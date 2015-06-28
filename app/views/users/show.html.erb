@@ -12,7 +12,7 @@
     <div class="pad-btm-m">
       <%= link_to("Edit Profile/Account Details", edit_user_path(@user.id), class: "edit_user") %>
     </div>
-      <%= image_tag("no-image.png") %>
+      <%= image_tag(@user.picture) %>
     <p>
       Member since <%= format_time(@user.created_at)  %>
     </p>
