@@ -27,7 +27,6 @@ a:hover{
   color: white;
   transition: color, text-shadow, .5s
 }
-
 .top{
   background-color: $heading;
   margin: 0;
@@ -54,6 +53,9 @@ a:hover{
     text-decoration: none;
     color: $bright;
   }
+}
+.navThumb{
+  vertical-align: middle;
 }
 .no-m-btm{
   margin-bottom: 0;

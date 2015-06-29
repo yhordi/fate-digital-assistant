@@ -1,2 +1,3 @@
-Welcome, <%= link_to "#{session[:name].titleize}!", user_path(session[:id]) %>
+<%= image_tag(@user.avatar.url(:square), size: "20x20", class: "navThumb") %>
+<%= link_to "#{session[:name].titleize}", user_path(session[:id]) %> |
 <%= link_to "Log out", session_path(session[:id]), method: "delete" %>
