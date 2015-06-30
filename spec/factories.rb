@@ -8,4 +8,5 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     user_id { 1 }
   end
+
 end

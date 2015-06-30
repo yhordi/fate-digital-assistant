@@ -3,11 +3,17 @@ class User < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
   has_many :systems
 
-  has_attached_file :avatar, styles: {
+  has_attached_file :avatar, 
+  default_url: "no-image.png",
+  styles: {
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'
   }
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+   private
+
+
 end

@@ -16,6 +16,7 @@ require "paperclip/matchers"
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
@@ -24,6 +25,8 @@ RSpec.configure do |config|
 
   config.include Paperclip::Shoulda::Matchers
 
+  # config.include ActionDispatch::TestProcess
+  
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

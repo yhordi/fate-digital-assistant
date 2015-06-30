@@ -21,6 +21,7 @@ describe 'System', js: true do
       click_on 'SYSTEMS'
     end
     it 'sees a list of systems' do
+      # allow_any_instance_of(Paperclip).to receive(:get).and return("hello")
       expect(page).to have_content(system.name)
     end
     it 'clicks on a system name and see the system info' do
