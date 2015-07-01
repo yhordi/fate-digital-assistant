@@ -83,5 +83,10 @@ describe UsersController do
         put :update, id: user.id, old_password: user.password, user: {password: "crabula"}, password_again: "crabuloid"
         expect(user.reload.password_digest).to eq(user.password_digest)
       end
+      it "updates a user's profile pic" do
+        file = fixture_file_upload('files/howbybowby.png', 'image/png')
+        put :update, id: user.id, upload: file, user: { avatar: file }
+        expect(user.reload.avatar_file_name).to eq('howbybowby.png')
+      end
     end
 end

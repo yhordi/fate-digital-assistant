@@ -17,7 +17,7 @@ module AuthHelper
   end
 
   def fields_empty?
-    params["user"]["password"] == "" && params["old_password"] == "" && params["password_again"] == ""
+    params["user"]["password"].blank? && params["old_password"].blank? && params["password_again"].blank?
   end
 
   def validation_redirect(user)

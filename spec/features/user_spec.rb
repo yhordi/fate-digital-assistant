@@ -13,7 +13,7 @@ describe 'User', js: true do
       expect(page).to have_content(username)
     end
   end
-  context 'a logged in user editing their profile' do
+  context 'logged in and editing their profile' do
     before(:each) do
       visit root_path
       fill_in 'Username', with: user.name

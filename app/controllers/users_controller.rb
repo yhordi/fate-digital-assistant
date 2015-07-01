@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if fields_empty?
-      flash[:notice] == "Details updated"
+      flash[:notice] = "Details updated"
       user.update_attributes(user_params)
       redirect_to user_path(user.id)
     else
