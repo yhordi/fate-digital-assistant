@@ -1,5 +1,6 @@
 class SystemsController < ApplicationController
   def new
+    @settings = SettingsHelper.settings
     @system = System.new
     render partial: 'new'
   end
@@ -9,6 +10,7 @@ class SystemsController < ApplicationController
     @system.user_id = session[:id]
     @system.name = params[:system][:name]
     @system.description = params[:system][:description]
+    @system.setting = params[:system][:setting]
     if @system.save
       render json: System.last
     else
@@ -27,6 +29,7 @@ class SystemsController < ApplicationController
   end
 
   def edit
+    @settings = SettingsHelper.settings
     @system = System.find(params[:id])
     render partial: 'edit'
   end
@@ -46,6 +49,6 @@ class SystemsController < ApplicationController
   private
 
   def system_params
-    params.require(:system).permit(:name, :description, :public)
+    params.require(:system).permit(:name, :description, :public, :setting)
   end
 end
