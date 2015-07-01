@@ -29,11 +29,13 @@ class SystemsController < ApplicationController
   end
 
   def edit
+    @settings = SettingsHelper.settings
     @system = System.find(params[:id])
     render partial: 'edit'
   end
 
   def update
+    p params
     @system = System.find(params[:id])
     @system.update_attributes(system_params)
     render json: @system
@@ -48,6 +50,6 @@ class SystemsController < ApplicationController
   private
 
   def system_params
-    params.require(:system).permit(:name, :description, :public)
+    params.require(:system).permit(:name, :description, :public, :setting)
   end
 end
