@@ -1,12 +1,12 @@
 module SettingsHelper
   attr_reader :settings
+  
   def self.settings 
   [
     "SciFi",
     "Fantasy",
-    "Horror",
-    "Crime",
-    "Espionage",
+    "Historical",
+    "Modern",
     "Other"
   ]
   end
