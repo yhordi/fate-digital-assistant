@@ -5,6 +5,10 @@
   </div>
     <%= f.label "description"  %>
   <div>
+  <div>
+    <%= f.label "setting"  %>
+    <%= f.select(:setting, options_for_select(@settings)) %>
+  </div>
     <%= f.text_area "description", size: '30x5', placeholder: 'a short description about your system' %>
   </div>
   <%= f.submit  %>
