@@ -1,4 +1,5 @@
 class SystemsController < ApplicationController
+  include AuthenticationConcern
   def new
     @system = System.new
     render partial: 'new'
@@ -23,6 +24,7 @@ class SystemsController < ApplicationController
   end
 
   def index
+    @user = current_user
     @systems = System.order(created_at: :desc)
   end
 
