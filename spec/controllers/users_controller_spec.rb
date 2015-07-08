@@ -55,4 +55,38 @@ describe UsersController do
       end
     end
   end
+
+  describe '#edit' do
+    before(:each) do
+      get :edit, {id: user.id}
+    end
+    it "resposnds witha a status of 200" do
+      expect(response.status).to eq(200)
+    end
+    it "renders the edit page" do
+      expect(response).to render_template(:edit)
+    end
+  end
+
+  describe "PUT #update" do
+      let!(:pass) { "newPassword" }
+      let!(:old_salt) { user.password_digest }
+      it "updates a user's password with valid params" do
+        put :update, id: user.id, old_password: user.password, user: { password: pass }, password_again: pass
+        expect(user.reload.password_digest).to_not eq(old_salt)
+      end
+      it "does not update a user's password if the original password is incorrect" do
+        put :update, id: user.id, old_password: "blarnz", user: { password: pass }, password_again: pass
+        expect(user.reload.password_digest).to eq(user.password_digest)
+      end
+      it "does not update a user's password it the new password fields do not match" do
+        put :update, id: user.id, old_password: user.password, user: {password: "crabula"}, password_again: "crabuloid"
+        expect(user.reload.password_digest).to eq(user.password_digest)
+      end
+      it "updates a user's profile pic" do
+        file = fixture_file_upload('files/howbybowby.png', 'image/png')
+        put :update, id: user.id, upload: file, user: { avatar: file }
+        expect(user.reload.avatar_file_name).to eq('howbybowby.png')
+      end
+    end
 end
