@@ -1,6 +1,11 @@
 $bright: #E1E0E0;
 $heading: #7128C1;
 $dark: #8D8989;
+$bodytext: #CCCBCB;
+
+// body{
+//   color: $bodytext
+// }
 
 @font-face {
   font-family: 'Roboto';
@@ -22,7 +27,6 @@ a:hover{
   color: white;
   transition: color, text-shadow, .5s
 }
-
 .top{
   background-color: $heading;
   margin: 0;
@@ -50,11 +54,17 @@ a:hover{
     color: $bright;
   }
 }
+.navThumb{
+  vertical-align: middle;
+}
+.no-m-btm{
+  margin-bottom: 0;
+}
 .pad{
   padding: 1%;
 }
 .pad-top{
-  padding-top: .3em;
+  padding-top: 1%;
 }
 .pad-left{
   padding-left: 1%
@@ -62,14 +72,17 @@ a:hover{
 .pad-right{
   padding-right: 1%
 }
+.pad-btm{
+  padding-bottom: 1%
+}
+.pad-btm-m{ 
+  padding-bottom: 1em;
+}
 .m-btm{
   margin-bottom: 1%;
 }
-.new_user{
-  display: inline;
-}
-.form{
-}
+
+
 .nav{
   background-color: #A19DA3;
   -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
@@ -83,4 +96,16 @@ a:hover{
   li {
     display: inline;
   }
+}
+
+.card{
+  padding: 1%;
+  background-color: $bright;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.hidden{
+  display: none;
 }
