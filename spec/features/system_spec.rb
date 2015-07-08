@@ -51,6 +51,7 @@ describe 'System', js: true do
       end
       it 'fills out a form and can see the updated attribute' do
         fill_in 'Name', with: "Apple Adventure"
+        select 'Fantasy', from: "Setting" 
         click_on 'Update System'
         within '.systemContent' do
           expect(page).to have_content("Apple Adventure")

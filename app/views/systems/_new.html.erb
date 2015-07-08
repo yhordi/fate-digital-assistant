@@ -3,7 +3,13 @@
   <div>
     <%= f.text_field "name", placeholder: "Your system name" %>
   </div>
+  <div>
+    <%= f.label "setting"  %>
+    <%= f.select(:setting, options_for_select(@settings)) %>
+  </div>
+  <div>
     <%= f.label "description"  %>
+  </div>
   <div>
     <%= f.text_area "description", size: '30x5', placeholder: 'a short description about your system' %>
   </div>

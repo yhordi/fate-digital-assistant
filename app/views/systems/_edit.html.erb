@@ -3,6 +3,10 @@
   <div>
     <%= f.text_field "name" %>
   </div>
+  <div>
+    <%= f.label "setting"  %>
+    <%= f.select(:setting, options_for_select(@settings)) %>
+  </div>
     <%= f.label "description"  %>
   <div>
     <%= f.text_area "description", size: '40x6' %>
