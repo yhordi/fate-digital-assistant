@@ -4,6 +4,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.belongs_to :system
+      t.references :parent_location
       t.timestamps
     end
   end

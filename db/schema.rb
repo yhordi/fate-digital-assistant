@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150701183835) do
     t.string   "name"
     t.text     "description"
     t.integer  "system_id"
+    t.integer  "parent_location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
