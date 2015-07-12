@@ -20,7 +20,7 @@
   <ul>
     <% @system.locations.each do |location|  %>
     <li>
-      <%= link_to("#{location.name}", location_path(location.id)) %>
+      <%= link_to("#{location.name}", location_path(location.id), class: "location", id: "location" + "#{location.id}") %>
     </li>
     <% end %>
   </ul>

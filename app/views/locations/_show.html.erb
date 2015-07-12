@@ -1,0 +1,13 @@
+<p>
+  <%= @location.description %>
+</p>
+<h3>
+  Aspects:
+</h3>
+<ul>
+  <% @aspects.each do |aspect|%>
+  <li>
+    <%= aspect.name %>
+  </li>
+  <% end %>
+</ul>
