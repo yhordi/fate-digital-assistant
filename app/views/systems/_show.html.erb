@@ -14,7 +14,17 @@
   <p>
      <%= @system.description %>
   </p>
-  <button class= 'editSystem' href=<%= edit_system_path(@system.id) %>>edit</button>
+  <h4>
+    Locations:
+  </h4>
+  <ul>
+    <% @system.locations.each do |location|  %>
+    <li>
+      <%= link_to("#{location.name}", location_path(location.id)) %>
+    </li>
+    <% end %>
+  </ul>
+  <button class= 'editSystem' href=<%= edit_system_path(@system.id) %>>Edit</button>
   <button class='deleteSystem' href=<%= system_path(@system.id)%>>Delete</button>
 </div>
 <%= link_to "Back", systems_path %>
