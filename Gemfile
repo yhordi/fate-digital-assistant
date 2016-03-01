@@ -16,13 +16,13 @@ gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 group :development do
   gem 'dotenv-rails'
-  gem 'spring'
+  # gem 'spring'
 end
 group :test do;
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'faker'
   gem 'simplecov', require: false
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
