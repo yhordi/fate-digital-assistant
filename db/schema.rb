@@ -28,8 +28,12 @@ ActiveRecord::Schema.define(version: 20160304194835) do
   add_index "adventures", ["game_master_id"], name: "index_adventures_on_game_master_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                    null: false
+    t.integer  "level",       default: 0, null: false
+    t.text     "description"
+    t.integer  "system_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "systems", force: :cascade do |t|

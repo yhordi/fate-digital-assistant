@@ -4,6 +4,7 @@ class CreateSkills < ActiveRecord::Migration
       t.string :name, null: false
       t.integer :level, null: false, default: 0
       t.text :description
+      t.belongs_to :system
       t.timestamps null: false
     end
   end
