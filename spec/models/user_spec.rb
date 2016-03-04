@@ -1,12 +1,15 @@
 describe User do
-  context "validations" do
-    it { should validate_presence_of :name }
-    it { should validate_uniqueness_of :name }
-    it { should have_many :systems }
-    it { should have_secure_password }
-    it { should have_attached_file(:avatar)}
-    it { should validate_attachment_content_type(:avatar).
+  describe "validations" do
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_uniqueness_of :name }
+    it { is_expected.to have_secure_password }
+    it { is_expected.to have_attached_file(:avatar)}
+    it { is_expected.to validate_attachment_content_type(:avatar).
       allowing('image/png', 'image/gif', 'image/jpg').
       rejecting('text/plain', 'text/xml') }
-    end
   end
+  describe "associations" do
+    it { is_expected.to have_many :systems }
+    it { is_expected.to have_many :adventures }
+  end
+end

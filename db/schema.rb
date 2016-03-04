@@ -11,31 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701183835) do
-
+ActiveRecord::Schema.define(version: 20160304194835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "aspects", force: true do |t|
-    t.string   "name"
-    t.integer  "aspectable_id"
-    t.string   "aspectable_type"
+  create_table "adventures", force: :cascade do |t|
+    t.string   "title",          null: false
+    t.text     "description"
+    t.text     "notes"
+    t.integer  "game_master_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "aspects", ["aspectable_id", "aspectable_type"], name: "index_aspects_on_aspectable_id_and_aspectable_type", using: :btree
+  add_index "adventures", ["game_master_id"], name: "index_adventures_on_game_master_id", using: :btree
 
-  create_table "locations", force: true do |t|
-    t.string   "name"
+  create_table "skills", force: :cascade do |t|
+    t.string   "name",                    null: false
+    t.integer  "level",       default: 0, null: false
     t.text     "description"
     t.integer  "system_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  create_table "systems", force: true do |t|
+  create_table "systems", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "user_id"
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150701183835) do
     t.string   "setting",     default: "no setting chosen"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
     t.datetime "created_at"
@@ -59,4 +60,5 @@ ActiveRecord::Schema.define(version: 20150701183835) do
     t.datetime "avatar_updated_at"
   end
 
+  add_foreign_key "adventures", "users", column: "game_master_id"
 end
