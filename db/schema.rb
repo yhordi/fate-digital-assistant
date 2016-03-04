@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301213147) do
+ActiveRecord::Schema.define(version: 20160301210017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,46 +27,26 @@ ActiveRecord::Schema.define(version: 20160301213147) do
 
   add_index "adventures", ["game_master_id"], name: "index_adventures_on_game_master_id", using: :btree
 
-  create_table "games", force: :cascade do |t|
-    t.string   "name",           limit: 255, null: false
-    t.text     "description"
-    t.integer  "game_master_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "games_players", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "player_id"
-  end
-
-  create_table "instances", force: :cascade do |t|
-    t.integer  "game_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "systems", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "name"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",                  default: false
-    t.string   "setting",     limit: 255, default: "no setting chosen"
+    t.boolean  "public",      default: false
+    t.string   "setting",     default: "no setting chosen"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                limit: 255
-    t.string   "password_digest",     limit: 255
+    t.string   "name"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "picture",             limit: 255, default: "no-image.png"
+    t.string   "picture",             default: "no-image.png"
     t.text     "bio"
     t.date     "birthday"
-    t.string   "avatar_file_name",    limit: 255
-    t.string   "avatar_content_type", limit: 255
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
