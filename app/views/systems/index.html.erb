@@ -1,13 +1,3 @@
-<% if session[:id] != nil  %>
-<%= link_to "Create a new system", new_system_path, class: "newSystem" %>
-<div id="createFormContainer">
-</div>
-<div id='systems'>
-  <% @systems.each do |system| %>
-    <%= react_component('System', name: system.name, description: system.description) %>
-  <% end %>
-  <% else %>
-  <p class="description">FATE: Dimensions is a tool that allows you to create and manage your own systems for the FATE rpg system. As a member you can create games, manage parties, and track all of your info for your FATE games. Signing up is easy and membership is free.</p>
-  <p class="description">Not a member? <%= link_to "Sign up here!", new_user_path %></p>
-  <% end %>
-</div>
+<% @systems.each do |system| %>
+  <%= react_component('System', {data: system}) %>
+<% end %>
