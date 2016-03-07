@@ -22,7 +22,7 @@ class SystemsController < ApplicationController
   def show
     @system = System.find(params[:id])
     @user = User.find(@system.user_id)
-    render partial: 'show'
+    # render 'show'
   end
 
   def index

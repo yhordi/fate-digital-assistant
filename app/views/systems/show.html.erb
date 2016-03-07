@@ -1,0 +1,12 @@
+<div class='card'>
+  <h1><%= @system.name %></h1>
+  <p><%= @system.description %></p>
+  <div>
+    <ul>
+      <% @system.skills.each do |skill| %>
+      <li><%= skill.name %></li>
+      <p><%= skill.description %></p>
+      <% end %>
+    </ul>
+  </div>
+</div>
