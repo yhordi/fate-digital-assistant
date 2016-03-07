@@ -3,7 +3,7 @@
   <p><%= @system.description %></p>
   <div>
   <h4>Skills List</h4>
-    <ul>
+    <ul class='skills'>
       <% @system.skills.each do |skill| %>
         <%= react_component('Skill', {data: skill}) %>
       <% end %>

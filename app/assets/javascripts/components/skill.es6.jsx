@@ -1,7 +1,7 @@
 class Skill extends React.Component {
   render () {
     return (
-      <div>
+      <div id={'skill' + this.props.data.id}>
         <a>{this.props.data.name}</a>
         <p>{this.props.data.description}</p>
       </div>
