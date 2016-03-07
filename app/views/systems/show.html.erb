@@ -2,10 +2,10 @@
   <h1><%= @system.name %></h1>
   <p><%= @system.description %></p>
   <div>
+  <h4>Skills List</h4>
     <ul>
       <% @system.skills.each do |skill| %>
-      <li><%= skill.name %></li>
-      <p><%= skill.description %></p>
+        <%= react_component('Skill', {data: skill}) %>
       <% end %>
     </ul>
   </div>
