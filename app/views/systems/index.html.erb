@@ -2,11 +2,10 @@
   <h2>Systems</h2>
     <% if session[:id] != nil %>
       <div class='m-btm'>
-        <%= link_to 'Make a new system', new_system_path%>
+        <%= link_to 'Make a new system', new_system_path %>
       </div>
     <% end %>
   <% @systems.each do |system| %>
-  <%= react_component('System', {data: system}) %>
+    <%= react_component('System', {data: system}) %>
   <% end %>
-</div>
 </div>

@@ -3,7 +3,8 @@ class SystemsController < ApplicationController
   def new
     @settings = SettingsHelper.settings
     @system = System.new
-    render partial: 'new'
+    @user = current_user
+    render 'new'
   end
 
   def create
