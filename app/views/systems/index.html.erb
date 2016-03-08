@@ -2,7 +2,7 @@
   <h2>Systems</h2>
     <% if session[:id] != nil %>
       <div class='m-btm'>
-        <%= link_to 'Make a new system', new_system_path id: 'newSystem'%>
+        <%= link_to 'Make a new system', new_system_path%>
       </div>
     <% end %>
   <% @systems.each do |system| %>
