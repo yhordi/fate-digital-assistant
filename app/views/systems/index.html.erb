@@ -1,11 +1,9 @@
 <div class='card'>
-  <h2>Systems</h2>
+<div id='content'></div>
+    <%= react_component('SystemBox', {data: @systems, url: '/systems.json'}) %>
     <% if session[:id] != nil %>
       <div class='m-btm'>
         <%= link_to 'Make a new system', new_system_path %>
       </div>
     <% end %>
-  <% @systems.each do |system| %>
-    <%= react_component('System', {data: system}) %>
-  <% end %>
 </div>

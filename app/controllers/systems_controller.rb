@@ -1,5 +1,6 @@
 class SystemsController < ApplicationController
   include AuthenticationConcern
+
   def new
     @settings = SettingsHelper.settings
     @system = System.new
@@ -28,6 +29,10 @@ class SystemsController < ApplicationController
   def index
     @user = current_user
     @systems = System.order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.json { render :json => @systems.to_json}
+    end
   end
 
   def edit

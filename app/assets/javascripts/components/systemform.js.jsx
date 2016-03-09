@@ -16,10 +16,11 @@ var Systemform = React.createClass({
       method: 'POST',
       data: data
     })
+    this.setState({name: '', description: ''})
   },
   render: function() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div>
           <label>System Name</label>
         </div>
@@ -30,7 +31,7 @@ var Systemform = React.createClass({
         </div>
           <textarea onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
         </div>
-        <input onClick={this.handleSubmit} type='submit' value='Create System'/>
+        <input type='submit' value='Create System'/>
       </form>
     );
   }
