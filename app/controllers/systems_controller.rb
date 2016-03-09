@@ -8,12 +8,13 @@ class SystemsController < ApplicationController
   end
 
   def create
+    p params
     @system = System.new
     @system.user_id = session[:id]
-    @system.name = params[:system][:name]
-    @system.description = params[:system][:description]
-    @system.setting = params[:system][:setting]
-    if @system.save
+    @system.name = params[:name]
+    @system.description = params[:description]
+    @system.setting = params[:setting]
+    if @system.save!
       render json: System.last
     else
       render json: @system.errors.full_messages
@@ -23,7 +24,6 @@ class SystemsController < ApplicationController
   def show
     @system = System.find(params[:id])
     @user = User.find(@system.user_id)
-    # render 'show'
   end
 
   def index
