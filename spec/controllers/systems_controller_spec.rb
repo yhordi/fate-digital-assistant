@@ -16,7 +16,7 @@ describe SystemsController do
   describe '#create' do
     context 'on valid params' do
       before(:each) do
-        post :create, {system: {name: system.name, description: system.description}}
+        post :create, {name: system.name, description: system.description}
       end
       it 'saves a new system to the database' do
         expect(System.last.name).to eq(system.name)
@@ -39,8 +39,8 @@ describe SystemsController do
     it 'assigns the @system instance variable as a new system' do
       expect(assigns(:system)).to be_a_new(System)
     end
-    it 'renders the _new partial' do
-      expect(response).to render_template(partial: 'systems/_new')
+    it 'renders the new template' do
+      expect(response).to render_template('systems/new')
     end
   end
   describe '#show' do
@@ -50,9 +50,6 @@ describe SystemsController do
     end
     it 'assigns the @system instance variable as a specific system' do
       expect(assigns(:system)).to eq(saved_system)
-    end
-    it 'renders the _show partial' do
-      expect(response).to render_template(partial: 'systems/_show')
     end
   end
   describe '#update' do
