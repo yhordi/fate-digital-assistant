@@ -7,9 +7,9 @@ var System = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <a href={'systems/' + this.props.data.id}>{this.props.data.name}</a>
-        <p>{this.props.data.description}</p>
+      <div className='system'>
+        <a>{this.props.name}</a>
+        <p>{this.props.description}</p>
       </div>
     );
   }
