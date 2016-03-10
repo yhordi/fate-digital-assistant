@@ -13,17 +13,3 @@ var SystemList = React.createClass({
     );
   }
 });
-
-var ready = function(){
-  var fakeSystems = [
-    {name: 'wonderball', description: 'wonderful'},
-    {name: 'thunderball', description: 'thunderful'}
-  ];
-
-  ReactDOM.render(
-    <SystemList data={this.state.data} />,
-    document.getElementById('systems')
-  )
-}
-
-$(document).ready(ready)

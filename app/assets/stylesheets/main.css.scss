@@ -3,10 +3,6 @@ $heading: #7128C1;
 $dark: #8D8989;
 $bodytext: #CCCBCB;
 
-// body{
-//   color: $bodytext
-// }
-
 @font-face {
   font-family: 'Roboto';
   url: font-url('RobotoCondensed-Light.ttf');
@@ -15,7 +11,7 @@ $bodytext: #CCCBCB;
 }
 
 body{
-  background: image_url("grey_wash_wall.png")
+  background: image_url("wood_pattern.png")
 }
 a {
   color: $bright;
@@ -100,7 +96,7 @@ a:hover{
 
 .card{
   padding: 1%;
-  background-color: $bright;
+  background: image_url('brushed.png');
     -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
   box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
