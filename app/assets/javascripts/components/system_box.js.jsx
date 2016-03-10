@@ -1,6 +1,6 @@
 var SystemBox = React.createClass({
   getInitialState: function(){
-    return {systems: []}
+    return { systems: [] }
   },
   componentDidMount: function() {
     this.loadSystemsFromServer()
@@ -21,6 +21,7 @@ var SystemBox = React.createClass({
     return (
       <div className='systemBox'>
         <h2>Systems</h2>
+        <a href='systems/new'>Make a new system</a>
         <SystemList data={this.state.systems} />
       </div>
     );

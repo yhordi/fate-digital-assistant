@@ -7,9 +7,9 @@ var SystemList = React.createClass({
       )
     });
     return (
-    <div className='systemList'>
-      {systemNodes}
-    </div>
+      <div className='systemList'>
+        {systemNodes}
+      </div>
     );
   }
 });

@@ -1,9 +1,7 @@
 <div class='card'>
-<div id='content'></div>
+  <% if session[:id] != nil %>
     <%= react_component('SystemBox', {data: @systems, url: '/systems.json'}) %>
-    <% if session[:id] != nil %>
-      <div class='m-btm'>
-        <%= link_to 'Make a new system', new_system_path %>
-      </div>
-    <% end %>
+  <% else %>
+    <p> Welcome to FATE: Digital Assistant, an application to help you manage your custom built information for the FATE role playing system. Sign up and take a look around. It's free!</p>
+  <% end %>
 </div>
