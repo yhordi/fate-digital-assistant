@@ -9,7 +9,7 @@ var SystemBox = React.createClass({
     $.ajax({
       url: '/systems',
       dataType: 'json',
-      success: function(systems){
+      success: function(systems) {
         this.setState({systems: systems})
       }.bind(this),
       error: function (xhr, status, err) {
@@ -27,11 +27,3 @@ var SystemBox = React.createClass({
     );
   }
 });
-
-// $(document).ready(function(){
-//   ReactDOM.render(
-//     <SystemBox url="/systems" />,
-//     document.getElementById('content')
-//   );
-// })
-

@@ -1,14 +1,15 @@
 var SystemList = React.createClass({
-
   render: function() {
-    var systemNodes = this.props.data.map(function(system, index) {
+    var systemLinks = this.props.data.map(function(system, index) {
       return (
-      <System name={system.name} description={system.description} key={index} />
+        <div>
+          <a href={'systems/' + system.id} >{system.name}</a>
+        </div>
       )
     });
     return (
       <div className='systemList'>
-        {systemNodes}
+        {systemLinks}
       </div>
     );
   }

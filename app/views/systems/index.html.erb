@@ -2,6 +2,6 @@
   <% if session[:id] != nil %>
     <%= react_component('SystemBox', {data: @systems, url: '/systems.json'}) %>
   <% else %>
-    <p> Welcome to FATE: Digital Assistant, an application to help you manage your custom built information for the FATE role playing system. Sign up and take a look around. It's free!</p>
+    <p>Welcome to FATE: Digital Assistant, an application to help you manage your custom built information for the FATE role playing system. Sign up and take a look around. It's free!</p>
   <% end %>
 </div>
