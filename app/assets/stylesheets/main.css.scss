@@ -2,6 +2,7 @@ $bright: #E1E0E0;
 $heading: #7128C1;
 $dark: #8D8989;
 $bodytext: #CCCBCB;
+$alert: #B12515;
 
 @font-face {
   font-family: 'Roboto';
@@ -112,4 +113,24 @@ a:hover{
 
 .hidden{
   display: none;
+}
+button{
+  transition: color, box-shadow, .5s;
+  border: none;
+  border-radius: .5em;
+}
+.delete{
+  background-color: $alert;
+  color: white;
+  margin-left: 1em;
+}
+button:hover {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+  background-color: white;
+  transition: color, box-shadow, .5s
+}
+.delete:hover{
+  box-shadow: 0px 0px 30px rgba(177, 37, 21, 1);
+  color: black;
+  transition: color, .5s
 }

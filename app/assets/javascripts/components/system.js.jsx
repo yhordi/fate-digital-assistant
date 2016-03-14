@@ -10,8 +10,12 @@ var System = React.createClass({
   render: function() {
     return (
       <div className='system'>
-        <h4><a href={'/systems/' + this.props.id}>{this.props.name}</a></h4>
+        <h2>
+          {this.props.name}
+        </h2>
         <p>{this.props.description}</p>
+        <button>Edit</button>
+        <button className='delete'>Delete</button>
       </div>
     );
   }
