@@ -15,11 +15,9 @@ var System = React.createClass({
       url: url
     }).done(function(data){
       var container = document.getElementById('container')
-
-        ReactDOM.render(
-          <Systemform data={data} />, container
-        );
-      // }
+      ReactDOM.render(
+        <Systemform data={data} />, container
+      );
     })
   },
   render: function() {

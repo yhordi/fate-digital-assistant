@@ -5,6 +5,11 @@ var SystemBox = React.createClass({
   componentDidMount: function() {
     this.loadSystemsFromServer()
   },
+  newSystem: function() {
+    ReactDOM.render(
+      <Systemform data={[]} />, container
+    );
+  },
   loadSystemsFromServer: function(){
     $.ajax({
       url: '/systems',
@@ -21,7 +26,7 @@ var SystemBox = React.createClass({
     return (
       <div className='systemBox'>
         <h2>Systems</h2>
-        <a href='systems/new'>Make a new system</a>
+        <a onClick={this.newSystem}href='#'>Make a new system</a>
         <SystemList data={this.state.systems} />
       </div>
     );
