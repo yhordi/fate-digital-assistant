@@ -7,6 +7,22 @@ var System = React.createClass({
   getInitialState: function(){
     return data = {system: this.props}
   },
+  handleEdit: function(e){
+    console.log(e)
+    e.preventDefault()
+    var url = this.props.id + '/edit'
+    $.ajax({
+      url: url
+    }).done(function(data){
+      var container = document.getElementById('container')
+      // container.innerHTML = data
+      // render: function() {
+        ReactDOM.render(
+          <Systemform data={data} />, container
+        );
+      // }
+    })
+  },
   render: function() {
     return (
       <div className='system'>
@@ -14,7 +30,7 @@ var System = React.createClass({
           {this.props.name}
         </h2>
         <p>{this.props.description}</p>
-        <button>Edit</button>
+        <button onClick={this.handleEdit}>Edit</button>
         <button className='delete'>Delete</button>
       </div>
     );

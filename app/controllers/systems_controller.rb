@@ -5,7 +5,7 @@ class SystemsController < ApplicationController
     @settings = SettingsHelper.settings
     @system = System.new
     @user = current_user
-    render 'new'
+    render partial: 'system_form'
   end
 
   def create
@@ -38,7 +38,7 @@ class SystemsController < ApplicationController
   def edit
     @settings = SettingsHelper.settings
     @system = System.find(params[:id])
-    render partial: 'edit'
+    render partial: 'system_form'
   end
 
   def update
