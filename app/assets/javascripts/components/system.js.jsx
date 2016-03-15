@@ -15,8 +15,7 @@ var System = React.createClass({
       url: url
     }).done(function(data){
       var container = document.getElementById('container')
-      // container.innerHTML = data
-      // render: function() {
+
         ReactDOM.render(
           <Systemform data={data} />, container
         );

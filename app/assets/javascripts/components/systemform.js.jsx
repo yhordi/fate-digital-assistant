@@ -1,6 +1,6 @@
 var Systemform = React.createClass({
   getInitialState: function() {
-    return { name: this.props.name, description: this.props.description }
+    return { name: this.props.data.name, description: this.props.data.description }
   },
   updateNameState: function(e){
     this.setState({ name: e.target.value });

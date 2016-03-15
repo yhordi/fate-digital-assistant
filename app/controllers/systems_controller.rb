@@ -38,7 +38,7 @@ class SystemsController < ApplicationController
   def edit
     @settings = SettingsHelper.settings
     @system = System.find(params[:id])
-    render partial: 'system_form'
+    render json: @system
   end
 
   def update
