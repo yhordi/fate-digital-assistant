@@ -95,17 +95,17 @@ a:hover{
   }
 }
 
-.card{
+#container{
   padding: 1%;
   background: image_url('brushed.png');
     -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
   box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
 }
-.card a{
+#container a{
   color: #09B23D
 }
-.card a:hover{
+#container a:hover{
   text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
   color: white;
   transition: color, text-shadow, .5s

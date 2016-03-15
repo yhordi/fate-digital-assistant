@@ -1,13 +1,11 @@
-<div class='card'>
-  <div>
-    <%= react_component('System', @system) %>
-  </div>
-  <div>
-  <h4>Skills List</h4>
-    <ul class='skills'>
-      <% @system.skills.each do |skill| %>
-        <%= react_component('Skill', {data: skill}) %>
-      <% end %>
-    </ul>
-  </div>
+<div>
+  <%= react_component('System', @system) %>
+</div>
+<div>
+<h4>Skills List</h4>
+  <ul class='skills'>
+    <% @system.skills.each do |skill| %>
+      <%= react_component('Skill', {data: skill}) %>
+    <% end %>
+  </ul>
 </div>
