@@ -42,6 +42,7 @@ class SystemsController < ApplicationController
   end
 
   def update
+    p params
     @system = System.find(params[:id])
     @system.update_attributes(system_params)
     render json: @system

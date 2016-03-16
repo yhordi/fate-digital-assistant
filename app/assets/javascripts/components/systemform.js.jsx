@@ -26,7 +26,7 @@ var Systemform = React.createClass({
     this.setState({button: 'Update System'})
   },
   create: function(){
-    data = this.state
+    var data = this.state
     $.ajax({
       url: '/systems',
       method: 'POST',
@@ -35,11 +35,26 @@ var Systemform = React.createClass({
     this.setState({name: '', description: ''})
   },
   update: function(){
-
+    var data = {system: this.state}
+    var url = '/systems/' + this.props.data.id
+    $.ajax({
+      url: url,
+      data: data,
+      method: 'PUT'
+    }).done(function(response){
+      console.log(response)
+    })
   },
   handleSubmit: function(e) {
     e.preventDefault()
-
+    var action = document.getElementsByClassName('submit')[0].value[0]
+    if (action == 'U'){
+      this.update()
+    } else if (action == 'C') {
+      this.create()
+    } else {
+      console.error('Button action is invalid')
+    }
   },
   render: function() {
     return (
@@ -54,7 +69,7 @@ var Systemform = React.createClass({
           </div>
           <textarea onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
         </div>
-        <input type='submit' value={this.state.button}/>
+        <input className="submit" type='submit' value={this.state.button}/>
       </form>
     );
   }
