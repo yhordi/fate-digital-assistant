@@ -13,10 +13,10 @@ var Systemform = React.createClass({
   },
   checkUrl: function(){
     var urlSubstring = document.URL.substr(document.URL.length - 1)
-    if(urlSubstring == 's') {
-      this.createButton()
-    } else {
+    if(urlSubstring != 's') {
       this.updateButton()
+    } else {
+      this.createButton()
     };
   },
   createButton: function() {
@@ -30,7 +30,16 @@ var Systemform = React.createClass({
     $.ajax({
       url: '/systems',
       method: 'POST',
-      data: data
+      data: data,
+      dataType: 'json',
+      success: function(data){
+        var container = document.getElementById('container')
+        this.setState({systems: data})
+        debugger
+        ReactDOM.render(
+          <System name={data.name} id={data.id} description={data.description} />, container
+        )
+      }.bind(this)
     })
     this.setState({name: '', description: ''})
   },

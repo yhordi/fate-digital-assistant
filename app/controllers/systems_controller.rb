@@ -42,7 +42,6 @@ class SystemsController < ApplicationController
   end
 
   def update
-    p params
     @system = System.find(params[:id])
     @system.update_attributes(system_params)
     render json: @system
@@ -51,7 +50,9 @@ class SystemsController < ApplicationController
   def destroy
     system = System.find(params[:id])
     system.delete
-    render html: "System deleted"
+    # render html: "System deleted"
+    # redirect_to systems_path
+    render json: System.all
   end
 
   private

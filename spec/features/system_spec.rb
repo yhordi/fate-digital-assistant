@@ -35,12 +35,10 @@ describe 'System', js: true do
       it 'sees a form rendered on click of the Make a new system link' do
         expect(page).to have_content('System Name')
       end
-      xit 'fills out a form and creates a new system on button click' do
-        within '#new_system' do
-          fill_in 'System Name', with: system_attributes.name
-          fill_in 'Desription', with: system_attributes.description
-          click_on 'Create System'
-        end
+      it 'fills out a form and creates a new system on button click' do
+        fill_in 'name', with: system_attributes.name
+        fill_in 'desc', with: system_attributes.description
+        click_on 'Create System'
         expect(page).to have_content(system_attributes.name)
       end
     end
@@ -65,7 +63,7 @@ describe 'System', js: true do
         click_link system.name
         click_on 'Delete'
       end
-      xit 'will no longer see the system displayed' do
+      it 'will no longer see the system displayed' do
         expect(page).to_not have_content(system.name)
       end
       xit 'can see a success message' do
