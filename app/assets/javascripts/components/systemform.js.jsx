@@ -65,14 +65,14 @@ var Systemform = React.createClass({
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label>System Name</label>
+          <label for="name">System Name</label>
         </div>
-          <input onChange={this.updateNameState} value={this.state.name} type='text'/>
+          <input id="name" onChange={this.updateNameState} value={this.state.name} type='text'/>
         <div>
           <div>
-            <label>Description</label>
+            <label for="desc">Description</label>
           </div>
-          <textarea onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
+          <textarea id="desc" onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
         </div>
         <input className="submit" type='submit' value={this.state.button}/>
       </form>
