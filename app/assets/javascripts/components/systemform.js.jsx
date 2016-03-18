@@ -12,8 +12,8 @@ var Systemform = React.createClass({
     this.setState({ description: e.target.value });
   },
   checkUrl: function(){
-    var url = document.URL
-    if(url.substr(url.length - 1) == '#') {
+    var urlSubstring = document.URL.substr(document.URL.length - 1)
+    if(urlSubstring == 's') {
       this.createButton()
     } else {
       this.updateButton()
@@ -37,12 +37,17 @@ var Systemform = React.createClass({
   update: function(){
     var data = {system: this.state}
     var url = '/systems/' + this.props.data.id
+    var props = this.props
     $.ajax({
       url: url,
       data: data,
-      method: 'PUT'
-    }).done(function(response){
-      console.log(response)
+      method: 'PUT',
+      success: function(response) {
+        var container = document.getElementById('container')
+        ReactDOM.render(
+          <System name={data.system.name} id={this.props.data.id} description={data.system.description} />, container
+        )
+      }.bind(this)
     })
   },
   handleSubmit: function(e) {

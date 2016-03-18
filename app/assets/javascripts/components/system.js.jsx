@@ -22,7 +22,7 @@ var System = React.createClass({
   },
   render: function() {
     return (
-      <div className='system'>
+      <div name={this.props.name} description={this.props.description} className='system'>
         <h2>
           {this.props.name}
         </h2>
