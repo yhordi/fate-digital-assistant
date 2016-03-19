@@ -22,10 +22,14 @@ describe 'System', js: true do
     end
     it 'sees a list of systems' do
       # allow_any_instance_of(Paperclip).to receive(:get).and return("hello")
-      expect(page).to have_content(system.name)
+      within(".systemList") do
+        within('div') do
+        expect(page).to have_content(system.name)
+        end
+      end
     end
-    it 'clicks on a system name and see the system info' do
-      click_on system.name
+    it 'clicks on a system name and sees the system info' do
+      page.find('#systemLink1').click
       expect(page).to have_content(system.description)
     end
     describe 'creating a new form' do
@@ -44,7 +48,7 @@ describe 'System', js: true do
     end
     describe 'editing an existing system' do
       before(:each) do
-        click_link system.name
+        page.find('#systemLink1').click
         click_on 'Edit'
       end
       it 'fills out a form and can see the updated attribute' do
@@ -60,7 +64,7 @@ describe 'System', js: true do
     end
     describe 'deleting an existing system' do
       before(:each) do
-        click_link system.name
+        page.find('#systemLink1').click
         click_on 'Delete'
       end
       it 'will no longer see the system displayed' do
