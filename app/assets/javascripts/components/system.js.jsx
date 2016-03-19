@@ -5,23 +5,24 @@ var System = React.createClass({
     description: React.PropTypes.node
   },
   getInitialState: function(){
-    return data = {system: this.props}
+    return data = {system: this.props};
   },
   handleEdit: function(e){
-    e.preventDefault()
-    var url = this.props.id + '/edit'
+    e.preventDefault();
+    var url = 'systems/' + this.props.id + '/edit'
+    var button = this.props.button
     $.ajax({
-      url: url
+      url: url,
     }).done(function(data){
-      var container = document.getElementById('container')
+      var container = document.getElementById('container');
       ReactDOM.render(
-        <Systemform data={data} />, container
+        <Systemform button={button} data={data} />, container
       );
     })
   },
   handleDelete: function(e){
     e.preventDefault(e)
-    var url = this.props.id
+    var url = 'systems/' + this.props.id
     var container = document.getElementById('container')
     $.ajax({
       url: url,
@@ -30,7 +31,6 @@ var System = React.createClass({
         var container = document.getElementById('container')
         this.setState({systems: response})
         this.props = this.state
-        console.log(response)
         ReactDOM.render(
           <SystemBox />, container
         )

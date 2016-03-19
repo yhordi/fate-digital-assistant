@@ -1,7 +1,4 @@
 var Systemform = React.createClass({
-  componentWillMount: function() {
-    this.checkUrl()
-  },
   getInitialState: function() {
     return { name: this.props.data.name, description: this.props.data.description }
   },
@@ -10,14 +7,6 @@ var Systemform = React.createClass({
   },
   updateDescriptionState: function(e){
     this.setState({ description: e.target.value });
-  },
-  checkUrl: function(){
-    var urlSubstring = document.URL.substr(document.URL.length - 1)
-    if(urlSubstring != 's') {
-      this.updateButton()
-    } else {
-      this.createButton()
-    };
   },
   createButton: function() {
     this.setState({button: 'Create System'})
@@ -35,9 +24,8 @@ var Systemform = React.createClass({
       success: function(data){
         var container = document.getElementById('container')
         this.setState({systems: data})
-        debugger
         ReactDOM.render(
-          <System name={data.name} id={data.id} description={data.description} />, container
+          <System name={data.name} id={data.id} button="Update System" description={data.description} />, container
         )
       }.bind(this)
     })
@@ -54,7 +42,7 @@ var Systemform = React.createClass({
       success: function(response) {
         var container = document.getElementById('container')
         ReactDOM.render(
-          <System name={data.system.name} id={this.props.data.id} description={data.system.description} />, container
+          <System name={data.system.name} button={this.props.button} id={this.props.data.id} description={data.system.description} />, container
         )
       }.bind(this)
     })
@@ -83,7 +71,7 @@ var Systemform = React.createClass({
           </div>
           <textarea id="desc" onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
         </div>
-        <input className="submit" type='submit' value={this.state.button}/>
+        <input className="submit" type='submit' value={this.props.button}/>
       </form>
     );
   }

@@ -8,7 +8,7 @@ var SystemBox = React.createClass({
   newSystem: function(e) {
     e.preventDefault()
     ReactDOM.render(
-      <Systemform data={[]} />, container
+      <Systemform button="Create System" data={[]} />, container
     );
   },
   loadSystemsFromServer: function(){
@@ -27,7 +27,7 @@ var SystemBox = React.createClass({
     return (
       <div className='systemBox'>
         <h2>Systems</h2>
-        <a onClick={this.newSystem}href=''>Make a new system</a>
+        <a onClick={this.newSystem} href=''>Make a new system</a>
         <SystemList data={this.state.systems} />
       </div>
     );
