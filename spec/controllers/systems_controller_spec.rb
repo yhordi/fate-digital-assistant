@@ -16,7 +16,7 @@ describe SystemsController do
   describe '#create' do
     context 'on valid params' do
       before(:each) do
-        post :create, {name: system.name, description: system.description}
+        post :create, {system: {name: system.name, description: system.description}}
       end
       it 'saves a new system to the database' do
         expect(System.last.name).to eq(system.name)
@@ -30,17 +30,6 @@ describe SystemsController do
         post :create, { system: {} }
         expect(response.body).to eq(assigns(:system).errors.full_messages.to_json)
       end
-    end
-  end
-  describe '#new' do
-    before(:each) do
-      get :new
-    end
-    it 'assigns the @system instance variable as a new system' do
-      expect(assigns(:system)).to be_a_new(System)
-    end
-    it 'renders the new template' do
-      expect(response).to render_template('systems/new')
     end
   end
   describe '#show' do
@@ -76,17 +65,17 @@ describe SystemsController do
     it 'assigns the @system instance variable' do
       expect(assigns(:system)).to eq(saved_system)
     end
-    it 'renders the edit form to the view' do
-      expect(response).to render_template(partial: 'systems/_edit')
+    it 'renders json of the system in question to the view' do
+      expect(response.body).to eq(saved_system.to_json)
     end
   end
   describe '#destroy' do
     it 'deletes a system in the database' do
       expect{delete :destroy, id: saved_system.id}.to change{System.all.count}.by(-1)
     end
-    it 'responds with a string in html' do
+    it 'responds with json of all systems' do
       delete :destroy, id: saved_system.id
-      expect(response.body).to eq("System deleted")
+      expect(response.body).to eq(System.all.to_json)
     end
   end
 end

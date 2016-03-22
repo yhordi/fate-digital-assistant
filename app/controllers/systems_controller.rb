@@ -1,23 +1,12 @@
 class SystemsController < ApplicationController
   include AuthenticationConcern
 
-  def new
-    @settings = SettingsHelper.settings
-    @system = System.new
-    @user = current_user
-    render partial: 'system_form'
-  end
-
   def create
-    @system = System.new
-    @system.user_id = session[:id]
-    @system.name = params[:name]
-    @system.description = params[:description]
-    @system.setting = params[:setting]
-    if @system.save
+    @system = System.create(system_params)
+    if System.last == @system
       render json: System.last
     else
-      render json: @system.errors.full_messages
+      render json: { error: { errors: @system.errors.full_messages }}, status: 422
     end
   end
 
