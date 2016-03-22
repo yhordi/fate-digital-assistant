@@ -1,11 +1,8 @@
 $bright: #E1E0E0;
 $heading: #7128C1;
-$dark: #8D8989;
+$dark: #000000;
 $bodytext: #CCCBCB;
-
-// body{
-//   color: $bodytext
-// }
+$alert: #B12515;
 
 @font-face {
   font-family: 'Roboto';
@@ -15,7 +12,7 @@ $bodytext: #CCCBCB;
 }
 
 body{
-  background: image_url("grey_wash_wall.png")
+  background: image_url("wood_pattern.png")
 }
 a {
   color: $bright;
@@ -75,7 +72,7 @@ a:hover{
 .pad-btm{
   padding-bottom: 1%
 }
-.pad-btm-m{ 
+.pad-btm-m{
   padding-bottom: 1em;
 }
 .m-btm{
@@ -98,14 +95,42 @@ a:hover{
   }
 }
 
-.card{
+#container{
   padding: 1%;
-  background-color: $bright;
+  background: image_url('brushed.png');
     -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
   box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
 }
+#container a{
+  color: #09B23D
+}
+#container a:hover{
+  text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+  color: white;
+  transition: color, text-shadow, .5s
+}
 
 .hidden{
   display: none;
+}
+button{
+  transition: color, box-shadow, .5s;
+  border: none;
+  border-radius: .5em;
+}
+.delete{
+  background-color: $alert;
+  color: white;
+  margin-left: 1em;
+}
+button:hover {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+  background-color: white;
+  transition: color, box-shadow, .5s
+}
+.delete:hover{
+  box-shadow: 0px 0px 30px rgba(177, 37, 21, 1);
+  color: black;
+  transition: color, .5s
 }

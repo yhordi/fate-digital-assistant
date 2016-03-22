@@ -4,7 +4,7 @@ describe 'User', js: true do
     it 'can sign up and see their profile page' do
       username = "user"
       visit root_path
-      within '.container form' do
+      within '#container form' do
         fill_in 'user[name]', with: username
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_again]', with: 'password'

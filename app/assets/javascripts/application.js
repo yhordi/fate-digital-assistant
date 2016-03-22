@@ -14,8 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
-//= require ../../../vendor/assets/javascripts/handlebars-v3.0.3
-//= require systems/model
-//= require systems/view
-//= require systems/controller
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .

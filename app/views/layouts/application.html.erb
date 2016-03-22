@@ -22,14 +22,16 @@
   <div class= "nav row m-btm">
     <ul class= "navlist">
       <li>
+      <% if session[:id] == nil %>
         <%= link_to "SYSTEMS", systems_path %>
+      <% else %>
+        <%= link_to "MY SYSTEMS", systems_path %>
+      <% end %>
       </li>
-      <!-- <li>Charaters</li> -->
-      <!-- <li>Games</li> -->
-      <!-- <li>My Profile</li> -->
+      <li id="notice" class="dark" ></li>
     </ul>
   </div>
-  <div class="container">
+  <div id="container">
     <%= yield %>
   </div>
 </body>

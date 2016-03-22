@@ -27,20 +27,9 @@ describe SystemsController do
     end
     context 'on invalid params' do
       it "responds with a json object containing ActiveRecord Validation errors" do
-        post :create, { system: {} }
-        expect(response.body).to eq(assigns(:system).errors.full_messages.to_json)
+        post :create, { system: {name: saved_system.name, description: saved_system.description} }
+        expect(response.body).to include(assigns(:system).errors.full_messages.to_json)
       end
-    end
-  end
-  describe '#new' do
-    before(:each) do
-      get :new
-    end
-    it 'assigns the @system instance variable as a new system' do
-      expect(assigns(:system)).to be_a_new(System)
-    end
-    it 'renders the _new partial' do
-      expect(response).to render_template(partial: 'systems/_new')
     end
   end
   describe '#show' do
@@ -50,9 +39,6 @@ describe SystemsController do
     end
     it 'assigns the @system instance variable as a specific system' do
       expect(assigns(:system)).to eq(saved_system)
-    end
-    it 'renders the _show partial' do
-      expect(response).to render_template(partial: 'systems/_show')
     end
   end
   describe '#update' do
@@ -79,17 +65,17 @@ describe SystemsController do
     it 'assigns the @system instance variable' do
       expect(assigns(:system)).to eq(saved_system)
     end
-    it 'renders the edit form to the view' do
-      expect(response).to render_template(partial: 'systems/_edit')
+    it 'renders json of the system in question to the view' do
+      expect(response.body).to eq(saved_system.to_json)
     end
   end
   describe '#destroy' do
     it 'deletes a system in the database' do
       expect{delete :destroy, id: saved_system.id}.to change{System.all.count}.by(-1)
     end
-    it 'responds with a string in html' do
+    it 'responds with json of all systems' do
       delete :destroy, id: saved_system.id
-      expect(response.body).to eq("System deleted")
+      expect(response.body).to eq(System.all.to_json)
     end
   end
 end
