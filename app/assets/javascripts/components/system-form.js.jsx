@@ -26,8 +26,13 @@ var Systemform = React.createClass({
         this.setState({systems: data})
         ReactDOM.render(
           <System name={data.name} id={data.id} button="Update System" description={data.description} />, container
-        )
-      }.bind(this)
+        );
+        $('#notice').prepend('System Created!').addClass('notice')
+        $('#notice').fadeOut(3000)
+      }.bind(this),
+      error: function(data){
+        console.error(this.props.url, status, err.toString());
+      }
     })
     this.setState({name: '', description: ''})
   },
@@ -43,7 +48,10 @@ var Systemform = React.createClass({
         var container = document.getElementById('container')
         ReactDOM.render(
           <System name={data.system.name} button={this.props.button} id={this.props.data.id} description={data.system.description} />, container
-        )
+        );
+        $('#notice').prepend('System updated successfully!').addClass('notice')
+        debugger
+        $('#notice').fadeOut(3000)
       }.bind(this)
     })
   },
