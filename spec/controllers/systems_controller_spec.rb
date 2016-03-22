@@ -27,8 +27,8 @@ describe SystemsController do
     end
     context 'on invalid params' do
       it "responds with a json object containing ActiveRecord Validation errors" do
-        post :create, { system: {} }
-        expect(response.body).to eq(assigns(:system).errors.full_messages.to_json)
+        post :create, { system: {name: saved_system.name, description: saved_system.description} }
+        expect(response.body).to include(assigns(:system).errors.full_messages.to_json)
       end
     end
   end

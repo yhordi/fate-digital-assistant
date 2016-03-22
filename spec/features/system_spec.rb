@@ -32,7 +32,7 @@ describe 'System', js: true do
       page.find('#systemLink1').click
       expect(page).to have_content(system.description)
     end
-    describe 'creating a new form' do
+    describe 'creating a new system' do
       before(:each) do
         click_link 'Make a new system'
       end
@@ -44,6 +44,18 @@ describe 'System', js: true do
         fill_in 'desc', with: system_attributes.description
         click_on 'Create System'
         expect(page).to have_content(system_attributes.name)
+      end
+      context 'raises errors' do
+        it 'when validations fail' do
+          fill_in 'name', with: system.name
+          fill_in 'desc', with: 'help'
+          click_on 'Create System'
+          expect(page).to have_content("Name has already been taken")
+        end
+        it 'when fields are blank' do
+          click_on 'Create System'
+          expect(page).to have_content("can't be blank")
+        end
       end
     end
     describe 'editing an existing system' do

@@ -27,7 +27,9 @@ var SystemBox = React.createClass({
     return (
       <div className='systemBox'>
         <h2>Systems</h2>
-        <a onClick={this.newSystem} href=''>Make a new system</a>
+        <h3>
+          <a onClick={this.newSystem} href=''>Make a new system</a>
+        </h3>
         <SystemList data={this.state.systems} />
       </div>
     );
