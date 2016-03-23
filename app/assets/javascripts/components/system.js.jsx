@@ -41,7 +41,14 @@ var System = React.createClass({
   },
   render: function() {
     return (
-      <div name={this.props.name} description={this.props.description} className='system'>
+      <div name={this.props.name} description={this.props.description} className='system row'>
+      <div className="row">
+        <div className="col span-12-t">
+          <ul className="systemActions">
+            <li><a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a></li>
+          </ul>
+        </div>
+      </div>
         <h2>
           {this.props.name}
         </h2>

@@ -90,6 +90,7 @@ a:hover{
   font-family: 'Roboto';
   list-style-type: none;
   display: inline;
+  padding-left: 1em;
   li {
     display: inline;
   }
@@ -133,4 +134,9 @@ button:hover {
   box-shadow: 0px 0px 30px rgba(177, 37, 21, 1);
   color: black;
   transition: color, .5s
+}
+.systemActions{
+  @extend .navlist;
+  padding: 0;
+  border-bottom: 1px solid grey;
 }
