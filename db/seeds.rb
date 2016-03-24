@@ -1,15 +1,15 @@
 require 'faker'
 # user = User.new(name: "user", password: ENV["PASSWORD"])
 # user.save!
-no_conflict = "#{self.name} is not used for conflicts."
-no_attack = "#{self.name} is not used for attacks."
-no_defense = "#{self.name} is not used for defense."
+no_conflict = "This skill is not used for conflicts."
+no_attack = "This skill is not used for attacks."
+no_defense = "This skill is not used for defense."
 a = System.create(name: Faker::Book.title, description: Faker::Lorem.paragraph, user_id: User.last.id)
 # Adventure.create(title: Faker::Book.title)
 Skill.create(
   name: 'Athletics',
   system_id: a.id,
-  overcome: "Athletics allows you to overcome any obstacle that requires physical movement—jumping, running, climbing, swimming, etc. If it resembles something you’d do in the decathlon, you roll Athletics. You use overcome actions with Athletics to move between zones in a conflict if there’s a situation aspect or other obstacle in your way. You also roll Athletics to chase or race in any contests or challenges that rely on these types of activities."
+  overcome: "Athletics allows you to overcome any obstacle that requires physical movement—jumping, running, climbing, swimming, etc. If it resembles something you’d do in the decathlon, you roll Athletics. You use overcome actions with Athletics to move between zones in a conflict if there’s a situation aspect or other obstacle in your way. You also roll Athletics to chase or race in any contests or challenges that rely on these types of activities.",
   advantage: "When you’re creating an advantage with Athletics, you’re jumping to high ground, running faster than the opponent can keep up with, or performing dazzling acrobatic maneuvers in order to confound your foes.",
   attack: "Athletics is not meant as an attack skill.",
   defend: "Athletics is a catchall skill to roll for defense in a physical conflict, against closequarters and ranged attacks. You can also use it to defend against characters trying to move past you, if you’re in a position to physically interfere with who-
@@ -37,7 +37,7 @@ Skill.create(
   name: 'Crafts',
   system_id: a.id,
   overcome: "Crafts allows you to build, break, or fix machinery, presuming you have the time and tools you need. Often, actions with Crafts happen as one component of a more complex situation, making it a popular skill for challenges. For example, if you’re just fixing a broken door, neither success nor failure is interesting; you should just succeed and move on. Now, if you’re
-trying to get your car to start while a pack of werewolves is hunting you...".
+trying to get your car to start while a pack of werewolves is hunting you...",
   advantage: "You can use Crafts to create aspects representing features of a piece of machinery, pointing out useful features or strengths you can use to your advantage (Armor-Plated, Rugged Construction) or a vulnerability for you to exploit (Flaw in the Cross-Beam, Hasty Work).
 Creating Crafts advantages can also take the form of quick and dirty sabotage or jury-rigging on mechanical objects in the scene. For example, you might create a Makeshift Pulley to help you get to the platform above you, or throw something into the ballista that’s firing on you to give it a Jammed Pivoting Joint and make it harder to hit you.",
   attack: "You probably won’t use Crafts to attack in a conflict, unless the conflict is specifically about using machinery, like with siege weaponry. GMs and players, talk over the likelihood of this happening in your game if you have someone who is really interested in taking this skill. Usually, weapons you craft are likely to be used with other skills to attack—a guy who makes a sword still needs Fight to wield it well!",
@@ -55,7 +55,7 @@ You can also use Deceive to do small tricks of sleight-of-hand and misdirection.
   default_set: true)
 Skill.create(
   name: 'Drive',
-  system_id: a.id
+  system_id: a.id,
   overcome: "Drive is the equivalent of Athletics when you’re in a vehicle—you use
 it to successfully accomplish movement in the face of difficult circumstances, like rough terrain, small amounts of clearance, or stunt driving. Obviously, Drive is also ripe for contests, especially chases and races.",
   advantage: "You can use Drive to determine the best way to get somewhere in a vehicle, and a good enough roll might allow you to learn features of the route that get expressed as aspects, or declare that you know a Convenient Shortcut or something similar.
@@ -76,7 +76,7 @@ Skill.create(
   name: 'Fight',
   system_id: a.id,
   overcome: "Since you don’t really use Fight outside of a conflict, it’s not often used to overcome obstacles. You might use it to display your fighting prowess in a demonstration, or to participate in some kind of regulated bout or sport fighting, which would allow you to use this skill in a contest.",
-  avantage: "You’ll probably use Fight for most of the advantages you create in a physical conflict. Any number of special moves can be covered with advantages: a targeted strike to stun, a “dirty move,” disarming, and so on. You could even use Fight to assess another fighter’s style, spotting weaknesses in his or her form that you can exploit.",
+  advantage: "You’ll probably use Fight for most of the advantages you create in a physical conflict. Any number of special moves can be covered with advantages: a targeted strike to stun, a “dirty move,” disarming, and so on. You could even use Fight to assess another fighter’s style, spotting weaknesses in his or her form that you can exploit.",
   attack: "This is self-explanatory. You make physical attacks with Fight. Remember, this is for close-in work, so you have to be in the same zone as your opponent.",
   defend: " You use Fight to defend against any other attack or create an advantage attempt made with Fight, as well as pretty much any action where violently interposing yourself could prevent it from
 happening. You can’t use this skill to defend against Shoot attacks, unless the setting is fantastical enough that you can catch missiles or swat them from the air or use laser swords to deflect
