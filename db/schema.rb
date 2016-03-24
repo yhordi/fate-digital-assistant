@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20160323195731) do
     t.text     "advantage"
     t.text     "attack"
     t.text     "defend"
+    t.boolean  "default_set"
+    t.text     "special"
   end
 
   create_table "systems", force: :cascade do |t|
