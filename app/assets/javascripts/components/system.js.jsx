@@ -65,7 +65,7 @@ var System = React.createClass({
               <a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a>
             </li>
             <li className="pad-right">
-              <a onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Display all skills</a>
+              <a id="skillsIndex" onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Display all skills</a>
             </li>
           </ul>
         </div>
