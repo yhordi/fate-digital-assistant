@@ -1,4 +1,4 @@
-var Skill = React.createClass({
+var SkillBox = React.createClass({
 
   render: function() {
     return <div />;

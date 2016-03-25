@@ -7,6 +7,15 @@ var System = React.createClass({
   getInitialState: function(){
     return data = {system: this.props};
   },
+  getSkills: function(e){
+    e.preventDefault();
+    var url = e.target.href
+    $.ajax({
+      url: url,
+    }).done(function(data){
+      console.log(data)
+    })
+  },
   handleEdit: function(e){
     e.preventDefault();
     var url = 'systems/' + this.props.id + '/edit'
@@ -45,7 +54,12 @@ var System = React.createClass({
       <div className="row">
         <div className="col span-12-t">
           <ul className="systemActions">
-            <li><a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a></li>
+            <li className="pad-right">
+              <a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a>
+            </li>
+            <li className="pad-right">
+              <a onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Display all skills</a>
+            </li>
           </ul>
         </div>
       </div>
