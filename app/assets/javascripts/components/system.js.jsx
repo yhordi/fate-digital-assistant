@@ -9,11 +9,14 @@ var System = React.createClass({
   },
   getSkills: function(e){
     e.preventDefault();
+    var container = document.getElementById('container');
     var url = e.target.href
     $.ajax({
       url: url,
     }).done(function(data){
-      console.log(data)
+      ReactDOM.render(
+        <SkillBox data={data} />, container
+      );
     })
   },
   handleEdit: function(e){
@@ -52,6 +55,9 @@ var System = React.createClass({
     return (
       <div name={this.props.name} description={this.props.description} className='system row'>
       <div className="row">
+      <h2>
+        {this.props.name}
+      </h2>
         <div className="col span-12-t">
           <ul className="systemActions">
             <li className="pad-right">
@@ -63,9 +69,6 @@ var System = React.createClass({
           </ul>
         </div>
       </div>
-        <h2>
-          {this.props.name}
-        </h2>
         <p>{this.props.description}</p>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete} className='delete'>Delete</button>

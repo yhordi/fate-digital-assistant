@@ -1,6 +1,10 @@
 var SkillBox = React.createClass({
 
   render: function() {
-    return <div />;
+    return (
+      <div>
+        <SkillList data={this.props.data} />
+      </div>
+    );
   }
 });
