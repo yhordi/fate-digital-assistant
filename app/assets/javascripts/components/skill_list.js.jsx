@@ -1,10 +1,9 @@
 var SkillList = React.createClass({
 
   render: function() {
-    // debugger
-    var skillLinks = this.props.data.map(function(system, index) {
+    var skillLinks = this.props.data.map(function(skill, index) {
       return (
-        <Systemlink data={system} index={index} />
+        <SkillLink name={skill.name} data={skill} key={skill.id} />
       )
     }.bind(this));
     return (
