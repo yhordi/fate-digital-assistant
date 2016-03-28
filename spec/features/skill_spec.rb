@@ -11,7 +11,6 @@ describe 'Skill', js: true do
       click_on 'SYSTEMS'
       page.find('#systemLink1').click
       page.find('#skillsIndex').click
-      # click_on(skill.name)
       page.find("#skill#{skill.id}").click
       expect(page).to have_content(skill.advantage)
     end
