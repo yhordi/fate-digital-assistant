@@ -12,7 +12,7 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
-    @user = User.find(@system.user_id)
+    render :json => @system
   end
 
   def index

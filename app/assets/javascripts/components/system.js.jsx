@@ -63,24 +63,24 @@ var System = React.createClass({
   render: function() {
     return (
       <div name={this.props.name} description={this.props.description} className='system row'>
-      <div className="row">
-      <h2 className="no-margin">
-        {this.props.name}
-      </h2>
-      <div className=" m-btm-m">
-        <a className='list-hz'onClick={this.handleBack} href='/systems'>back to my systems</a>
-      </div>
-        <div className="col span-12-t">
-          <ul className="list-hz">
-            <li className="pad-right">
-              <a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a>
-            </li>
-            <li className="pad-right">
-              <a id="skillsIndex" onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Display all skills</a>
-            </li>
-          </ul>
+        <div className="row">
+        <h2 className="no-margin">
+          {this.props.name}
+        </h2>
+        <div className=" m-btm-m">
+          <a className='list-hz'onClick={this.handleBack} href='/systems'>back to my systems</a>
         </div>
-      </div>
+          <div className="col span-12-t">
+            <ul className="list-hz">
+              <li className="pad-right">
+                <a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a>
+              </li>
+              <li className="pad-right">
+                <a id="skillsIndex" onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Display all skills</a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <p>{this.props.description}</p>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete} className='delete'>Delete</button>

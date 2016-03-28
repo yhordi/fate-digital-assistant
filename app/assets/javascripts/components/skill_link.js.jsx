@@ -1,6 +1,5 @@
 var SkillLink = React.createClass({
   handleClick: function(e){
-    debugger
     var container = document.getElementById('container');
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
