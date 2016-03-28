@@ -63,15 +63,15 @@ var System = React.createClass({
   render: function() {
     return (
       <div name={this.props.name} description={this.props.description} className='system row'>
-      <div>
-        <a onClick={this.handleBack} href='/systems'>back to my systems</a>
-      </div>
       <div className="row">
-      <h2>
+      <h2 className="no-margin">
         {this.props.name}
       </h2>
+      <div className=" m-btm-m">
+        <a className='list-hz'onClick={this.handleBack} href='/systems'>back to my systems</a>
+      </div>
         <div className="col span-12-t">
-          <ul className="systemActions">
+          <ul className="list-hz">
             <li className="pad-right">
               <a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a>
             </li>

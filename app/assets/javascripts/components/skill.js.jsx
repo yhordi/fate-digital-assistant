@@ -5,7 +5,6 @@ var Skill = React.createClass({
         <h3>
           {this.props.data.name}
         </h3>
-
         <h4>Overcome</h4>
         <p>
           {this.props.data.overcome}
