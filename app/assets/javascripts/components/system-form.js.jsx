@@ -1,19 +1,4 @@
 var Systemform = React.createClass({
-  getInitialState: function() {
-    return { name: this.props.data.name, description: this.props.data.description }
-  },
-  updateNameState: function(e){
-    this.setState({ name: e.target.value });
-  },
-  updateDescriptionState: function(e){
-    this.setState({ description: e.target.value });
-  },
-  createButton: function() {
-    this.setState({button: 'Create System'})
-  },
-  updateButton: function(){
-    this.setState({button: 'Update System'})
-  },
   checkFields: function(){
     var errors = false
     if(this.state.name == undefined || this.state.name == ''){
@@ -55,6 +40,31 @@ var Systemform = React.createClass({
     })
     this.setState({name: '', description: ''})
   },
+  createButton: function() {
+    this.setState({button: 'Create System'})
+  },
+  getInitialState: function() {
+    return { name: this.props.data.name, description: this.props.data.description }
+  },
+  handleBack: function(e){
+    e.preventDefault(e)
+    var container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <SystemBox />, container
+    )
+  },
+  handleSubmit: function(e) {
+    e.preventDefault()
+    var action = document.getElementsByClassName('submit')[0].value[0]
+    if (action == 'U'){
+      this.update()
+    } else if (action == 'C') {
+      this.create()
+    } else {
+      console.error('Button action is invalid')
+    }
+  },
   update: function(){
     var data = {system: this.state}
     var url = '/systems/' + this.props.data.id
@@ -73,33 +83,34 @@ var Systemform = React.createClass({
       }.bind(this)
     })
   },
-  handleSubmit: function(e) {
-    e.preventDefault()
-    var action = document.getElementsByClassName('submit')[0].value[0]
-    if (action == 'U'){
-      this.update()
-    } else if (action == 'C') {
-      this.create()
-    } else {
-      console.error('Button action is invalid')
-    }
+  updateButton: function(){
+    this.setState({button: 'Update System'})
+  },
+  updateDescriptionState: function(e){
+    this.setState({ description: e.target.value });
+  },
+  updateNameState: function(e){
+    this.setState({ name: e.target.value });
   },
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label for="name">System Name</label>
-        </div>
-        <input id="name" onChange={this.updateNameState} value={this.state.name} type='text'/> <span id='nameNotice'></span>
-        <div>
+      <div>
+        <a onClick={this.handleBack} href='/systems'>back to my systems</a>
+        <form onSubmit={this.handleSubmit}>
           <div>
-            <label for="desc">Description</label>
+            <label for="name">System Name</label>
           </div>
-          <textarea id="desc" onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
-          <span id="descNotice"></span>
-        </div>
-        <input className="submit" type='submit' value={this.props.button}/>
-      </form>
+          <input id="name" onChange={this.updateNameState} value={this.state.name} type='text'/> <span id='nameNotice'></span>
+          <div>
+            <div>
+              <label for="desc">Description</label>
+            </div>
+            <textarea id="desc" onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
+            <span id="descNotice"></span>
+          </div>
+          <input className="submit" type='submit' value={this.props.button}/>
+        </form>
+      </div>
     );
   }
 });
