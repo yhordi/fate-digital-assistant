@@ -13,6 +13,14 @@ var SkillBox = React.createClass({
       }
     })
   },
+  handleBackToSystems: function(e){
+    e.preventDefault(e)
+    var container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <SystemBox />, container
+    )
+  },
   render: function() {
     return (
       <div>
@@ -22,7 +30,7 @@ var SkillBox = React.createClass({
         <div className="m-btm-m">
           <ul className="list-hz">
             <li>
-              <a href="#">
+              <a onClick={this.handleBackToSystems} href="systems/">
                 My Systems
               </a>/
             </li>
