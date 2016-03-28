@@ -20,18 +20,13 @@ var System = React.createClass({
       );
     })
   },
-  handleEdit: function(e){
-    e.preventDefault();
-    var url = 'systems/' + this.props.id + '/edit'
-    var button = this.props.button
-    $.ajax({
-      url: url,
-    }).done(function(data){
-      var container = document.getElementById('container');
-      ReactDOM.render(
-        <Systemform button={button} data={data} />, container
-      );
-    })
+  handleBack: function(e){
+    e.preventDefault(e)
+    var container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <SystemBox />, container
+    )
   },
   handleDelete: function(e){
     e.preventDefault(e)
@@ -52,9 +47,25 @@ var System = React.createClass({
       }.bind(this)
     })
   },
+  handleEdit: function(e){
+    e.preventDefault();
+    var url = 'systems/' + this.props.id + '/edit'
+    var button = this.props.button
+    $.ajax({
+      url: url,
+    }).done(function(data){
+      var container = document.getElementById('container');
+      ReactDOM.render(
+        <Systemform button={button} data={data} />, container
+      );
+    })
+  },
   render: function() {
     return (
       <div name={this.props.name} description={this.props.description} className='system row'>
+      <div>
+        <a onClick={this.handleBack} href='/systems'>back to my systems</a>
+      </div>
       <div className="row">
       <h2>
         {this.props.name}

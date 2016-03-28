@@ -1,9 +1,9 @@
 var Systemlink = React.createClass({
   handleClick: function(e){
-    // this.setState(index: )
-    var container = document.getElementById('container')
     e.preventDefault()
+    var container = document.getElementById('container')
     var systemProps = this.props.data
+    ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
       <System name={systemProps.name} button="Update System" description={systemProps.description} id={systemProps.id} />, container
     ), container
