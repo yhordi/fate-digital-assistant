@@ -12,11 +12,12 @@ var System = React.createClass({
     var container = document.getElementById('container');
     var url = e.target.href
     var systemName = this.props.name
+    var systemId = this.props.id
     $.ajax({
       url: url,
     }).done(function(data){
       ReactDOM.render(
-        <SkillBox data={data} systemName={systemName} />, container
+        <SkillBox data={data} systemName={systemName} systemId={systemId} />, container
       );
     })
   },

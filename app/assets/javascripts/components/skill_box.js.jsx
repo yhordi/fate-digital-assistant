@@ -1,4 +1,18 @@
 var SkillBox = React.createClass({
+  handleBackToSystem: function(e){
+    e.preventDefault(e)
+    var container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    var url = 'systems/' + this.props.systemId
+    $.ajax({
+      url: url,
+      success: function(data){
+        ReactDOM.render(
+          <System name={data.name} id={data.id} description={data.description} button="Update System" />, container
+        )
+      }
+    })
+  },
   render: function() {
     return (
       <div>
@@ -13,7 +27,7 @@ var SkillBox = React.createClass({
               </a>/
             </li>
             <li>
-              <a href="#">
+              <a onClick={this.handleBackToSystem} href="#">
                 {this.props.systemName}
               </a>/
             </li>
