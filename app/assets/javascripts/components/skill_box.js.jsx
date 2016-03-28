@@ -22,7 +22,7 @@ var SkillBox = React.createClass({
             </li>
           </ul>
         </div>
-        <SkillList data={this.props.data} />
+        <SkillList systemName={this.props.systemName} data={this.props.data} />
       </div>
     );
   }

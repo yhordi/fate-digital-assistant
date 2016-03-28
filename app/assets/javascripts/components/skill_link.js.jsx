@@ -1,9 +1,10 @@
 var SkillLink = React.createClass({
   handleClick: function(e){
+    debugger
     var container = document.getElementById('container');
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
-      <Skill data={this.props.data} />, container
+      <Skill systemName={this.props.systemName} data={this.props.data}/>, container
     )
   },
   render: function() {
