@@ -10,7 +10,9 @@ $alert: #B12515;
   font-weight: normal;
   font-style: normal;
 }
-
+.inline{
+  display: inline;
+}
 body{
   background: image_url("wood_pattern.png")
 }
@@ -54,9 +56,6 @@ a:hover{
 .navThumb{
   vertical-align: middle;
 }
-.no-m-btm{
-  margin-bottom: 0;
-}
 .pad{
   padding: 1%;
 }
@@ -81,8 +80,12 @@ a:hover{
 .m-btm-m{
   margin-bottom: 1em;
 }
-
-
+.no-m-btm{
+  margin-bottom: 0;
+}
+.m-top{
+  margin-top: 1%
+}
 .nav{
   background-color: #A19DA3;
   -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);

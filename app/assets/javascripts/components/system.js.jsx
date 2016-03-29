@@ -68,16 +68,13 @@ var System = React.createClass({
         <h2 className="no-margin">
           {this.props.name}
         </h2>
-        <div className=" m-btm-m">
-          <a className='list-hz'onClick={this.handleBack} href='/systems'>back to my systems</a>
+        <div className="m-btm-m">
+          <a className='list-hz' onClick={this.handleBack} href='/systems'>back to my systems</a>
         </div>
           <div className="col span-12-t">
             <ul className="list-hz">
-              <li className="pad-right">
-                <a href={"systems/" + this.props.id + "/skills/new"}>Add Skill</a>
-              </li>
-              <li className="pad-right">
-                <a id="skillsIndex" onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Display all skills</a>
+              <li>
+                <a id="skillsIndex" onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Skills</a>
               </li>
             </ul>
           </div>
