@@ -5,13 +5,14 @@ class SkillsController < ApplicationController
   end
 
   def create
-    skill = Skill.create!(skill_params)
+    skill = Skill.new(skill_params)
+    skill.save!
     render :json => skill
   end
 
   private
 
   def skill_params
-    params.require(:system).permit(:name, :description, :advantage, :overcome, :attack, :defend)
+    params.require(:skill).permit(:name, :description, :advantage, :overcome, :attack, :defend, :system_id)
   end
 end

@@ -44,7 +44,7 @@ var SkillBox = React.createClass({
             </li>
           </ul>
         </div>
-        <SkillList systemName={this.props.systemName} data={this.props.data} />
+        <SkillList systemId={this.props.systemId} systemName={this.props.systemName} data={this.props.data} />
       </div>
     );
   }

@@ -1,6 +1,18 @@
 var SkillForm = React.createClass({
   getInitialState: function() {
-    return {}
+    return {system_id: this.props.systemId}
+  },
+  handleSubmit: function(e) {
+    e.preventDefault()
+    var url = '/systems/' + this.props.systemId + '/skills/'
+    var data = {skill: this.state}
+    $.ajax({
+      url: url,
+      method: 'post',
+      data: data
+    }).done(function(response){
+      console.log(response)
+    })
   },
   updateState: function(e) {
     var prop = e.target.name
@@ -11,7 +23,7 @@ var SkillForm = React.createClass({
   },
   render: function() {
     return(
-      <form>
+      <form onSubmit={this.handleSubmit}>
           <label for="skillName">Skill Name</label>
         <div>
           <input onChange={this.updateState} id="skillName" name="name" />
@@ -36,6 +48,7 @@ var SkillForm = React.createClass({
         <div>
           <textarea onChange={this.updateState} id="defend" name="defend"></textarea>
         </div>
+        <input type="hidden" name="systemId" value={this.props.systemId}/>
         <input type="submit" />
       </form>
     )
