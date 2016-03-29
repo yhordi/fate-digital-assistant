@@ -1,6 +1,21 @@
 var Skill = React.createClass({
+  handleBackToSkills: function(e){
+    e.preventDefault()
+    var container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    var systemName = this.props.systemName
+    var url = 'systems/' + this.props.data.system_id + '/skills'
+    $.ajax({
+      url: url,
+      success: function(response){
+          ReactDOM.render(
+            <SkillBox data={response} systemName={systemName} />, container
+          )
+      }
+    })
+  },
   handleBackToSystems: function(e){
-    e.preventDefault(e)
+    e.preventDefault()
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
@@ -39,7 +54,7 @@ var Skill = React.createClass({
               </a>/
             </li>
             <li>
-              <a href="#">Skills List</a>
+              <a onClick={this.handleBackToSkills}href="#">Skills List</a>
             </li>
             <li>
               /{this.props.data.name}
