@@ -1,5 +1,12 @@
 var SkillList = React.createClass({
-
+  handleNew: function(e){
+    e.preventDefault();
+    var container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <SkillForm />, container
+    )
+  },
   render: function() {
     var skillLinks = this.props.data.map(function(skill, index) {
       return (
@@ -13,7 +20,7 @@ var SkillList = React.createClass({
             Skills |
           </li>
           <li>
-            <a href={"systems/" + this.props.id + "/skills/new"}> Create New</a>
+            <a onClick={this.handleNew} href={"systems/" + this.props.id + "/skills/new"}> Create New</a>
           </li>
         </ul>
         <div className='m-top'>
