@@ -36,6 +36,24 @@ var Skill = React.createClass({
       }
     })
   },
+  handleDelete: function(e){
+    e.preventDefault(e)
+    var url = 'systems/' + this.props.data.system_id + '/skills/' + this.props.data.id
+    var container = document.getElementById('container')
+    $.ajax({
+      url: url,
+      method: 'DELETE',
+      success: function(response) {
+        var container = document.getElementById('container')
+        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.render(
+          <SkillBox data={response} systemName={this.props.systemName} />, container
+        )
+        $('#notice').prepend('Skill deleted').addClass('notice')
+        $('#notice').fadeOut(3000)
+      }.bind(this)
+    })
+  },
   render: function() {
     return(
       <div>
@@ -78,6 +96,7 @@ var Skill = React.createClass({
           <p>
             {this.props.data.defend}
           </p>
+        <button onClick={this.handleDelete} className='delete'>Delete</button>
       </div>
     )
   }

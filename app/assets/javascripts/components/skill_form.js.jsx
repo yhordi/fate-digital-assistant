@@ -12,12 +12,11 @@ var SkillForm = React.createClass({
       method: 'post',
       data: data,
       success: function(response){
-        debugger
         ReactDOM.unmountComponentAtNode(container)
         ReactDOM.render(
-          <Skill data={response} />, container
+          <Skill data={response} systemName={this.props.systemName} />, container
         )
-      }
+      }.bind(this)
     })
   },
   updateState: function(e) {
