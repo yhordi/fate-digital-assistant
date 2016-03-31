@@ -29,5 +29,12 @@ describe 'Skill', js: true do
         expect(page).to have_content('Basket Weaving')
       end
     end
+    describe 'deleting a skill' do
+      it 'can click on a delete button and no longer see the skill in the skills list' do
+        page.find("#skill#{skill.id}").click
+        click_on "Delete"
+        expect(page).to_not have_content(skill.name)
+      end
+    end
   end
 end
