@@ -2,7 +2,9 @@ class SystemsController < ApplicationController
   include AuthenticationConcern
 
   def create
-    @system = System.create(system_params)
+    @system = System.new(system_params)
+    @system.user_id = current_user.id
+    @system.save
     if System.last == @system
       render json: System.last
     else
@@ -12,11 +14,12 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
-    render :json => @system
+    render json: @system
   end
 
   def index
     @user = current_user
+    p @user
     @systems = System.order(created_at: :desc).where(user_id: @user)
     respond_to do |format|
       format.html
