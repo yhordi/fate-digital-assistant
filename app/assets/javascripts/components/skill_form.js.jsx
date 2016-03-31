@@ -6,12 +6,18 @@ var SkillForm = React.createClass({
     e.preventDefault()
     var url = '/systems/' + this.props.systemId + '/skills/'
     var data = {skill: this.state}
+    var container = document.getElementById('container')
     $.ajax({
       url: url,
       method: 'post',
-      data: data
-    }).done(function(response){
-      console.log(response)
+      data: data,
+      success: function(response){
+        debugger
+        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.render(
+          <Skill data={response} />, container
+        )
+      }
     })
   },
   updateState: function(e) {
@@ -49,7 +55,7 @@ var SkillForm = React.createClass({
           <textarea onChange={this.updateState} id="defend" name="defend"></textarea>
         </div>
         <input type="hidden" name="systemId" value={this.props.systemId}/>
-        <input type="submit" />
+        <input type="submit" value="Create Skill"/>
       </form>
     )
   }
