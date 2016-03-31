@@ -3,7 +3,7 @@ class SystemsController < ApplicationController
 
   def create
     @system = System.new(system_params)
-    @system.user_id = current_user.id
+    @system.user_id = session.id
     @system.save
     if System.last == @system
       render json: System.last
