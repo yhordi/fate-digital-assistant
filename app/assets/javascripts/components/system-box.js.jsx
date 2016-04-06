@@ -1,4 +1,7 @@
 var SystemBox = React.createClass({
+  componentWillMount: function() {
+    var container = document.getElementById('container')
+  },
   getInitialState: function(){
     return { systems: [] }
   },

@@ -2,6 +2,7 @@ describe 'Skill', js: true do
   let(:user) { FactoryGirl.create :user }
   let!(:system) { FactoryGirl.create :system }
   let!(:skill) { FactoryGirl.create :skill }
+  let!(:skill_attributes) { FactoryGirl.build :skill }
   context 'a logged in user' do
     before(:each) do
       visit root_path
@@ -34,6 +35,15 @@ describe 'Skill', js: true do
         page.find("#skill#{skill.id}").click
         click_on "Delete"
         expect(page).to_not have_content(skill.name)
+      end
+    end
+    describe 'editing a skill' do
+      it 'can click on the edit button, change a field on the skill, submit it, and see the new data on the page' do
+        page.find("#skill#{skill.id}").click
+        click_on "Edit"
+        fill_in 'skillDescription', with: 'Amazeballz'
+        click_on('Update Skill')
+        expect(page).to have_content('Amazeballz')
       end
     end
   end

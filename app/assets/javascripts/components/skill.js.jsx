@@ -37,7 +37,7 @@ var Skill = React.createClass({
     })
   },
   handleDelete: function(e){
-    e.preventDefault(e)
+    e.preventDefault()
     var url = 'systems/' + this.props.data.system_id + '/skills/' + this.props.data.id
     var container = document.getElementById('container')
     $.ajax({
@@ -53,6 +53,12 @@ var Skill = React.createClass({
         $('#notice').fadeOut(3000)
       }.bind(this)
     })
+  },
+  handleEdit: function(e){
+    e.preventDefault()
+    ReactDOM.render(
+      <SkillForm data={this.props.data} button={"Update Skill"}/>, container
+    );
   },
   render: function() {
     return(
@@ -96,6 +102,7 @@ var Skill = React.createClass({
           <p>
             {this.props.data.defend}
           </p>
+        <button onClick={this.handleEdit} className='edit'>Edit</button>
         <button onClick={this.handleDelete} className='delete'>Delete</button>
       </div>
     )

@@ -11,7 +11,7 @@ var SkillForm = React.createClass({
       url: url,
       method: 'post',
       data: data,
-      success: function(response){
+      success: function(response) {
         ReactDOM.unmountComponentAtNode(container)
         ReactDOM.render(
           <Skill data={response} systemName={this.props.systemName} />, container
@@ -31,30 +31,30 @@ var SkillForm = React.createClass({
       <form onSubmit={this.handleSubmit}>
           <label for="skillName">Skill Name</label>
         <div>
-          <input onChange={this.updateState} id="skillName" name="name" />
+          <input onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
         </div>
           <label for="skillDescription">Description</label>
         <div>
-          <textarea onChange={this.updateState} id="skillDescription" name="description"></textarea>
+          <textarea onChange={this.updateState} value={this.props.data.description} id="skillDescription" name="description"></textarea>
         </div>
           <label for="advantage">Create an Advantage</label>
         <div>
-          <textarea onChange={this.updateState} id="advantage" name="advantage"></textarea>
+          <textarea onChange={this.updateState} value={this.props.data.advantage} id="advantage" name="advantage"></textarea>
         </div>
           <label for="overcome">Overcome</label>
         <div>
-          <textarea onChange={this.updateState} id="overcome" name="overcome"></textarea>
+          <textarea onChange={this.updateState} value={this.props.data.overcome} id="overcome" name="overcome"></textarea>
         </div>
           <label for="attack">attack</label>
         <div>
-          <textarea onChange={this.updateState} id="attack" name="attack"></textarea>
+          <textarea onChange={this.updateState} value={this.props.data.attack} id="attack" name="attack"></textarea>
         </div>
           <label for="defend">defend</label>
         <div>
-          <textarea onChange={this.updateState} id="defend" name="defend"></textarea>
+          <textarea onChange={this.updateState} value={this.props.data.defend} id="defend" name="defend"></textarea>
         </div>
         <input type="hidden" name="systemId" value={this.props.systemId}/>
-        <input type="submit" value="Create Skill"/>
+        <input type="submit" value={this.props.button} />
       </form>
     )
   }
