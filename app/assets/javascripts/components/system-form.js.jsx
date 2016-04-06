@@ -1,4 +1,11 @@
 var Systemform = React.createClass({
+  check: function(e) {
+    if(e.target.checked == true){
+      this.setState({defaults: true})
+    } else {
+      this.setState({defaults: false})
+    }
+  },
   checkFields: function(){
     var errors = false
     if(this.state.name == undefined || this.state.name == ''){
@@ -107,6 +114,10 @@ var Systemform = React.createClass({
             </div>
             <textarea id="desc" onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
             <span id="descNotice"></span>
+          </div>
+          <div>
+            <label for="default-set">begin with default skills </label>
+            <input name="defult-set" type="checkbox" onChange={this.check}/>
           </div>
           <input className="submit" type='submit' value={this.props.button}/>
         </form>
