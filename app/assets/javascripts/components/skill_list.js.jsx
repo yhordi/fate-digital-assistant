@@ -4,7 +4,7 @@ var SkillList = React.createClass({
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
-      <SkillForm systemName={this.props.systemName} systemId={this.props.systemId} />, container
+      <SkillForm data={[]} systemName={this.props.systemName} button={"Create Skill"} systemId={this.props.systemId} />, container
     )
   },
   render: function() {
