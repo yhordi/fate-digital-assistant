@@ -1,15 +1,38 @@
 var SkillForm = React.createClass({
-  getInitialState: function() {
-    return {system_id: this.props.systemId}
-  },
-  handleSubmit: function(e) {
-    e.preventDefault()
+  create: function(){
     var url = '/systems/' + this.props.systemId + '/skills/'
     var data = {skill: this.state}
     var container = document.getElementById('container')
     $.ajax({
       url: url,
       method: 'post',
+      data: data,
+      success: function(response) {
+        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.render(
+          <Skill data={response} systemName={this.props.systemName} />, container
+        )
+      }.bind(this)
+    })
+  },
+  getInitialState: function() {
+    return {system_id: this.props.systemId}
+  },
+  handleSubmit: function(e) {
+    e.preventDefault()
+    if(this.props.button == "Create Skill"){
+      this.create()
+    } else {
+      this.update()
+    }
+  },
+  update: function(){
+    var url = '/systems/' + this.props.systemId + '/skills/' + this.props.data.id
+    var data = {skill: this.state}
+    var container = document.getElementById('container')
+    $.ajax({
+      url: url,
+      method: 'put',
       data: data,
       success: function(response) {
         ReactDOM.unmountComponentAtNode(container)

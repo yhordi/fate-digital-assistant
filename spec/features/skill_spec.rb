@@ -41,9 +41,9 @@ describe 'Skill', js: true do
       it 'can click on the edit button, change a field on the skill, submit it, and see the new data on the page' do
         page.find("#skill#{skill.id}").click
         click_on "Edit"
-        fill_in 'skillDescription', with: 'Amazeballz'
+        fill_in 'skillDescription', with: '1111111111'
         click_on('Update Skill')
-        expect(page).to have_content('Amazeballz')
+        expect(page).to have_content('1111111111')
       end
     end
   end

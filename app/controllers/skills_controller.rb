@@ -10,6 +10,12 @@ class SkillsController < ApplicationController
     render json: skill
   end
 
+  def update
+    skill = Skill.find(params[:id])
+    skill.update_attributes(skill_params)
+    render json: skill
+  end
+
   def destroy
     skill = Skill.find(params[:id])
     skill.delete

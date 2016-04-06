@@ -10,6 +10,8 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -29,8 +31,8 @@ end
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false)
 end
 
 DatabaseCleaner.strategy = :truncation

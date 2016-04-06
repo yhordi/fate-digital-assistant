@@ -66,6 +66,9 @@ var Skill = React.createClass({
         <h3 className="no-margin">
           {this.props.data.name}
         </h3>
+        <p>
+          {this.props.data.description}
+        </p>
         <div className="m-btm-m">
           <ul className="list-hz">
             <li>
