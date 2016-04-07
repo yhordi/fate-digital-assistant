@@ -4,7 +4,7 @@ class SystemsController < ApplicationController
   def create
     @system = System.new(name: params[:system][:name], description: params[:system][:description])
     @system.user_id = current_user.id
-    @system.save!
+    @system.save
     @system.default_skills(params)
     if System.last == @system
       render json: System.last
