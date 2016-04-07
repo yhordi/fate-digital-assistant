@@ -117,7 +117,7 @@ var Systemform = React.createClass({
           </div>
           <div>
             <label for="default-set">begin with default skills </label>
-            <input name="defult-set" type="checkbox" onChange={this.check}/>
+            <input id='defaults' name="defult-set" type="checkbox" onChange={this.check}/>
           </div>
           <input className="submit" type='submit' value={this.props.button}/>
         </form>

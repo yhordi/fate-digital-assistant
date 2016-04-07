@@ -45,6 +45,14 @@ describe 'System', js: true do
         click_on 'Create System'
         expect(page).to have_content(system_attributes.name)
       end
+      it 'can check the begin with default skills checkbox and see a list of the default skills on the skills page' do
+        fill_in 'name', with: system_attributes.name
+        fill_in 'desc', with: system_attributes.description
+        find(:css, "#defaults").set(true)
+        click_on 'Create System'
+        click_on 'Skills'
+        expect(page).to have_content('Athletics')
+      end
       context 'raises errors' do
         it 'when validations fail' do
           fill_in 'name', with: system.name
