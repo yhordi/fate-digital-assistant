@@ -1,4 +1,5 @@
 describe System do
+  let(:system) { FactoryGirl.build :system}
   describe 'associations' do
     it { should belong_to :user }
   end
@@ -19,6 +20,11 @@ describe System do
     it 'does not call seed_defaults if passed incorrect parameters' do
       expect(system_double).to receive(:default_set).with(incorrect_params).and_return(nil)
       system_double.default_set(incorrect_params)
+    end
+  end
+  describe '#seed_defaults' do
+    it 'seeds default skills in the database' do
+      expect{system.seed_defaults(system.id, DefaultSkillsHelper.defaults(system.id))}.to change{Skill.count}.by(18)
     end
   end
 end
