@@ -35,6 +35,7 @@ class SystemsController < ApplicationController
 
   def update
     @system = System.find(params[:id])
+    @system.default_skills(params)
     @system.update_attributes(system_params)
     render json: @system
   end
