@@ -2,7 +2,6 @@ class SystemsController < ApplicationController
   include AuthenticationConcern
 
   def create
-    p "*"*80
     @system = System.new(name: params[:system][:name], description: params[:system][:description])
     @system.user_id = current_user.id
     @system.save!
