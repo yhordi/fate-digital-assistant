@@ -7,10 +7,7 @@ class System < ActiveRecord::Base
   validates :user_id, presence: true
 
   def default_skills(params)
-    if params["system"]["default_set"] == "true"
-      seed_defaults(self.id, DefaultSkillsHelper.defaults(params["id"]))
-    end
-    nil
+    return seed_defaults(self.id, DefaultSkillsHelper.defaults(params["id"])) if params["system"]["default_set"] == "true"
   end
 
   def seed_defaults(system_id, defaults)
