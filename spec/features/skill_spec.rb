@@ -46,5 +46,10 @@ describe 'Skill', js: true do
         expect(page).to have_content('1111111111')
       end
     end
+    describe 'using default skills checkbox' do
+      xit 'on the create can check it and see the default skills on their new system' do
+
+      end
+    end
   end
 end
