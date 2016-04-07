@@ -1,9 +1,9 @@
 var Systemform = React.createClass({
   check: function(e) {
     if(e.target.checked == true){
-      this.setState({defaults: true})
+      this.setState({default_set: true})
     } else {
-      this.setState({defaults: false})
+      this.setState({default_set: false})
     }
   },
   checkFields: function(){
