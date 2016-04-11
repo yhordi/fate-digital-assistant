@@ -2,18 +2,25 @@ describe UsersController do
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.build :user }
   describe '#new' do
+    context 'a user who is not logged in' do
+      before(:each) do
+        get :new
+      end
 
-    before(:each) do
-      get :new
+      it "assigns the @user instance variable to a new user" do
+        expect(assigns(:user)).to be_a_new(User)
+      end
+      it "responds with a 200" do
+        expect(response.status).to eq(200)
+      end
     end
 
-    it "assigns the @user instance variable to a new user" do
-      expect(assigns(:user)).to be_a_new(User)
+    context 'a logged in user' do
+      it 'responds with a 302' do
+        session[:id] = user.id
+        get :new
+      end
     end
-    it "responds with a 200" do
-      expect(response.status).to eq(200)
-    end
-
   end
 
   describe '#show' do
@@ -46,7 +53,6 @@ describe UsersController do
       before (:each) do
         post :create, {user:{}}
       end
-      
       it "responds with a status of 302" do
         expect(response.status).to eq(302)
       end

@@ -1,22 +1,9 @@
 require 'faker'
 # user = User.new(name: "user", password: ENV["PASSWORD"])
 # user.save!
-# System.create(name: Faker::Book.title, description: Faker::Lorem.paragraph, user_id: User.last.id)
+no_conflict = "This skill is not used for conflicts."
+no_attack = "This skill is not used for attacks."
+no_defense = "This skill is not used for defense."
+a = System.create(name: Faker::Book.title, description: Faker::Lorem.paragraph, user_id: User.last.id)
 # Adventure.create(title: Faker::Book.title)
-Skill.create(name: 'Athletics', system_id: 3)
-Skill.create(name: 'Burglary', system_id: 3)
-Skill.create(name: 'Contacts', system_id: 3)
-Skill.create(name: 'Crafts', system_id: 3)
-Skill.create(name: 'Deceive', system_id: 3)
-Skill.create(name: 'Drive', system_id: 3)
-Skill.create(name: 'Empathy', system_id: 3)
-Skill.create(name: 'Fight', system_id: 3)
-Skill.create(name: 'Investigate', system_id: 3)
-Skill.create(name: 'Lore', system_id: 3)
-Skill.create(name: 'Notice', system_id: 3)
-Skill.create(name: 'Physique', system_id: 3)
-Skill.create(name: 'Rapport', system_id: 3)
-Skill.create(name: 'Resources', system_id: 3)
-Skill.create(name: 'Shoot', system_id: 3)
-Skill.create(name: 'Stealth', system_id: 3)
-Skill.create(name: 'Will', system_id: 3)
+a.seed_defaults(a.id)

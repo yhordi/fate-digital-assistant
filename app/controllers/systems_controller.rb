@@ -2,7 +2,10 @@ class SystemsController < ApplicationController
   include AuthenticationConcern
 
   def create
-    @system = System.create(system_params)
+    @system = System.new(name: params[:system][:name], description: params[:system][:description])
+    @system.user_id = current_user.id
+    @system.save
+    @system.default_skills(params)
     if System.last == @system
       render json: System.last
     else
@@ -12,7 +15,7 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
-    @user = User.find(@system.user_id)
+    render json: @system
   end
 
   def index
@@ -32,6 +35,7 @@ class SystemsController < ApplicationController
 
   def update
     @system = System.find(params[:id])
+    @system.default_skills(params)
     @system.update_attributes(system_params)
     render json: @system
   end
@@ -45,6 +49,6 @@ class SystemsController < ApplicationController
   private
 
   def system_params
-    params.require(:system).permit(:name, :description, :public, :setting)
+    params.require(:system).permit(:name, :description, :public, :setting, skills_attributes:[:default_set])
   end
 end

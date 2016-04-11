@@ -14,6 +14,10 @@ describe SystemsController do
     end
   end
   describe '#create' do
+    before do
+      allow(controller).to receive(:current_user) { user }
+    end
+
     context 'on valid params' do
       before(:each) do
         post :create, {system: {name: system.name, description: system.description}}

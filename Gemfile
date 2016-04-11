@@ -25,8 +25,8 @@ group :test do;
   gem 'simplecov', require: false
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'poltergeist'
+
   gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
