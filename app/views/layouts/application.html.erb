@@ -19,25 +19,9 @@
       <% end %>
     </div>
   </div>
-  <div class= "nav">
-    <ul class= "navlist">
-      <% if session[:id] == nil %>
-      <li>
-        <%= link_to "SYSTEMS", systems_path %>
-      </li>
-      <% else %>
-      <li>
-        <%= link_to "SYSTEMS", systems_path %>
-      </li>
-      <li>
-        <a>GAMES</a>
-      </li>
-      <li><a>PROFILE</a></li>
-      <li></li>
-      <% end %>
-      <li id="notice" class="dark" ></li>
-    </ul>
-  </div>
+    <% if session[:id] %>
+      <%= react_component('SideBar') %>
+    <% end %>
   <div id="container">
     <%= yield %>
   </div>
