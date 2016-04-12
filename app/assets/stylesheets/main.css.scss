@@ -14,7 +14,8 @@ $alert: #B12515;
   display: inline;
 }
 body{
-  background: image_url("wood_pattern.png")
+  background: image_url('brushed.png');
+
 }
 a {
   color: $bright;
@@ -29,9 +30,9 @@ a:hover{
 .top{
   background-color: $heading;
   margin: 0;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  // -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  // -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  // box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
 }
 .dark{
   background-color: $dark;
@@ -87,27 +88,28 @@ a:hover{
   margin-top: 1%
 }
 .nav{
-  background-color: #A19DA3;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  padding: 0 2em 100% 1em;
+  background-color: #302E31;
+  // -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  // -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  // box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  display: inline-block;
+  float: left;
+  height: 100%;
 }
 .navlist{
   font-family: 'Roboto';
   list-style-type: none;
   display: inline;
   padding-left: 1em;
-  li {
-    display: inline;
-  }
 }
 
 #container{
   padding: 1%;
   background: image_url('brushed.png');
-    -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  //   -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  // -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+  // box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
 }
 #container a{
   color: #09B23D

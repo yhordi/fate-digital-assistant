@@ -19,15 +19,22 @@
       <% end %>
     </div>
   </div>
-  <div class= "nav row m-btm">
+  <div class= "nav">
     <ul class= "navlist">
-      <li>
       <% if session[:id] == nil %>
+      <li>
         <%= link_to "SYSTEMS", systems_path %>
-      <% else %>
-        <%= link_to "MY SYSTEMS", systems_path %>
-      <% end %>
       </li>
+      <% else %>
+      <li>
+        <%= link_to "SYSTEMS", systems_path %>
+      </li>
+      <li>
+        <a>GAMES</a>
+      </li>
+      <li><a>PROFILE</a></li>
+      <li></li>
+      <% end %>
       <li id="notice" class="dark" ></li>
     </ul>
   </div>
