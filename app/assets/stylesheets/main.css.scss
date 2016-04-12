@@ -6,7 +6,13 @@ $alert: #B12515;
 
 @font-face {
   font-family: 'Roboto';
-  url: font-url('RobotoCondensed-Light.ttf');
+  src: url('/assets/RobotoCondensed-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'Aldritch';
+  src: url('/assets/Aldrich-Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +21,7 @@ $alert: #B12515;
 }
 body{
   background: image_url('brushed.png');
-
+  font-family: 'Roboto'
 }
 a {
   color: $bright;
@@ -106,6 +112,7 @@ a:hover{
   }
 }
 .navItem{
+  font-family: 'Aldritch', sans-serif;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
