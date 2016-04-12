@@ -11,7 +11,7 @@ var SideBar = React.createClass({
           <a>GAMES</a>
         </li>
         <li className="navItem">
-          <a>PROFILE</a>
+          <a href={"/users/" + this.props.userId}>PROFILE</a>
         </li>
         <li id="notice"></li>
       </ul>

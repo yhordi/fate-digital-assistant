@@ -20,7 +20,7 @@
     </div>
   </div>
     <% if session[:id] %>
-      <%= react_component('SideBar') %>
+      <%= react_component('SideBar', {userId: session[:id]}) %>
     <% end %>
   <div id="container">
     <%= yield %>
