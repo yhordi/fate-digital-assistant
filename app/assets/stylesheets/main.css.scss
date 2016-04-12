@@ -16,16 +16,35 @@ $alert: #B12515;
   font-weight: normal;
   font-style: normal;
 }
-.inline{
-  display: inline;
-}
 body{
   background: image_url('brushed.png');
   font-family: 'Roboto'
 }
+button{
+  transition: color, box-shadow, .5s;
+  border: none;
+  border-radius: .5em;
+}
+button:hover {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+  background-color: white;
+  transition: color, box-shadow, .5s
+}
 a {
   color: $bright;
   text-decoration: none;
+  transition: color, text-shadow, .5s
+}
+#container{
+  padding: 1%;
+  background: image_url('brushed.png');
+}
+#container a{
+  color: #09B23D
+}
+#container a:hover{
+  text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+  color: white;
   transition: color, text-shadow, .5s
 }
 a:hover{
@@ -33,9 +52,15 @@ a:hover{
   color: white;
   transition: color, text-shadow, .5s
 }
-.top{
-  background-color: $heading;
-  margin: 0;
+.delete{
+  background-color: $alert;
+  color: white;
+  margin-left: 1em;
+}
+.delete:hover{
+  box-shadow: 0px 0px 30px rgba(177, 37, 21, 1);
+  color: black;
+  transition: color, .5s
 }
 .dark{
   background-color: $dark;
@@ -43,14 +68,17 @@ a:hover{
 .error{
   color: red;
 }
+.ic-back{
+  margin: -0.5em 0 0 0.5em
+}
+.inline{
+  display: inline;
+}
+.fl-left{
+  float: left;
+}
 .fl-right{
   float: right;
-}
-.notice{
-  color: yellow;
-}
-.right{
-  text-align: right;
 }
 .header{
   color: $bright;
@@ -60,8 +88,57 @@ a:hover{
     color: $bright;
   }
 }
+.list-hz{
+  @extend .navlist;
+  padding: 0;
+  border-bottom: 1px solid grey;
+}
+.nav *{
+  // border: 1px solid red;
+}
+.nav{
+  padding: 0 0 1em 1em;
+  background-color: #302E31;
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+}
+.navItem{
+  font-family: 'Aldritch', sans-serif;
+  // -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  // -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  // box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.navlist{
+  font-family: 'Roboto';
+  list-style-type: none;
+  display: inline;
+  padding-left: 1em;
+  li{
+      padding: 1em;
+      margin-left: -1em;
+  }
+}
 .navThumb{
   vertical-align: middle;
+}
+.no-margin{
+  margin: 0;
+}
+.notice{
+  color: yellow;
+}
+.m-btm{
+  margin-bottom: 1%;
+}
+.m-btm-m{
+  margin-bottom: 1em;
+}
+.no-m-btm{
+  margin-bottom: 0;
+}
+.m-top{
+  margin-top: 1%
 }
 .pad{
   padding: 1%;
@@ -81,84 +158,25 @@ a:hover{
 .pad-btm-m{
   padding-bottom: 1em;
 }
-.m-btm{
-  margin-bottom: 1%;
+.right{
+  text-align: right;
 }
-.m-btm-m{
-  margin-bottom: 1em;
+.sideLink{
+  // margin: 0 2em 0 1em;
 }
-.no-m-btm{
-  margin-bottom: 0;
+.system-sidebar{
+  color: #329032;
+  margin: -0.5em 0 0 1em;
 }
-.m-top{
-  margin-top: 1%
+.profile-sidebar{
+  padding: 8px 10px 8px 10px;
+  color: orange;
+  margin: -1em -0.5em;
 }
-.nav{
-  padding: 0 2em 100% 1em;
-  background-color: #302E31;
-  display: inline-block;
-  float: left;
-  height: 100%;
+.top{
+  background-color: $heading;
+  margin: 0;
 }
-.navlist{
-  font-family: 'Roboto';
-  list-style-type: none;
-  display: inline;
-  padding-left: 1em;
-  li{
-      // border: 1px solid red;
-      padding: 1em 1em 1em 0;
-      margin-left: -1em;
-  }
-}
-.navItem{
-  font-family: 'Aldritch', sans-serif;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-}
-#container{
-  padding: 1%;
-  background: image_url('brushed.png');
-}
-#container a{
-  color: #09B23D
-}
-#container a:hover{
-  text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
-  color: white;
-  transition: color, text-shadow, .5s
-}
-
 .hidden{
   display: none;
 }
-button{
-  transition: color, box-shadow, .5s;
-  border: none;
-  border-radius: .5em;
-}
-.delete{
-  background-color: $alert;
-  color: white;
-  margin-left: 1em;
-}
-button:hover {
-  box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
-  background-color: white;
-  transition: color, box-shadow, .5s
-}
-.delete:hover{
-  box-shadow: 0px 0px 30px rgba(177, 37, 21, 1);
-  color: black;
-  transition: color, .5s
-}
-.list-hz{
-  @extend .navlist;
-  padding: 0;
-  border-bottom: 1px solid grey;
-}
-.no-margin{
-  margin: 0;
-}
-

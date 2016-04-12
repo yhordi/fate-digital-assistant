@@ -15,6 +15,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
+gem 'font-awesome-sass'
+
 group :development do
   gem 'dotenv-rails'
   # gem 'spring'
