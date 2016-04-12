@@ -21,9 +21,13 @@
   </div>
     <% if session[:id] %>
       <%= react_component('SideBar', {userId: session[:id]}) %>
+      <div id="container" class="fl-right">
+        <%= yield %>
+      </div>
+    <% else %>
+      <div id="container">
+        <%= yield %>
+      </div>
     <% end %>
-  <div id="container">
-    <%= yield %>
-  </div>
 </body>
 </html>
