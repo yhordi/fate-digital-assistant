@@ -13,7 +13,7 @@ var SideBar = React.createClass({
         <div>
           <a onClick={this.getSystems} href='/systems/'>SYSTEMS
             <div className='fl-right system-sidebar'>
-              <i className="fa fa-list fa-2x"></i>
+              <i title="View your systems." className="fa fa-list fa-2x"></i>
             </div>
           </a>
         </div>
@@ -21,14 +21,14 @@ var SideBar = React.createClass({
         <li className="navItem">
           <a>GAMES
             <div className='fl-right games-sidebar'>
-              <i className="fa fa-play-circle fa-2x"></i>
+              <i title="View your games." className="fa fa-play-circle fa-2x"></i>
             </div>
           </a>
         </li>
         <li className="navItem">
           <a href={"/users/" + this.props.userId}>PROFILE
            <div className='fl-right profile-sidebar'>
-             <i className="fa fa-user fa-2x"></i>
+             <i title="View your profile." className="fa fa-user fa-2x"></i>
            </div>
            </a>
         </li>
