@@ -3,6 +3,7 @@ $heading: #7128C1;
 $dark: #000000;
 $bodytext: #CCCBCB;
 $alert: #B12515;
+$user: #FFA119;
 
 @font-face {
   font-family: 'Roboto';
@@ -54,7 +55,7 @@ header{
   margin-right: 1px;
 }
 #register span{
-  background-color: #FFA119;
+  background-color: $user;
 }
 #register .icon{
   margin: -3px -2px 0 0;
@@ -148,7 +149,7 @@ a:hover{
     margin-left: -1em;
     i{
       text-align: center;
-      margin-top: -0.7em;
+      margin-top: -0.77em;
     }
   }
 }
@@ -209,11 +210,13 @@ a:hover{
 }
 .system-sidebar{
   color: #329032;
-  // margin: -0.5em 0 0 1em;
 }
 .top{
   background-color: $heading;
   margin: 0;
+}
+.user{
+  color: $user;
 }
 .hidden{
   display: none;

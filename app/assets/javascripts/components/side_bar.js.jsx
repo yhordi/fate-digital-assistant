@@ -35,7 +35,7 @@ var SideBar = React.createClass({
         <li className="navItem">
           <a href={"/users/" + this.props.userId}>PROFILE
            <div className='fl-right profile-sidebar'>
-             <i title="View your profile." className="fa fa-user fa-2x fa-stack"></i>
+             <i title="View your profile." className="user fa fa-user fa-2x fa-stack"></i>
            </div>
            </a>
         </li>
