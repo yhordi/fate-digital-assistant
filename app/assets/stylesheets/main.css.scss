@@ -98,7 +98,6 @@ a:hover{
   height: 30px;
 }
 .games-sidebar{
-  margin-top: -0.5em;
   color: #4169E1;
 }
 .ic-back{
@@ -126,11 +125,8 @@ a:hover{
   padding: 0;
   border-bottom: 1px solid grey;
 }
-.nav *{
-  // border: 1px solid red;
-}
 .nav{
-  padding: 0 0 1em 1em;
+  padding-left: 2em;
   background-color: #302E31;
   display: inline-block;
   height: 100%;
@@ -148,8 +144,12 @@ a:hover{
   display: inline;
   padding-left: 0;
   li{
-    padding: 1em;
+    padding: 1em 0 1em 0;
     margin-left: -1em;
+    i{
+      text-align: center;
+      margin-top: -0.7em;
+    }
   }
 }
 .navThumb{
@@ -192,16 +192,12 @@ a:hover{
   padding-bottom: 1em;
 }
 .profile-sidebar{
-  padding: 8px 10px 8px 10px;
   color: orange;
-  margin: -1em -0.5em;
 }
 .right{
   text-align: right;
 }
-.sideLink{
-  // margin: 0 2em 0 1em;
-}
+
 .square{
   height: 24px;
   width: 24px;
@@ -213,7 +209,7 @@ a:hover{
 }
 .system-sidebar{
   color: #329032;
-  margin: -0.5em 0 0 1em;
+  // margin: -0.5em 0 0 1em;
 }
 .top{
   background-color: $heading;
