@@ -50,10 +50,22 @@ header{
   color: white;
   transition: color, text-shadow, .5s
 }
+#password-icon{
+  margin-right: 1px;
+}
+#register span{
+  background-color: #FFA119;
+}
+#register .icon{
+  margin: -3px -2px 0 0;
+}
 a:hover{
   text-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
   color: white;
   transition: color, text-shadow, .5s
+}
+.center{
+  text-align: center;
 }
 .delete{
   background-color: $alert;
@@ -70,6 +82,20 @@ a:hover{
 }
 .error{
   color: red;
+}
+.form{
+  background-color: #FFFFFF;
+  margin: 0 auto;
+  width: 12.5em;
+}
+.form-header{
+  background-color: #FFA119;
+}
+.form-field{
+  background-color: #F9F6F6;
+  border: none;
+  margin-bottom: 10px;
+  height: 30px;
 }
 .games-sidebar{
   margin-top: -0.5em;
@@ -175,6 +201,15 @@ a:hover{
 }
 .sideLink{
   // margin: 0 2em 0 1em;
+}
+.square{
+  height: 24px;
+  width: 24px;
+}
+.submit{
+  background-color: #14CC4D;
+  border: none;
+  margin: 1em;
 }
 .system-sidebar{
   color: #329032;
