@@ -218,8 +218,16 @@ a:hover{
 .hidden{
   display: none;
 }
-@media (max-width: 800px){
+@media (max-width: 850px){
   .nav{
     left: -6em;
+  }
+  #container{
+    padding-left: 2em;
+  }
+}
+@media (max-width: 1024px){
+  .fl-right-dash{
+    float: right;
   }
 }

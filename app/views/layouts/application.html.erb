@@ -23,7 +23,7 @@
   </div>
     <% if session[:id] %>
       <%= react_component('SideBar', {userId: session[:id]}) %>
-      <div id="container" class="fl-right">
+      <div id="container" class="fl-right-dash">
         <%= yield %>
       </div>
     <% else %>
