@@ -31,7 +31,7 @@ var System = React.createClass({
   },
   handleDelete: function(e){
     e.preventDefault(e)
-    var url = 'systems/' + this.props.id
+    var url = '/systems/' + this.props.id
     var container = document.getElementById('container')
     $.ajax({
       url: url,
@@ -50,7 +50,7 @@ var System = React.createClass({
   },
   handleEdit: function(e){
     e.preventDefault();
-    var url = 'systems/' + this.props.id + '/edit'
+    var url = '/systems/' + this.props.id + '/edit'
     var button = this.props.button
     $.ajax({
       url: url,
