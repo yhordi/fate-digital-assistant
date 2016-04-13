@@ -2,8 +2,15 @@ var SideBar = React.createClass({
   container: function(){
    return document.getElementById('container')
   },
-  getSystems: function(){
+  getSystems: function(e){
+    e.preventDefault()
     ReactDOM.unmountComponentAtNode(this.container())
+    $.ajax({
+      url: 'systems/',
+      success: function(response){
+        ReactDOM.render(<SystemBox data={response}/>, this.container())
+      }.bind(this)
+    })
   },
   render: function() {
     return (
