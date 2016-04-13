@@ -68,6 +68,10 @@ a:hover{
 .error{
   color: red;
 }
+.games-sidebar{
+  margin-top: -0.5em;
+  color: #4169E1;
+}
 .ic-back{
   margin: -0.5em 0 0 0.5em
 }
@@ -113,7 +117,7 @@ a:hover{
   font-family: 'Roboto';
   list-style-type: none;
   display: inline;
-  padding-left: 1em;
+  padding-left: 0;
   li{
       padding: 1em;
       margin-left: -1em;
@@ -158,6 +162,11 @@ a:hover{
 .pad-btm-m{
   padding-bottom: 1em;
 }
+.profile-sidebar{
+  padding: 8px 10px 8px 10px;
+  color: orange;
+  margin: -1em -0.5em;
+}
 .right{
   text-align: right;
 }
@@ -167,11 +176,6 @@ a:hover{
 .system-sidebar{
   color: #329032;
   margin: -0.5em 0 0 1em;
-}
-.profile-sidebar{
-  padding: 8px 10px 8px 10px;
-  color: orange;
-  margin: -1em -0.5em;
 }
 .top{
   background-color: $heading;
