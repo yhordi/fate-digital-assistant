@@ -63,6 +63,12 @@ header{
 #register .icon{
   margin: -3px -2px 0 0;
 }
+#register .fa-stack{
+  line-height: 2.3em;
+}
+#user_password_again{
+  margin: 0;
+}
 a:hover{
   text-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
   color: white;
@@ -98,8 +104,9 @@ a:hover{
 .form-field{
   background-color: #F9F6F6;
   border: none;
-  margin-bottom: 10px;
+  margin: 0 0 10px -1px;
   height: 30px;
+  padding-bottom: 0.5px;
 }
 .games-sidebar{
   color: #4169E1;
@@ -237,3 +244,4 @@ a:hover{
     float: right;
   }
 }
+

@@ -11,7 +11,7 @@ var SystemBox = React.createClass({
   newSystem: function(e) {
     e.preventDefault()
     ReactDOM.render(
-      <Systemform button="Create System" data={[]} />, container
+      <Systemform button="Create System" data={[]} />, document.getElementsByClassName('form-target')[0]
     );
   },
   loadSystemsFromServer: function(){
@@ -29,11 +29,16 @@ var SystemBox = React.createClass({
   render: function() {
     return (
       <div className='systemBox'>
-        <header>Systems</header>
-        <h3>
-          <a onClick={this.newSystem} href=''>Make a new system</a>
-        </h3>
-        <SystemList data={this.state.systems} />
+        <div className='row'>
+          <div className="col span-6-d">
+            <header>Systems</header>
+            <h3>
+              <a onClick={this.newSystem} href=''>Make a new system</a>
+            </h3>
+            <SystemList data={this.state.systems} />
+          </div>
+          <div className="col span-6-d form-target"></div>
+        </div>
       </div>
     );
   }
