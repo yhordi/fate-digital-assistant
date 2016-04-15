@@ -64,21 +64,25 @@ var System = React.createClass({
   render: function() {
     return (
       <div name={this.props.name} description={this.props.description} className='system row'>
-        <div className="row">
         <h2 className="no-margin">
           {this.props.name}
         </h2>
-          <div className="col span-12-t">
+        <button onClick={this.handleEdit}>Edit</button>
+        <button onClick={this.handleDelete} className='delete'>Delete</button>
+        <div className="row">
+          <div className="col span-12-t inline">
             <ul className="list-hz">
               <li>
                 <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
               </li>
+              <li>Games</li>
+              <li>NPC's</li>
+              <li>Locations</li>
             </ul>
           </div>
         </div>
         <p>{this.props.description}</p>
-        <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={this.handleDelete} className='delete'>Delete</button>
+
       </div>
     );
   }
