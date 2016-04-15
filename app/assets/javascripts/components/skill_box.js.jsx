@@ -27,23 +27,6 @@ var SkillBox = React.createClass({
         <h2 className="no-margin">
           {this.props.systemName}
         </h2>
-        <div className="m-btm-m">
-          <ul className="list-hz">
-            <li>
-              <a onClick={this.handleBackToSystems} href="systems/">
-                My Systems
-              </a>/
-            </li>
-            <li>
-              <a onClick={this.handleBackToSystem} href="#">
-                {this.props.systemName}
-              </a>/
-            </li>
-            <li>
-              Skills List
-            </li>
-          </ul>
-        </div>
         <SkillList systemId={this.props.systemId} systemName={this.props.systemName} data={this.props.data} />
       </div>
     );
