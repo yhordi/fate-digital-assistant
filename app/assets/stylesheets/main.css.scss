@@ -1,3 +1,4 @@
+$system: #329032;
 $bright: #E1E0E0;
 $heading: #7128C1;
 $dark: #000000;
@@ -98,7 +99,7 @@ a:hover{
   margin: 0 auto;
   width: 12.5em;
 }
-.form-header{
+#register .form-header{
   background-color: #FFA119;
 }
 .form-field{
@@ -132,7 +133,7 @@ a:hover{
   }
 }
 .list-hz{
-  @extend .navlist;
+  list-style-type: none;
   padding: 0;
   border-bottom: 1px solid grey;
 }
@@ -219,7 +220,10 @@ a:hover{
   margin: 1em;
 }
 .system-sidebar{
-  color: #329032;
+  color: $system;
+}
+.systemBox .form-header{
+  background-color: $system;
 }
 .top{
   background-color: $heading;

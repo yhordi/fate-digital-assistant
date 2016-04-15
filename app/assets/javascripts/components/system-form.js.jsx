@@ -102,9 +102,9 @@ var Systemform = React.createClass({
   render: function() {
     return (
       <div>
-        <a onClick={this.handleBack} href='/systems'>back to my systems</a>
         <form className='form center' onSubmit={this.handleSubmit}>
           <div title="Your system's name.">
+            <h3 className="form-header">{this.props.button}</h3>
             <label for="name">System Name</label>
           </div>
           <input id="name" className='form-field' onChange={this.updateNameState} value={this.state.name} type='text'/> <span id='nameNotice'></span>
