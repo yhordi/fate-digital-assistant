@@ -217,7 +217,14 @@ a:hover{
 .right{
   text-align: right;
 }
-
+.skillForm{
+  display: inline-block;
+  text-align: center;
+}
+.skillForm .form-header{
+  background-color: $system;
+  margin: 0;
+}
 .square{
   height: 24px;
   width: 24px;

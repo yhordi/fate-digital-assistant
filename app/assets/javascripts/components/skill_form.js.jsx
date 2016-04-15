@@ -51,34 +51,31 @@ var SkillForm = React.createClass({
   },
   render: function() {
     return(
-      <form onSubmit={this.handleSubmit}>
-          <label for="skillName">Skill Name</label>
+      // <div className='form skillForm'>
+      <form className='form skillForm' onSubmit={this.handleSubmit}>
+        <h3 className='form-header'>New Skill</h3>
         <div>
-          <input onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
+          <input placeholder="Skill Name" className="form-field" onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
         </div>
-          <label for="skillDescription">Description</label>
         <div>
-          <textarea onChange={this.updateState} value={this.props.data.description} id="skillDescription" name="description"></textarea>
+          <textarea placeholder="Description" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.description} id="skillDescription" name="description"></textarea>
         </div>
-          <label for="advantage">Create an Advantage</label>
         <div>
-          <textarea onChange={this.updateState} value={this.props.data.advantage} id="advantage" name="advantage"></textarea>
+          <textarea placeholder="Create an Advantage" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.advantage} id="advantage" name="advantage"></textarea>
         </div>
-          <label for="overcome">Overcome</label>
         <div>
-          <textarea onChange={this.updateState} value={this.props.data.overcome} id="overcome" name="overcome"></textarea>
+          <textarea placeholder="Overcome" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.overcome} id="overcome" name="overcome"></textarea>
         </div>
-          <label for="attack">attack</label>
         <div>
-          <textarea onChange={this.updateState} value={this.props.data.attack} id="attack" name="attack"></textarea>
+          <textarea placeholder="attack" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.attack} id="attack" name="attack"></textarea>
         </div>
-          <label for="defend">defend</label>
         <div>
-          <textarea onChange={this.updateState} value={this.props.data.defend} id="defend" name="defend"></textarea>
+          <textarea placeholder="defend" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.defend} id="defend" name="defend"></textarea>
         </div>
         <input type="hidden" name="systemId" value={this.props.systemId}/>
-        <input type="submit" value={this.props.button} />
+        <input className='submit' type="submit" value={this.props.button} />
       </form>
+      // </div>
     )
   }
 });

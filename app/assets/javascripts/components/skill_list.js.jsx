@@ -1,8 +1,8 @@
 var SkillList = React.createClass({
   handleNew: function(e){
     e.preventDefault();
-    var container = document.getElementById('container')
-    ReactDOM.unmountComponentAtNode(container)
+    var container = document.getElementsByClassName('skillFormTarget')[0]
+    // ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
       <SkillForm data={[]} systemName={this.props.systemName} button={"Create Skill"} systemId={this.props.systemId} />, container
     )
@@ -14,7 +14,8 @@ var SkillList = React.createClass({
       )
     }.bind(this));
     return (
-      <div className='skillList'>
+      <div>
+      <div className='skillList col span-4-t'>
         <ul className="list-hz">
           <li>
             Skills |
@@ -26,6 +27,8 @@ var SkillList = React.createClass({
         <div className='m-top'>
           {skillLinks}
         </div>
+      </div>
+      <div className="skillFormTarget co span-8-t"></div>
       </div>
     );
   }

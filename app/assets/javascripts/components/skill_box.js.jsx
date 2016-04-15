@@ -23,9 +23,9 @@ var SkillBox = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className='row'>
         <h2 className="no-margin">
-          {this.props.systemName}
+          <a>{this.props.systemName}</a>
         </h2>
         <SkillList systemId={this.props.systemId} systemName={this.props.systemName} data={this.props.data} />
       </div>
