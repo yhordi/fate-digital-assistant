@@ -4,7 +4,7 @@ var Skill = React.createClass({
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
     var systemName = this.props.systemName
-    var url = 'systems/' + this.props.data.system_id + '/skills'
+    var url = '/systems/' + this.props.data.system_id + '/skills'
     $.ajax({
       url: url,
       success: function(response){
@@ -38,7 +38,7 @@ var Skill = React.createClass({
   },
   handleDelete: function(e){
     e.preventDefault()
-    var url = 'systems/' + this.props.data.system_id + '/skills/' + this.props.data.id
+    var url = '/systems/' + this.props.data.system_id + '/skills/' + this.props.data.id
     var container = document.getElementById('container')
     $.ajax({
       url: url,
