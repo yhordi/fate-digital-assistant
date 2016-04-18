@@ -157,6 +157,11 @@ a:hover{
 }
 .navItem{
   font-family: 'Aldritch', sans-serif;
+  text-decoration: none;
+}
+.navItem a:active{
+  color: $bright;
+  text-decoration: underline;
 }
 .navlist{
   font-family: 'Roboto';
