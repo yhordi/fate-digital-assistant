@@ -250,6 +250,11 @@ a:hover{
 .hidden{
   display: none;
 }
+@media (max-width: 875px){
+  #container{
+    margin-right: -2em;
+  }
+}
 @media (max-width: 850px){
   .nav{
     left: -6em;
