@@ -225,6 +225,11 @@ a:hover{
 .skillForm{
   display: inline-block;
   text-align: center;
+  width: 24em;
+  textarea{
+    width: 300px;
+    height: 80px;
+  }
 }
 .skillForm .form-header{
   background-color: $system;

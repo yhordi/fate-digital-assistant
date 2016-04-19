@@ -63,9 +63,12 @@ var Skill = React.createClass({
   render: function() {
     return(
       <div>
-        <h3 className="no-margin">
-          {this.props.data.name}
+        <h3>
+        <a onClick={this.handleBackToSystem}>{this.props.data.systemName}</a>
         </h3>
+        <h4 className="no-margin">
+          {this.props.data.name}
+        </h4>
         <p>
           {this.props.data.description}
         </p>
