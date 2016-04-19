@@ -77,6 +77,9 @@ a:hover{
 .center{
   text-align: center;
 }
+.close-form{
+  margin-left: 60%
+}
 .delete{
   background-color: $alert;
   color: white;
@@ -101,6 +104,11 @@ a:hover{
   max-width: 66%;
   .form-field{
     max-width: 80%;
+  }
+}
+.form-header{
+  span{
+    color: black;
   }
 }
 #register .form-header{
@@ -272,6 +280,9 @@ a:hover{
   }
   #container{
     padding-left: 2em;
+  }
+  .close-form{
+    margin-left: 58%;
   }
 }
 @media (max-width: 1024px){

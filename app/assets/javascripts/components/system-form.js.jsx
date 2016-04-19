@@ -102,12 +102,17 @@ var Systemform = React.createClass({
   render: function() {
     return (
       <div>
-        <form className='form center' onSubmit={this.handleSubmit}>
+        <form className='form center system-form' onSubmit={this.handleSubmit}>
           <div title="Your system's name.">
-            <h3 className="form-header">{this.props.button}</h3>
+            <h3 className="form-header">{this.props.button}
+              <a className="close-form" onClick={this.handleBack}>
+                <span className="fa fa-close">
+                </span>
+              </a>
+            </h3>
             <label for="name">System Name</label>
           </div>
-          <input id="name" className='form-field' onChange={this.updateNameState} value={this.state.name} type='text'/> <span id='nameNotice'></span>
+          <input id="name" className='form-field' onChange={this.updateNameState} value={this.state.name} type='text'/><span id='nameNotice'></span>
           <div>
             <div title="You'll write a brief description here to give players a quick understanding of what your system is.">
               <label for="desc">Description</label>
