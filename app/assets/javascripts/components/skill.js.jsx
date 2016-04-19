@@ -4,12 +4,13 @@ var Skill = React.createClass({
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
     var systemName = this.props.systemName
-    var url = '/systems/' + this.props.data.system_id + '/skills'
+    var systemId = this.props.data.system_id
+    var url = '/systems/' + systemId + '/skills'
     $.ajax({
       url: url,
       success: function(response){
           ReactDOM.render(
-            <SkillBox data={response} systemName={systemName} />, container
+            <SkillBox data={response} systemName={systemName} systemId={systemId}/>, container
           )
       }
     })
