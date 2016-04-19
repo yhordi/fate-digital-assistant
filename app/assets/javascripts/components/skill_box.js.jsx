@@ -1,5 +1,5 @@
 var SkillBox = React.createClass({
-  handleBackToSystem: function(e){
+  backToSystem: function(e){
     e.preventDefault(e)
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
@@ -25,8 +25,9 @@ var SkillBox = React.createClass({
     return (
       <div className='row'>
         <h2 className="no-margin">
-          <a onClick={this.handleBackToSystem}>{this.props.systemName}</a>
+          {this.props.systemName}
         </h2>
+        <button onClick={this.backToSystem}>Back</button>
         <SkillList systemId={this.props.systemId} systemName={this.props.systemName} data={this.props.data} />
       </div>
     );
