@@ -1,5 +1,5 @@
 var Skill = React.createClass({
-  handleBackToSkills: function(e){
+  backToSkills: function(e){
     e.preventDefault()
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
@@ -63,35 +63,16 @@ var Skill = React.createClass({
   render: function() {
     return(
       <div>
-        <h3>
-        <a onClick={this.handleBackToSystem}>{this.props.data.systemName}</a>
-        </h3>
-        <h4 className="no-margin">
+        <h2 className="no-margin">
+          {this.props.systemName}
+        </h2>
+        <button onClick={this.backToSkills}>Back</button>
+        <h3 className="no-margin">
           {this.props.data.name}
-        </h4>
+        </h3>
         <p>
           {this.props.data.description}
         </p>
-        <div className="m-btm-m">
-          <ul className="list-hz">
-            <li>
-              <a onClick={this.handleBackToSystems} href='/systems'>My Systems
-              </a>/
-            </li>
-            <li>
-              <a onClick={this.handleBackToSystem} href="#">
-                {this.props.systemName}
-              </a>/
-            </li>
-            <li>
-              <a onClick={this.handleBackToSkills}href="#">Skills List</a>
-            </li>
-            <li>
-              /{this.props.data.name}
-            </li>
-          </ul>
-        </div>
-
         <h4>Overcome</h4>
         <p>
           {this.props.data.overcome}
