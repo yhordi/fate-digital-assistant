@@ -67,8 +67,7 @@ var System = React.createClass({
         <h2 className="no-margin">
           {this.props.name}
         </h2>
-        <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={this.handleDelete} className='delete'>Delete</button>
+
         <div className="row">
           <div className="col span-12-t inline">
             <ul className="list-hz">
@@ -82,7 +81,8 @@ var System = React.createClass({
           </div>
         </div>
         <p>{this.props.description}</p>
-
+        <button onClick={this.handleEdit}>Edit</button>
+        <button onClick={this.handleDelete} className='delete'>Delete</button>
       </div>
     );
   }
