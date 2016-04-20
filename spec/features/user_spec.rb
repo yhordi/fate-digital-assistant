@@ -8,9 +8,9 @@ describe 'User', js: true do
         fill_in 'user[name]', with: username
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_again]', with: 'password'
-        click_on 'Create User'
+        click_on 'Register'
       end
-      expect(page).to have_content(username)
+      expect(page).to have_content("FATE: Dimensions Account created.")
     end
   end
   context 'logged in and editing their profile' do
