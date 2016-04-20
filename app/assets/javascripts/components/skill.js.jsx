@@ -58,7 +58,7 @@ var Skill = React.createClass({
   handleEdit: function(e){
     e.preventDefault()
     ReactDOM.render(
-      <SkillForm data={this.props.data} button={"Update Skill"}/>, container
+      <SkillForm data={this.props.data} button={"Update Skill"} systemName={this.props.systemName}/>, container
     );
   },
   render: function() {

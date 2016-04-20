@@ -99,7 +99,6 @@ a:hover{
 .form{
   background-color: #FFFFFF;
   margin: 0 auto;
-  // width: 12.5em;
   min-width: 20%;
   max-width: 66%;
   .form-field{
@@ -110,6 +109,9 @@ a:hover{
   span{
     color: black;
   }
+}
+#register{
+  width: 12.5em;
 }
 #register .form-header{
   background-color: #FFA119;
