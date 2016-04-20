@@ -1,6 +1,6 @@
 require 'faker'
-# user = User.new(name: "user", password: ENV["PASSWORD"])
-# user.save!
+user = User.new(name: "user", password: ENV["PASSWORD"])
+user.save!
 no_conflict = "This skill is not used for conflicts."
 no_attack = "This skill is not used for attacks."
 no_defense = "This skill is not used for defense."

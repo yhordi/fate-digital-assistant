@@ -2,6 +2,7 @@ class System < ActiveRecord::Base
   include DefaultSkillsHelper
   belongs_to :user
   has_many :skills
+  has_many :npcs
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, uniqueness: true
   validates :user_id, presence: true

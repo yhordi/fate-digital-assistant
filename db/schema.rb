@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20160420224928) do
 
   create_table "npcs", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "npc_type"
     t.text     "background"
     t.integer  "system_id"
     t.datetime "created_at", null: false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20160420224928) do
     t.boolean  "default_set"
     t.text     "special"
   end
+
+  add_index "skills", ["system_id"], name: "index_skills_on_system_id", using: :btree
 
   create_table "systems", force: :cascade do |t|
     t.string   "name"
