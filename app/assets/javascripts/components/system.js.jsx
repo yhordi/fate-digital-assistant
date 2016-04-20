@@ -1,4 +1,7 @@
 var System = React.createClass({
+  container: function(){
+    document.getElementById('container')
+  },
   propTypes: {
     name: React.PropTypes.string,
     id: React.PropTypes.number,
@@ -7,9 +10,23 @@ var System = React.createClass({
   getInitialState: function(){
     return data = {system: this.props};
   },
+  getNpcs: function(e){
+    e.preventDefault()
+    var container = this.container()
+    var url = e.target.href
+    var systemName = this.props.name
+    var systemId = this.props.id
+    $.ajax({
+      url: url,
+    }).done(function(data){
+      ReactDOM.render(
+        <NpcBox data={data} systemName={systemName} systemId={systemId} />, container
+      );
+    })
+  },
   getSkills: function(e){
     e.preventDefault();
-    var container = document.getElementById('container');
+    var container = this.container()
     var url = e.target.href
     var systemName = this.props.name
     var systemId = this.props.id
@@ -74,7 +91,9 @@ var System = React.createClass({
                 <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
               </li>
               <li>Games</li>
-              <li>NPC's</li>
+              <li>
+                <a id="npcIndex" onClick={this.getNpcs} href={"/systems/" + this.props.id + "/npcs/"}>NPCs</a>
+              </li>
               <li>Locations</li>
             </ul>
           </div>
