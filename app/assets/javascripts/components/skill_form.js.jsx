@@ -18,6 +18,22 @@ var SkillForm = React.createClass({
   getInitialState: function() {
     return {system_id: this.props.systemId}
   },
+  handleBack: function(e){
+    e.preventDefault()
+    var container = document.getElementById('container')
+    var systemId = this.props.systemId
+    var url = '/systems/' + this.props.systemId + '/skills/'
+    // debugger
+    ReactDOM.unmountComponentAtNode(container)
+    $.ajax({
+      url: url,
+      success: function(response){
+        ReactDOM.render(
+          <SkillBox data={response} systemId={systemId}/>, container
+        )
+      }
+    })
+  },
   handleSubmit: function(e) {
     e.preventDefault()
     if(this.props.button == "Create Skill"){
@@ -53,7 +69,13 @@ var SkillForm = React.createClass({
     return(
       <div>
         <form className='form skillForm' onSubmit={this.handleSubmit}>
-          <h3 className='form-header'>{this.props.button}</h3>
+          <h3 className='form-header'>
+            {this.props.button}
+            <a className="close-form" onClick={this.handleBack}>
+              <span className="fa fa-close">
+              </span>
+            </a>
+          </h3>
           <div>
             <input placeholder="Skill Name" className="form-field" onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
           </div>
