@@ -31,7 +31,7 @@ var System = React.createClass({
   },
   handleDelete: function(e){
     e.preventDefault(e)
-    var url = 'systems/' + this.props.id
+    var url = '/systems/' + this.props.id
     var container = document.getElementById('container')
     $.ajax({
       url: url,
@@ -50,7 +50,7 @@ var System = React.createClass({
   },
   handleEdit: function(e){
     e.preventDefault();
-    var url = 'systems/' + this.props.id + '/edit'
+    var url = '/systems/' + this.props.id + '/edit'
     var button = this.props.button
     $.ajax({
       url: url,
@@ -64,18 +64,18 @@ var System = React.createClass({
   render: function() {
     return (
       <div name={this.props.name} description={this.props.description} className='system row'>
-        <div className="row">
         <h2 className="no-margin">
           {this.props.name}
         </h2>
-        <div className="m-btm-m">
-          <a className='list-hz' onClick={this.handleBack} href='/systems'>back to my systems</a>
-        </div>
-          <div className="col span-12-t">
+        <div className="row">
+          <div className="col span-12-t inline">
             <ul className="list-hz">
               <li>
-                <a id="skillsIndex" onClick={this.getSkills} href={"systems/" + this.props.id + "/skills/"}>Skills</a>
+                <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
               </li>
+              <li>Games</li>
+              <li>NPC's</li>
+              <li>Locations</li>
             </ul>
           </div>
         </div>

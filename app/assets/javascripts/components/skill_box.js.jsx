@@ -1,9 +1,9 @@
 var SkillBox = React.createClass({
-  handleBackToSystem: function(e){
+  backToSystem: function(e){
     e.preventDefault(e)
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
-    var url = 'systems/' + this.props.systemId
+    var url = '/systems/' + this.props.systemId
     $.ajax({
       url: url,
       success: function(data){
@@ -23,27 +23,11 @@ var SkillBox = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className='row'>
         <h2 className="no-margin">
           {this.props.systemName}
         </h2>
-        <div className="m-btm-m">
-          <ul className="list-hz">
-            <li>
-              <a onClick={this.handleBackToSystems} href="systems/">
-                My Systems
-              </a>/
-            </li>
-            <li>
-              <a onClick={this.handleBackToSystem} href="#">
-                {this.props.systemName}
-              </a>/
-            </li>
-            <li>
-              Skills List
-            </li>
-          </ul>
-        </div>
+        <button onClick={this.backToSystem}>Back</button>
         <SkillList systemId={this.props.systemId} systemName={this.props.systemName} data={this.props.data} />
       </div>
     );

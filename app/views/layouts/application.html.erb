@@ -5,13 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <%= favicon_link_tag %>
 </head>
 <body>
   <div class="top row">
-    <div class="pad-left col span-7-d span-7-t">
+    <div class="pad-left col span-8-d span-8-t">
       <span class="header"> <%= link_to "FATE: Dimensions", root_path %> </span>
     </div>
-    <div class="pad-right col span-5-d span-5-t right pad-top">
+    <div class="pad-right col span-4-d span-4-t right pad-top">
       <% if session[:id] == nil %>
         <%= render "sessions/new" %>
       <% else %>
@@ -19,20 +21,15 @@
       <% end %>
     </div>
   </div>
-  <div class= "nav row m-btm">
-    <ul class= "navlist">
-      <li>
-      <% if session[:id] == nil %>
-        <%= link_to "SYSTEMS", systems_path %>
-      <% else %>
-        <%= link_to "MY SYSTEMS", systems_path %>
-      <% end %>
-      </li>
-      <li id="notice" class="dark" ></li>
-    </ul>
-  </div>
-  <div id="container">
-    <%= yield %>
-  </div>
+    <% if session[:id] %>
+      <%= react_component('SideBar', {userId: session[:id]}) %>
+      <div id="container" class="fl-right-dash">
+        <%= yield %>
+      </div>
+    <% else %>
+      <div id="container">
+        <%= yield %>
+      </div>
+    <% end %>
 </body>
 </html>

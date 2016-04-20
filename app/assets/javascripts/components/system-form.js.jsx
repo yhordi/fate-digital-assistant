@@ -102,17 +102,22 @@ var Systemform = React.createClass({
   render: function() {
     return (
       <div>
-        <a onClick={this.handleBack} href='/systems'>back to my systems</a>
-        <form onSubmit={this.handleSubmit}>
+        <form className='form center system-form' onSubmit={this.handleSubmit}>
           <div title="Your system's name.">
+            <h3 className="form-header">{this.props.button}
+              <a className="close-form" onClick={this.handleBack}>
+                <span className="fa fa-close">
+                </span>
+              </a>
+            </h3>
             <label for="name">System Name</label>
           </div>
-          <input id="name" onChange={this.updateNameState} value={this.state.name} type='text'/> <span id='nameNotice'></span>
+          <input id="name" className='form-field' onChange={this.updateNameState} value={this.state.name} type='text'/><span id='nameNotice'></span>
           <div>
             <div title="You'll write a brief description here to give players a quick understanding of what your system is.">
               <label for="desc">Description</label>
             </div>
-            <textarea id="desc" onChange={this.updateDescriptionState} value={this.state.description} rows='5' cols='18'></textarea>
+            <textarea id="desc" className='form-field' rows="50" cols="25" onChange={this.updateDescriptionState} value={this.state.description}></textarea>
             <span id="descNotice"></span>
           </div>
           <div title="Check this box if you want to build your system with the default set of skills as laid out in the fate core rulebook. You can delete or edit the skills at any time. You can also add these skills later.">

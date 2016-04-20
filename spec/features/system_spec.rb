@@ -34,7 +34,7 @@ describe 'System', js: true do
     end
     describe 'creating a new system' do
       before(:each) do
-        click_link 'Make a new system'
+        click_button 'Create New'
       end
       it 'sees a form rendered on click of the Make a new system link' do
         expect(page).to have_content('System Name')

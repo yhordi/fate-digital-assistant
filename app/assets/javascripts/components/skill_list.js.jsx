@@ -14,7 +14,8 @@ var SkillList = React.createClass({
       )
     }.bind(this));
     return (
-      <div className='skillList'>
+      <div>
+      <div className='skillList col span-5-t'>
         <ul className="list-hz">
           <li>
             Skills |
@@ -26,6 +27,8 @@ var SkillList = React.createClass({
         <div className='m-top'>
           {skillLinks}
         </div>
+      </div>
+      <div className="skillFormTarget co span-7-t"></div>
       </div>
     );
   }

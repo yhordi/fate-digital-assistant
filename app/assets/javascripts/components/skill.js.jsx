@@ -1,15 +1,16 @@
 var Skill = React.createClass({
-  handleBackToSkills: function(e){
+  backToSkills: function(e){
     e.preventDefault()
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
     var systemName = this.props.systemName
-    var url = 'systems/' + this.props.data.system_id + '/skills'
+    var systemId = this.props.data.system_id
+    var url = '/systems/' + systemId + '/skills'
     $.ajax({
       url: url,
       success: function(response){
           ReactDOM.render(
-            <SkillBox data={response} systemName={systemName} />, container
+            <SkillBox data={response} systemName={systemName} systemId={systemId}/>, container
           )
       }
     })
@@ -38,7 +39,7 @@ var Skill = React.createClass({
   },
   handleDelete: function(e){
     e.preventDefault()
-    var url = 'systems/' + this.props.data.system_id + '/skills/' + this.props.data.id
+    var url = '/systems/' + this.props.data.system_id + '/skills/' + this.props.data.id
     var container = document.getElementById('container')
     $.ajax({
       url: url,
@@ -57,38 +58,22 @@ var Skill = React.createClass({
   handleEdit: function(e){
     e.preventDefault()
     ReactDOM.render(
-      <SkillForm data={this.props.data} button={"Update Skill"}/>, container
+      <SkillForm data={this.props.data} button={"Update Skill"} systemName={this.props.systemName}/>, container
     );
   },
   render: function() {
     return(
       <div>
+        <h2 className="no-margin">
+          {this.props.systemName}
+        </h2>
+        <button onClick={this.backToSkills}>Back</button>
         <h3 className="no-margin">
           {this.props.data.name}
         </h3>
         <p>
           {this.props.data.description}
         </p>
-        <div className="m-btm-m">
-          <ul className="list-hz">
-            <li>
-              <a onClick={this.handleBackToSystems} href='/systems'>My Systems
-              </a>/
-            </li>
-            <li>
-              <a onClick={this.handleBackToSystem} href="#">
-                {this.props.systemName}
-              </a>/
-            </li>
-            <li>
-              <a onClick={this.handleBackToSkills}href="#">Skills List</a>
-            </li>
-            <li>
-              /{this.props.data.name}
-            </li>
-          </ul>
-        </div>
-
         <h4>Overcome</h4>
         <p>
           {this.props.data.overcome}

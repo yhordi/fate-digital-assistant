@@ -18,6 +18,28 @@ var SkillForm = React.createClass({
   getInitialState: function() {
     return {system_id: this.props.systemId}
   },
+  handleBack: function(e){
+    e.preventDefault()
+    var container = document.getElementById('container')
+    var systemName = this.props.systemName
+    if(this.props.button == "Update Skill") {
+      // var systemName = this.props.data.systemName
+      var systemId = this.props.data.system_id
+      var url = '/systems/' + systemId + '/skills/'
+    } else {
+      var systemId = this.props.systemId
+      var url = '/systems/' + systemId + '/skills/'
+    }
+    ReactDOM.unmountComponentAtNode(container)
+    $.ajax({
+      url: url,
+      success: function(response){
+        ReactDOM.render(
+          <SkillBox data={response} systemId={systemId} systemName={systemName} />, container
+        )
+      }
+    })
+  },
   handleSubmit: function(e) {
     e.preventDefault()
     if(this.props.button == "Create Skill"){
@@ -51,34 +73,37 @@ var SkillForm = React.createClass({
   },
   render: function() {
     return(
-      <form onSubmit={this.handleSubmit}>
-          <label for="skillName">Skill Name</label>
-        <div>
-          <input onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
-        </div>
-          <label for="skillDescription">Description</label>
-        <div>
-          <textarea onChange={this.updateState} value={this.props.data.description} id="skillDescription" name="description"></textarea>
-        </div>
-          <label for="advantage">Create an Advantage</label>
-        <div>
-          <textarea onChange={this.updateState} value={this.props.data.advantage} id="advantage" name="advantage"></textarea>
-        </div>
-          <label for="overcome">Overcome</label>
-        <div>
-          <textarea onChange={this.updateState} value={this.props.data.overcome} id="overcome" name="overcome"></textarea>
-        </div>
-          <label for="attack">attack</label>
-        <div>
-          <textarea onChange={this.updateState} value={this.props.data.attack} id="attack" name="attack"></textarea>
-        </div>
-          <label for="defend">defend</label>
-        <div>
-          <textarea onChange={this.updateState} value={this.props.data.defend} id="defend" name="defend"></textarea>
-        </div>
-        <input type="hidden" name="systemId" value={this.props.systemId}/>
-        <input type="submit" value={this.props.button} />
-      </form>
+      <div>
+        <form className='form skillForm' onSubmit={this.handleSubmit}>
+          <h3 className='form-header'>
+            {this.props.button}
+            <a className="close-form" onClick={this.handleBack}>
+              <span className="fa fa-close">
+              </span>
+            </a>
+          </h3>
+          <div>
+            <input placeholder="Skill Name" className="form-field" onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
+          </div>
+          <div>
+            <textarea placeholder="Description" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.description} id="skillDescription" name="description"></textarea>
+          </div>
+          <div>
+            <textarea placeholder="Create an Advantage" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.advantage} id="advantage" name="advantage"></textarea>
+          </div>
+          <div>
+            <textarea placeholder="Overcome" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.overcome} id="overcome" name="overcome"></textarea>
+          </div>
+          <div>
+            <textarea placeholder="attack" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.attack} id="attack" name="attack"></textarea>
+          </div>
+          <div>
+            <textarea placeholder="defend" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.defend} id="defend" name="defend"></textarea>
+          </div>
+          <input type="hidden" name="systemId" value={this.props.systemId}/>
+          <input className='submit' type="submit" value={this.props.button} />
+        </form>
+      </div>
     )
   }
 });

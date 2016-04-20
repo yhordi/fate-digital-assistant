@@ -1,37 +1,94 @@
+$system: #329032;
 $bright: #E1E0E0;
 $heading: #7128C1;
 $dark: #000000;
 $bodytext: #CCCBCB;
 $alert: #B12515;
+$user: #FFA119;
 
 @font-face {
   font-family: 'Roboto';
-  url: font-url('RobotoCondensed-Light.ttf');
+  src: url('/assets/RobotoCondensed-Light.ttf');
   font-weight: normal;
   font-style: normal;
 }
-.inline{
-  display: inline;
+@font-face{
+  font-family: 'Aldritch';
+  src: url('/assets/Aldrich-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 body{
-  background: image_url("wood_pattern.png")
+  background: image_url('brushed.png');
+  font-family: 'Roboto'
+}
+button{
+  transition: color, box-shadow, .5s;
+  border: none;
+}
+button:hover {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+  background-color: white;
+  transition: color, box-shadow, .5s
 }
 a {
   color: $bright;
   text-decoration: none;
   transition: color, text-shadow, .5s
 }
+header{
+  font-size: 2em;
+}
+#container{
+  padding: 1%;
+  background: image_url('brushed.png');
+}
+#container a{
+  color: #09B23D
+}
+#container a:hover{
+  text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+  color: white;
+  transition: color, text-shadow, .5s
+}
+#desc{
+  height: 6em;
+}
+#password-icon{
+  margin-right: 1px;
+}
+#register span{
+  background-color: $user;
+}
+#register .icon{
+  margin: -3px -2px 0 0;
+}
+#register .fa-stack{
+  line-height: 2.3em;
+}
+#user_password_again{
+  margin: 0;
+}
 a:hover{
   text-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
   color: white;
   transition: color, text-shadow, .5s
 }
-.top{
-  background-color: $heading;
-  margin: 0;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+.center{
+  text-align: center;
+}
+.close-form{
+  margin-left: 60%
+}
+.delete{
+  background-color: $alert;
+  color: white;
+  margin-left: 1em;
+}
+.delete:hover{
+  box-shadow: 0px 0px 30px rgba(177, 37, 21, 1);
+  color: black;
+  transition: color, .5s
 }
 .dark{
   background-color: $dark;
@@ -39,11 +96,48 @@ a:hover{
 .error{
   color: red;
 }
-.notice{
-  color: yellow;
+.form{
+  background-color: #FFFFFF;
+  margin: 0 auto;
+  min-width: 20%;
+  max-width: 66%;
+  .form-field{
+    max-width: 80%;
+  }
 }
-.right{
-  text-align: right;
+.form-header{
+  span{
+    color: black;
+  }
+}
+#register{
+  width: 12.5em;
+}
+#register .form-header{
+  background-color: #FFA119;
+}
+.form-field{
+  width: 100%;
+  background-color: #F9F6F6;
+  border: none;
+  margin: 0 0 10px -1px;
+  height: 30px;
+  padding-bottom: 0.5px;
+}
+.games-sidebar{
+  color: #4169E1;
+}
+.ic-back{
+  margin: -0.5em 0 0 0.5em
+}
+.inline{
+  display: inline;
+}
+.fl-left{
+  float: left;
+}
+.fl-right{
+  float: right;
 }
 .header{
   color: $bright;
@@ -53,8 +147,67 @@ a:hover{
     color: $bright;
   }
 }
+.list-hz{
+  list-style-type: none;
+  padding: 0;
+  border-bottom: 1px solid grey;
+  li{
+    display: inline;
+    margin-right: 1em;
+  }
+}
+.nav{
+  padding-left: 2em;
+  background-color: #302E31;
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  -webkit-transition: left 0.5s;
+  transition: left 0.5s;
+}
+.navItem{
+  font-family: 'Aldritch', sans-serif;
+  text-decoration: none;
+}
+.navItem a:active{
+  color: $bright;
+  text-decoration: underline;
+}
+.navlist{
+  font-family: 'Roboto';
+  list-style-type: none;
+  display: inline;
+  padding-left: 0;
+  li{
+    padding: 1em 0 1em 0;
+    margin-left: -1em;
+    i{
+      text-align: center;
+      margin-top: -0.77em;
+    }
+  }
+}
 .navThumb{
   vertical-align: middle;
+}
+.no-margin{
+  margin: 0;
+}
+.notice{
+  color: yellow;
+}
+.m-btm{
+  margin-bottom: 1%;
+}
+.m-btm-m{
+  margin-bottom: 1em;
+}
+.no-m-btm{
+  margin-bottom: 0;
+}
+.m-top{
+  margin-top: 1%
 }
 .pad{
   padding: 1%;
@@ -74,79 +227,69 @@ a:hover{
 .pad-btm-m{
   padding-bottom: 1em;
 }
-.m-btm{
-  margin-bottom: 1%;
+.profile-sidebar{
+  color: orange;
 }
-.m-btm-m{
-  margin-bottom: 1em;
+.right{
+  text-align: right;
 }
-.no-m-btm{
-  margin-bottom: 0;
-}
-.m-top{
-  margin-top: 1%
-}
-.nav{
-  background-color: #A19DA3;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-}
-.navlist{
-  font-family: 'Roboto';
-  list-style-type: none;
-  display: inline;
-  padding-left: 1em;
-  li {
-    display: inline;
+.skillForm{
+  display: inline-block;
+  text-align: center;
+  width: 24em;
+  textarea{
+    width: 300px;
+    height: 80px;
   }
 }
-
-#container{
-  padding: 1%;
-  background: image_url('brushed.png');
-    -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.75);
+.skillForm .form-header{
+  background-color: $system;
+  margin: 0;
 }
-#container a{
-  color: #09B23D
+.square{
+  height: 24px;
+  width: 24px;
 }
-#container a:hover{
-  text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
-  color: white;
-  transition: color, text-shadow, .5s
+.submit{
+  background-color: #14CC4D;
+  border: none;
+  margin: 1em;
 }
-
+.system-sidebar{
+  color: $system;
+}
+.system-form .form-header{
+  background-color: $system;
+}
+.top{
+  background-color: $heading;
+  margin: 0;
+}
+.user{
+  color: $user;
+}
 .hidden{
   display: none;
 }
-button{
-  transition: color, box-shadow, .5s;
-  border: none;
-  border-radius: .5em;
+@media (max-width: 875px){
+  #container{
+    margin-right: -2em;
+  }
 }
-.delete{
-  background-color: $alert;
-  color: white;
-  margin-left: 1em;
+@media (max-width: 850px){
+  .nav{
+    left: -6em;
+  }
+  #container{
+    padding-left: 2em;
+  }
+  .close-form{
+    margin-left: 58%;
+  }
 }
-button:hover {
-  box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
-  background-color: white;
-  transition: color, box-shadow, .5s
-}
-.delete:hover{
-  box-shadow: 0px 0px 30px rgba(177, 37, 21, 1);
-  color: black;
-  transition: color, .5s
-}
-.list-hz{
-  @extend .navlist;
-  padding: 0;
-  border-bottom: 1px solid grey;
-}
-.no-margin{
-  margin: 0;
+@media (max-width: 1024px){
+  .fl-right-dash{
+    float: right;
+  }
 }
 
