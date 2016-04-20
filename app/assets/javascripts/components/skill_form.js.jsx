@@ -21,17 +21,18 @@ var SkillForm = React.createClass({
   handleBack: function(e){
     e.preventDefault()
     var container = document.getElementById('container')
-    var systemId = this.props.systemId
-    debugger
     if(this.props.button == "Update Skill") {
-      var url = '/systems/' + this.props.data.system_id + '/skills/'
+      var systemId = this.props.data.system_id
+      var url = '/systems/' + systemId + '/skills/'
     } else {
-      var url = '/systems/' + this.props.systemId + '/skills/'
+      var systemId = this.props.systemId
+      var url = '/systems/' + systemId + '/skills/'
     }
     ReactDOM.unmountComponentAtNode(container)
     $.ajax({
       url: url,
       success: function(response){
+        debugger
         ReactDOM.render(
           <SkillBox data={response} systemId={systemId}/>, container
         )
