@@ -2,7 +2,7 @@ var NpcList = React.createClass({
   render: function() {
     var npcLinks = this.props.data.map(function(npc, index) {
       return (
-        <NpcLink name={npc.name} npc_type={npc.npc_type} data={npc} key={npc.id} />
+        <NpcLink systemName={this.props.systemName} data={npc} key={npc.id} />
       )
     }.bind(this));
     return(
