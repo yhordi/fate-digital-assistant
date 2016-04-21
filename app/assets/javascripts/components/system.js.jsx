@@ -1,6 +1,6 @@
 var System = React.createClass({
   container: function(){
-    document.getElementById('container')
+    return document.getElementById('container')
   },
   propTypes: {
     name: React.PropTypes.string,
@@ -18,10 +18,12 @@ var System = React.createClass({
     var systemId = this.props.id
     $.ajax({
       url: url,
-    }).done(function(data){
-      ReactDOM.render(
-        <NpcBox data={data} systemName={systemName} systemId={systemId} />, container
-      );
+      success: function(response){
+        debugger
+        ReactDOM.render(
+          <NpcBox data={data} systemName={systemName} systemId={systemId} />, container
+        );
+      }
     })
   },
   getSkills: function(e){
