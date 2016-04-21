@@ -17,4 +17,10 @@ FactoryGirl.define do
     attack {Faker::Lorem.paragraph}
     defend {Faker::Lorem.paragraph}
   end
+  factory :npc do
+    name { Faker::Name.name }
+    background { Faker::Lorem.paragraph }
+    system_id { 1 }
+    npc_type { "Main" }
+  end
 end
