@@ -11,7 +11,7 @@ var NpcLink = React.createClass({
     return(
       <tr>
         <td>
-          <a onClick={this.handleClick} id="npc">{this.props.data.name}</a>
+          <a onClick={this.handleClick} id={"npc" + this.props.data.id}>{this.props.data.name}</a>
         </td>
         <td>
           {this.props.data.npc_type}
