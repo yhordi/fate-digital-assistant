@@ -19,9 +19,8 @@ var System = React.createClass({
     $.ajax({
       url: url,
       success: function(response){
-        debugger
         ReactDOM.render(
-          <NpcBox data={data} systemName={systemName} systemId={systemId} />, container
+          <NpcBox data={response} systemName={systemName} systemId={systemId} />, container
         );
       }
     })

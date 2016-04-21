@@ -21,7 +21,7 @@ var SkillList = React.createClass({
             Skills |
           </li>
           <li>
-            <a onClick={this.handleNew} href={"systems/" + this.props.id + "/skills/new"}> Create New</a>
+            <a onClick={this.handleNew} href={"systems/" + this.props.id + "/skills/new"}>Create New</a>
           </li>
         </ul>
         <div className='m-top'>

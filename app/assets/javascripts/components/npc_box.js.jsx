@@ -19,6 +19,7 @@ var NpcBox = React.createClass({
         <h2>{this.props.systemName}</h2>
           <button onClick={this.backToSystem}>Back</button>
         <h3>NPCs</h3>
+          <NpcList data={this.props.data} systemId={this.props.systemId} systemName={this.props.systemName}/>
       </div>
     );
   }
