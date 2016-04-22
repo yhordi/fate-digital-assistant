@@ -2,6 +2,22 @@ var Npc = React.createClass({
   container: function(){
     return document.getElementById('container')
   },
+  backToNpcs: function(e){
+    e.preventDefault()
+    var container = this.container()
+    ReactDOM.unmountComponentAtNode(container)
+    var systemName = this.props.systemName
+    var systemId = this.props.data.system_id
+    var url = '/systems/' + systemId + '/npcs'
+    $.ajax({
+      url: url,
+      success: function(response){
+          ReactDOM.render(
+            <NpcBox data={response} systemName={systemName} systemId={systemId}/>, container
+          )
+      }
+    })
+  },
   handleDelete: function(e){
     e.preventDefault()
     var url = '/systems/' + this.props.systemId + '/npcs/' + this.props.data.id
@@ -25,6 +41,7 @@ var Npc = React.createClass({
         <h2>
           {this.props.systemName}
         </h2>
+        <button onClick={this.backToNpcs}>Back</button>
         <h3>
           NPC Profile
         </h3>
