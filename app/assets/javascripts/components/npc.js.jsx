@@ -35,6 +35,11 @@ var Npc = React.createClass({
       }
     })
   },
+  handleEdit: function(e){
+    e.preventDefault();
+    var container = this.container()
+    ReactDOM.unmountComponentAtNode(container)
+  },
   render: function() {
     return(
       <div>
@@ -59,6 +64,7 @@ var Npc = React.createClass({
             {this.props.data.background}
           </p>
         </div>
+        <button onClick={this.handleEdit} className='edit'>Edit</button>
         <button onClick={this.handleDelete} className='delete'>Delete</button>
       </div>
     );

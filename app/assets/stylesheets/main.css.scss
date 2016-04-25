@@ -41,6 +41,7 @@ header{
 }
 #container{
   padding: 1%;
+  margin-left: 10em;
   background: image_url('brushed.png');
 }
 #container a{
@@ -96,6 +97,13 @@ a:hover{
 .error{
   color: red;
 }
+.fl-left{
+  float: left;
+}
+.fl-right{
+  float: right;
+}
+
 .form{
   background-color: #FFFFFF;
   margin: 0 auto;
@@ -133,12 +141,7 @@ a:hover{
 .inline{
   display: inline;
 }
-.fl-left{
-  float: left;
-}
-.fl-right{
-  float: right;
-}
+
 .header{
   color: $bright;
   font-size: 2em;
