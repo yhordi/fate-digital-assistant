@@ -1,4 +1,7 @@
 var NpcBox = React.createClass({
+  container: function(e){
+    return document.getElementById('container')
+  },
   backToSystem: function(e){
     e.preventDefault(e)
     var container = document.getElementById('container')
@@ -13,10 +16,26 @@ var NpcBox = React.createClass({
       }
     })
   },
+  handleNew: function(e){
+    e.preventDefault()
+    container = this.container()
+    ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <NpcForm button="Create NPC"/>, container
+    )
+  },
   render: function() {
     return (
       <div className='row'>
         <h2>{this.props.systemName}</h2>
+        <ul className="list-hz">
+          <li>
+            NPCs |
+          </li>
+          <li>
+            <a onClick={this.handleNew} href={"systems/" + this.props.id + "/npcs/new"}>Create New</a>
+          </li>
+        </ul>
           <button onClick={this.backToSystem}>Back</button>
         <h3>NPCs</h3>
           <NpcList data={this.props.data} systemId={this.props.systemId} systemName={this.props.systemName}/>

@@ -39,6 +39,11 @@ a {
 header{
   font-size: 2em;
 }
+.select{
+  border: 0;
+  outline: 1px solid #CCC;
+  background-color: white;
+}
 #container{
   padding: 1%;
   margin-left: 10em;
@@ -131,6 +136,7 @@ a:hover{
   margin: 0 0 10px -1px;
   height: 30px;
   padding-bottom: 0.5px;
+  outline: 1px solid #CCC;
 }
 .games-sidebar{
   color: #4169E1;
@@ -158,6 +164,18 @@ a:hover{
     display: inline;
     margin-right: 1em;
   }
+}
+.m-btm{
+  margin-bottom: 1%;
+}
+.m-btm-m{
+  margin-bottom: 1em;
+}
+.no-m-btm{
+  margin-bottom: 0;
+}
+.m-top{
+  margin-top: 1%
 }
 .nav{
   padding-left: 2em;
@@ -200,17 +218,8 @@ a:hover{
 .notice{
   color: yellow;
 }
-.m-btm{
-  margin-bottom: 1%;
-}
-.m-btm-m{
-  margin-bottom: 1em;
-}
-.no-m-btm{
-  margin-bottom: 0;
-}
-.m-top{
-  margin-top: 1%
+.npc-header{
+  background-color: $system;
 }
 .pad{
   padding: 1%;
