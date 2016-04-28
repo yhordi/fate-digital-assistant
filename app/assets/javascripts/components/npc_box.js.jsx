@@ -21,7 +21,7 @@ var NpcBox = React.createClass({
     container = this.container()
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
-      <NpcForm button="Create NPC"/>, container
+      <NpcForm systemName={this.props.systemName} systemId={this.props.systemId} button="Create NPC"/>, container
     )
   },
   render: function() {
