@@ -16,9 +16,15 @@ class NpcsController < ApplicationController
     render json: npcs
   end
 
+  def update
+    npc = Npc.find(params[:id])
+    npc.update_attributes(npc_params)
+    render json: npc
+  end
+
 private
 
   def npc_params
-    params.require(:npc).permit(:name, :background, :npc_type, :system_id)
+    params.require(:npc).permit(:name, :background, :npc_type, :system_id, :id)
   end
 end

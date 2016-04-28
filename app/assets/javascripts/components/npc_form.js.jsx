@@ -1,6 +1,10 @@
 var NpcForm = React.createClass({
   getInitialState: function(){
-    return {npc_type: 'Main', system_id: this.props.systemId}
+    if(this.props.button == "Update NPC"){
+      return {npc_type: this.props.data.npc_type, name: this.props.data.name, background: this.props.data.background}
+    } else {
+      return {npc_type: 'Main', system_id: this.props.systemId}
+    }
   },
   container: function(){
     return document.getElementById('container')
@@ -30,7 +34,20 @@ var NpcForm = React.createClass({
     }
   },
   update: function() {
-    console.log('hello')
+    var url = '/systems/' + this.props.systemId + '/npcs/' + this.props.data.id
+    var data = {npc: this.state}
+    var container = this.container()
+    $.ajax({
+      url: url,
+      method: 'put',
+      data: data,
+      success: function(response) {
+        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.render(
+          <Npc data={response} systemName={this.props.systemName} />, container
+        )
+      }.bind(this)
+    })
   },
   updateState: function(e) {
     var prop = e.target.name
@@ -51,7 +68,7 @@ var NpcForm = React.createClass({
           </a>
         </h3>
           <div>
-            <input onChange={this.updateState} className="form-field"type='text' name="name" placeholder='name'/>
+            <input onChange={this.updateState} value={this.state.name} className="form-field"type='text' name="name" placeholder='name'/>
           </div>
           <div>
             <select onChange={this.updateState} className="form-field select" name='npc_type'>
@@ -61,7 +78,7 @@ var NpcForm = React.createClass({
             </select>
           </div>
           <div>
-            <textarea onChange={this.updateState} className="form-field" name="background" placeholder='background'></textarea>
+            <textarea onChange={this.updateState} value={this.state.background} className="form-field" name="background" placeholder='background'></textarea>
           </div>
           <input type="hidden" name="systemId" value={this.props.systemId}/>
           <input className='submit' type="submit" value={this.props.button} />

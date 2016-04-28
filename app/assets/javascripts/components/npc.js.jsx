@@ -39,6 +39,9 @@ var Npc = React.createClass({
     e.preventDefault();
     var container = this.container()
     ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <NpcForm data={this.props.data} button="Update NPC" systemName={this.props.systemName} systemId={this.props.systemId} />, container
+    )
   },
   render: function() {
     return(
