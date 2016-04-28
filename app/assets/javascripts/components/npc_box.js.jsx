@@ -33,7 +33,7 @@ var NpcBox = React.createClass({
             NPCs |
           </li>
           <li>
-            <a onClick={this.handleNew} href={"systems/" + this.props.id + "/npcs/new"}>Create New</a>
+            <a id="newNpc" onClick={this.handleNew} href={"systems/" + this.props.systemId + "/npcs/new"}>Create New</a>
           </li>
         </ul>
           <button onClick={this.backToSystem}>Back</button>

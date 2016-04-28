@@ -2,6 +2,7 @@ describe 'Npc', js: true do
   let(:user) { FactoryGirl.create :user }
   let!(:system) { FactoryGirl.create :system }
   let!(:npc) { FactoryGirl.create :npc }
+  let(:npc_attributes) {FactoryGirl.attributes_for :npc}
   context 'a logged in user' do
     before(:each) do
       visit root_path
@@ -14,6 +15,13 @@ describe 'Npc', js: true do
     end
     it 'can see npcs on the npc index' do
       expect(page).to have_content(npc.name)
+    end
+    it 'can create a new npc' do
+      page.find('#newNpc').click
+      fill_in 'name', with: npc_attributes[:name]
+      fill_in 'background', with: npc_attributes[:background]
+      click_on 'Create NPC'
+      expect(page).to have_content(npc_attributes[:name])
     end
     context 'on the npc show page' do
       before(:each) do
