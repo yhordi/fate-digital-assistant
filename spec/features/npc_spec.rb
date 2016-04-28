@@ -26,6 +26,12 @@ describe 'Npc', js: true do
         click_button 'Delete'
         expect(page).to_not have_content(npc.name)
       end
+      it 'can edit an npc and see the new attribute' do
+        click_button 'Edit'
+        fill_in 'name', with: 'Fenty Splawn'
+        click_button 'Update NPC'
+        expect(page).to have_content('Fenty Splawn')
+      end
     end
   end
 
