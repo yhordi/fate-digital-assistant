@@ -1,4 +1,12 @@
 var SkillBox = React.createClass({
+  handleNew: function(e){
+    e.preventDefault();
+    var container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <SkillForm data={[]} systemName={this.props.systemName} button={"Create Skill"} systemId={this.props.systemId} />, container
+    )
+  },
   backToSystem: function(e){
     e.preventDefault(e)
     var container = document.getElementById('container')

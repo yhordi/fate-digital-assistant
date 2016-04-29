@@ -1,12 +1,5 @@
 var SkillList = React.createClass({
-  handleNew: function(e){
-    e.preventDefault();
-    var container = document.getElementById('container')
-    ReactDOM.unmountComponentAtNode(container)
-    ReactDOM.render(
-      <SkillForm data={[]} systemName={this.props.systemName} button={"Create Skill"} systemId={this.props.systemId} />, container
-    )
-  },
+
   render: function() {
     var skillLinks = this.props.data.map(function(skill, index) {
       return (
