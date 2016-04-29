@@ -62,33 +62,31 @@ var Npc = React.createClass({
     return(
       <div className='row'>
         <div className='col span-3-t'>
-        <button onClick={this.backToNpcs}>Back</button>
-        <h3>
-          NPC Profile
-        </h3>
-        <div>
-          <button onClick={this.handleEdit} className='edit'>Edit</button>
-          <button onClick={this.handleDelete} className='delete'>Delete</button>
-        </div>
-        <div>
-          Name: {this.props.data.name}
-        </div>
-        <div>
-          NPC Type: {this.props.data.npc_type}
-        </div>
-        <div>
-          <h4>
-            Background:
-          </h4>
-          <p>
-            {this.props.data.background}
-          </p>
-        </div>
+          <h3>
+            NPC Profile: {this.props.data.name}
+          </h3>
+          <button onClick={this.backToNpcs}>Back</button>
+
+          <div>
+            NPC Type: {this.props.data.npc_type}
+          </div>
+          <div>
+            <h4>
+              Background:
+            </h4>
+            <p>
+              {this.props.data.background}
+            </p>
+          </div>
+          <div>
+            <button onClick={this.handleEdit} className='edit'>Edit</button>
+            <button onClick={this.handleDelete} className='delete'>Delete</button>
+          </div>
         </div>
         <div className='col span-9-t'>
-          <h2>
+          <h3>
             Skills
-          </h2>
+          </h3>
           <div>
             <button onClick={this.addSkill}>Add Skill to NPC</button>
           </div>
