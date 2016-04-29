@@ -1,6 +1,17 @@
 var Npc = React.createClass({
-  container: function(){
-    return document.getElementById('container')
+  addSkill: function(e){
+    e.preventDefault()
+    var url = '/systems/' + this.props.data.system_id + '/skills/'
+    var container = this.container()
+    $.ajax({
+      url: url,
+      success: function(response){
+        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.render(
+          <SkillsChecklist data={response} />, container
+        )
+      }
+    })
   },
   backToNpcs: function(e){
     e.preventDefault()
@@ -17,6 +28,9 @@ var Npc = React.createClass({
           )
       }
     })
+  },
+  container: function(){
+    return document.getElementById('container')
   },
   handleDelete: function(e){
     e.preventDefault()
@@ -46,7 +60,7 @@ var Npc = React.createClass({
   render: function() {
     return(
       <div className='row'>
-        <div className='col span-6-t'>
+        <div className='col span-3-t'>
         <h2>
           {this.props.systemName}
         </h2>
@@ -73,13 +87,15 @@ var Npc = React.createClass({
           </p>
         </div>
         </div>
-        <div className='col span-6-t'>
+        <div className='col span-9-t'>
           <h4>
             Skills
           </h4>
+          <div>
+          <button onClick={this.addSkill}>Add Skill to NPC</button>
+          </div>
           <SkillList data={this.props.data.skills} />
         </div>
-
       </div>
     );
   }
