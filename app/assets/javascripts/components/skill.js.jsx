@@ -64,9 +64,6 @@ var Skill = React.createClass({
   render: function() {
     return(
       <div>
-        <h2 className="no-margin">
-          {this.props.systemName}
-        </h2>
         <button onClick={this.backToSkills}>Back</button>
         <h3 className="no-margin">
           {this.props.data.name}

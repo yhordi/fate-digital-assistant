@@ -60,6 +60,9 @@ header{
 #desc{
   height: 6em;
 }
+#nav-container{
+  margin-left: 10.5em;
+}
 #password-icon{
   margin-right: 1px;
 }
@@ -269,6 +272,12 @@ a:hover{
   background-color: #14CC4D;
   border: none;
   margin: 1em;
+}
+.system-header{
+  background-color: #73A873;
+  color: $bright;
+  padding-left: 1em;
+  margin-left: -1em;
 }
 .system-sidebar{
   color: $system;

@@ -5,6 +5,7 @@ var SideBar = React.createClass({
   getSystems: function(e){
     e.preventDefault()
     ReactDOM.unmountComponentAtNode(this.container())
+    ReactDOM.unmountComponentAtNode(document.getElementById('nav-container'))
     $.ajax({
       url: 'systems/',
       success: function(response){

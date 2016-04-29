@@ -82,9 +82,6 @@ var System = React.createClass({
   render: function() {
     return (
       <div name={this.props.name} description={this.props.description} className='system row'>
-        <h2 className="no-margin">
-          {this.props.name}
-        </h2>
         <div className="row">
           <div className="col span-12-t inline">
             <ul className="list-hz">

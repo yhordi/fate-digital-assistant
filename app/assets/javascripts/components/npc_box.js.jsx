@@ -27,7 +27,6 @@ var NpcBox = React.createClass({
   render: function() {
     return (
       <div className='row'>
-        <h2>{this.props.systemName}</h2>
         <ul className="list-hz">
           <li>
             NPCs |

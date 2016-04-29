@@ -2,13 +2,12 @@ var Npc = React.createClass({
   addSkill: function(e){
     e.preventDefault()
     var url = '/systems/' + this.props.data.system_id + '/skills/'
-    var container = this.container()
+    var container = document.getElementById('addSkillTarget')
     var npcName = this.props.data.name
     var knownSkills = this.props.data.skills
     $.ajax({
       url: url,
       success: function(response){
-        ReactDOM.unmountComponentAtNode(container)
         ReactDOM.render(
           <SkillsChecklist knownSkills={knownSkills} npcName={npcName} data={response} />, container
         )
@@ -63,9 +62,6 @@ var Npc = React.createClass({
     return(
       <div className='row'>
         <div className='col span-3-t'>
-        <h2>
-          {this.props.systemName}
-        </h2>
         <button onClick={this.backToNpcs}>Back</button>
         <h3>
           NPC Profile
@@ -90,12 +86,13 @@ var Npc = React.createClass({
         </div>
         </div>
         <div className='col span-9-t'>
-          <h4>
+          <h2>
             Skills
-          </h4>
+          </h2>
           <div>
-          <button onClick={this.addSkill}>Add Skill to NPC</button>
+            <button onClick={this.addSkill}>Add Skill to NPC</button>
           </div>
+          <div id='addSkillTarget'></div>
           <SkillList data={this.props.data.skills} />
         </div>
       </div>

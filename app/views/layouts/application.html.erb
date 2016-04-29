@@ -23,6 +23,7 @@
   </div>
     <% if session[:id] %>
       <%= react_component('SideBar', {userId: session[:id]}) %>
+      <div id='nav-container'></div>
       <div id="container" class="fl-right-dash">
         <%= yield %>
       </div>

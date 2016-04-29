@@ -24,9 +24,6 @@ var SkillBox = React.createClass({
   render: function() {
     return (
       <div className='row'>
-        <h2 className="no-margin">
-          {this.props.systemName}
-        </h2>
         <button onClick={this.backToSystem}>Back</button>
         <ul className="list-hz">
           <li>

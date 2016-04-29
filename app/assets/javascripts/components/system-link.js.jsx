@@ -8,6 +8,9 @@ var Systemlink = React.createClass({
     ReactDOM.render(
       <System name={systemProps.name} button="Update System" description={systemProps.description} id={systemProps.id} />, container
     ), container
+    ReactDOM.render(
+      <Nav name={systemProps.name} headerClass="system-header"/>, document.getElementById('nav-container')
+    )
   },
   render: function(){
     return(
