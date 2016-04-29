@@ -3,12 +3,14 @@ var Npc = React.createClass({
     e.preventDefault()
     var url = '/systems/' + this.props.data.system_id + '/skills/'
     var container = this.container()
+    var npcName = this.props.data.name
+    var knownSkills = this.props.data.skills
     $.ajax({
       url: url,
       success: function(response){
         ReactDOM.unmountComponentAtNode(container)
         ReactDOM.render(
-          <SkillsChecklist data={response} />, container
+          <SkillsChecklist knownSkills={knownSkills} npcName={npcName} data={response} />, container
         )
       }
     })
