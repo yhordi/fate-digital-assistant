@@ -45,7 +45,8 @@ var Npc = React.createClass({
   },
   render: function() {
     return(
-      <div>
+      <div className='row'>
+        <div className='col span-6-t'>
         <h2>
           {this.props.systemName}
         </h2>
@@ -53,6 +54,10 @@ var Npc = React.createClass({
         <h3>
           NPC Profile
         </h3>
+        <div>
+          <button onClick={this.handleEdit} className='edit'>Edit</button>
+          <button onClick={this.handleDelete} className='delete'>Delete</button>
+        </div>
         <div>
           Name: {this.props.data.name}
         </div>
@@ -67,8 +72,14 @@ var Npc = React.createClass({
             {this.props.data.background}
           </p>
         </div>
-        <button onClick={this.handleEdit} className='edit'>Edit</button>
-        <button onClick={this.handleDelete} className='delete'>Delete</button>
+        </div>
+        <div className='col span-6-t'>
+          <h4>
+            Skills
+          </h4>
+          <SkillList data={this.props.data.skills} />
+        </div>
+
       </div>
     );
   }

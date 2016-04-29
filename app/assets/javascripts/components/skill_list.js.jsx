@@ -16,14 +16,7 @@ var SkillList = React.createClass({
     return (
       <div>
       <div className='skillList col span-5-t'>
-        <ul className="list-hz">
-          <li>
-            Skills |
-          </li>
-          <li>
-            <a onClick={this.handleNew} href={"systems/" + this.props.id + "/skills/new"}>Create New</a>
-          </li>
-        </ul>
+
         <div className='m-top'>
           {skillLinks}
         </div>
