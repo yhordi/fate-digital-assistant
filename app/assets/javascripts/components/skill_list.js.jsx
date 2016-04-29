@@ -9,7 +9,6 @@ var SkillList = React.createClass({
     return (
       <div>
       <div className='skillList col span-5-t'>
-
         <div className='m-top'>
           {skillLinks}
         </div>
