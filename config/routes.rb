@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     resources :skills
     resources :npcs
   end
-  root 'users#new'
+  resources :npcs, shallow: true do
+    resources :character_skills
+  end
+  root 'systems#index'
 end
