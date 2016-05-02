@@ -1,7 +1,16 @@
 var SkillsChecklist = React.createClass({
   addSkillToNpc: function(e){
     e.preventDefault()
-    var url = '/npcs/' + this.props.data.id + '/character_skills'
+    var url = '/npcs/' + this.props.npcId + '/character_skills'
+    var data = this.state
+    $.ajax({
+      url: url,
+      method: 'POST',
+      data: data,
+      success: function(response){
+        console.log(response)
+      }
+    })
   },
   componentDidMount: function(){
     this.setState({name: this.props.data[0].name, level: "1"})

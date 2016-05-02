@@ -5,11 +5,12 @@ var Npc = React.createClass({
     var container = document.getElementById('addSkillTarget')
     var npcName = this.props.data.name
     var knownSkills = this.props.data.skills
+    var npcId = this.props.data.id
     $.ajax({
       url: url,
       success: function(response){
         ReactDOM.render(
-          <SkillsChecklist knownSkills={knownSkills} npcName={npcName} data={response} />, container
+          <SkillsChecklist npcId={npcId} knownSkills={knownSkills} npcName={npcName} data={response} />, container
         )
       }
     })
@@ -83,7 +84,7 @@ var Npc = React.createClass({
             <button onClick={this.handleDelete} className='delete'>Delete</button>
           </div>
         </div>
-        <div className='col span-9-t'>
+        <div className='col span-9-t characterSkillsListTarget'>
           <h3>
             Skills
           </h3>
