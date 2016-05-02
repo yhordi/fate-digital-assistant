@@ -1,22 +1,32 @@
 var SkillsChecklist = React.createClass({
   addSkillToNpc: function(e){
     e.preventDefault()
-    var url = '/systems/'
+    var url = '/npcs/' + this.props.data.id + '/character_skills'
+  },
+  componentDidMount: function(){
+    this.setState({name: this.props.data[0].name, level: "1"})
+  },
+  updateState: function(e) {
+    var prop = e.target.name
+    var value = e.target.value
+    var npc = {}
+    npc[prop] = value
+    this.setState(npc)
   },
   render: function() {
     var checkboxes = this.props.data.map(function(skill, index) {
       return(
-        <SkillsCheckBox name={skill.name} key={index}/>
+        <option value={skill.name} key={index}>{skill.name}</option>
       )
     });
     return(
       <div>
         <div>
           <form onSubmit={this.addSkillToNpc}>
-            <select>
+            <select name='name' onChange={this.updateState}>
               {checkboxes}
             </select>
-            <select name='level'>
+            <select onChange={this.updateState} name='level'>
               <option value='1'>1</option>
               <option value='2'>2</option>
               <option value='3'>3</option>
