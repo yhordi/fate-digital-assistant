@@ -83,6 +83,9 @@ a:hover{
   color: white;
   transition: color, text-shadow, .5s
 }
+.card-header{
+  border-bottom: 1px solid #6F6D6D;
+}
 .center{
   text-align: center;
 }
@@ -217,6 +220,7 @@ a:hover{
 }
 .no-bullet{
   list-style-type: none;
+  padding: 0;
 }
 .no-margin{
   margin: 0;
@@ -250,6 +254,11 @@ a:hover{
 }
 .right{
   text-align: right;
+}
+.skillCard{
+  background-color: #DCDCDC;
+  padding: .5em;
+  width: 50%;
 }
 .skillForm{
   display: inline-block;

@@ -91,7 +91,7 @@ var Npc = React.createClass({
             <button onClick={this.addSkill}>Add Skill to NPC</button>
           </div>
           <div id='addSkillTarget'></div>
-          <SkillList data={this.props.data.character_skills} />
+          <CharacterSkillsList data={this.props.data.character_skills} />
         </div>
       </div>
     );
