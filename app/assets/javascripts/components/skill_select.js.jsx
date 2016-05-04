@@ -1,21 +1,30 @@
-var SkillsChecklist = React.createClass({
+var SkillSelect = React.createClass({
+  getInitialState: function(){
+    return {data: this.props.data, skills: this.props.skills, system_id: this.props.systemId }
+  },
   addSkillToNpc: function(e){
     e.preventDefault()
     var url = '/npcs/' + this.props.npcId + '/character_skills'
     var data = this.state
+    var container = document.getElementById('characterSkillsListTarget')
+    var component = this
     $.ajax({
       url: url,
       method: 'POST',
       data: data,
       success: function(response){
         console.log(response)
-      }
+        component.props.changeParent({skills: response.skills, data: response, characterSkills: response.character_skills})
+      },
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+       }.bind(this)
     })
   },
   componentDidMount: function(){
-    this.setState({name: this.props.data[0].name, level: "1"})
+    this.setState({name: this.props.skills[0].name, level: "1"})
   },
-  updateState: function(e) {
+  changeState: function(e) {
     var prop = e.target.name
     var value = e.target.value
     var npc = {}
@@ -23,7 +32,8 @@ var SkillsChecklist = React.createClass({
     this.setState(npc)
   },
   render: function() {
-    var checkboxes = this.props.data.map(function(skill, index) {
+    console.log('render')
+    var checkboxes = this.state.skills.map(function(skill, index) {
       return(
         <option value={skill.name} key={index}>{skill.name}</option>
       )
@@ -32,7 +42,7 @@ var SkillsChecklist = React.createClass({
       <div>
         <div>
           <form onSubmit={this.addSkillToNpc}>
-            <select name='name' onChange={this.updateState}>
+            <select name='name' onChange={this.changeState}>
               {checkboxes}
             </select>
             <select onChange={this.updateState} name='level'>

@@ -1,19 +1,6 @@
 var Npc = React.createClass({
-  addSkill: function(e){
-    e.preventDefault()
-    var url = '/systems/' + this.props.data.system_id + '/skills/'
-    var container = document.getElementById('addSkillTarget')
-    var npcName = this.props.data.name
-    var knownSkills = this.props.data.skills
-    var npcId = this.props.data.id
-    $.ajax({
-      url: url,
-      success: function(response){
-        ReactDOM.render(
-          <SkillsChecklist npcId={npcId} knownSkills={knownSkills} npcName={npcName} data={response} />, container
-        )
-      }
-    })
+  getInitialState: function(){
+    return {data: this.props.data, systemName: this.props.systemName}
   },
   backToNpcs: function(e){
     e.preventDefault()
@@ -59,24 +46,26 @@ var Npc = React.createClass({
       <NpcForm data={this.props.data} button="Update NPC" systemName={this.props.systemName} systemId={this.props.systemId} />, container
     )
   },
+  onChildChanged: function(newState){
+    this.setState(newState)
+  },
   render: function() {
     return(
       <div className='row'>
         <div className='col span-3-t'>
           <h3>
-            NPC Profile: {this.props.data.name}
+            NPC Profile: {this.state.data.name}
           </h3>
           <button onClick={this.backToNpcs}>Back</button>
-
           <div>
-            NPC Type: {this.props.data.npc_type}
+            NPC Type: {this.state.data.npc_type}
           </div>
           <div>
             <h4>
               Background:
             </h4>
             <p>
-              {this.props.data.background}
+              {this.state.data.background}
             </p>
           </div>
           <div>
@@ -84,15 +73,8 @@ var Npc = React.createClass({
             <button onClick={this.handleDelete} className='delete'>Delete</button>
           </div>
         </div>
-        <div className='col span-9-t characterSkillsListTarget'>
-          <h3>
-            Skills
-          </h3>
-          <div>
-            <button onClick={this.addSkill}>Add Skill to NPC</button>
-          </div>
-          <div id='addSkillTarget'></div>
-          <CharacterSkillsList data={this.props.data.character_skills} />
+        <div id='characterSkillsListTarget'>
+          <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} skills={this.state.data.character_skills} />
         </div>
       </div>
     );

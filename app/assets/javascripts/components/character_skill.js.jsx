@@ -1,5 +1,4 @@
 var CharacterSkill = React.createClass({
-
   render: function() {
     return(
       <li className="skillCard">
