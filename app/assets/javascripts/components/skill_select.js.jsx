@@ -60,7 +60,7 @@ var SkillSelect = React.createClass({
               <option value='5'>5</option>
               <option value='6'>6+</option>
             </select>
-            <input type='submit' />
+            <input id="add-skill-submit" type='submit' />
           </form>
         </div>
       </div>

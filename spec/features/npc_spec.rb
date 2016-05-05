@@ -1,6 +1,7 @@
 describe 'Npc', js: true do
   let(:user) { FactoryGirl.create :user }
   let!(:system) { FactoryGirl.create :system }
+  let!(:skill) { FactoryGirl.create :skill }
   let!(:npc) { FactoryGirl.create :npc }
   let(:npc_attributes) {FactoryGirl.attributes_for :npc}
   context 'a logged in user' do
@@ -39,6 +40,15 @@ describe 'Npc', js: true do
         fill_in 'name', with: 'Fenty Splawn'
         click_button 'Update NPC'
         expect(page).to have_content('Fenty Splawn')
+      end
+      it 'can add a skill to an npc' do
+        click_button 'Add Skill to NPC'
+        page.select skill.name, from: 'name'
+        page.select "3", from: 'level'
+        page.find('#add-skill-submit').click
+        within '#skillsList' do
+          expect(page).to have_content('3')
+        end
       end
     end
   end
