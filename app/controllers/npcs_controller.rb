@@ -19,7 +19,7 @@ class NpcsController < ApplicationController
   def update
     npc = Npc.find(params[:id])
     npc.update_attributes(npc_params)
-    render json: npc
+    render json: npc, include: :character_skills
   end
 
 private
