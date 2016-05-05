@@ -1,4 +1,9 @@
 var CharacterSkillsList = React.createClass({
+  getInitialState: function() {
+      return {
+        characterSkills: this.props.characterSkills
+      };
+  },
   addSkill: function(e){
     e.preventDefault()
     var url = '/systems/' + this.props.data.system_id + '/skills/'
@@ -18,10 +23,13 @@ var CharacterSkillsList = React.createClass({
     })
   },
   onChildChanged: function(newState){
+    this.setState(newState)
+    console.log("newState in CharacterSkillsList: " )
+    console.log(newState)
     this.props.changeParent(newState)
   },
   render: function() {
-    var characterSkills = this.props.skills.map(function(characterSkill, index){
+    var characterSkills = this.state.characterSkills.map(function(characterSkill, index){
       return (
         <CharacterSkill data={characterSkill} key={index} />
       )

@@ -74,7 +74,7 @@ var Npc = React.createClass({
           </div>
         </div>
         <div id='characterSkillsListTarget'>
-          <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} skills={this.state.data.character_skills} />
+          <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.data.character_skills} />
         </div>
       </div>
     );
