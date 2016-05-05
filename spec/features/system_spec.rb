@@ -43,7 +43,7 @@ describe 'System', js: true do
         fill_in 'name', with: system_attributes.name
         fill_in 'desc', with: system_attributes.description
         click_on 'Create System'
-        expect(page).to have_content(system_attributes.name)
+        expect(page).to have_content(system_attributes.description)
       end
       it 'can check the begin with default skills checkbox and see a list of the default skills on the skills page' do
         fill_in 'name', with: system_attributes.name

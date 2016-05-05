@@ -58,6 +58,7 @@ var System = React.createClass({
         var container = document.getElementById('container')
         this.setState({systems: response})
         this.props = this.state
+        ReactDOM.unmountComponentAtNode(document.getElementById('nav-container'))
         ReactDOM.render(
           <SystemBox />, container
         )
