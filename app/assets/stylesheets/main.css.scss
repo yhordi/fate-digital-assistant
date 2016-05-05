@@ -310,8 +310,11 @@ a:hover{
   }
 }
 @media (max-width: 850px){
-  .nav{
+  .nav,{
     left: -6em;
+  }
+  .system-header{
+    margin-left: -5.5em;
   }
   #container{
     padding-left: 2em;
