@@ -8,25 +8,26 @@ var CharacterSkillsList = React.createClass({
     e.preventDefault()
     var url = '/systems/' + this.props.data.system_id + '/skills/'
     var container = document.getElementById('addSkillTarget')
-    var npcName = this.props.data.name
-    var knownSkills = this.props.data.skills
-    var npcId = this.props.data.id
-    var systemId = this.props.data.system_id
-    var onChildChanged = this.onChildChanged
+    var propData = this.propData()
     $.ajax({
       url: url,
       success: function(response){
         ReactDOM.render(
-          <SkillSelect npcId={npcId} changeParent={onChildChanged} systemId={systemId} knownSkills={knownSkills} npcName={npcName} skills={response} />, container
+          <SkillSelect npcId={propData.npcId} changeParent={propData.onChildChanged} systemId={propData.systemId} knownSkills={propData.knownSkills} npcName={propData.npcName} skills={response} />, container
         )
       }
     })
   },
   onChildChanged: function(newState){
     this.setState(newState)
-    console.log("newState in CharacterSkillsList: " )
-    console.log(newState)
     this.props.changeParent(newState)
+  },
+  propData: function(){
+    return {npcName: this.props.data.name,
+            knownSkills: this.props.data.skills,
+            npcId: this.props.data.id,
+            systemId: this.props.data.system_id,
+            onChildChanged: this.onChildChanged}
   },
   render: function() {
     var characterSkills = this.state.characterSkills.map(function(characterSkill, index){

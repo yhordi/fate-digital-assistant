@@ -17,7 +17,6 @@ var SkillSelect = React.createClass({
       method: 'POST',
       data: data,
       success: function(response){
-        console.log(response)
         component.props.changeParent({data: response.data,
                                       characterSkills: response.character_skills,
                                       skills: response.Skill
@@ -39,7 +38,6 @@ var SkillSelect = React.createClass({
     this.setState(npc)
   },
   render: function() {
-    console.log('render')
     var checkboxes = this.state.skills.map(function(skill, index) {
       return(
         <option value={skill.name} key={index}>{skill.name}</option>

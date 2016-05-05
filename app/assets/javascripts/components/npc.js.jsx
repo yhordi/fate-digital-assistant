@@ -4,16 +4,15 @@ var Npc = React.createClass({
   },
   backToNpcs: function(e){
     e.preventDefault()
+    var systemAttributes = this.systemAttributes()
     var container = this.container()
     ReactDOM.unmountComponentAtNode(container)
-    var systemName = this.props.systemName
-    var systemId = this.props.data.system_id
     var url = '/systems/' + systemId + '/npcs'
     $.ajax({
       url: url,
       success: function(response){
           ReactDOM.render(
-            <NpcBox data={response} systemName={systemName} systemId={systemId}/>, container
+            <NpcBox data={response} systemName={systemAttributes.systemName} systemId={systemAttributes.systemId}/>, container
           )
       }
     })
@@ -24,8 +23,7 @@ var Npc = React.createClass({
   handleDelete: function(e){
     e.preventDefault()
     var url = '/systems/' + this.props.systemId + '/npcs/' + this.props.data.id
-    var systemName = this.props.systemName
-    var systemId = this.props.data.systemId
+    var systemAttributes = this.systemAttributes()
     var container = this.container()
     $.ajax({
       url: url,
@@ -33,7 +31,7 @@ var Npc = React.createClass({
       success: function(response) {
         ReactDOM.unmountComponentAtNode(container)
         ReactDOM.render(
-          <NpcBox data={response} systemName={systemName} systemId={systemId} />, container
+          <NpcBox data={response} systemName={systemAttributes.systemName} systemId={systemAttributes.systemId} />, container
         )
       }
     })
@@ -48,6 +46,10 @@ var Npc = React.createClass({
   },
   onChildChanged: function(newState){
     this.setState(newState)
+  },
+  systemAttributes: function(){
+    return {systemName: this.props.systemName,
+            systemId: this.props.systems}
   },
   render: function() {
     return(
