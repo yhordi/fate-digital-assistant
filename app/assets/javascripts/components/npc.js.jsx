@@ -1,6 +1,6 @@
 var Npc = React.createClass({
   getInitialState: function(){
-    return {data: this.props.data, systemName: this.props.systemName}
+    return {data: this.props.data, systemName: this.props.systemName, characterSkills: this.props.characterSkills}
   },
   backToNpcs: function(e){
     e.preventDefault()

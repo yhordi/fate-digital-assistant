@@ -3,7 +3,7 @@ var NpcForm = React.createClass({
     if(this.props.button == "Update NPC"){
       return {npc_type: this.props.data.npc_type, name: this.props.data.name, background: this.props.data.background}
     } else {
-      return {npc_type: 'Main', system_id: this.props.systemId}
+      return {npc_type: 'Main', system_id: this.props.systemId, characterSkills: []}
     }
   },
   container: function(){
@@ -49,7 +49,7 @@ var NpcForm = React.createClass({
       }.bind(this)
     })
   },
-  updateState: function(e) {
+  changeState: function(e) {
     var prop = e.target.name
     var value = e.target.value
     var npc = {}
@@ -68,17 +68,17 @@ var NpcForm = React.createClass({
           </a>
         </h3>
           <div>
-            <input onChange={this.updateState} value={this.state.name} className="form-field"type='text' name="name" placeholder='name'/>
+            <input onChange={this.changeState} value={this.state.name} className="form-field"type='text' name="name" placeholder='name'/>
           </div>
           <div>
-            <select onChange={this.updateState} className="form-field select" name='npc_type'>
+            <select onChange={this.changeState} className="form-field select" name='npc_type'>
               <option value="Main">Main</option>
               <option value="Supporting">Supporting</option>
               <option value="Nameless">Nameless</option>
             </select>
           </div>
           <div>
-            <textarea onChange={this.updateState} value={this.state.background} className="form-field" name="background" placeholder='background'></textarea>
+            <textarea onChange={this.changeState} value={this.state.background} className="form-field" name="background" placeholder='background'></textarea>
           </div>
           <input type="hidden" name="systemId" value={this.props.systemId}/>
           <input className='submit' type="submit" value={this.props.button} />

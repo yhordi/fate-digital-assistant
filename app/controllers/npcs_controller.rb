@@ -2,7 +2,7 @@ class NpcsController < ApplicationController
   def create
     npc = Npc.new(npc_params)
     npc.save!
-    render json: npc
+    render json: npc, include: :character_skills
   end
 
   def destroy
