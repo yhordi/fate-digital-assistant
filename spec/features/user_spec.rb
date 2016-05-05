@@ -3,8 +3,8 @@ describe 'User', js: true do
   context 'a guest user' do
     it 'can sign up and see their profile page' do
       username = "user"
-      visit root_path
-      within '#container form' do
+      visit new_user_path
+      within '#container #new_user' do
         fill_in 'user[name]', with: username
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_again]', with: 'password'
