@@ -40,7 +40,7 @@ var SkillSelect = React.createClass({
   render: function() {
     var checkboxes = this.state.skills.map(function(skill, index) {
       return(
-        <option value={skill.name} key={index}>{skill.name}</option>
+        <option value={skill} key={index}>{skill}</option>
       )
     });
     return(
