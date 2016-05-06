@@ -14,7 +14,7 @@ var CharacterSkillsList = React.createClass({
       data: {'names': true},
       success: function(response){
         ReactDOM.render(
-          <SkillSelect npcId={propData.npcId} changeParent={propData.onChildChanged} systemId={propData.systemId} knownSkills={propData.knownSkills} npcName={propData.npcName} skills={response} />, container
+          <SkillSelectBox npcId={propData.npcId} changeParent={propData.onChildChanged} systemId={propData.systemId} knownSkills={propData.knownSkills} npcName={propData.npcName} skills={response} />, container
         )
       }
     })
