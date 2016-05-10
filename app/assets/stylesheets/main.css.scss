@@ -162,6 +162,11 @@ a:hover{
     color: $bright;
   }
 }
+.label {
+    text-align: left;
+    font-size: small;
+    padding-left: 9%;
+}
 .list-hz{
   list-style-type: none;
   padding: 0;

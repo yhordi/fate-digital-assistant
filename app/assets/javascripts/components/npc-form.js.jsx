@@ -81,18 +81,27 @@ var NpcForm = React.createClass({
             </span>
           </a>
         </h3>
-          <div>
-            <input onChange={this.changeState} value={this.state.name} className="form-field"type='text' name="name" placeholder='name'/>
+          <div className='label'>
+            <label for="npcName">name</label>
           </div>
           <div>
-            <select onChange={this.changeState} className="form-field select" name='npc_type'>
+            <input id='npcName' onChange={this.changeState} value={this.state.name} className="form-field"type='text' name="name" placeholder="Your character's name."/>
+          </div>
+          <div className='label'>
+            <label for="typeSelect">Npc type</label>
+          </div>
+          <div>
+            <select id='typeSelect' onChange={this.changeState} className="form-field select" name='npc_type'>
               <option value="Main">Main</option>
               <option value="Supporting">Supporting</option>
               <option value="Nameless">Nameless</option>
             </select>
           </div>
+          <div className='label'>
+            <label for="background">Background</label>
+          </div>
           <div>
-            <textarea onChange={this.changeState} value={this.state.background} className="form-field" name="background" placeholder='background'></textarea>
+            <textarea id='background' onChange={this.changeState} value={this.state.background} className="form-field" name="background" placeholder="Your character's backstory"></textarea>
           </div>
           <input type="hidden" name="systemId" value={this.props.systemId}/>
           <input className='submit' type="submit" value={this.props.button} />
