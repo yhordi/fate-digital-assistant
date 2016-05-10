@@ -6,7 +6,7 @@ var NpcForm = React.createClass({
     if(this.props.button == "Update NPC"){
       return {system_id: this.props.systemId, npc_type: this.props.data.npc_type, name: this.props.data.name, background: this.props.data.background}
     } else {
-      return {npc_type: 'Main', system_id: this.props.data.systemId, characterSkills: []}
+      return {npc_type: 'Main', system_id: this.props.systemId, characterSkills: []}
     }
   },
   container: function(){
