@@ -7,7 +7,7 @@ var Npc = React.createClass({
     var systemAttributes = this.systemAttributes()
     var container = this.container()
     ReactDOM.unmountComponentAtNode(container)
-    var url = '/systems/' + systemId + '/npcs'
+    var url = '/systems/' + this.props.data.system_id + '/npcs'
     $.ajax({
       url: url,
       success: function(response){
@@ -49,7 +49,7 @@ var Npc = React.createClass({
   },
   systemAttributes: function(){
     return {systemName: this.props.systemName,
-            systemId: this.props.systems}
+            systemId: this.props.data.system_id}
   },
   render: function() {
     return(
