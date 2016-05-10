@@ -4,9 +4,9 @@ var NpcForm = React.createClass({
   },
   getInitialState: function(){
     if(this.props.button == "Update NPC"){
-      return {targetId: 0, npc_type: this.props.data.npc_type, name: this.props.data.name, background: this.props.data.background}
+      return {system_id: this.props.systemId, npc_type: this.props.data.npc_type, name: this.props.data.name, background: this.props.data.background}
     } else {
-      return {targetId: 0, npc_type: 'Main', system_id: this.props.systemId, characterSkills: []}
+      return {npc_type: 'Main', system_id: this.props.data.systemId, characterSkills: []}
     }
   },
   container: function(){
@@ -44,7 +44,7 @@ var NpcForm = React.createClass({
     var systemAttributes = this.systemAttributes()
     var container = this.container()
     ReactDOM.unmountComponentAtNode(container)
-    var url = '/systems/' + this.state.system_id + '/npcs'
+    var url = '/systems/' + this.props.systemId + '/npcs'
     $.ajax({
       url: url,
       success: function(response){
