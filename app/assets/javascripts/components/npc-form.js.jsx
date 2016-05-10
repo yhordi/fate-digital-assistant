@@ -39,6 +39,21 @@ var NpcForm = React.createClass({
       }.bind(this)
     })
   },
+  handleBack: function(e){
+    e.preventDefault()
+    var systemAttributes = this.systemAttributes()
+    var container = this.container()
+    ReactDOM.unmountComponentAtNode(container)
+    var url = '/systems/' + this.state.system_id + '/npcs'
+    $.ajax({
+      url: url,
+      success: function(response){
+          ReactDOM.render(
+            <NpcBox data={response} systemName={systemAttributes.systemName} systemId={systemAttributes.systemId}/>, container
+          )
+      }
+    })
+  },
   handleSubmit: function(e) {
     e.preventDefault()
     if(this.props.button == "Create NPC"){
@@ -46,6 +61,10 @@ var NpcForm = React.createClass({
     } else {
       this.update()
     }
+  },
+  systemAttributes: function(){
+    return {systemName: this.props.systemName,
+            systemId: this.state.system_id}
   },
   update: function() {
     var url = '/systems/' + this.props.systemId + '/npcs/' + this.props.data.id
