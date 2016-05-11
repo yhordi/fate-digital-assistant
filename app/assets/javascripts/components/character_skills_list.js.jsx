@@ -20,7 +20,6 @@ var CharacterSkillsList = React.createClass({
     })
   },
   onChildChanged: function(newState){
-    console.log(newState)
     this.setState(newState)
     this.props.changeParent(newState)
   },

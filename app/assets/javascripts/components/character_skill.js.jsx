@@ -9,7 +9,6 @@ var CharacterSkill = React.createClass({
       data: data,
       method: 'DELETE',
       success: function(response){
-        console.log('success')
         this.props.changeParent(response)
       }.bind(this)
     })
