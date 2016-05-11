@@ -1,4 +1,19 @@
 var CharacterSkill = React.createClass({
+  handleDelete: function(e) {
+    e.preventDefault()
+    var id = this.props.data.id
+    var url = '/character_skills/'+ id
+    var data = {id: id, npc_id: this.props.data.npc_id}
+    $.ajax({
+      url: url,
+      data: data,
+      method: 'DELETE',
+      success: function(response){
+        console.log('success')
+        this.props.changeParent(response)
+      }.bind(this)
+    })
+  },
   render: function() {
     return(
       <li className="skillCard">

@@ -1,9 +1,16 @@
 class CharacterSkillsController < ApplicationController
   def create
-    char_skill = CharacterSkill.create(name: params[:name], level: params[:level].to_i, npc_id: params[:npc_id])
-    npc = Npc.find(char_skill.npc_id)
+    character_skill = CharacterSkill.create(name: params[:name], level: params[:level].to_i, npc_id: params[:npc_id])
+    npc = Npc.find(character_skill.npc_id)
     skills = Skill.names(params[:system_id])
-    char_skills = npc.character_skills
-    render json: {data: npc, character_skills: char_skills, skills: skills}
+    character_skills = npc.character_skills
+    render json: {data: npc, character_skills: character_skills, skills: skills}
+  end
+
+  def destroy
+    character_skill = CharacterSkill.find(params[:id])
+    character_skill.delete
+    npc = Npc.find(params[:npc_id])
+    render json: {characterSkills: npc.character_skills}
   end
 end

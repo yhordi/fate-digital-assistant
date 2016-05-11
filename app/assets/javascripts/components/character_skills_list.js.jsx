@@ -20,6 +20,7 @@ var CharacterSkillsList = React.createClass({
     })
   },
   onChildChanged: function(newState){
+    console.log(newState)
     this.setState(newState)
     this.props.changeParent(newState)
   },
@@ -31,11 +32,11 @@ var CharacterSkillsList = React.createClass({
             onChildChanged: this.onChildChanged}
   },
   render: function() {
-    var characterSkills = this.state.characterSkills.map(function(characterSkill, index){
+    var characterSkills = this.state.characterSkills.map(function(characterSkill, index) {
       return (
-        <CharacterSkill data={characterSkill} key={index} />
+        <CharacterSkill changeParent={this.onChildChanged} systemId={this.props.systemId} data={characterSkill} key={index} />
       )
-    })
+    }.bind(this))
     return(
     <div className="col span-9-t">
       <h3>
