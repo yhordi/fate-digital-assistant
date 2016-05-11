@@ -7,7 +7,7 @@ var Npc = React.createClass({
     var systemAttributes = this.systemAttributes()
     var container = this.container()
     ReactDOM.unmountComponentAtNode(container)
-    var url = '/systems/' + this.props.system_id + '/npcs'
+    var url = '/systems/' + this.props.systemId + '/npcs'
     $.ajax({
       url: url,
       success: function(response){
