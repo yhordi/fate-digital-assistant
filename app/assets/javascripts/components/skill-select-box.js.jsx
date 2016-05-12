@@ -20,8 +20,10 @@ var SkillSelectBox = React.createClass({
         component.props.changeParent({data: response.data,
                                       characterSkills: response.character_skills,
                                       skills: response.Skill
-                                    })
-      },
+                                    });
+        this.showButton()
+        ReactDOM.unmountComponentAtNode(document.getElementById('addSkillTarget'))
+      }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
        }.bind(this)
@@ -39,6 +41,10 @@ var SkillSelectBox = React.createClass({
   },
   onChildChange: function(newState){
     this.setState(newState)
+  },
+  showButton: function(){
+    var button = document.getElementById('addSkill')
+    button.className = ""
   },
   render: function() {
     return(

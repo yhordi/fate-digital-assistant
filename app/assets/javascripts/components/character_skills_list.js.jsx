@@ -6,6 +6,7 @@ var CharacterSkillsList = React.createClass({
   },
   addSkill: function(e){
     e.preventDefault()
+    this.hideButton()
     var url = '/systems/' + this.props.data.system_id + '/skills/'
     var container = document.getElementById('addSkillTarget')
     var propData = this.propData()
@@ -18,6 +19,10 @@ var CharacterSkillsList = React.createClass({
         )
       }
     })
+  },
+  hideButton: function(){
+    var button = document.getElementById('addSkill')
+    button.className += " hidden"
   },
   onChildChanged: function(newState){
     this.setState(newState)
@@ -42,7 +47,7 @@ var CharacterSkillsList = React.createClass({
         Skills
       </h3>
       <div>
-        <button onClick={this.addSkill}>Add Skill to NPC</button>
+        <button id="addSkill" onClick={this.addSkill}>Add Skill to NPC</button>
       </div>
       <div id='addSkillTarget'></div>
       <ul className='no-bullet' id="skillsList">
