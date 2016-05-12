@@ -14,15 +14,13 @@ var System = React.createClass({
     e.preventDefault()
     var container = this.container()
     var url = e.target.href
-    var systemName = this.props.name
-    var systemId = this.props.id
     $.ajax({
       url: url,
       success: function(response){
         ReactDOM.render(
-          <NpcBox data={response} systemName={systemName} systemId={systemId} />, container
+          <NpcBox data={response} systemName={this.props.name} systemId={this.props.id} />, container
         );
-      }
+      }.bind(this)
     })
   },
   getSkills: function(e){

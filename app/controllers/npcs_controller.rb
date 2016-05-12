@@ -8,7 +8,7 @@ class NpcsController < ApplicationController
   def destroy
     npc = Npc.find(params[:id])
     npc.destroy
-    render json: Npc.all
+    render json: Npc.all, include: :character_skills
   end
 
   def index
