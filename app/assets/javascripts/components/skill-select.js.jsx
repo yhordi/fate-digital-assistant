@@ -8,21 +8,30 @@ var SkillSelect = React.createClass({
   changeState: function(e) {
     var prop = e.target.name
     var value = e.target.value
-    var npc = {}
-    npc[prop] = value
-    this.setState(npc)
-    this.props.changeParent(npc)
+    var skill = {}
+    skill[prop] = value
+    this.setState(skill)
+    this.props.changeParent(skill)
   },
   render: function(){
-    var checkboxes = this.state.skills.map(function(skill, index) {
-      return(
-        <option value={skill} key={index}>{skill}</option>
-      )
+    var component = this
+    var options = this.state.skills.map(function(skill, index) {
+      if(component.props.skill == skill) {
+        return(
+          <option selected="selected" value={skill} key={index}>{skill}</option>
+        )
+        this.setState({name: skill})
+        this.props.changeParent({name: skill})
+      } else {
+        return(
+          <option value={skill} key={index}>{skill}</option>
+        )
+      }
     });
     return(
       <div>
         <select name='name' onChange={this.changeState}>
-          {checkboxes}
+          {options}
         </select>
         <select onChange={this.changeState} name='level'>
           <option value='1'>1</option>

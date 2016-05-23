@@ -2,14 +2,8 @@ var SkillSelectBox = React.createClass({
   getInitialState: function(){
     return {data: this.props.data, skills: this.props.skills, systemId: this.props.systemId }
   },
-  addSkillToNpc: function(e){
-    e.preventDefault()
+  addSkillToNpc: function(data){
     var url = '/npcs/' + this.props.npcId + '/character_skills'
-    var data = {level: this.state.level,
-                name: this.state.name,
-                system_id: this.state.systemId,
-                skills: this.state.skills,
-                npc_id: this.props.npcId}
     var container = document.getElementById('characterSkillsListTarget')
     var component = this
     $.ajax({
@@ -32,26 +26,49 @@ var SkillSelectBox = React.createClass({
   componentDidMount: function(){
     this.setState({name: this.props.skills[0], level: "1"})
   },
+  changeParent: function(newState){
+    this.setState(newState)
+    this.props.changeParent(newState)
+  },
   changeState: function(e) {
     var prop = e.target.name
     var value = e.target.value
     var npc = {}
     npc[prop] = value
     this.setState(npc)
+    console.log(this.state)
+  },
+  handleSubmit: function(e){
+    e.preventDefault()
+    var data = {level: this.state.level,
+                name: this.state.name,
+                system_id: this.state.systemId,
+                skills: this.state.skills,
+                npc_id: this.props.npcId}
+    if(this.props.button == "Update Skill") {
+
+    } else {
+      this.addSkillToNpc(data)
+    }
+
   },
   onChildChange: function(newState){
+    this.props.changeParent(newState)
     this.setState(newState)
   },
   showButton: function(){
     var button = document.getElementById('addSkill')
     button.className = ""
   },
+  updateSkill: function(){
+
+  },
   render: function() {
     return(
       <div>
-        <form onSubmit={this.addSkillToNpc}>
-          <SkillSelect skills={this.state.skills} changeParent={this.onChildChange} />
-          <input id="add-skill-submit" type='submit' />
+        <form onSubmit={this.handleSubmit}>
+          <SkillSelect skill={this.props.skill} changeParent={this.onChildChange} skills={this.state.skills}  />
+          <input id="add-skill-submit" type='submit' value={this.props.button} />
         </form>
       </div>
     )
