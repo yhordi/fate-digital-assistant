@@ -53,6 +53,7 @@ var Npc = React.createClass({
   },
   render: function() {
     return(
+      <div>
       <div className='row'>
         <div className='col span-3-t'>
           <h3>
@@ -81,6 +82,12 @@ var Npc = React.createClass({
         <div id='stunts'>
         </div>
       </div>
+      <div className="row">
+        <div className="col span-12-t">
+          <StuntList data={this.props.data.stunts} />
+        </div>
+      </div>
+    </div>
     );
   }
 });
