@@ -3,8 +3,8 @@ var Stunt = React.createClass({
   render: function() {
     return(
       <div>
-        <h3>{this.props.name}</h3>
-        <p>{this.props.description}</p>
+        <h3>{this.props.data.name}</h3>
+        <p>{this.props.data.description}</p>
       </div>
     );
   }
