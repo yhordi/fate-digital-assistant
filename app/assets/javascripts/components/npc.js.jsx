@@ -12,7 +12,7 @@ var Npc = React.createClass({
       url: url,
       success: function(response){
           ReactDOM.render(
-            <NpcBox data={response} systemName={systemAttributes.systemName} systemId={systemAttributes.systemId}/>, container
+            <NpcBox data={response} npcId={this.props.data.id} systemName={systemAttributes.systemName} systemId={systemAttributes.systemId}/>, container
           )
       }
     })

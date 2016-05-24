@@ -1,11 +1,25 @@
 var LevelSelect = React.createClass({
+  getInitialState: function(){
+    return(
+      {level: this.props.level}
+    )
+  },
   changeState: function(e) {
-    var prop = e.target.name
-    var value = e.target.value
-    var skill = {}
-    skill[prop] = value
-    this.setState(skill)
-    this.props.changeParent(skill)
+    var level = {level: e.target.value}
+    this.props.changeParent(level)
+    this.update(level)
+  },
+  update: function(level){
+    var url = '/character_skills/' + this.props.id
+    $.ajax({
+      url: url,
+      data: level,
+      method: 'PUT',
+      success: function(response){
+        console.log(response)
+        this.setState(level)
+      }.bind(this)
+    })
   },
   render: function(){
     return(

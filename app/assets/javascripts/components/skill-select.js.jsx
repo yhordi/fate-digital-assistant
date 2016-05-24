@@ -14,6 +14,7 @@ var SkillSelect = React.createClass({
     this.props.changeParent(skill)
   },
   onChildChange: function(newState){
+    ReactDOM.unmountComponentAtNode(document.getElementById('skillSelectTarget' + this.props.targetId))
     this.props.changeParent(newState)
     this.setState(newState)
   },
@@ -37,7 +38,7 @@ var SkillSelect = React.createClass({
         <select name='name' onChange={this.changeState}>
           {options}
         </select>
-        <LevelSelect changeParent={this.onChildChange} />
+        <LevelSelect npcId={this.props.npcId} changeParent={this.onChildChange} />
         <div id={'skillSelectTarget' + this.props.targetId }></div>
       </div>
     )

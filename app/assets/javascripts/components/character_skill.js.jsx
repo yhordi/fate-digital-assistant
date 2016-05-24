@@ -24,13 +24,13 @@ var CharacterSkill = React.createClass({
     this.setState(newState)
   },
   update: function(){
-    var container = document.getElementById("dropdownTarget" + this.props.data.id)
+    var container = document.getElementById("levelSelectTarget" + this.props.data.id)
     var url = '/systems/' + this.props.systemId + '/skills/'
     $.ajax({
       url: url,
       data: {names: 'true'},
       success: function(response){
-        ReactDOM.render(<SkillSelectBox id={this.props.data.id} skill={this.props.data.name} button="Update Skill" changeParent={this.onChildChanged} skills={response} />, container)
+        ReactDOM.render(<LevelSelect level={this.state.level} npcId={this.props.npcId} id={this.props.data.id} skill={this.props.data.name} changeParent={this.onChildChanged} />, container)
       }.bind(this)
     })
   },
@@ -41,13 +41,12 @@ var CharacterSkill = React.createClass({
           <button onClick={this.handleDelete} className='delete fa fa-trash'></button>
           </h3>
         <div>
-          Level {this.state.level}
+          Level <span id={"levelSelectTarget" + this.props.data.id }>{this.state.level}</span>
           <button onClick={this.handleEdit} className='edit fa fa-arrows-v'></button>
           </div>
         <div className="buttons">
         </div>
-        <div id={"dropdownTarget" + this.props.data.id}>
-        </div>
+
       </li>
     );
   }

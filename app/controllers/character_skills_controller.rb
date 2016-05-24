@@ -8,7 +8,10 @@ class CharacterSkillsController < ApplicationController
   end
 
   def update
-    p "*"*50
+    p params
+    character_skill = CharacterSkill.find(params[:id])
+    character_skill.update(level: params[:level])
+    render json: character_skill
   end
 
   def destroy
