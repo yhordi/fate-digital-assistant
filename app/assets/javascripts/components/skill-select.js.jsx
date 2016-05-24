@@ -13,6 +13,10 @@ var SkillSelect = React.createClass({
     this.setState(skill)
     this.props.changeParent(skill)
   },
+  onChildChange: function(newState){
+    this.props.changeParent(newState)
+    this.setState(newState)
+  },
   render: function(){
     var component = this
     var options = this.state.skills.map(function(skill, index) {
@@ -33,14 +37,7 @@ var SkillSelect = React.createClass({
         <select name='name' onChange={this.changeState}>
           {options}
         </select>
-        <select onChange={this.changeState} name='level'>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
-          <option value='6'>6+</option>
-        </select>
+        <LevelSelect changeParent={this.onChildChange} />
         <div id={'skillSelectTarget' + this.props.targetId }></div>
       </div>
     )

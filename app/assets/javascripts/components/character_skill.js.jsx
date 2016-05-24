@@ -18,30 +18,33 @@ var CharacterSkill = React.createClass({
   },
   handleEdit: function(e){
     e.preventDefault()
+    this.update()
+  },
+  onChildChanged: function(newState){
+    this.setState(newState)
+  },
+  update: function(){
     var container = document.getElementById("dropdownTarget" + this.props.data.id)
     var url = '/systems/' + this.props.systemId + '/skills/'
     $.ajax({
       url: url,
       data: {names: 'true'},
       success: function(response){
-        ReactDOM.render(<SkillSelectBox skill={this.props.data.name} button="Update Skill" changeParent={this.onChildChanged} skills={response} />, container)
+        ReactDOM.render(<SkillSelectBox id={this.props.data.id} skill={this.props.data.name} button="Update Skill" changeParent={this.onChildChanged} skills={response} />, container)
       }.bind(this)
     })
-  },
-  onChildChanged: function(newState){
-    console.log('childchanged')
-    this.setState(newState)
   },
   render: function() {
     return(
       <li className="skillCard">
-          <h3 className="no-margin card-header">{this.state.name}</h3>
+          <h3 className="no-margin card-header">{this.state.name}
+          <button onClick={this.handleDelete} className='delete fa fa-trash'></button>
+          </h3>
         <div>
           Level {this.state.level}
+          <button onClick={this.handleEdit} className='edit fa fa-arrows-v'></button>
           </div>
         <div className="buttons">
-          <button onClick={this.handleEdit} className='edit fa fa-pencil-square-o'></button>
-          <button onClick={this.handleDelete} className='delete fa fa-trash'></button>
         </div>
         <div id={"dropdownTarget" + this.props.data.id}>
         </div>

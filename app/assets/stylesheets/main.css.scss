@@ -92,6 +92,9 @@ a:hover{
 .close-form{
   margin-left: 60%
 }
+.dark{
+  background-color: $dark;
+}
 .delete{
   background-color: $alert;
   color: white;
@@ -102,8 +105,9 @@ a:hover{
   color: black;
   transition: color, .5s
 }
-.dark{
-  background-color: $dark;
+.disabled{
+  background-color: gray;
+  text-decoration: line-through;
 }
 .error{
   color: red;

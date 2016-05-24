@@ -46,11 +46,10 @@ var SkillSelectBox = React.createClass({
                 skills: this.state.skills,
                 npc_id: this.props.npcId}
     if(this.props.button == "Update Skill") {
-
+      this.update()
     } else {
       this.addSkillToNpc(data)
     }
-
   },
   onChildChange: function(newState){
     this.props.changeParent(newState)
@@ -60,8 +59,19 @@ var SkillSelectBox = React.createClass({
     var button = document.getElementById('addSkill')
     button.className = ""
   },
-  updateSkill: function(){
-
+  update: function(){
+    debugger
+    var url = '/npcs/' + this.props.npcId + '/character_skills/' + this.props.id
+    var data = {level: this.state.level,
+                name: this.state.name}
+    $.ajax({
+      url: url,
+      data: data,
+      method: 'PUT',
+      success: function(response){
+        console.log(response)
+      }
+    })
   },
   render: function() {
     return(

@@ -7,6 +7,10 @@ class CharacterSkillsController < ApplicationController
     render json: {data: npc, character_skills: character_skills, skills: skills}
   end
 
+  def update
+    p "*"*50
+  end
+
   def destroy
     character_skill = CharacterSkill.find(params[:id])
     character_skill.delete
