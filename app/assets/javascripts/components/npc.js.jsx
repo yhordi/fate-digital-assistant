@@ -11,10 +11,10 @@ var Npc = React.createClass({
     $.ajax({
       url: url,
       success: function(response){
-          ReactDOM.render(
-            <NpcBox data={response} npcId={this.props.data.id} systemName={systemAttributes.systemName} systemId={systemAttributes.systemId}/>, container
-          )
-      }
+        ReactDOM.render(
+          <NpcBox data={response} npcId={this.props.id} systemName={systemAttributes.systemName} systemId={systemAttributes.systemId}/>, container
+        )
+      }.bind(this)
     })
   },
   container: function(){
