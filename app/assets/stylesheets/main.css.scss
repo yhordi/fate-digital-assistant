@@ -8,18 +8,18 @@ $user: #FFA119;
 
 @font-face {
   font-family: 'Roboto';
-  src: font-url('/assets/fonts/RobotoCondensed-Light.ttf');
+  src: font-url('RobotoCondensed-Light.ttf');
   font-weight: normal;
   font-style: normal;
 }
 @font-face{
   font-family: 'Aldritch';
-  src: font-url('/assets/fonts/Aldrich-Regular.ttf');
+  src: font-url('Aldrich-Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }
 body{
-  background: image_url('brushed.png');
+  background: image_url('images/brushed.png');
   font-family: 'Roboto'
 }
 button{
