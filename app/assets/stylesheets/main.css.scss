@@ -268,6 +268,10 @@ a:hover{
   background-color: #DCDCDC;
   padding: .5em;
   width: 50%;
+  margin-bottom: 1em;
+  .delete{
+    margin: 0;
+  }
 }
 .skillForm{
   display: inline-block;

@@ -49,12 +49,13 @@ var CharacterSkill = React.createClass({
   render: function() {
     return(
       <li className="skillCard">
-          <h3 className="no-margin card-header">{this.state.name}
-          <button onClick={this.handleDelete} className='delete fa fa-trash'></button>
+          <h3 className="no-margin card-header">
+          <button onClick={this.handleDelete} className='delete fa fa-trash fa-fw'></button>
+          {this.state.name}
           </h3>
         <div>
+          <button onClick={this.handleEdit} className='edit fa fa-arrows-v fa-fw'></button>
           Level <span id={"levelSelectTarget" + this.props.data.id }>{this.state.level}</span>
-          <button onClick={this.handleEdit} className='edit fa fa-arrows-v'></button>
           </div>
         <div className="buttons">
         </div>
