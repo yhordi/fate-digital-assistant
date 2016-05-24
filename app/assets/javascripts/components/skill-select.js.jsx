@@ -38,7 +38,7 @@ var SkillSelect = React.createClass({
         <select name='name' onChange={this.changeState}>
           {options}
         </select>
-        <LevelSelect npcId={this.props.npcId} changeParent={this.onChildChange} />
+        <LevelSelect changeParent={this.onChildChange} />
         <div id={'skillSelectTarget' + this.props.targetId }></div>
       </div>
     )

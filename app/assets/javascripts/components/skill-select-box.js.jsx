@@ -60,7 +60,6 @@ var SkillSelectBox = React.createClass({
     button.className = ""
   },
   update: function(){
-    debugger
     var url = '/npcs/' + this.props.npcId + '/character_skills/' + this.props.id
     var data = {level: this.state.level,
                 name: this.state.name}
