@@ -20,6 +20,9 @@ var System = React.createClass({
         ReactDOM.render(
           <NpcBox data={response} systemName={this.props.name} systemId={this.props.id} />, container
         );
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
       }.bind(this)
     })
   },

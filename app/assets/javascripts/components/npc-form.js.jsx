@@ -25,6 +25,9 @@ var NpcForm = React.createClass({
         ReactDOM.render(
           <Npc systemId={this.props.systemId} data={response} systemName={this.props.systemName} />, container
         )
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
       }.bind(this)
     })
   },
@@ -117,7 +120,7 @@ var NpcForm = React.createClass({
             </select>
           </div>
           <div className='label'>
-            <label for="background">Background</label>
+            <label for="background">background</label>
           </div>
           <div>
             <textarea id='background' onChange={this.changeState} value={this.state.background} className="form-field" name="background" placeholder="Your character's backstory"></textarea>
