@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :npcs, shallow: true do
     resources :character_skills
+    resources :stunts
   end
   root 'users#new'
 end
