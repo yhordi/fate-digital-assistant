@@ -17,3 +17,15 @@
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@font-face {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-style: normal;
+  src: asset-url("RobotoCondensed-Light.ttf");
+}
+@font-face{
+  font-family: 'Aldritch';
+  src: asset-url("Aldrich-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}

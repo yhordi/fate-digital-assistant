@@ -6,18 +6,7 @@ $bodytext: #CCCBCB;
 $alert: #B12515;
 $user: #FFA119;
 
-@font-face {
-  font-family: 'Roboto';
-  font-weight: normal;
-  font-style: normal;
-  src: asset-url("RobotoCondensed-Light.ttf");
-}
-@font-face{
-  font-family: 'Aldritch';
-  src: asset-url("Aldrich-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
+
 body{
   background: image_url('brushed.png');
   font-family: 'Roboto'
