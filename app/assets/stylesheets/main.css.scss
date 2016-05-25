@@ -8,13 +8,13 @@ $user: #FFA119;
 
 @font-face {
   font-family: 'Roboto';
-  src: url("RobotoCondensed-Light.ttf");
   font-weight: normal;
   font-style: normal;
+  src: url(font_path("RobotoCondensed-Light.ttf"));
 }
 @font-face{
   font-family: 'Aldritch';
-  src: font-url('Aldrich-Regular.ttf');
+  src: url(font_path("Aldrich-Regular.ttf"));
   font-weight: normal;
   font-style: normal;
 }
