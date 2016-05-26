@@ -3,7 +3,7 @@ var StuntList = React.createClass({
     e.preventDefault()
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
-    ReactDOM.render(<StuntForm npcId={this.props.npcId} button="Create Stunt"/>, container)
+    ReactDOM.render(<StuntForm npc={this.props.npc} npcId={this.props.npcId} button="Create Stunt"/>, container)
   },
   render: function() {
     var stunts = this.props.data.map(function(stunt, index){
@@ -13,7 +13,7 @@ var StuntList = React.createClass({
     })
     return(
       <div>
-        <h2>Stunts</h2>
+        <h3>Stunts</h3>
         <div>
           <button onClick={this.handleClick}>Add New</button>
         </div>

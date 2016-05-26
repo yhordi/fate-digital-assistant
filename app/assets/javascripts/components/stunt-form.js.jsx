@@ -9,9 +9,12 @@ var StuntForm = React.createClass({
     stunt[prop] = value
     this.setState(stunt)
   },
+  container: function(){
+    return(document.getElementById('container'))
+  },
   handleBack: function(e){
     e.preventDefault()
-    var container = document.getElementById('container')
+    var container = this.container()
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
       <SystemBox />, container
@@ -24,9 +27,15 @@ var StuntForm = React.createClass({
     $.ajax({
       url: url,
       data: data,
-      method: 'POST'
-    }).done(function(response){
-      console.log(response)
+      method: 'POST',
+      success: function(response){
+        this.props.npc.data.stunts.push(response);
+        ReactDOM.unmountComponentAtNode(this.container());
+        ReactDOM.render(<Npc data={this.props.npc.data} />, this.container());
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
     })
   },
   render: function(){

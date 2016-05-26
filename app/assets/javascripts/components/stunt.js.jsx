@@ -3,7 +3,7 @@ var Stunt = React.createClass({
   render: function() {
     return(
       <div>
-        <h3>{this.props.data.name}</h3>
+        <h4 className="card-header">{this.props.data.name}</h4>
         <p>{this.props.data.description}</p>
       </div>
     );

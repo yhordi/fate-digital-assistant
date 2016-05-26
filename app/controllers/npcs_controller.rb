@@ -23,7 +23,7 @@ class NpcsController < ApplicationController
     render json: npc, include: [:character_skills, :stunts]
   end
 
-private
+  private
 
   def npc_params
     params.require(:npc).permit(:name, :background, :npc_type, :system_id, :id)

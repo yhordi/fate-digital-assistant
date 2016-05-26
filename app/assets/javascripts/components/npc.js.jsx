@@ -76,15 +76,15 @@ var Npc = React.createClass({
             <button onClick={this.handleDelete} className='delete'>Delete</button>
           </div>
         </div>
-        <div id='characterSkillsListTarget'>
+      </div>
+      <div className="row">
+        <div className="span-4-t" id='characterSkillsListTarget'>
           <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.data.character_skills} />
         </div>
         <div id='stunts'>
         </div>
-      </div>
-      <div className="row">
-        <div className="col span-12-t">
-          <StuntList data={this.props.data.stunts} npcId={this.props.data.id} />
+        <div className="col span-8-t">
+          <StuntList data={this.props.data.stunts} npcId={this.props.data.id} npc={this.props} />
         </div>
       </div>
     </div>
