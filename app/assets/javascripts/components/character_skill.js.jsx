@@ -48,7 +48,7 @@ var CharacterSkill = React.createClass({
   },
   render: function() {
     return(
-      <li className="skillCard">
+      <li className="card">
           <h3 className="no-margin m-btm card-header">
           <button onClick={this.handleDelete} className='delete fa fa-trash fa-fw'></button>
           {this.state.name}
