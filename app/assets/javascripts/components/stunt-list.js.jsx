@@ -1,4 +1,7 @@
 var StuntList = React.createClass({
+  getInitialState: function() {
+    return({stunts: this.props.data})
+  },
   handleClick: function(e){
     e.preventDefault()
     var container = document.getElementById('container')
@@ -6,12 +9,10 @@ var StuntList = React.createClass({
     ReactDOM.render(<StuntForm npc={this.props.npc} npcId={this.props.npcId} button="Create Stunt"/>, container)
   },
   onChildChanged: function(newState){
-    console.log(newState)
-    debugger
-    this.setState(newState)
+    this.replaceState(newState)
   },
   render: function() {
-    var stunts = this.props.data.map(function(stunt, index){
+    var stunts = this.state.stunts.map(function(stunt, index){
       return (
         <Stunt changeParent={this.onChildChanged} data={stunt} key={index} />
       )
