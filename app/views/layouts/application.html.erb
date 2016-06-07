@@ -22,16 +22,20 @@
       <% end %>
     </div>
   </div>
-    <% if session[:id] %>
-      <%= react_component('SideBar', {userId: session[:id]}) %>
-      <div id='nav-container'></div>
-      <div id="container" class="fl-right-dash">
-        <%= yield %>
-      </div>
-    <% else %>
-      <div id="container">
-        <%= yield %>
-      </div>
-    <% end %>
+    <div>
+      <% if session[:id] %>
+        <div class="nav fl-left">
+          <%= react_component('SideBar', {userId: session[:id]}) %>
+        </div>
+        <div id='nav-container'></div>
+        <div id="container" class="fl-right-dash">
+          <%= yield %>
+        </div>
+      <% else %>
+        <div id="container">
+          <%= yield %>
+        </div>
+      <% end %>
+    </div>
 </body>
 </html>

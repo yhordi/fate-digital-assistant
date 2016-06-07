@@ -15,7 +15,6 @@ var SideBar = React.createClass({
   },
   render: function() {
     return (
-    <div className="nav fl-left">
       <ul className="navlist">
         <li className="navItem">
         <div>
@@ -42,6 +41,5 @@ var SideBar = React.createClass({
         </li>
         <li id="notice"></li>
       </ul>
-    </div>
   )}
 });

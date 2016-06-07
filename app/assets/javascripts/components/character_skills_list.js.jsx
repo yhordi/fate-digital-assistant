@@ -25,7 +25,7 @@ var CharacterSkillsList = React.createClass({
     button.className += " hidden"
   },
   onChildChanged: function(newState){
-    this.setState(newState)
+    this.replaceState(newState)
     this.props.changeParent(newState)
   },
   propData: function(){

@@ -9,7 +9,7 @@ class System < ActiveRecord::Base
 
 
   def default_skills(params)
-    return seed_defaults(self.id, DefaultSkillsHelper.defaults(params["id"])) if params["system"]["default_set"] == "true"
+    return seed_defaults(self.id, DefaultSkillsHelper.defaults(params['id'])) if params['system']['default_set'] == 'true'
   end
 
   def seed_defaults(system_id, defaults)

@@ -11,15 +11,15 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'font-awesome-sass'
+gem 'rubocop', require: false
+
 
 group :development do
   gem 'dotenv-rails'
-  # gem 'spring'
 end
 group :test do;
   gem 'shoulda-matchers', '~> 3.1'
