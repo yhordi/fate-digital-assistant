@@ -39,6 +39,8 @@ GEM
     addressable (2.4.0)
     arel (6.0.3)
     ast (2.2.0)
+    autoprefixer-rails (6.3.6.2)
+      execjs
     aws-sdk (1.66.0)
       aws-sdk-v1 (= 1.66.0)
     aws-sdk-v1 (1.66.0)
@@ -49,6 +51,8 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.11)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.2)
     capybara (2.7.1)
       addressable
@@ -233,8 +237,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   aws-sdk (< 2.0)
   bcrypt (~> 3.1.7)
+  bootstrap-sass (~> 3.2.0)
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
