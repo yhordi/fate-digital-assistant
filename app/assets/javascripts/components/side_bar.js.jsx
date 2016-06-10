@@ -15,7 +15,7 @@ var SideBar = React.createClass({
   },
   render: function() {
     return (
-      <ul className="navlist">
+      <ul className="navlist list-unstyled">
         <li className="navItem">
         <div>
           <a onClick={this.getSystems} href='/systems/'>SYSTEMS
