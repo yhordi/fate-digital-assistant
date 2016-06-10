@@ -15,29 +15,30 @@ var SideBar = React.createClass({
   },
   render: function() {
     return (
-      <ul className="navlist list-unstyled">
-        <li className="navItem">
-        <div>
-          <a onClick={this.getSystems} href='/systems/'>SYSTEMS
-            <div className='fl-right system-sidebar'>
-              <i title="View your systems." className="fa fa-list fa-2x fa-stack"></i>
+      <ul className="nav">
+        <li>
+            <div>
+              <a onClick={this.getSystems} href='/systems/'>
+                  <i title="View your systems." className="fa fa-list fa-2x fa-stack"></i>
+                  SYSTEMS
+              </a>
             </div>
-          </a>
-        </div>
+        </li>
+        <li>
+            <div>
+              <a>
+                  <i title="View your games." className="fa fa-play-circle-o fa-2x fa-stack"></i>
+                  GAMES
+              </a>
+            </div>
         </li>
         <li className="navItem">
-          <a>GAMES
-            <div className='fl-right games-sidebar'>
-              <i title="View your games." className="fa fa-play-circle-o fa-2x fa-stack"></i>
-            </div>
-          </a>
-        </li>
-        <li className="navItem">
-          <a href={"/users/" + this.props.userId}>PROFILE
-           <div className='fl-right profile-sidebar'>
-             <i title="View your profile." className="user fa fa-user fa-2x fa-stack"></i>
+           <div>
+              <a href={"/users/" + this.props.userId}>
+                 <i title="View your profile." className="user fa fa-user fa-2x fa-stack"></i>
+                 PROFILE
+               </a>
            </div>
-           </a>
         </li>
         <li id="notice"></li>
       </ul>

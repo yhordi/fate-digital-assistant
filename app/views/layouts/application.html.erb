@@ -10,9 +10,9 @@
   <%= favicon_link_tag %>
 </head>
 <body>
-  <div id="main-container">
+  <div id="main-container" class="container-fluid">
     <div class="top row">
-      <div class="pad-left navbar navbar-default" id="bs-example-navbar-collapse-1">
+      <div class="navbar navbar-default col-xs-12">
         <div class='navbar-header'>
           <%= link_to "FATE: Dimensions", root_path, class: "navbar-brand" %>
         </div>
@@ -25,22 +25,20 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class='row'>
-        <% if session[:id] %>
-          <div class="side fl-left">
-            <%= react_component('SideBar', {userId: session[:id]}) %>
-          </div>
-          <div id='nav-container'></div>
-          <div id="container" class="fl-right-dash">
-            <%= yield %>
-          </div>
-        <% else %>
-          <div id="container">
-            <%= yield %>
-          </div>
-        <% end %>
-      </div>
+    <div class='row'>
+      <% if session[:id] %>
+        <div class="col-xs-6 col-sm-3" id="sidebar" role="navigation">
+          <%= react_component('SideBar', {userId: session[:id]}) %>
+        </div>
+        <div id='nav-container'></div>
+        <div id="container" class="col-xs-12 col-sm-9">
+          <%= yield %>
+        </div>
+      <% else %>
+        <div id="container">
+          <%= yield %>
+        </div>
+      <% end %>
     </div>
   </div>
 </body>

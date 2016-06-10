@@ -1,5 +1,11 @@
-<ul class="nav navbar-nav">
-  <li><%= image_tag(@user.avatar.url(:square), size: "52x52", class: "navThumb") %></li>
-  <li><%= link_to "#{session[:name].titleize}", user_path(session[:id]) %></li>
-  <li><%= link_to "Log out", session_path(session[:id]), method: "delete" %></li>
+<ul class="nav navbar-nav navbar-right">
+  <li>
+    <%= image_tag(@user.avatar.url(:square), size: "52x52") %>
+  </li>
+  <li>
+    <%= link_to "#{session[:name].titleize}", user_path(session[:id]) %>
+  </li>
+  <li>
+    <%= link_to "Log out", session_path(session[:id]), method: "delete" %>
+  </li>
 </ul>
