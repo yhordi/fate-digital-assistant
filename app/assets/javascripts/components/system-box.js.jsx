@@ -30,13 +30,13 @@ var SystemBox = React.createClass({
     return (
       <div className='systemBox'>
         <div className='row'>
-          <div className="col span-3-d span-4-t">
+          <div className="col-xs-2">
             <header>Systems</header>
               <button onClick={this.newSystem} href=''>Create New</button>
               <i className='fa fa-arrow-circle-o-right fa-stack center'></i>
             <SystemList data={this.state.systems} />
           </div>
-          <div className="col span-8-d span-8-t form-target"></div>
+          <div className="col-xs-6 form-target"></div>
         </div>
       </div>
     );

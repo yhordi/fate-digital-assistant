@@ -83,10 +83,10 @@ var System = React.createClass({
   },
   render: function() {
     return (
-      <div name={this.props.name} description={this.props.description} className='system row'>
+      <div name={this.props.name} description={this.props.description} className='row'>
         <div className="row">
-          <div className="col span-12-t inline">
-            <ul className="list-hz">
+          <div className="col-xs-12">
+            <ul className="nav">
               <li>
                 <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
               </li>

@@ -27,11 +27,11 @@
     </div>
     <div class='row'>
       <% if session[:id] %>
-        <div class="col-xs-6 col-sm-3" id="sidebar" role="navigation">
+        <div class="col-xs-6 col-sm-2" id="sidebar" role="navigation">
           <%= react_component('SideBar', {userId: session[:id]}) %>
         </div>
         <div id='nav-container'></div>
-        <div id="container" class="col-xs-12 col-sm-9">
+        <div id="container" class="col-xs-12 col-sm-10">
           <%= yield %>
         </div>
       <% else %>
