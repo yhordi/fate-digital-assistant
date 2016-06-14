@@ -17,27 +17,27 @@ var SideBar = React.createClass({
     return (
       <ul className="nav">
         <li>
-            <div>
-              <a onClick={this.getSystems} href='/systems/'>
-                  <i title="View your systems." className="fa fa-list fa-2x fa-stack"></i>
-                  SYSTEMS
-              </a>
-            </div>
+          <div>
+            <a onClick={this.getSystems} href='/systems/'>
+              <i title="View your systems." className="fa fa-list fa-2x fa-stack"></i>
+              SYSTEMS
+            </a>
+          </div>
         </li>
         <li>
-            <div>
-              <a>
-                  <i title="View your games." className="fa fa-play-circle-o fa-2x fa-stack"></i>
-                  GAMES
-              </a>
-            </div>
+          <div>
+            <a>
+              <i title="View your games." className="fa fa-play-circle-o fa-2x fa-stack"></i>
+              GAMES
+            </a>
+          </div>
         </li>
         <li className="navItem">
-           <div>
-              <a href={"/users/" + this.props.userId}>
-                 <i title="View your profile." className="user fa fa-user fa-2x fa-stack"></i>
-                 PROFILE
-               </a>
+         <div>
+            <a href={"/users/" + this.props.userId}>
+              <i title="View your profile." className="user fa fa-user fa-2x fa-stack"></i>
+                PROFILE
+              </a>
            </div>
         </li>
         <li id="notice"></li>

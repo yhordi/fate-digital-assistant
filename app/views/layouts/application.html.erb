@@ -12,7 +12,7 @@
 <body>
   <div id="main-container" class="container-fluid">
     <div class="top row">
-      <div class="navbar navbar-default col-xs-12">
+      <div class="navbar navbar-default col-m-12">
         <div class='navbar-header'>
           <%= link_to "FATE: Dimensions", root_path, class: "navbar-brand" %>
         </div>
@@ -27,15 +27,15 @@
     </div>
     <div class='row'>
       <% if session[:id] %>
-        <div class="col-xs-6 col-sm-2" id="sidebar" role="navigation">
+        <div class="col-md-2" id="sidebar" role="navigation">
           <%= react_component('SideBar', {userId: session[:id]}) %>
         </div>
-        <div id='nav-container'></div>
-        <div id="container" class="col-xs-12 col-sm-10">
+        <div id='nav-container' class="col-md-10"></div>
+        <div id="container" class="col-md-9">
           <%= yield %>
         </div>
       <% else %>
-        <div id="container">
+        <div id="container" class="col-md-10">
           <%= yield %>
         </div>
       <% end %>

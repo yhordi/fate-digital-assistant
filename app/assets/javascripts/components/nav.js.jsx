@@ -1,9 +1,12 @@
 var Nav = React.createClass({
   render: function() {
     return(
-      <h3 className={this.props.headerClass + ' no-margin'}>
-        {this.props.name}
-      </h3>
+      <div>
+        <h3 className={this.props.headerClass}>
+          {this.props.name}
+        </h3>
+        <SystemNavigation id={this.props.id}/>
+      </div>
     );
   }
 });
