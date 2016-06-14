@@ -26,17 +26,10 @@ var NpcBox = React.createClass({
   },
   render: function() {
     return (
-      <div className='row'>
-        <ul className="list-hz">
-          <li>
-            NPCs |
-          </li>
-          <li>
+      <div>
+          <h4>
             <a id="newNpc" onClick={this.handleNew} href={"systems/" + this.props.systemId + "/npcs/new"}>Create New</a>
-          </li>
-        </ul>
-          <button onClick={this.backToSystem}>Back</button>
-        <h3>NPCs</h3>
+          </h4>
           <NpcList data={this.props.data} systemId={this.props.systemId} systemName={this.props.systemName}/>
       </div>
     );

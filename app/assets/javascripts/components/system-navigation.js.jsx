@@ -47,9 +47,9 @@ var SystemNavigation = React.createClass({
   render: function(){
     return(
       <div>
-        <h3 className={this.props.headerClass + ' no-margin'}>
+        <a className={this.props.headerClass + ' no-margin'}>
           {this.props.name}
-        </h3>
+        </a>
         <ul className="nav nav-tabs">
           <li>
             <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
