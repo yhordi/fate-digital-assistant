@@ -13,7 +13,6 @@ var SystemNavigation = React.createClass({
     this.deactivate()
     tab = e.target.parentElement
     tab.setAttribute("class", "active")
-    getElementsByClassname("active")
     var container = this.container()
     var url = e.target.href
     $.ajax({
