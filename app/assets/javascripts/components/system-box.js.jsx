@@ -33,7 +33,6 @@ var SystemBox = React.createClass({
           <div className="col-xs-2">
             <header>Systems</header>
               <button onClick={this.newSystem} href=''>Create New</button>
-              <i className='fa fa-arrow-circle-o-right fa-stack center'></i>
             <SystemList data={this.state.systems} />
           </div>
           <div className="col-xs-6 form-target"></div>

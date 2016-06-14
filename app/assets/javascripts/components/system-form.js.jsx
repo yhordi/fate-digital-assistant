@@ -122,8 +122,8 @@ var Systemform = React.createClass({
               <span id="descNotice"></span>
             </div>
             <div title="Check this box if you want to build your system with the default set of skills as laid out in the fate core rulebook. You can delete or edit the skills at any time. You can also add these skills later.">
-              <label for="default-set">seed with default skills </label>
               <input id='defaults' name="defult-set" type="checkbox" onChange={this.check}/>
+              <label for="default-set"> seed with default skills </label>
             </div>
             <input className="submit" type='submit' value={this.props.button}/>
           </fieldset>
