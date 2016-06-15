@@ -2,6 +2,12 @@ var SideBar = React.createClass({
   container: function(){
    return document.getElementById('container')
   },
+  deactivate: function(){
+    var active = document.getElementsByClassName('active')
+    for(i in active) {
+      active[i].className = "";
+    }
+  },
   getSystems: function(e){
     e.preventDefault()
     ReactDOM.unmountComponentAtNode(this.container())
@@ -15,30 +21,24 @@ var SideBar = React.createClass({
   },
   render: function() {
     return (
-      <ul className="nav">
-        <li>
-          <div>
-            <a onClick={this.getSystems} href='/systems/'>
-              <i title="View your systems." className="fa fa-list fa-2x fa-stack"></i>
-              SYSTEMS
-            </a>
-          </div>
+      <ul className="nav nav-pills nav-stacked">
+        <li role="presentation">
+          <a onClick={this.getSystems} href='/systems/'>
+            <i title="View your systems." className="fa fa-list fa-2x fa-stack"></i>
+            SYSTEMS
+          </a>
         </li>
-        <li>
-          <div>
-            <a>
-              <i title="View your games." className="fa fa-play-circle-o fa-2x fa-stack"></i>
-              GAMES
-            </a>
-          </div>
+        <li className="disabled" role="presentation">
+          <a>
+            <i title="View your games." className="fa fa-play-circle-o fa-2x fa-stack"></i>
+            GAMES
+          </a>
         </li>
-        <li className="navItem">
-         <div>
-            <a href={"/users/" + this.props.userId}>
-              <i title="View your profile." className="user fa fa-user fa-2x fa-stack"></i>
-                PROFILE
-              </a>
-           </div>
+        <li role="presentation">
+          <a href={"/users/" + this.props.userId}>
+            <i title="View your profile." className="user fa fa-user fa-2x fa-stack"></i>
+              PROFILE
+          </a>
         </li>
         <li id="notice"></li>
       </ul>

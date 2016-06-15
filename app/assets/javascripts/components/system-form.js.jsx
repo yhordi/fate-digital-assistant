@@ -54,11 +54,22 @@ var Systemform = React.createClass({
     return { name: this.props.data.name, description: this.props.data.description }
   },
   handleBack: function(e){
-    e.preventDefault(e)
+    e.preventDefault()
+    if(this.props.button == "Create System") {
+      this.backToSystem()
+    } else {
+    this.backToSystems()
+    }
+  },
+  backToSystem: function(){
+    var container = document.getElementById('form-target')
+    ReactDOM.unmountComponentAtNode(container)
+  },
+  backToSystems: function(){
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
-      <SystemBox />, container
+      <System id={this.props.data.id} description={this.props.data.description} name={this.props.data.name} />, container
     )
   },
   handleSubmit: function(e) {

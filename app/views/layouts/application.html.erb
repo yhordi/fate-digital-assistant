@@ -27,7 +27,7 @@
     </div>
     <div class='row'>
       <% if session[:id] %>
-        <div class="col-md-2" id="sidebar" role="navigation">
+        <div class="col-md-2"role="navigation">
           <%= react_component('SideBar', {userId: session[:id]}) %>
         </div>
         <div id='nav-container' class="col-md-10"></div>
