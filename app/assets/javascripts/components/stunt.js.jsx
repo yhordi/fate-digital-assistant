@@ -17,13 +17,11 @@ var Stunt = React.createClass({
     return(
       <div className='panel panel-default'>
         <div className='panel-title panel-heading'>
-        <div>
           {this.props.data.name}
-        </div>
-          <div className="btn-group" role="group">
-            <button type="button" onClick={this.handleEdit} className='btn edit fa fa-pencil-square-o '></button>
+          <span className="btn-group-sm rt" role="group">
+            <button type="button" onClick={this.handleEdit} className='btn edit fa fa-pencil-square-o'></button>
             <button type="button" onClick={this.handleDelete} className='btn delete fa fa-trash'></button>
-          </div>
+          </span>
         </div>
         <p className='panel-body'>{this.props.data.description}</p>
       </div>
