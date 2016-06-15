@@ -48,18 +48,18 @@ var CharacterSkill = React.createClass({
   },
   render: function() {
     return(
-      <li className="card">
-          <h3 className="no-margin m-btm card-header">
-          <button onClick={this.handleDelete} className='delete fa fa-trash fa-fw no-margin'></button>
-          {this.state.name}
-          </h3>
+      <li className="list-group-item">
         <div>
-          <button onClick={this.handleEdit} className='edit fa fa-arrows-v fa-fw'></button>
-          Level <span id={"levelSelectTarget" + this.props.data.id }>{this.state.level}</span>
+          <div>
+            <h4 className="list-group-item-heading">{this.state.name + " "}
+              <a onClick={this.handleDelete} className='delete fa fa-trash'></a>
+            </h4>
+            <div>
+            <button onClick={this.handleEdit} className='edit fa fa-arrows-v'></button>
+              Level <span id={"levelSelectTarget" + this.props.data.id }>{this.state.level}</span>
+            </div>
           </div>
-        <div className="buttons">
-        </div>
-
+      </div>
       </li>
     );
   }

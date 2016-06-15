@@ -15,12 +15,14 @@ var Stunt = React.createClass({
   },
   render: function() {
     return(
-      <div className='card m-top-m'>
-        <h4 className="card-header no-margin m-btm ">{this.props.data.name}
-          <button onClick={this.handleEdit} className='edit fa fa-pencil-square-o fa-fw m-left'></button>
-          <button onClick={this.handleDelete} className='delete fa fa-trash fa-fw m-left'></button>
-        </h4>
-        <p>{this.props.data.description}</p>
+      <div className='panel panel-default'>
+        <div className='panel-title panel-heading'>{this.props.data.name}
+          <div>
+            <a onClick={this.handleEdit} className='edit fa fa-pencil-square fa-2x'></a>
+            <a onClick={this.handleDelete} className='delete fa fa-trash fa-2x'></a>
+          </div>
+        </div>
+        <p className='panel-body'>{this.props.data.description}</p>
       </div>
     );
   }

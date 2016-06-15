@@ -53,13 +53,17 @@ var Npc = React.createClass({
   },
   render: function() {
     return(
-      <div>
+    <div>
       <div className='row'>
-        <div className='col span-3-t'>
+        <div className='col-md-4'>
           <h3>
+          <a onClick={this.backToNpcs}><span className="fa fa-arrow-left"></span></a>
             NPC Profile: {this.state.data.name}
+            <a title="edit npc" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
+            <a title="delete npc" onClick={this.handleDelete} className='delete fa fa-trash'></a>
           </h3>
-          <button onClick={this.backToNpcs}>Back</button>
+          <div>
+          </div>
           <div>
             NPC Type: {this.state.data.npc_type}
           </div>
@@ -71,19 +75,15 @@ var Npc = React.createClass({
               {this.state.data.background}
             </p>
           </div>
-          <div>
-            <button onClick={this.handleEdit} className='edit'>Edit</button>
-            <button onClick={this.handleDelete} className='delete'>Delete</button>
-          </div>
         </div>
       </div>
       <div className="row">
-        <div className="span-4-t" id='characterSkillsListTarget'>
+        <div className="col-md-4" id='characterSkillsListTarget'>
           <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.data.character_skills} />
         </div>
         <div id='stunts'>
         </div>
-        <div className="col span-8-t">
+        <div className="col-md-4">
           <StuntList data={this.props.data.stunts} npcId={this.props.data.id} npc={this.props} />
         </div>
       </div>

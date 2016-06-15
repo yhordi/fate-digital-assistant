@@ -19,9 +19,9 @@ var StuntList = React.createClass({
     }.bind(this))
     return(
       <div>
-        <h3>Stunts</h3>
         <div>
-          <button onClick={this.handleClick}>Add New</button>
+        <h3>Stunts</h3>
+          <button className='btn' onClick={this.handleClick}>Add New</button>
         </div>
         {stunts}
       </div>

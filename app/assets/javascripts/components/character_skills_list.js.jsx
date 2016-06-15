@@ -50,7 +50,7 @@ var CharacterSkillsList = React.createClass({
         <button id="addSkill" onClick={this.addSkill}>Add Skill to NPC</button>
       </div>
       <div id='addSkillTarget'></div>
-      <ul className='no-bullet' id="skillsList">
+      <ul className='list-group' id="skillsList">
         {characterSkills}
       </ul>
     </div>
