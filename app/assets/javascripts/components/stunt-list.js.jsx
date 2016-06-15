@@ -4,8 +4,7 @@ var StuntList = React.createClass({
   },
   handleClick: function(e){
     e.preventDefault()
-    var container = document.getElementById('container')
-    ReactDOM.unmountComponentAtNode(container)
+    var container = document.getElementById('form-target')
     ReactDOM.render(<StuntForm npc={this.props.npc} npcId={this.props.npcId} button="Create Stunt"/>, container)
   },
   onChildChanged: function(newState){
@@ -23,7 +22,10 @@ var StuntList = React.createClass({
         <h3>Stunts</h3>
           <button className='btn' onClick={this.handleClick}>Add New</button>
         </div>
-        {stunts}
+        <div id="form-target"></div>
+        <div>
+          {stunts}
+        </div>
       </div>
     );
   }

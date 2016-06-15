@@ -14,11 +14,8 @@ var StuntForm = React.createClass({
   },
   handleBack: function(e){
     e.preventDefault()
-    var container = this.container()
+    var container = document.getElementById('form-target')
     ReactDOM.unmountComponentAtNode(container)
-    ReactDOM.render(
-      <SystemBox />, container
-    )
   },
   handleSubmit: function(e){
     e.preventDefault()
@@ -56,7 +53,7 @@ var StuntForm = React.createClass({
             <div title="You'll write a brief description here to give players a quick understanding of what your stunt does.">
               <label for="desc">Description</label>
             </div>
-            <textarea id="desc" name="description" className='form-field' rows="50" cols="25" onChange={this.changeState} value={this.state.description}></textarea>
+            <textarea id="desc" name="description" className='form-field' onChange={this.changeState} value={this.state.description}></textarea>
             <span id="descNotice"></span>
           </div>
           <input className="submit" type='submit' value={this.props.button}/>
