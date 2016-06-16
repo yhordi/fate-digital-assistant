@@ -6,7 +6,7 @@ describe 'character_skill', js: true do
   let(:npc_attributes) {FactoryGirl.attributes_for :npc}
   before(:each) do
     visit root_path
-    fill_in 'Username', with: user.name
+    fill_in 'name', with: user.name
     fill_in 'Password', with: user.password
     click_on 'Log In'
     click_on 'SYSTEMS'

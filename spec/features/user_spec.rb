@@ -16,7 +16,7 @@ describe 'User', js: true do
   context 'logged in and editing their profile' do
     before(:each) do
       visit root_path
-      fill_in 'Username', with: user.name
+      fill_in 'name', with: user.name
       fill_in 'Password', with: user.password
       click_on 'Log In'
       click_on 'Edit Profile/Account Details'
