@@ -8,9 +8,15 @@ class StuntsController < ApplicationController
   end
 
   def destroy
-    p params
     stunt = Stunt.find(params[:id])
     stunt.delete
+    npc = Npc.find(params[:npc_id])
+    render json: {stunts: npc.stunts}
+  end
+
+  def update
+    stunt = Stunt.find(params[:id])
+    stunt.update_attributes(stunt_params)
     npc = Npc.find(params[:npc_id])
     render json: {stunts: npc.stunts}
   end

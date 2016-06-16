@@ -5,7 +5,7 @@ var StuntList = React.createClass({
   handleClick: function(e){
     e.preventDefault()
     var container = document.getElementById('form-target')
-    ReactDOM.render(<StuntForm npc={this.props.npc} npcId={this.props.npcId} button="Create Stunt"/>, container)
+    ReactDOM.render(<StuntForm npc={this.props.npc} npcId={this.props.npcId} data={{}}button="Create Stunt"/>, container)
   },
   onChildChanged: function(newState){
     this.replaceState(newState)

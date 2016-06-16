@@ -1,4 +1,12 @@
 var Stunt = React.createClass({
+  handleEdit: function(e){
+    e.preventDefault()
+    var container = document.getElementById("form-target")
+    var url = '/stunts/' + this.props.data.id
+    ReactDOM.render(
+      <StuntForm data={this.props.data} button="Update Stunt"/>, container
+    )
+  },
   handleDelete: function(e) {
     e.preventDefault()
     var id = this.props.data.id

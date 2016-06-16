@@ -1,6 +1,9 @@
 var StuntForm = React.createClass({
   getInitialState: function(){
-    return({})
+    return({
+      name: this.props.data.name,
+      description: this.props.data.description
+    })
   },
   changeState: function(e) {
     var prop = e.target.name
@@ -9,16 +12,7 @@ var StuntForm = React.createClass({
     stunt[prop] = value
     this.setState(stunt)
   },
-  container: function(){
-    return(document.getElementById('container'))
-  },
-  handleBack: function(e){
-    e.preventDefault()
-    var container = document.getElementById('form-target')
-    ReactDOM.unmountComponentAtNode(container)
-  },
-  handleSubmit: function(e){
-    e.preventDefault()
+  create: function(){
     var url = '/npcs/' + this.props.npcId +'/stunts/'
     var data = {stunt: this.state}
     $.ajax({
@@ -35,10 +29,40 @@ var StuntForm = React.createClass({
       }.bind(this)
     })
   },
+  update: function() {
+    var url = '/stunts/' + this.props.data.id
+    var container = document.getElementById('stunts-container')
+    $.ajax({
+      url: url,
+      data: {stunt: this.state, npc_id: this.props.data.npc_id},
+      method: 'PUT',
+      success: function(response){
+        console.log(response)
+        ReactDOM.unmountComponentAtNode(container);
+        ReactDOM.render(<StuntList data={response.stunts} />, container)
+      }.bind(this)
+    })
+  },
+  container: function(){
+    return(document.getElementById('container'))
+  },
+  handleBack: function(e){
+    e.preventDefault()
+    var container = document.getElementById('form-target')
+    ReactDOM.unmountComponentAtNode(container)
+  },
+  handleSubmit: function(e){
+    e.preventDefault()
+    if(this.props.button[0] == "C"){
+      this.create()
+    } else {
+      this.update()
+    }
+  },
   render: function(){
     return(
       <div>
-        <form className='form center system-form' onSubmit={this.handleSubmit}>
+        <form className='input-group' onSubmit={this.handleSubmit}>
           <div title="Your stunt's name.">
             <h3 className="form-header">{this.props.button}
               <a className="close-form" onClick={this.handleBack}>
@@ -48,15 +72,15 @@ var StuntForm = React.createClass({
             </h3>
             <label for="name">Stunt Name</label>
           </div>
-          <input id="name" name="name" className='form-field' onChange={this.changeState} value={this.state.name} type='text'/><span id='nameNotice'></span>
+          <input id="name" name="name" className='form-control' onChange={this.changeState} value={this.state.name} type='text'/><span id='nameNotice'></span>
           <div>
             <div title="You'll write a brief description here to give players a quick understanding of what your stunt does.">
               <label for="desc">Description</label>
             </div>
-            <textarea id="desc" name="description" className='form-field' onChange={this.changeState} value={this.state.description}></textarea>
+            <textarea id="desc" name="description" className='form-control' onChange={this.changeState} value={this.state.description}></textarea>
             <span id="descNotice"></span>
           </div>
-          <input className="submit" type='submit' value={this.props.button}/>
+          <input className="btn" type='submit' value={this.props.button}/>
         </form>
       </div>
     )
