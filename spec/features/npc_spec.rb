@@ -32,13 +32,15 @@ describe 'Npc', js: true do
         expect(page).to have_content(npc.background)
       end
       it 'can delete an npc and see the list of remaining npcs' do
-        click_button 'Delete'
+        page.find('#delete-npc').click
         expect(page).to_not have_content(npc.name)
       end
       it 'can edit an npc and see the new attribute' do
-        click_button 'Edit'
-        fill_in 'name', with: 'Fenty Splawn'
-        click_button 'Update NPC'
+        page.find('#edit-npc').click
+        within('form') do
+          fill_in 'name', with: 'Fenty Splawn'
+          click_button 'Update NPC'
+        end
         expect(page).to have_content('Fenty Splawn')
       end
       it 'can add a skill to an npc' do

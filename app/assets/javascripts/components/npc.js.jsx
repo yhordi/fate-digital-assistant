@@ -59,8 +59,8 @@ var Npc = React.createClass({
           <h3>
           <a onClick={this.backToNpcs}><span className="fa fa-arrow-left"></span></a>
             NPC Profile: {this.state.data.name}
-            <a title="edit npc" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
-            <a title="delete npc" onClick={this.handleDelete} className='delete fa fa-trash'></a>
+            <a id="edit-npc" title="edit npc" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
+            <a id="delete-npc" title="delete npc" onClick={this.handleDelete} className='delete fa fa-trash'></a>
           </h3>
           <div>
           </div>

@@ -94,39 +94,39 @@ var NpcForm = React.createClass({
   },
   render: function() {
     return(
-      <div className='row center'>
-        <form className='form npc-form' onSubmit={this.handleSubmit}>
-        <h3 className='form-header npc-header'>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+        <h3>
           {this.props.button}
           <a className="close-form" onClick={this.handleBack}>
             <span className="fa fa-close">
             </span>
           </a>
         </h3>
-          <div className='label'>
+          <fieldset className="form-group">
             <label for="npcName">name</label>
-          </div>
           <div>
             <input id='npcName' onChange={this.changeState} value={this.state.name} className="form-field"type='text' name="name" placeholder="Your character's name."/>
           </div>
-          <div className='label'>
+          </fieldset>
+          <fieldset className="form-group">
             <label for="typeSelect">Npc type</label>
-          </div>
-          <div>
-            <select id='typeSelect' onChange={this.changeState} className="form-field select" name='npc_type'>
-              <option value="Main">Main</option>
-              <option value="Supporting">Supporting</option>
-              <option value="Nameless">Nameless</option>
-            </select>
-          </div>
-          <div className='label'>
-            <label for="background">background</label>
-          </div>
-          <div>
-            <textarea id='background' onChange={this.changeState} value={this.state.background} className="form-field" name="background" placeholder="Your character's backstory"></textarea>
-          </div>
+            <div>
+              <select id='typeSelect' onChange={this.changeState} className="c-select" name='npc_type'>
+                <option value="Main">Main</option>
+                <option value="Supporting">Supporting</option>
+                <option value="Nameless">Nameless</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset className="form-group">
+            <div>
+              <label for="background">background</label>
+            </div>
+              <textarea id='background' onChange={this.changeState} value={this.state.background} className="form-field" name="background" placeholder="Your character's backstory"></textarea>
+          </fieldset>
           <input type="hidden" name="systemId" value={this.props.systemId}/>
-          <input className='submit' type="submit" value={this.props.button} />
+          <input className='submit btn' type="submit" value={this.props.button} />
         </form>
       </div>
     );
