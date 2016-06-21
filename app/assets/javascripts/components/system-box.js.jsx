@@ -30,7 +30,7 @@ var SystemBox = React.createClass({
     return (
       <div className='systemBox'>
         <div className='row'>
-          <div className="col-xs-2">
+          <div className="col-md-2">
             <h3>Systems</h3>
               <button className="btn btn-primary-outline" onClick={this.newSystem} href=''>Create New</button>
             <SystemList data={this.state.systems} />

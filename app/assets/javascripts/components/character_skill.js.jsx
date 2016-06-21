@@ -30,7 +30,6 @@ var CharacterSkill = React.createClass({
       data: level,
       method: 'PUT',
       success: function(response){
-        console.log(response)
         this.setState(level)
       }.bind(this)
     })

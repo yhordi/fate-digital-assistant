@@ -9,15 +9,14 @@ var CharacterSkillsList = React.createClass({
     this.hideButton()
     var url = '/systems/' + this.props.data.system_id + '/skills/'
     var container = document.getElementById('addSkillTarget')
-    var propData = this.propData()
     $.ajax({
       url: url,
       data: {'names': true},
       success: function(response){
         ReactDOM.render(
-          <SkillSelectBox npcId={propData.npcId} changeParent={propData.onChildChanged} systemId={propData.systemId} knownSkills={propData.knownSkills} npcName={propData.npcName} skills={response} />, container
+          <SkillSelectBox npcId={this.props.data.id} changeParent={this.onChildChanged} skills={response} />, container
         )
-      }
+      }.bind(this)
     })
   },
   hideButton: function(){
@@ -25,15 +24,8 @@ var CharacterSkillsList = React.createClass({
     button.className += " hidden"
   },
   onChildChanged: function(newState){
-    this.replaceState(newState)
+    this.setState(newState)
     this.props.changeParent(newState)
-  },
-  propData: function(){
-    return {npcName: this.props.data.name,
-            knownSkills: this.props.data.skills,
-            npcId: this.props.data.id,
-            systemId: this.props.data.system_id,
-            onChildChanged: this.onChildChanged}
   },
   render: function() {
     var characterSkills = this.state.characterSkills.map(function(characterSkill, index) {

@@ -37,7 +37,6 @@ var StuntForm = React.createClass({
       data: {stunt: this.state, npc_id: this.props.data.npc_id},
       method: 'PUT',
       success: function(response){
-        console.log(response)
         ReactDOM.unmountComponentAtNode(container);
         ReactDOM.render(<StuntList data={response.stunts} />, container)
       }.bind(this)

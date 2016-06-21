@@ -31,6 +31,9 @@ var Systemform = React.createClass({
         var container = document.getElementById('container')
         this.setState({systems: data})
         ReactDOM.render(
+          <Nav id={data.id} name={data.name} />, document.getElementById('nav-container')
+        )
+        ReactDOM.render(
           <System name={data.name} id={data.id} button="Update System" description={data.description} />, container
         );
         $('#notice').prepend('System Created!').addClass('notice')

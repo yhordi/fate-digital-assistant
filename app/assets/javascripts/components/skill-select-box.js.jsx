@@ -36,7 +36,6 @@ var SkillSelectBox = React.createClass({
     var npc = {}
     npc[prop] = value
     this.setState(npc)
-    console.log(this.state)
   },
   handleSubmit: function(e){
     e.preventDefault()
@@ -52,7 +51,7 @@ var SkillSelectBox = React.createClass({
     }
   },
   onChildChange: function(newState){
-    this.props.changeParent(newState)
+    this.changeParent(newState)
     this.setState(newState)
   },
   showButton: function(){
