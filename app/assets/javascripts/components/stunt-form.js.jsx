@@ -74,9 +74,9 @@ var StuntForm = React.createClass({
           <input id="name" name="name" className='form-control' onChange={this.changeState} value={this.state.name} type='text'/><span id='nameNotice'></span>
           <div>
             <div title="You'll write a brief description here to give players a quick understanding of what your stunt does.">
-              <label for="desc">Description</label>
+              <label for="stunt-desc">Description</label>
             </div>
-            <textarea id="desc" name="description" className='form-control' onChange={this.changeState} value={this.state.description}></textarea>
+            <textarea id="stunt-desc" name="description" className='form-control' onChange={this.changeState} value={this.state.description}></textarea>
             <span id="descNotice"></span>
           </div>
           <input className="btn" type='submit' value={this.props.button}/>
