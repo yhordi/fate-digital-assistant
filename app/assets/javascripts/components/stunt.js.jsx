@@ -23,11 +23,11 @@ var Stunt = React.createClass({
   },
   render: function() {
     return(
-      <div className='panel panel-default'>
+      <div id={'stunt' + this.props.data.id} className='panel panel-default'>
         <div className='panel-title panel-heading'>
           {this.props.data.name}
           <span className="btn-group-sm rt" role="group">
-            <button type="button" onClick={this.handleEdit} className='btn edit fa fa-pencil-square-o'></button>
+            <button type="button" onClick={this.handleEdit} className='edit-stunt btn edit fa fa-pencil-square-o'></button>
             <button type="button" onClick={this.handleDelete} className='btn delete fa fa-trash'></button>
           </span>
         </div>

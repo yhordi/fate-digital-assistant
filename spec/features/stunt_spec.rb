@@ -1,6 +1,6 @@
 describe 'Stunt', js: true do
   let(:user) { FactoryGirl.create :user }
-  let(:stunt) { FactoryGirl.create(:stunt) }
+  let!(:stunt) { FactoryGirl.create(:stunt) }
   let!(:system) { FactoryGirl.create :system }
   let!(:npc) { FactoryGirl.create :npc }
   let(:stunt_attributes) { FactoryGirl.build(:stunt) }
@@ -25,6 +25,20 @@ describe 'Stunt', js: true do
         fill_in 'stunt-desc', with: stunt_attributes.description
         click_button 'Create Stunt'
         expect(page).to have_content(stunt_attributes.description)
+      end
+    end
+    describe 'deleting a stunt' do
+      it 'can click on a delete button and no longer see the stunt on the npc' do
+        page.find('.delete').click
+        expect(page).to_not have_content(stunt.name)
+      end
+    end
+    describe 'editing a stunt' do
+      it 'can click on the edit button, change a field on the stunt, submit it, and see the new data on the npc' do
+        page.find('.edit-stunt').click
+        fill_in 'name', with: '1111111111'
+        click_on('Update Stunt')
+        expect(page).to have_content('1111111111')
       end
     end
   end
