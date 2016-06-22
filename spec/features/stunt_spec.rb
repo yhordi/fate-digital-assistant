@@ -29,7 +29,9 @@ describe 'Stunt', js: true do
     end
     describe 'deleting a stunt' do
       it 'can click on a delete button and no longer see the stunt on the npc' do
-        page.find('.delete').click
+        within('.panel-title') do
+          page.find('.delete').click
+        end
         expect(page).to_not have_content(stunt.name)
       end
     end
