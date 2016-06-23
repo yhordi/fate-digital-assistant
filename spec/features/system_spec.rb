@@ -46,7 +46,7 @@ describe 'System', js: true do
         expect(page).to have_content(system_attributes.description)
       end
       xit 'can check the begin with default skills checkbox and see a list of the default skills on the skills page' do
-        pending("I need to figure out an effective way to test this, but there is still a model test for the general behavior.")
+        # pending("I need to figure out an effective way to test this, but there is still a model test for the general behavior.")
         fill_in 'name', with: system_attributes.name
         fill_in 'desc', with: system_attributes.description
         find(:css, "#defaults").set(true)

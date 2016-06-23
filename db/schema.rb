@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510214844) do
+ActiveRecord::Schema.define(version: 20160623183242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20160510214844) do
   end
 
   add_index "adventures", ["game_master_id"], name: "index_adventures_on_game_master_id", using: :btree
+
+  create_table "aspects", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "aspectable_id"
+    t.string   "aspectable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "aspects", ["aspectable_type", "aspectable_id"], name: "index_aspects_on_aspectable_type_and_aspectable_id", using: :btree
 
   create_table "character_skills", force: :cascade do |t|
     t.string   "name"
