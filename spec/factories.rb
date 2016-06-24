@@ -33,4 +33,10 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph}
     npc_id { 1 }
   end
+  factory :aspect do
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.paragraph}
+    aspectable_id { 1 }
+    aspectable_type {'Npc'}
+  end
 end
