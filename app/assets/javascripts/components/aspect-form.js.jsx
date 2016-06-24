@@ -3,8 +3,8 @@ var AspectForm = React.createClass({
     return({
       name: this.props.data.name,
       description: this.props.data.description,
-      aspectable_id: this.props.npcId,
-      aspectable_type: this.props.aspectableType
+      aspectable_id: this.props.data.aspectable_id,
+      aspectable_type: this.props.data.aspectable_type
     })
   },
   changeState: function(e) {
@@ -36,11 +36,11 @@ var AspectForm = React.createClass({
     var container = document.getElementById('aspects-container')
     $.ajax({
       url: url,
-      data: {aspect: this.state, npc_id: this.props.data.npc_id},
+      data: {aspect: this.state},
       method: 'PUT',
       success: function(response){
         ReactDOM.unmountComponentAtNode(container);
-        ReactDOM.render(<aspectList data={response.aspects} />, container)
+        ReactDOM.render(<AspectList data={response.aspects} />, container)
       }.bind(this)
     })
   },

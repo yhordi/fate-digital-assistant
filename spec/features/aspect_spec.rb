@@ -35,5 +35,13 @@ describe 'Aspect', js: true do
         expect(page).to_not have_content(aspect.name)
       end
     end
+    describe 'editing an aspect' do
+      it 'can click on the edit button, change a field on the aspect, submit it, and see the new data on the npc' do
+        page.find('.edit-aspect').click
+        fill_in 'name', with: '1111111111'
+        click_on('Update aspect')
+        expect(page).to have_content('1111111111')
+      end
+    end
   end
 end

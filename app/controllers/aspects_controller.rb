@@ -15,6 +15,13 @@ class AspectsController < ApplicationController
     render json: {aspects: npc.aspects}
   end
 
+  def update
+    aspect = Aspect.find(params[:id])
+    aspect.update_attributes(aspect_params)
+    npc = Npc.find(params[:aspect][:aspectable_id])
+    render json: {aspects: npc.aspects}
+  end
+
   private
 
   def aspect_params

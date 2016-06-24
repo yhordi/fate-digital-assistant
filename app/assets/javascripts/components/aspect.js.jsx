@@ -1,11 +1,11 @@
 var Aspect = React.createClass({
   handleEdit: function(e){
     e.preventDefault()
-    // var container = document.getElementById("form-target")
-    // var url = '/aspects/' + this.props.data.id
-    // ReactDOM.render(
-    //   <aspectForm data={this.props.data} button="Update aspect"/>, container
-    // )
+    var container = document.getElementById("aspect-form-target")
+    var url = '/aspects/' + this.props.data.id
+    ReactDOM.render(
+      <AspectForm data={this.props.data} button="Update aspect"/>, container
+    )
   },
   handleDelete: function(e) {
     e.preventDefault()
