@@ -27,5 +27,13 @@ describe 'Aspect', js: true do
       click_button('Create Aspect')
       expect(page).to have_content(aspect_attrs.name)
     end
+    describe 'deleting a aspect' do
+      it 'can click on a delete button and no longer see the aspect on the npc' do
+        within('.panel-title') do
+          page.find('.delete').click
+        end
+        expect(page).to_not have_content(aspect.name)
+      end
+    end
   end
 end
