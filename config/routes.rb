@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :character_skills
     resources :stunts
   end
+  resources :aspects, except: [:index, :show]
   root 'users#new'
 end

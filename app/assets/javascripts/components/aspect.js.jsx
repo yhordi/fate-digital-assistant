@@ -1,17 +1,17 @@
 var Aspect = React.createClass({
   handleEdit: function(e){
     e.preventDefault()
-    var container = document.getElementById("form-target")
-    var url = '/aspects/' + this.props.data.id
-    ReactDOM.render(
-      <aspectForm data={this.props.data} button="Update aspect"/>, container
-    )
+    // var container = document.getElementById("form-target")
+    // var url = '/aspects/' + this.props.data.id
+    // ReactDOM.render(
+    //   <aspectForm data={this.props.data} button="Update aspect"/>, container
+    // )
   },
   handleDelete: function(e) {
     e.preventDefault()
     var id = this.props.data.id
     var url = '/aspects/'+ id
-    var data = {id: id, npc_id: this.props.data.npc_id}
+    var data = {id: id, aspectable_id: this.props.data.aspectable_id}
     $.ajax({
       url: url,
       data: data,
