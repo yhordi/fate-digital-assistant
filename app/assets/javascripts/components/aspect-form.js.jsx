@@ -49,7 +49,7 @@ var AspectForm = React.createClass({
   },
   handleBack: function(e){
     e.preventDefault()
-    var container = document.getElementById('form-target')
+    var container = document.getElementById('aspect-form-target')
     ReactDOM.unmountComponentAtNode(container)
   },
   handleSubmit: function(e){

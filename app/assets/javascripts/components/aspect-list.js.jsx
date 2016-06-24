@@ -7,10 +7,13 @@ var AspectList = React.createClass({
     var container = document.getElementById('aspect-form-target')
     ReactDOM.render(<AspectForm npc={this.props.npc} aspectableType="Npc" npcId={this.props.npcId} data={{}} button="Create Aspect"/>, container)
   },
+  onChildChanged: function(newState){
+    this.replaceState(newState)
+  },
   render: function(){
     var aspects = this.state.aspects.map(function(aspect, index){
       return (
-        <Aspect data={aspect} key={index} />
+        <Aspect changeParent={this.onChildChanged} data={aspect} key={index} />
       )
     }.bind(this))
     return(
