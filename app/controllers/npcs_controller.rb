@@ -13,8 +13,8 @@ class NpcsController < ApplicationController
   end
 
   def index
-    npcs = Npc.where("system_id = #{params[:system_id]}").includes([:character_skills, :stunts])
-    render json: npcs, include: [:character_skills, :stunts]
+    npcs = Npc.where("system_id = #{params[:system_id]}").includes([:character_skills, :stunts, :aspects])
+    render json: npcs, include: [:character_skills, :stunts, :aspects]
   end
 
   def update

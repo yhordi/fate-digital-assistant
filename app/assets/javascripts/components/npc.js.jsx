@@ -86,6 +86,9 @@ var Npc = React.createClass({
         <div className="col-md-4" id="stunts-container">
           <StuntList data={this.props.data.stunts} npcId={this.props.data.id} npc={this.props} />
         </div>
+        <div className="col-md-4" id="aspects-container">
+          <AspectList data={this.props.data.aspects} npcId={this.props.data.id} npc={this.props} />
+        </div>
       </div>
     </div>
     );
