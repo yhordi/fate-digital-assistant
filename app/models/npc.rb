@@ -21,15 +21,16 @@ class Npc < ActiveRecord::Base
   def max_stress_math(character_skill)
     case
       when character_skill.level == 1
-        adjust_max_stress(1)
-      when character_skill.level <= 2 || character_skill.level <= 4
-        adjust_max_stress(2)
+        adjust_max_stress(1, character_skill)
+      when character_skill.level >= 2 && character_skill.level <= 4
+        adjust_max_stress(2, character_skill)
       when character_skill.level == 5
-        adjust_max_stress(3)
+        adjust_max_stress(3, character_skill)
     end
   end
 
-  def adjust_max_stress(value)
-    self.max_physical_stress += value
+  def adjust_max_stress(value, character_skill)
+    return self.max_physical_stress += value if character_skill.name == "Physique"
+    self.max_mental_stress += value
   end
 end
