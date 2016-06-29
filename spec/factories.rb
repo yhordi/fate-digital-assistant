@@ -22,6 +22,10 @@ FactoryGirl.define do
     background { Faker::Lorem.paragraph }
     system_id { 1 }
     npc_type { "Main" }
+    mental_stress { 0 }
+    physical_stress { 0 }
+    max_mental_stress { 2 }
+    max_physical_stress { 2 }
   end
   factory :character_skill do
     name { Faker::Lorem.word }

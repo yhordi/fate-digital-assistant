@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628002335) do
+ActiveRecord::Schema.define(version: 20160628004006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,10 +51,12 @@ ActiveRecord::Schema.define(version: 20160628002335) do
     t.string   "npc_type"
     t.text     "background"
     t.integer  "system_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "mental_stress",   default: 2
-    t.integer  "physical_stress", default: 2
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "mental_stress",       default: 2
+    t.integer  "physical_stress",     default: 2
+    t.integer  "max_mental_stress",   default: 2
+    t.integer  "max_physical_stress", default: 2
   end
 
   create_table "skills", force: :cascade do |t|
