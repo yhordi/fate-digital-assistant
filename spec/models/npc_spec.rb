@@ -8,6 +8,12 @@ describe Npc do
     it { is_expected.to validate_presence_of :npc_type }
   end
   describe '#calculate_max_stress' do
+    # levels = [
+    #      {input: 1, output: 1},
+    #      {input: 2, output: 2},
+    #      {input: 3, output: 2},
+    #      {input: 5, output: 3}
+    #    ]
     levels = [1,2,3,5]
     levels.each do |level|
       it "adjusts the max_mental_stress for an npc based on a physique level of #{level}" do
