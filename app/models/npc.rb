@@ -6,31 +6,56 @@ class Npc < ActiveRecord::Base
   has_many :aspects, as: :aspectable
 
   def calculate_max_stress
-    skills = ["Will", "Physique"]
+    skills = [
+                {name: "Will",
+                 stress_type: self.max_mental_stress},
+                {name: "Physique",
+                 stress_type: self.max_physical_stress}
+              ]
     skills.map do |skill|
-      character_skill = self.character_skills.find_by(name: skill)
-      return max_stress_math(character_skill) if has_skill?(character_skill)
+      character_skill = self.character_skills.find_by(name: skill[:name])
+      if has_skill?(character_skill) && self.stress_maxed?(skill[:stress_type]) == false # Helper method for this
+        max_stress_math({character_skill: character_skill, name: skill[:name], stress_type: skill[:stress_type]})
+      end
     end
   end
+
 
   def has_skill?(character_skill)
     return false if character_skill == nil
     true
   end
 
-  def max_stress_math(character_skill)
+  def stress_maxed?(max_stress)
+    return true if max_stress >= 5
+    false
+  end
+
+  def max_stress_math(options)
+    args = {
+      new_level: nil,
+      name: options[:name],
+      character_skill: options[:character_skill]
+    }
     case
-      when character_skill.level == 1
-        adjust_max_stress(1, character_skill)
-      when character_skill.level >= 2 && character_skill.level <= 4
-        adjust_max_stress(2, character_skill)
-      when character_skill.level == 5
-        adjust_max_stress(3, character_skill)
+      when options[:character_skill].level == 1
+        args[:new_level] = 3
+        adjust_max_stress(args)
+      when options[:character_skill].level.between?(2, 4)
+        args[:new_level] = 4
+        adjust_max_stress(args)
+      when options[:character_skill].level == 5
+        args[:new_level] = 5
+        adjust_max_stress(args)
     end
   end
 
-  def adjust_max_stress(value, character_skill)
-    return self.max_physical_stress += value if character_skill.name == "Physique"
-    self.max_mental_stress += value
+  def adjust_max_stress(options)
+    if options[:name] == "Physique"
+      self.max_physical_stress = options[:new_level]
+    else
+      self.max_mental_stress = options[:new_level]
+    end
+    self.save
   end
 end
