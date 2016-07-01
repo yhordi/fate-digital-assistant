@@ -14,12 +14,20 @@ class Npc < ActiveRecord::Base
               ]
     skills.map do |skill|
       character_skill = self.character_skills.find_by(name: skill[:name])
-      if has_skill?(character_skill) && self.stress_maxed?(skill[:stress_type]) == false # Helper method for this
-        max_stress_math({character_skill: character_skill, name: skill[:name], stress_type: skill[:stress_type]})
+      if skill_and_stress_valid?(character_skill, skill[:stress_type])
+        args = {
+                character_skill: character_skill,
+                name: skill[:name],
+                stress_type: skill[:stress_type]
+               }
+        max_stress_math(args)
       end
     end
   end
 
+  def skill_and_stress_valid?(character_skill, stress_level)
+    has_skill?(character_skill) && self.stress_maxed?(stress_level) == false
+  end
 
   def has_skill?(character_skill)
     return false if character_skill == nil
