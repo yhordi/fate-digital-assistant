@@ -37,5 +37,11 @@ describe Npc do
         expect{npc.calculate_max_stress}.to change{npc.max_mental_stress}.by(level)
       end
     end
+    it "does not increase max_physical_stress beyond 5" do
+      physique.level = 5
+      npc.character_skills << physique
+      npc.calculate_max_stress
+      expect(npc.max_physical_stress).to be <= 5
+    end
   end
 end
