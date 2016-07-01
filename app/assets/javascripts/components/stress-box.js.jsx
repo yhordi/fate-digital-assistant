@@ -10,20 +10,27 @@ var StressBox = React.createClass({
     return stresses
   },
   render: function(){
-    var stresses = []
+    var phStresses = []
     for (var i = 0; i < this.props.maxPhysicalStress; i++) {
-          stresses.push(<Stress key={i} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} />)
+          phStresses.push(<Stress key={i} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} />)
+        }
+    var mStresses = []
+    for (var i = 0; i < this.props.maxMentalStress; i++) {
+          mStresses.push(<Stress key={i} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} />)
         }
     return(
       <div>
         <div>
           Physical Stress:
           <div className="btn-group" id='physical-stress-target'>
-            {stresses}
+            {phStresses}
           </div>
         </div>
         <div>
           Mental Stress:
+          <div className="btn-group" id='physical-stress-target'>
+            {mStresses}
+          </div>
         </div>
       </div>
     )

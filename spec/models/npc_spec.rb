@@ -6,6 +6,14 @@ describe Npc do
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :npc_type }
+    it "does not validate max_mental_stress outside of 1..5 range" do
+      npc.max_mental_stress = 6
+      expect(npc).to_not be_valid
+    end
+    it "does not validate max_physical_stress outside of 1..5 range" do
+      npc.max_physical_stress = 6
+      expect(npc).to_not be_valid
+    end
   end
   describe '#calculate_max_stress' do
     levels = [
@@ -31,6 +39,20 @@ describe Npc do
       npc.character_skills << physique
       npc.calculate_max_stress
       expect(npc.max_physical_stress).to be <= 5
+    end
+    it "does not increase max_mental_stress beyond 5" do
+      physique.level = 5
+      npc.character_skills << will
+      npc.calculate_max_stress
+      expect(npc.max_mental_stress).to be <= 5
+    end
+    context "if the skill is removed" do
+      it "resets max_mental_stress to 2" do
+
+      end
+      it "resets max_mental_stress to 2" do
+
+      end
     end
   end
 end
