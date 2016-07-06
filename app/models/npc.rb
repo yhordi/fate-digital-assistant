@@ -2,11 +2,11 @@ class Npc < ActiveRecord::Base
   validates :name, :npc_type, presence: true
   validates :max_physical_stress, :max_mental_stress, inclusion: 1..5
   belongs_to :system
-  has_many :character_skills, dependent: :destroy
+  has_many :character_skills, dependent: :destroy, after_add: :calculate_max_stress
   has_many :stunts, dependent: :destroy
   has_many :aspects, as: :aspectable
 
-  def calculate_max_stress
+  def calculate_max_stress(npc)
     skills = [
                 {name: "Will",
                  stress_type: self.max_mental_stress},
@@ -26,6 +26,14 @@ class Npc < ActiveRecord::Base
     end
   end
 
+  def reset_max(stress)
+    if stress == "Physique"
+      self.max_physical_stress = 2
+    elsif stress == "Will"
+      self.max_mental_stress = 2
+    end
+  end
+
   def skill_and_stress_valid?(character_skill, stress_level)
     has_skill?(character_skill) && self.stress_maxed?(stress_level) == false
   end
@@ -39,6 +47,7 @@ class Npc < ActiveRecord::Base
     return true if max_stress >= 5
     false
   end
+
 
   def max_stress_math(options)
     args = {
@@ -65,6 +74,5 @@ class Npc < ActiveRecord::Base
     else
       self.max_mental_stress = options[:new_level]
     end
-    self.save
   end
 end

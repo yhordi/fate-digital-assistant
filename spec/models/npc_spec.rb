@@ -25,34 +25,33 @@ describe Npc do
     levels.each do |level|
       it "adjusts the max_mental_stress for an npc based on a physique level of #{level[:input]}" do
         physique.level = level[:input]
-        npc.character_skills << physique
-        expect{npc.calculate_max_stress}.to change{npc.max_physical_stress}.by(level[:output])
+        expect{npc.character_skills << physique}.to change{npc.max_physical_stress}.by(level[:output])
       end
       it "adjusts the max_physical_stress for an npc based on will level of #{level}" do
         will.level = level[:input]
-        npc.character_skills << will
-        expect{npc.calculate_max_stress}.to change{npc.max_mental_stress}.by(level[:output])
+        expect{npc.character_skills << will}.to change{npc.max_mental_stress}.by(level[:output])
       end
     end
     it "does not increase max_physical_stress beyond 5" do
       physique.level = 5
       npc.character_skills << physique
-      npc.calculate_max_stress
       expect(npc.max_physical_stress).to be <= 5
     end
     it "does not increase max_mental_stress beyond 5" do
       physique.level = 5
       npc.character_skills << will
-      npc.calculate_max_stress
       expect(npc.max_mental_stress).to be <= 5
     end
-    context "if the skill is removed" do
-      it "resets max_mental_stress to 2" do
-
-      end
-      it "resets max_mental_stress to 2" do
-
-      end
+  end
+  describe '#reset_max' do
+    it "resets max_physical_stress to 2" do
+      npc.reset_max("Physique")
+      expect(npc.max_physical_stress).to eq(2)
+    end
+    it "resets max_mental_stress to 2" do
+      npc.reset_max("Metal")
+      expect(npc.max_physical_stress).to eq(2)
     end
   end
+
 end
