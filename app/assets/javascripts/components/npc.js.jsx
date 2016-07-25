@@ -2,6 +2,10 @@ var Npc = React.createClass({
   getInitialState: function(){
     return {data: this.props.data, systemName: this.props.systemName, characterSkills: this.props.characterSkills}
   },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    console.log('shouldComponentUpdate')
+    return nextProps.characterSkills !== this.props.characterSkills;
+  },
   backToNpcs: function(e){
     e.preventDefault()
     var systemAttributes = this.systemAttributes()
@@ -45,6 +49,8 @@ var Npc = React.createClass({
     )
   },
   onChildChanged: function(newState){
+    console.log('Child of NPC has changed')
+    console.log(newState)
     this.setState(newState)
   },
   systemAttributes: function(){
@@ -82,7 +88,7 @@ var Npc = React.createClass({
       </div>
       <div className="row">
         <div className="col-md-4" id='characterSkillsListTarget'>
-          <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.data.character_skills} />
+          <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.characterSkills} />
         </div>
         <div id='stunts'>
         </div>

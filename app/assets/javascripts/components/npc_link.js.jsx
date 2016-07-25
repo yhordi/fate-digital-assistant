@@ -6,7 +6,7 @@ var NpcLink = React.createClass({
     e.preventDefault()
     ReactDOM.unmountComponentAtNode(this.container())
     ReactDOM.render(
-      <Npc data={this.props.data} systemId={this.props.systemId} systemName={this.props.systemName} />, this.container()
+      <Npc data={this.props.data} systemId={this.props.systemId} characterSkills={this.props.data.character_skills}/>, this.container()
     )
   },
   render: function() {

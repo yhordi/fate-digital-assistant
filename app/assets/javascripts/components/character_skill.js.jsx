@@ -1,7 +1,7 @@
 var CharacterSkill = React.createClass({
-  getInitialState: function(){
-    return {name: this.props.data.name, level: this.props.data.level}
-  },
+  // getInitialState: function(){
+  //   return {name: this.props.data.name, level: this.props.data.level}
+  // },
   handleDelete: function(e) {
     e.preventDefault()
     var id = this.props.data.id
@@ -22,6 +22,7 @@ var CharacterSkill = React.createClass({
   },
   onChildChanged: function(newState){
     this.setState(newState)
+    this.props.changeParent(newState)
   },
   onLevelChanged: function(level){
     var url = '/character_skills/' + this.props.data.id
@@ -50,12 +51,12 @@ var CharacterSkill = React.createClass({
       <li className="list-group-item">
         <div>
           <div>
-            <h4 className="list-group-item-heading">{this.state.name + " "}
+            <h4 className="list-group-item-heading">{this.props.name + " "}
               <a onClick={this.handleDelete} className='delete fa fa-trash'></a>
             </h4>
             <div>
             <button onClick={this.handleEdit} className='edit fa fa-arrows-v'></button>
-              Level <span id={"levelSelectTarget" + this.props.data.id }>{this.state.level}</span>
+              Level <span id={"levelSelectTarget" + this.props.data.id }>{this.props.level}</span>
             </div>
           </div>
       </div>
