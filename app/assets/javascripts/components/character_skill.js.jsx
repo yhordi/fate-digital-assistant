@@ -1,20 +1,8 @@
 var CharacterSkill = React.createClass({
-  // getInitialState: function(){
-  //   return {name: this.props.data.name, level: this.props.data.level}
-  // },
   handleDelete: function(e) {
     e.preventDefault()
-    var id = this.props.data.id
-    var url = '/character_skills/'+ id
-    var data = {id: id, npc_id: this.props.data.npc_id}
-    $.ajax({
-      url: url,
-      data: data,
-      method: 'DELETE',
-      success: function(response){
-        this.props.changeParent(response)
-      }.bind(this)
-    })
+    var data = this.props.data
+    this.props.delete(data)
   },
   handleEdit: function(e){
     e.preventDefault()
@@ -42,7 +30,7 @@ var CharacterSkill = React.createClass({
       url: url,
       data: {names: 'true'},
       success: function(response){
-        ReactDOM.render(<LevelSelect level={this.state.level} npcId={this.props.npcId} id={this.props.data.id} skill={this.props.data.name} changeParent={this.onLevelChanged} />, container)
+        ReactDOM.render(<LevelSelect level={this.props.level} npcId={this.props.npcId} id={this.props.data.id} skill={this.props.data.name} changeParent={this.onLevelChanged} />, container)
       }.bind(this)
     })
   },

@@ -14,8 +14,21 @@ var CharacterSkillsList = React.createClass({
       data: {'names': true},
       success: function(response){
         ReactDOM.render(
-          <SkillSelectBox npcId={this.props.data.id} changeParent={this.onChildChanged} skills={response} />, container
+          <SkillSelectBox  npcId={this.props.data.id} changeParent={this.onChildChanged} skills={response} />, container
         )
+      }.bind(this)
+    })
+  },
+  handleDelete: function(data) {
+    var id = data.id
+    var url = '/character_skills/' + id
+    var data = {id: id, npc_id: data.npc_id}
+    $.ajax({
+      url: url,
+      data: data,
+      method: 'DELETE',
+      success: function(response){
+        this.setState(response)
       }.bind(this)
     })
   },
@@ -30,7 +43,7 @@ var CharacterSkillsList = React.createClass({
   render: function() {
     var characterSkills = this.state.characterSkills.map(function(characterSkill, index) {
       return (
-        <CharacterSkill name={characterSkill.name} npcId={this.props.data.id} level={characterSkill.level} changeParent={this.onChildChanged} systemId={this.props.systemId} data={characterSkill} key={index} />
+        <CharacterSkill delete={this.handleDelete} name={characterSkill.name} npcId={this.props.data.id} level={characterSkill.level} changeParent={this.onChildChanged} systemId={this.props.systemId} data={characterSkill} key={index} />
       )
     }.bind(this))
     return(
