@@ -6,33 +6,20 @@ var CharacterSkill = React.createClass({
   },
   handleEdit: function(e){
     e.preventDefault()
-    this.update()
+    this.renderLevelSelect()
   },
   onChildChanged: function(newState){
     this.setState(newState)
     this.props.changeParent(newState)
   },
-  onLevelChanged: function(level){
+  update: function(level){
     var url = '/character_skills/' + this.props.data.id
-    $.ajax({
-      url: url,
-      data: level,
-      method: 'PUT',
-      success: function(response){
-        this.setState(level)
-      }.bind(this)
-    })
+    var id = this.props.data.id
+    this.props.update(level, url, id)
   },
-  update: function(){
+  renderLevelSelect: function(){
     var container = document.getElementById("levelSelectTarget" + this.props.data.id)
-    var url = '/systems/' + this.props.systemId + '/skills/'
-    $.ajax({
-      url: url,
-      data: {names: 'true'},
-      success: function(response){
-        ReactDOM.render(<LevelSelect level={this.props.level} npcId={this.props.npcId} id={this.props.data.id} skill={this.props.data.name} changeParent={this.onLevelChanged} />, container)
-      }.bind(this)
-    })
+    ReactDOM.render(<LevelSelect level={this.props.level} npcId={this.props.npcId} id={this.props.data.id} skill={this.props.data.name} update={this.update} />, container)
   },
   render: function() {
     return(

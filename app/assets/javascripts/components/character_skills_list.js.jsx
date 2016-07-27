@@ -32,18 +32,28 @@ var CharacterSkillsList = React.createClass({
       }.bind(this)
     })
   },
+  update: function(level, url, id){
+    $.ajax({
+      url: url,
+      data: level,
+      method: 'PUT',
+      success: function(response){
+        this.setState({characterSkills: response})
+      }.bind(this)
+    })
+  },
   hideButton: function(){
     var button = document.getElementById('addSkill')
     button.className += " hidden"
   },
   onChildChanged: function(newState){
+    console.log('in ' + this)
     this.setState(newState)
-    // this.props.changeParent(newState)
   },
   render: function() {
     var characterSkills = this.state.characterSkills.map(function(characterSkill, index) {
       return (
-        <CharacterSkill delete={this.handleDelete} name={characterSkill.name} npcId={this.props.data.id} level={characterSkill.level} changeParent={this.onChildChanged} systemId={this.props.systemId} data={characterSkill} key={index} />
+        <CharacterSkill delete={this.handleDelete} name={characterSkill.name} npcId={this.props.data.id} level={characterSkill.level} update={this.update} changeParent={this.onChildChanged} systemId={this.props.systemId} data={characterSkill} key={index} />
       )
     }.bind(this))
     return(

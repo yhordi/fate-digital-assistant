@@ -10,11 +10,12 @@ class CharacterSkillsController < ApplicationController
 
   def update
     character_skill = CharacterSkill.find(params[:id])
+    npc = Npc.find(character_skill.npc_id)
     character_skill.update(level: params[:level])
     if params.include?("Phsyique") || params.include?("Will")
       Npc.find(params[:npc_id]).calculate_max_stress
     end
-    render json: character_skill
+    render json: npc.character_skills
   end
 
   def destroy

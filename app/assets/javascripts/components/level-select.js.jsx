@@ -4,14 +4,14 @@ var LevelSelect = React.createClass({
       {level: this.props.level}
     )
   },
-  changeState: function(e) {
+  update: function(e) {
     var level = {level: e.target.value}
-    this.props.changeParent(level)
+    this.props.update(level)
   },
 
   render: function(){
     return(
-      <select onChange={this.changeState} name='level'>
+      <select onChange={this.update} name='level'>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
