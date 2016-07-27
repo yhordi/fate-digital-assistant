@@ -4,14 +4,18 @@ var LevelSelect = React.createClass({
       {level: this.props.level}
     )
   },
-  update: function(e) {
+  setLevel: function(e) {
     var level = {level: e.target.value}
-    this.props.update(level)
+    if(this.props.parent == 'skill-select'){
+      this.props.changeParent(level)
+    } else {
+      this.props.update(level)
+    }
   },
-
   render: function(){
     return(
-      <select onChange={this.update} name='level'>
+      <select onChange={this.setLevel} name='level'>
+        <option>select a new level</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
