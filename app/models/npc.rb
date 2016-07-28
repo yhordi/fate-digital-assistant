@@ -5,5 +5,4 @@ class Npc < ActiveRecord::Base
   has_many :character_skills, dependent: :destroy
   has_many :stunts, dependent: :destroy
   has_many :aspects, as: :aspectable
-
 end

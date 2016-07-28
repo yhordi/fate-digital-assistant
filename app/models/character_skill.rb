@@ -1,21 +1,20 @@
 class CharacterSkill < ActiveRecord::Base
   validates_presence_of :name
   belongs_to :npc
+  before_save :calculate_max_stress
 
-  def calculate_max_stress(skill_level)
-    if stress_skill?
-      return new_stress_level(skill_level)
-    end
+  def calculate_max_stress
+    return new_stress_level if stress_skill?
   end
 
-   def new_stress_level(skill_level)
+   def new_stress_level
     new_level = 2
     case
-      when skill_level == 1
+      when self.level == 1
         new_level = 3
-      when skill_level.between?(2, 4)
+      when self.level.between?(2, 4)
         new_level = 4
-      when skill_level >= 5
+      when self.level >= 5
         new_level = 5
     end
     new_level

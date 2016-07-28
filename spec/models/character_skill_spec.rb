@@ -15,10 +15,12 @@ describe CharacterSkill do
        ]
     levels.each do |level|
       it "returns #{level[:input]} based on a physique level of #{level[:output]}" do
-        expect(physique.calculate_max_stress(physique.level)).to eq(2)
+        physique.level = level[:input]
+        expect(physique.calculate_max_stress).to eq(level[:output])
       end
       it "returns #{level[:input]} based on a will level of #{level[:output]}" do
-        expect(will.calculate_max_stress(will.level)).to eq(2)
+        will.level = level[:input]
+        expect(will.calculate_max_stress).to eq(level[:output])
       end
     end
   end
