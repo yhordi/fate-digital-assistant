@@ -4,7 +4,7 @@ class CharacterSkillsController < ApplicationController
     character_skill.save!
     npc = Npc.find(character_skill.npc_id)
     skills = Skill.names(params[:system_id])
-    character_skills = npc.character_skills
+    character_skills = npc.character_skills.order('name')
     render json: {data: npc, character_skills: character_skills, skills: skills}
   end
 
@@ -15,13 +15,13 @@ class CharacterSkillsController < ApplicationController
     if params.include?("Phsyique") || params.include?("Will")
       Npc.find(params[:npc_id]).calculate_max_stress
     end
-    render json: npc.character_skills
+    render json: npc.character_skills.order('name')
   end
 
   def destroy
     character_skill = CharacterSkill.find(params[:id])
     character_skill.delete
     npc = Npc.find(params[:npc_id])
-    render json: {characterSkills: npc.character_skills}
+    render json: {characterSkills: npc.character_skills.order('name')}
   end
 end

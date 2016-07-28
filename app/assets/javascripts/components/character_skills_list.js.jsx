@@ -61,12 +61,14 @@ var CharacterSkillsList = React.createClass({
         Skills
       </h3>
       <div>
-        <button id="addSkill" onClick={this.addSkill}>Add Skill to NPC</button>
+        <button className='btn' id="addSkill" onClick={this.addSkill}>Add Skill to NPC</button>
       </div>
-      <div id='addSkillTarget'></div>
-      <ul className='list-group' id="skillsList">
-        {characterSkills}
-      </ul>
+      <div className="well well-lg">
+        <div id='addSkillTarget'></div>
+        <ul className='list-group' id="skillsList">
+          {characterSkills}
+        </ul>
+      </div>
     </div>
     );
   }

@@ -5,6 +5,7 @@ var LevelSelect = React.createClass({
     )
   },
   setLevel: function(e) {
+    $('.fa-arrows-v').removeAttr('disabled', 'disabled')
     var level = {level: e.target.value}
     if(this.props.parent == 'skill-select'){
       this.props.changeParent(level)

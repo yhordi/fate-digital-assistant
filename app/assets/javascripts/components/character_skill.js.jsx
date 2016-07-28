@@ -18,6 +18,8 @@ var CharacterSkill = React.createClass({
     this.props.update(level, url, id)
   },
   renderLevelSelect: function(){
+    $('.fa-arrows-v').attr('disabled', 'disabled')
+    $('.fa-arrows-v').addClass('disabled')
     var container = document.getElementById("levelSelectTarget" + this.props.data.id)
     ReactDOM.render(<LevelSelect level={this.props.level} npcId={this.props.npcId} id={this.props.data.id} skill={this.props.data.name} update={this.update} />, container)
   },
