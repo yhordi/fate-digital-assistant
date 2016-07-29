@@ -25,12 +25,5 @@ describe CharacterSkill do
       end
     end
   end
-  describe '#adjust_max_stress' do
-    it 'changes max_mental_stress based on will level' do
-      will.level = 2
-      will.save
-      npc.character_skills << will
-      expect(npc.max_mental_stress).to eq(4)
-    end
-  end
+
 end

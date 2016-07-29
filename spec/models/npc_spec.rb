@@ -20,6 +20,10 @@ describe Npc do
       npc.character_skills << physique
       expect(npc.max_physical_stress).to eq(2)
     end
+    it 'adjusts the max_mental_stress when will is added' do
+      npc.character_skills << will
+      expect(npc.max_mental_stress).to eq(2)
+    end
   end
 
 end
