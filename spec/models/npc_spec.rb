@@ -1,7 +1,7 @@
 describe Npc do
   let(:npc) { FactoryGirl.create :npc }
-  let(:physique) { CharacterSkill.new(name: 'Physique', level: 0)}
-  let(:will) { CharacterSkill.new(name: 'Will', level: 0)}
+  let(:physique) { CharacterSkill.new(name: 'Physique', level: 0, npc_id: 1)}
+  let(:will) { CharacterSkill.new(name: 'Will', level: 0, npc_id: 1)}
 
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
@@ -15,13 +15,28 @@ describe Npc do
       expect(npc).to_not be_valid
     end
   end
-  describe 'adjust_max_stress' do
+  describe '#adjust_max_stress' do
     it 'adjusts the max_physical_stress when physique is added' do
-      npc.character_skills << physique
+      npc.adjust_max_stress(physique)
       expect(npc.max_physical_stress).to eq(2)
     end
-    it 'adjusts the max_mental_stress when will is added' do
-      npc.character_skills << will
+    it 'adjusts the max_mental_stress when Will is added' do
+      npc.adjust_max_stress(will)
+      expect(npc.max_mental_stress).to eq(2)
+    end
+  end
+  describe '#reset_max_stress' do
+    before do
+      npc.max_physical_stress = 5
+      npc.max_mental_stress = 4
+      npc.save
+    end
+    it 'resets max_physical_stress to 2 when passed Physique as a parameter' do
+      npc.reset_max_stress(physique)
+      expect(npc.max_physical_stress).to eq(2)
+    end
+    it 'resets max_mental_stress to 2 when passed Will as a parameter' do
+      npc.reset_max_stress(will)
       expect(npc.max_mental_stress).to eq(2)
     end
   end

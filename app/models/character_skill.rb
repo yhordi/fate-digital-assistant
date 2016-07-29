@@ -1,5 +1,5 @@
 class CharacterSkill < ActiveRecord::Base
-  validates_presence_of :name
+  validates_presence_of :name, :npc_id
   belongs_to :npc
 
   def calculate_max_stress

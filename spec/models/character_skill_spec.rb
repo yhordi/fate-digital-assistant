@@ -1,9 +1,10 @@
 describe CharacterSkill do
   let(:npc) { FactoryGirl.create :npc }
-  let(:physique) { CharacterSkill.new(name: 'Physique', level: 0)}
-  let(:will) { CharacterSkill.new(name: 'Will', level: 0)}
+  let(:physique) { CharacterSkill.new(name: 'Physique', level: 0, npc_id: npc.id)}
+  let(:will) { CharacterSkill.new(name: 'Will', level: 0, npc_id: npc.id)}
 
-  it {is_expected.to validate_presence_of :name}
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_presence_of :npc_id }
   describe '#calculate_max_stress' do
     levels = [
          {input: 0, output: 2},
