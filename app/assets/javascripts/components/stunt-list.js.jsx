@@ -23,7 +23,7 @@ var StuntList = React.createClass({
           <button className='btn' onClick={this.handleClick}>Add New</button>
         </div>
         <div id="form-target"></div>
-        <div>
+        <div className='well well-lg'>
           {stunts}
         </div>
       </div>

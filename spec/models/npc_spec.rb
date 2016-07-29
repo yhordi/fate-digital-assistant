@@ -15,5 +15,11 @@ describe Npc do
       expect(npc).to_not be_valid
     end
   end
+  describe 'adjust_max_stress' do
+    it 'adjusts the max_physical_stress when physique is added' do
+      npc.character_skills << physique
+      expect(npc.max_physical_stress).to eq(2)
+    end
+  end
 
 end

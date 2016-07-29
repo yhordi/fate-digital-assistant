@@ -1,7 +1,6 @@
 class CharacterSkill < ActiveRecord::Base
   validates_presence_of :name
   belongs_to :npc
-  before_save :calculate_max_stress
 
   def calculate_max_stress
     return new_stress_level if stress_skill?
