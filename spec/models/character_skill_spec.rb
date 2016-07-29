@@ -2,9 +2,14 @@ describe CharacterSkill do
   let(:npc) { FactoryGirl.create :npc }
   let(:physique) { CharacterSkill.new(name: 'Physique', level: 0, npc_id: npc.id)}
   let(:will) { CharacterSkill.new(name: 'Will', level: 0, npc_id: npc.id)}
-
-  it { is_expected.to validate_presence_of :name }
-  it { is_expected.to validate_presence_of :npc_id }
+  describe 'validations' do
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :npc_id }
+    it 'validates uniqueness of a character_skill in the scope of an npc' do
+      physique.save
+      expect{physique.save}.to_not change{npc.character_skills.count}
+    end
+  end
   describe '#calculate_max_stress' do
     levels = [
          {input: 0, output: 2},
