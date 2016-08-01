@@ -20,10 +20,8 @@ var StuntForm = React.createClass({
       data: data,
       method: 'POST',
       success: function(response){
-        // this.props.npc.data.stunts.push(response);
         ReactDOM.unmountComponentAtNode(document.getElementById('form-target'));
         this.props.changeParent(response)
-        // ReactDOM.render(<Npc data={this.props.npc.data} />, this.container());
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());

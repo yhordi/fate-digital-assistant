@@ -8,7 +8,7 @@ var StuntList = React.createClass({
     ReactDOM.render(<StuntForm npc={this.props.npc} changeParent={this.onChildChanged} npcId={this.props.npcId} data={{}}button="Create Stunt"/>, container)
   },
   onChildChanged: function(newState){
-    this.setState({stunts: newState})
+    this.setState(newState)
   },
   render: function() {
     var stunts = this.state.stunts.map(function(stunt, index){
