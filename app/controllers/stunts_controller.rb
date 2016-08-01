@@ -4,7 +4,7 @@ class StuntsController < ApplicationController
     npc_id = params[:npc_id].to_i
     stunt.npc_id = npc_id
     stunt.save!
-    render json: stunt
+    render json: Stunt.where(npc_id: npc_id)
   end
 
   def destroy

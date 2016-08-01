@@ -48,6 +48,7 @@ var CharacterSkillsList = React.createClass({
   },
   onChildChanged: function(newState){
     this.setState(newState)
+    this.props.changeParent(newState)
   },
   render: function() {
     var characterSkills = this.state.characterSkills.map(function(characterSkill, index) {

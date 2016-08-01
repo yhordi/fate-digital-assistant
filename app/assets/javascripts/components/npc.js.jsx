@@ -83,7 +83,7 @@ var Npc = React.createClass({
           </div>
         </div>
         <div className="col-md-4">
-          <StressBox maxPhysicalStress={this.props.data.max_physical_stress} maxMentalStress={this.props.data.max_mental_stress} mentalStress={this.props.data.mental_stress} physicalStress={this.props.data.physical_stress} />
+          <StressBox maxPhysicalStress={this.state.data.max_physical_stress} maxMentalStress={this.state.data.max_mental_stress} mentalStress={this.props.data.mental_stress} physicalStress={this.props.data.physical_stress} />
         </div>
       </div>
       <div className="row">

@@ -6,7 +6,11 @@ class CharacterSkillsController < ApplicationController
       npc.adjust_max_stress(character_skill)
       skills = Skill.names(params[:system_id])
       character_skills = npc.character_skills.order('name')
-      render json: {data: npc, character_skills: character_skills, skills: skills}
+      render json: {
+        data: npc,
+        character_skills: character_skills,
+        skills: skills,
+      }
     else
       render json: {data: character_skill.errors.full_messages}
     end

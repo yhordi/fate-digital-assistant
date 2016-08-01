@@ -4,7 +4,7 @@ var NpcLink = React.createClass({
   },
   handleClick: function(e){
     e.preventDefault()
-    ReactDOM.unmountComponentAtNode(this.container())
+    // ReactDOM.unmountComponentAtNode(this.container())
     ReactDOM.render(
       <Npc data={this.props.data} systemId={this.props.systemId} characterSkills={this.props.data.character_skills}/>, this.container()
     )

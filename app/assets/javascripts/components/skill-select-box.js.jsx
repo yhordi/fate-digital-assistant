@@ -16,6 +16,7 @@ var SkillSelectBox = React.createClass({
                                       skills: response.Skill
                                     });
         this.showButton()
+        this.changeParent(response)
         ReactDOM.unmountComponentAtNode(document.getElementById('addSkillTarget'))
       }.bind(this),
       error: function (xhr, status, err) {
