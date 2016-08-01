@@ -1,7 +1,6 @@
 class AspectsController < ApplicationController
 
   def create
-    p params
     aspect = Aspect.new(aspect_params)
     aspect.aspectable_id = params[:aspect][:aspectable_id].to_i
     aspect.aspectable_type = params[:aspect][:aspectable_type]

@@ -22,11 +22,8 @@ var AspectForm = React.createClass({
       data: data,
       method: 'POST',
       success: function(response){
-        // this.props.npc.data.aspects.push(response);
-        console.log(response)
         ReactDOM.unmountComponentAtNode(document.getElementById('aspect-form-target'));
         this.props.changeParent(response)
-        // ReactDOM.render(<Npc data={this.props.npc.data} />, this.container());
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());

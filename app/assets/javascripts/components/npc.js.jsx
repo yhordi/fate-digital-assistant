@@ -3,7 +3,6 @@ var Npc = React.createClass({
     return {data: this.props.data, systemName: this.props.systemName, characterSkills: this.props.characterSkills}
   },
   shouldComponentUpdate: function(nextProps, nextState) {
-    console.log('shouldComponentUpdate')
     return nextProps.characterSkills !== this.props.characterSkills;
   },
   backToNpcs: function(e){
@@ -49,8 +48,6 @@ var Npc = React.createClass({
     )
   },
   onChildChanged: function(newState){
-    console.log('Child of NPC has changed')
-    console.log(newState)
     this.setState(newState)
   },
   systemAttributes: function(){
