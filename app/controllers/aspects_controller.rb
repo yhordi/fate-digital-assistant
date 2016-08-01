@@ -1,11 +1,12 @@
 class AspectsController < ApplicationController
 
   def create
+    p params
     aspect = Aspect.new(aspect_params)
     aspect.aspectable_id = params[:aspect][:aspectable_id].to_i
     aspect.aspectable_type = params[:aspect][:aspectable_type]
     aspect.save!
-    render json: aspect
+    render json: {aspects: Aspect.where(aspectable_id: aspect.aspectable_id)}
   end
 
   def destroy
