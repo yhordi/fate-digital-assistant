@@ -22,8 +22,9 @@ var NpcForm = React.createClass({
       data: data,
       success: function(response) {
         ReactDOM.unmountComponentAtNode(container)
+        // debugger
         ReactDOM.render(
-          <Npc systemId={this.props.systemId} data={response} systemName={this.props.systemName} />, container
+          <Npc systemId={this.props.systemId} data={response} systemName={this.props.systemName} characterSkills={[]}/>, container
         )
       }.bind(this),
       error: function (xhr, status, err) {
@@ -80,7 +81,7 @@ var NpcForm = React.createClass({
       success: function(response) {
         ReactDOM.unmountComponentAtNode(container)
         ReactDOM.render(
-          <Npc systemId={this.props.systemId} data={response} systemName={this.props.systemName} />, container
+          <Npc systemId={this.props.systemId} data={response} systemName={this.props.systemName} characterSkills={response.character_skills}/>, container
         )
       }.bind(this)
     })
