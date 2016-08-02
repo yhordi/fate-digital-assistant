@@ -17,12 +17,18 @@ var SkillSelectBox = React.createClass({
                                     });
         this.showButton()
         this.changeParent(response)
+        ReactDOM.render(<StressBox maxPhysicalStress={response.data.max_physical_stress} maxMentalStress={response.data.max_mental_stress} mentalStress={response.data.mental_stress} physicalStress={response.data.physical_stress} />, document.getElementById('stress-container'))
         ReactDOM.unmountComponentAtNode(document.getElementById('addSkillTarget'))
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
        }.bind(this)
     })
+  },
+  adjustMaxStress: function(skill){
+    if(skill == 'Will' || skill == 'Physique') {
+
+    }
   },
   componentDidMount: function(){
     this.setState({name: this.props.skills[0], level: "1"})

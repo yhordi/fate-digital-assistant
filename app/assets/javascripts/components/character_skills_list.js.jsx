@@ -14,7 +14,7 @@ var CharacterSkillsList = React.createClass({
       data: {'names': true},
       success: function(response){
         ReactDOM.render(
-          <SkillSelectBox  npcId={this.props.data.id} changeParent={this.onChildChanged} skills={response} />, container
+          <SkillSelectBox npcId={this.props.data.id} changeParent={this.onChildChanged} skills={response} />, container
         )
       }.bind(this)
     })
@@ -47,6 +47,7 @@ var CharacterSkillsList = React.createClass({
     button.className += " hidden"
   },
   onChildChanged: function(newState){
+
     this.setState(newState)
     this.props.changeParent(newState)
   },
