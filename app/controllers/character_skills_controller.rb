@@ -28,6 +28,6 @@ class CharacterSkillsController < ApplicationController
     npc = Npc.find(params[:npc_id])
     npc.reset_max_stress(character_skill)
     character_skill.delete
-    render json: {characterSkills: npc.character_skills.order('name')}
+    render json: {characterSkills: npc.character_skills.order('name'), data: npc}
   end
 end

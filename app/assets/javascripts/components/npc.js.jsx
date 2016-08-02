@@ -79,7 +79,8 @@ var Npc = React.createClass({
             </p>
           </div>
         </div>
-        <div className="col-md-4" id='stress-container'>
+        <h3>Stress</h3>
+        <div className="col-md-4 well well-lg" id='stress-container'>
           <StressBox maxPhysicalStress={this.state.data.max_physical_stress} maxMentalStress={this.state.data.max_mental_stress} mentalStress={this.props.data.mental_stress} physicalStress={this.props.data.physical_stress} />
         </div>
       </div>

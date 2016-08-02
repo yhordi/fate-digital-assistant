@@ -28,6 +28,7 @@ var CharacterSkillsList = React.createClass({
       data: data,
       method: 'DELETE',
       success: function(response){
+        ReactDOM.render(<StressBox maxPhysicalStress={response.data.max_physical_stress} maxMentalStress={response.data.max_mental_stress} mentalStress={response.data.mental_stress} physicalStress={response.data.physical_stress} />, document.getElementById('stress-container'))
         this.setState(response)
       }.bind(this)
     })

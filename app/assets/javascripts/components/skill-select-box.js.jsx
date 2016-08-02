@@ -25,11 +25,6 @@ var SkillSelectBox = React.createClass({
        }.bind(this)
     })
   },
-  adjustMaxStress: function(skill){
-    if(skill == 'Will' || skill == 'Physique') {
-
-    }
-  },
   componentDidMount: function(){
     this.setState({name: this.props.skills[0], level: "1"})
   },
