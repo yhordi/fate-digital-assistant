@@ -2,33 +2,49 @@ var StressBox = React.createClass({
   getInitialState: function(){
     return{  }
   },
-  maxPStress: function(){
-    var stresses = []
-    for (var i = 0; i == this.props.maxPhysicalStress; i++) {
-          stresses.push(<Stress key={i} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} />)
-        }
-    return stresses
+  resetBoxes: function(e){
+    var siblings;
+    siblings = $(e.target).parent().parent().children().children()
+    siblings.each(function(i){
+      $(siblings[i]).removeClass('btn-warning')
+      $(siblings[i]).addClass('btn-default')
+    })
+  },
+  shade: function(stress){
+
   },
   render: function(){
     var phStresses = []
     for (var i = 0; i < this.props.maxPhysicalStress; i++) {
-          phStresses.push(<Stress key={i} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} />)
+      var shaded;
+          if(i < this.props.physicalStress){
+            shaded = true
+          } else {
+            shaded = false
+          }
+          phStresses.push(<Stress key={i} shaded={shaded} id={"physical" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} stressType="physical" />)
         }
     var mStresses = []
     for (var i = 0; i < this.props.maxMentalStress; i++) {
-          mStresses.push(<Stress key={i} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} />)
+        var shaded;
+          if(i < this.props.mentalStress){
+            shaded = true
+          } else {
+            shaded = false
+          }
+          mStresses.push(<Stress key={i} shaded={shaded} id={"mental" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} stressType="mental" />)
         }
     return(
       <div>
         <div>
           Physical Stress:
-          <div className="btn-group" id='physical-stress-target'>
+          <div className="btn-group" onMouseLeave={this.resetBoxes} id='physical-stress-target'>
             {phStresses}
           </div>
         </div>
         <div>
           Mental Stress:
-          <div className="btn-group" id='physical-stress-target'>
+          <div className="btn-group" onMouseLeave={this.resetBoxes} id='mental-stress-target'>
             {mStresses}
           </div>
         </div>

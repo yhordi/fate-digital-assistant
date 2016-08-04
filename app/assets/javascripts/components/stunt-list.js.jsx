@@ -19,8 +19,9 @@ var StuntList = React.createClass({
     return(
       <div>
         <div>
-        <h3>Stunts</h3>
-          <button className='btn' onClick={this.handleClick}>Add New</button>
+          <h3>
+            Stunts <a className='fa fa-plus' onClick={this.handleClick}></a>
+          </h3>
         </div>
         <div id="form-target"></div>
         <div className='well well-lg'>

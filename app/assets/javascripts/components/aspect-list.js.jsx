@@ -21,11 +21,12 @@ var AspectList = React.createClass({
     return(
       <div>
         <div>
-          <h3>Aspects</h3>
-            <button className='btn' onClick={this.handleClick}>Add New Aspect</button>
+          <h3>
+            Aspects <a className='fa fa-plus' onClick={this.handleClick}></a>
+          </h3>
           </div>
         <div id="aspect-form-target"></div>
-        <div>
+        <div className='well well-lg'>
           {aspects}
         </div>
       </div>
