@@ -21,7 +21,7 @@ var Stress = React.createClass({
     lastIndex = id.length - 1
     var id = id[lastIndex]
     siblings.each(function(i){
-      if(siblings[i].id[lastIndex] >= id) {
+      if(siblings[i].id[lastIndex] <= id) {
         $(siblings[i]).removeClass('btn-default')
         $(siblings[i]).addClass('btn-warning')
       } else {
@@ -30,17 +30,22 @@ var Stress = React.createClass({
       }
     })
   },
+  update: function(e){
+    e.preventDefault()
+    console.log(this.props.stressValue)
+    console.log(this.props.stressType)
+  },
   render: function(){
-    if(this.props.shaded == false ) {
+    if(this.props.shaded == true ) {
       return (
         <span className="btn-group-sm rt" role="group">
-          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-danger" onClick={this.fillBox}></button>
+          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-danger" onClick={this.update}></button>
         </span>
       )
     } else {
       return(
         <span className="btn-group-sm rt" role="group">
-          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-default" onClick={this.fillBox}></button>
+          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-default" onClick={this.update}></button>
         </span>
       )
     }

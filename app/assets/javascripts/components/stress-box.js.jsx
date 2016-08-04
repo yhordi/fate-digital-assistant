@@ -13,16 +13,20 @@ var StressBox = React.createClass({
   shade: function(stress){
 
   },
+  update: function(){
+
+  },
   render: function(){
     var phStresses = []
     for (var i = 0; i < this.props.maxPhysicalStress; i++) {
+      console.log(phStresses)
       var shaded;
-          if(i < this.props.physicalStress){
+          if(i < this.props.physicalStress) {
             shaded = true
           } else {
             shaded = false
           }
-          phStresses.push(<Stress key={i} shaded={shaded} id={"physical" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} stressType="physical" />)
+          phStresses.push(<Stress key={i} update={this.update} shaded={shaded} id={"physical" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} stressType="physical" />)
         }
     var mStresses = []
     for (var i = 0; i < this.props.maxMentalStress; i++) {
@@ -32,20 +36,20 @@ var StressBox = React.createClass({
           } else {
             shaded = false
           }
-          mStresses.push(<Stress key={i} shaded={shaded} id={"mental" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} stressType="mental" />)
+          mStresses.push(<Stress key={i} update={this.update} shaded={shaded} id={"mental" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} stressType="mental" />)
         }
     return(
       <div>
         <div>
           Physical Stress:
           <div className="btn-group" onMouseLeave={this.resetBoxes} id='physical-stress-target'>
-            {phStresses}
+            {phStresses.reverse()}
           </div>
         </div>
         <div>
           Mental Stress:
           <div className="btn-group" onMouseLeave={this.resetBoxes} id='mental-stress-target'>
-            {mStresses}
+            {mStresses.reverse()}
           </div>
         </div>
       </div>
