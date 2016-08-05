@@ -32,8 +32,14 @@ var Stress = React.createClass({
   },
   update: function(e){
     e.preventDefault()
-    console.log(this.props.stressValue)
-    console.log(this.props.stressType)
+    var data = {npc:
+                {
+                  id: this.props.npcId,
+                  value: this.props.stressValue,
+                  stressType: this.props.stressType
+                }
+              }
+    this.props.update(data)
   },
   render: function(){
     if(this.props.shaded == true ) {

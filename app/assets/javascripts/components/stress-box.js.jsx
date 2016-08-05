@@ -13,8 +13,15 @@ var StressBox = React.createClass({
   shade: function(stress){
 
   },
-  update: function(){
-
+  update: function(data) {
+    $.ajax({
+      url: '/npcs/' + data.npc.id,
+      data: data,
+      dataType: 'JSON',
+      method: 'PUT'
+    }).done(function(response){
+      console.log(response)
+    })
   },
   render: function(){
     var phStresses = []
@@ -26,7 +33,7 @@ var StressBox = React.createClass({
           } else {
             shaded = false
           }
-          phStresses.push(<Stress key={i} update={this.update} shaded={shaded} id={"physical" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} stressType="physical" />)
+          phStresses.push(<Stress npcId={this.props.npcId} key={i} update={this.update} shaded={shaded} id={"physical" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} stressType="physical" />)
         }
     var mStresses = []
     for (var i = 0; i < this.props.maxMentalStress; i++) {
@@ -36,7 +43,7 @@ var StressBox = React.createClass({
           } else {
             shaded = false
           }
-          mStresses.push(<Stress key={i} update={this.update} shaded={shaded} id={"mental" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} stressType="mental" />)
+          mStresses.push(<Stress npcId={this.props.npcId} key={i} update={this.update} shaded={shaded} id={"mental" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} stressType="mental" />)
         }
     return(
       <div>
