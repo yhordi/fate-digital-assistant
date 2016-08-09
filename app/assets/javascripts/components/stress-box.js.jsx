@@ -14,20 +14,20 @@ var StressBox = React.createClass({
     // console.log(stress)
   },
   update: function(data) {
-    console.log(data)
     $.ajax({
       url: '/npcs/' + data.npc.id,
       data: data,
       dataType: 'JSON',
-      method: 'PUT'
-    }).done(function(response){
-      console.log(response)
+      method: 'PUT',
+      success: function(response){
+        this.props.changeParent(response)
+        ReactDOM.render(<StressBox changeParent={this.props.changeParent} npcId={response.id} maxPhysicalStress={response.max_physical_stress} maxMentalStress={response.max_mental_stress} mentalStress={response.mental_stress} physicalStress={response.physical_stress} />, document.getElementById('stress-container'))
+      }.bind(this)
     })
   },
   render: function(){
     var phStresses = []
     for (var i = 0; i < this.props.maxPhysicalStress; i++) {
-      console.log(phStresses)
       var shaded;
           if(i < this.props.physicalStress) {
             shaded = true

@@ -32,7 +32,6 @@ var Stress = React.createClass({
   },
   update: function(e){
     e.preventDefault()
-    console.log(this.props.stressType == "mental")
     if(this.props.stressType == "mental"){
       this.updateStress('mental_stress')
     } else {
@@ -52,7 +51,7 @@ var Stress = React.createClass({
     if(this.props.shaded == true ) {
       return (
         <span className="btn-group-sm rt" role="group">
-        <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-danger" onClick={this.update}></button>
+          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-danger" onClick={this.update}></button>
         </span>
         )
     } else {
