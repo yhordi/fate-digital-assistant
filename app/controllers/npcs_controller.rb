@@ -26,6 +26,6 @@ class NpcsController < ApplicationController
   private
 
   def npc_params
-    params.require(:npc).permit(:name, :background, :npc_type, :system_id, :id)
+    params.require(:npc).permit(:name, :background, :npc_type, :system_id, :id, :physical_stress, :mental_stress)
   end
 end

@@ -11,9 +11,10 @@ var StressBox = React.createClass({
     })
   },
   shade: function(stress){
-
+    // console.log(stress)
   },
   update: function(data) {
+    console.log(data)
     $.ajax({
       url: '/npcs/' + data.npc.id,
       data: data,

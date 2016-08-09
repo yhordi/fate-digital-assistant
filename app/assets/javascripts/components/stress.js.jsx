@@ -32,28 +32,46 @@ var Stress = React.createClass({
   },
   update: function(e){
     e.preventDefault()
+    console.log(this.props.stressType == "mental")
+    if(this.props.stressType == "mental"){
+      this.updateMentalStress()
+    } else {
+      this.updatePhysicalStress()
+    }
+  },
+  updateMentalStress: function(){
     var data = {npc:
-                {
-                  id: this.props.npcId,
-                  value: this.props.stressValue,
-                  stressType: this.props.stressType
+                  {
+                    id: this.props.npcId,
+                    mental_stress: this.props.stressValue,
+                    stressType: this.props.stressType
+                  }
                 }
-              }
+    this.props.update(data)
+  },
+  updatePhysicalStress: function(){
+    var data = {npc:
+                  {
+                    id: this.props.npcId,
+                    physical_stress: this.props.stressValue,
+                    stressType: this.props.stressType
+                  }
+                }
     this.props.update(data)
   },
   render: function(){
     if(this.props.shaded == true ) {
       return (
         <span className="btn-group-sm rt" role="group">
-          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-danger" onClick={this.update}></button>
+        <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-danger" onClick={this.update}></button>
         </span>
-      )
+        )
     } else {
       return(
         <span className="btn-group-sm rt" role="group">
-          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-default" onClick={this.update}></button>
+        <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-default" onClick={this.update}></button>
         </span>
-      )
+        )
     }
   }
 })
