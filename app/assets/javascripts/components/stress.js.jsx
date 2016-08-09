@@ -34,29 +34,18 @@ var Stress = React.createClass({
     e.preventDefault()
     console.log(this.props.stressType == "mental")
     if(this.props.stressType == "mental"){
-      this.updateMentalStress()
+      this.updateStress('mental_stress')
     } else {
-      this.updatePhysicalStress()
+      this.updateStress('physical_stress')
     }
   },
-  updateMentalStress: function(){
+  updateStress: function(stressType){
     var data = {npc:
                   {
                     id: this.props.npcId,
-                    mental_stress: this.props.stressValue,
-                    stressType: this.props.stressType
                   }
                 }
-    this.props.update(data)
-  },
-  updatePhysicalStress: function(){
-    var data = {npc:
-                  {
-                    id: this.props.npcId,
-                    physical_stress: this.props.stressValue,
-                    stressType: this.props.stressType
-                  }
-                }
+    data['npc'][stressType] = this.props.stressValue
     this.props.update(data)
   },
   render: function(){
