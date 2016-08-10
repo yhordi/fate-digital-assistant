@@ -2,19 +2,28 @@ var StressBox = React.createClass({
   getInitialState: function(){
     return{}
   },
-  shouldComponentUpdate: function(nextProps, nextState) {
-    return this.props.mentalStress !== nextState.mentalStress || this.props.physicalStress !== nextState.physicalStress
-  },
   clearStress: function(e){
-    var $targets;
     e.preventDefault()
-    $targets = $(e.target).next().children().children()
-    $targets.each(function(i){
-      this.className = 'btn btn-default'
-    })
+    if($(e.target).next().attr('id')[0] == "p") {
+      this.prepareStressUpdate('physical_stress', 0)
+    } else {
+      this.prepareStressUpdate('mental_stress', 0)
+    }
+  },
+  prepareStressUpdate: function(stressType, value){
+    var data = {npc:
+                  {
+                    id: this.props.npcId,
+                  }
+                }
+    data['npc'][stressType] = value
+    this.update(data)
   },
   onChildChanged: function(newState){
     this.props.changeParent(newState)
+  },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return this.props.mentalStress !== nextState.mentalStress || this.props.physicalStress !== nextState.physicalStress
   },
   resetBoxes: function(e){
     var siblings;
@@ -30,7 +39,7 @@ var StressBox = React.createClass({
   },
   update: function(data) {
     $.ajax({
-      url: '/npcs/' + data.npc.id,
+      url: '/npcs/' + this.props.npcId,
       data: data,
       dataType: 'JSON',
       method: 'PUT',

@@ -27,7 +27,7 @@ var Stress = React.createClass({
   },
   update: function(e){
     e.preventDefault()
-    if(this.props.stressType == "mental"){
+    if(this.props.stressType == "mental") {
       this.updateStress('mental_stress')
     } else {
       this.updateStress('physical_stress')
