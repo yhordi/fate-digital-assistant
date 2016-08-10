@@ -3,11 +3,7 @@ var StressBox = React.createClass({
     return{}
   },
   shouldComponentUpdate: function(nextProps, nextState) {
-    console.log('should')
     return this.props.mentalStress !== nextState.mentalStress || this.props.physicalStress !== nextState.physicalStress
-  },
-  componentWillReceiveProps: function(nextProps){
-    console.log('componentWillReceiveProps')
   },
   clearStress: function(e){
     var $targets;
@@ -40,12 +36,10 @@ var StressBox = React.createClass({
       method: 'PUT',
       success: function(response){
         this.props.changeParent({data: response})
-        // ReactDOM.render(<StressBox changeParent={this.props.changeParent} npcId={response.id} maxPhysicalStress={response.max_physical_stress} maxMentalStress={response.max_mental_stress} mentalStress={response.mental_stress} physicalStress={response.physical_stress} />, document.getElementById('stress-container'))
       }.bind(this)
     })
   },
   render: function(){
-    console.log('stress-box render')
     var phStresses, mStresses;
     phStresses = []
     for (var i = 0; i < this.props.maxPhysicalStress; i++) {

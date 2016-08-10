@@ -17,7 +17,7 @@ var SkillSelectBox = React.createClass({
                                     });
         this.showButton()
         this.changeParent(response)
-        ReactDOM.render(<StressBox maxPhysicalStress={response.data.max_physical_stress} maxMentalStress={response.data.max_mental_stress} mentalStress={response.data.mental_stress} physicalStress={response.data.physical_stress} />, document.getElementById('stress-container'))
+        // ReactDOM.render(<StressBox maxPhysicalStress={response.data.max_physical_stress} maxMentalStress={response.data.max_mental_stress} mentalStress={response.data.mental_stress} physicalStress={response.data.physical_stress} />, document.getElementById('stress-container'))
         ReactDOM.unmountComponentAtNode(document.getElementById('addSkillTarget'))
       }.bind(this),
       error: function (xhr, status, err) {
@@ -58,7 +58,7 @@ var SkillSelectBox = React.createClass({
   },
   showButton: function(){
     var button = document.getElementById('addSkill')
-    button.className = ""
+    button.className = "fa fa-plus"
   },
   update: function(){
     var url = '/npcs/' + this.props.npcId + '/character_skills/' + this.props.id
