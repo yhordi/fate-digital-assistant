@@ -2,8 +2,8 @@ var Npc = React.createClass({
   getInitialState: function(){
     return {data: this.props.data, systemName: this.props.systemName, characterSkills: this.props.characterSkills}
   },
-  shouldComponentUpdate: function(nextProps, nextState) {
-    return nextProps.characterSkills !== this.props.characterSkills;
+  componentWillUpdate: function(nextProps, nextState){
+    console.log("componentWillUpdate", nextProps, nextState)
   },
   backToNpcs: function(e){
     e.preventDefault()
@@ -48,13 +48,17 @@ var Npc = React.createClass({
     )
   },
   onChildChanged: function(newState){
-    this.setState(newState)
+    console.log('npc onChildChanged')
+    console.log(newState)
+    console.log(this)
+    this.setState(newState, function(){console.log(this.state, newState)})
   },
   systemAttributes: function(){
     return {systemName: this.props.systemName,
             systemId: this.props.data.system_id}
   },
   render: function() {
+    console.log('npc render')
     return(
     <div>
       <div className='row'>
@@ -65,8 +69,6 @@ var Npc = React.createClass({
             <a id="edit-npc" title="edit npc" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
             <a id="delete-npc" title="delete npc" onClick={this.handleDelete} className='delete fa fa-trash'></a>
           </h3>
-          <div>
-          </div>
           <div>
             NPC Type: {this.state.data.npc_type}
           </div>
@@ -81,7 +83,7 @@ var Npc = React.createClass({
         </div>
         <h3>Stress</h3>
         <div className="col-md-4 well well-lg" id='stress-container'>
-          <StressBox changeParent={this.onChildChanged} maxPhysicalStress={this.state.data.max_physical_stress} maxMentalStress={this.state.data.max_mental_stress} mentalStress={this.props.data.mental_stress} physicalStress={this.props.data.physical_stress} npcId={this.props.data.id}/>
+          <StressBox changeParent={this.onChildChanged} maxPhysicalStress={this.state.data.max_physical_stress} maxMentalStress={this.state.data.max_mental_stress} mentalStress={this.state.data.mental_stress} physicalStress={this.state.data.physical_stress} npcId={this.state.data.id}/>
         </div>
       </div>
       <div className="row">

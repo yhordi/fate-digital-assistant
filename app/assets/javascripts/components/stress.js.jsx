@@ -10,11 +10,6 @@ var Stress = React.createClass({
       this.highlightBoxes(e.target.id)
     }
   },
-  fillBox: function(e){
-    e.preventDefault()
-    $(e.target).removeClass('btn-default')
-    $(e.target).addClass('btn-danger')
-  },
   highlightBoxes: function(id){
     var siblings, lastIndex;
     siblings = $('#' + id).parent().parent().children().children()
@@ -50,14 +45,14 @@ var Stress = React.createClass({
   render: function(){
     if(this.props.shaded == true ) {
       return (
-        <span className="btn-group-sm rt" role="group">
-          <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-danger" onClick={this.update}></button>
+        <span className="rt" role="group">
+          <button id={this.props.id} onMouseOver={this.boxCheck} className="btn btn-danger" onClick={this.update}></button>
         </span>
         )
     } else {
       return(
-        <span className="btn-group-sm rt" role="group">
-        <button id={this.props.id} onMouseOver={this.boxCheck}  className="btn btn-default" onClick={this.update}></button>
+        <span className="rt" role="group">
+          <button id={this.props.id} onMouseOver={this.boxCheck} className="btn btn-default" onClick={this.update}></button>
         </span>
         )
     }

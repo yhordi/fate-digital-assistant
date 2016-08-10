@@ -1,17 +1,36 @@
 var StressBox = React.createClass({
   getInitialState: function(){
-    return{  }
+    return{}
+  },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    console.log('should')
+    return this.props.mentalStress !== nextState.mentalStress || this.props.physicalStress !== nextState.physicalStress
+  },
+  componentWillReceiveProps: function(nextProps){
+    console.log('componentWillReceiveProps')
+  },
+  clearStress: function(e){
+    var $targets;
+    e.preventDefault()
+    $targets = $(e.target).next().children().children()
+    $targets.each(function(i){
+      this.className = 'btn btn-default'
+    })
+  },
+  onChildChanged: function(newState){
+    this.props.changeParent(newState)
   },
   resetBoxes: function(e){
     var siblings;
     siblings = $(e.target).parent().parent().children().children()
     siblings.each(function(i){
-      $(siblings[i]).removeClass('btn-warning')
-      $(siblings[i]).addClass('btn-default')
+      if(this.className.includes('danger')) {
+        return
+      } else {
+        $(siblings[i]).removeClass('btn-warning')
+        $(siblings[i]).addClass('btn-default')
+      }
     })
-  },
-  shade: function(stress){
-    // console.log(stress)
   },
   update: function(data) {
     $.ajax({
@@ -20,13 +39,15 @@ var StressBox = React.createClass({
       dataType: 'JSON',
       method: 'PUT',
       success: function(response){
-        this.props.changeParent(response)
-        ReactDOM.render(<StressBox changeParent={this.props.changeParent} npcId={response.id} maxPhysicalStress={response.max_physical_stress} maxMentalStress={response.max_mental_stress} mentalStress={response.mental_stress} physicalStress={response.physical_stress} />, document.getElementById('stress-container'))
+        this.props.changeParent({data: response})
+        // ReactDOM.render(<StressBox changeParent={this.props.changeParent} npcId={response.id} maxPhysicalStress={response.max_physical_stress} maxMentalStress={response.max_mental_stress} mentalStress={response.mental_stress} physicalStress={response.physical_stress} />, document.getElementById('stress-container'))
       }.bind(this)
     })
   },
   render: function(){
-    var phStresses = []
+    console.log('stress-box render')
+    var phStresses, mStresses;
+    phStresses = []
     for (var i = 0; i < this.props.maxPhysicalStress; i++) {
       var shaded;
           if(i < this.props.physicalStress) {
@@ -34,9 +55,9 @@ var StressBox = React.createClass({
           } else {
             shaded = false
           }
-          phStresses.push(<Stress npcId={this.props.npcId} key={i} update={this.update} shaded={shaded} id={"physical" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} stressType="physical" />)
+          phStresses.push(<Stress changeParent={this.props.onChildChanged} npcId={this.props.npcId} key={i} update={this.update} shaded={shaded} id={"physical" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxPhysicalStress} stress={this.props.physicalStress} stressType="physical" />)
         }
-    var mStresses = []
+    mStresses = []
     for (var i = 0; i < this.props.maxMentalStress; i++) {
         var shaded;
           if(i < this.props.mentalStress){
@@ -44,18 +65,24 @@ var StressBox = React.createClass({
           } else {
             shaded = false
           }
-          mStresses.push(<Stress npcId={this.props.npcId} key={i} update={this.update} shaded={shaded} id={"mental" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} stressType="mental" />)
+          mStresses.push(<Stress changeParent={this.props.onChildChanged} npcId={this.props.npcId} key={i} update={this.update} shaded={shaded} id={"mental" + i} stressValue={i+1} fillBoxes={this.fillBoxes} maxStress={this.props.MaxMentalStress} stress={this.props.mentalStress} stressType="mental" />)
         }
     return(
       <div>
         <div>
-          Physical Stress:
-          <div className="btn-group" onMouseLeave={this.resetBoxes} id='physical-stress-target'>
+          <div>
+            Physical:
+          </div>
+          <a onClick={this.clearStress}>clear </a>
+          <div className="btn-group btn-group-toolbar" onMouseLeave={this.resetBoxes} id='physical-stress-target'>
             {phStresses.reverse()}
           </div>
         </div>
         <div>
-          Mental Stress:
+          <div>
+            Mental:
+          </div>
+          <a onClick={this.clearStress}>clear </a>
           <div className="btn-group" onMouseLeave={this.resetBoxes} id='mental-stress-target'>
             {mStresses.reverse()}
           </div>
