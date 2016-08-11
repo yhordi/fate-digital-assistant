@@ -13,10 +13,10 @@
   <div id="main-container" class="container-fluid">
     <div class="top row">
       <div class="navbar navbar-default">
-        <div class='navbar-header col-md-8'>
+        <div class='navbar-header col-md-9'>
           <%= link_to "FATE: Dimensions", root_path, class: "navbar-brand" %>
         </div>
-        <div>
+        <div class="col-md-3">
           <% if session[:id] == nil %>
             <%= render "sessions/new" %>
           <% else %>
@@ -27,7 +27,7 @@
     </div>
     <div class='row'>
       <% if session[:id] %>
-        <div class="col-md-4"role="navigation">
+        <div class="col-md-2"role="navigation">
           <%= react_component('SideBar', {userId: session[:id]}) %>
         </div>
         <div id='nav-container' class="col-md-10"></div>

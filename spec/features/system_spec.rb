@@ -9,7 +9,7 @@ describe 'System', js: true do
     it 'sees a description on the systems page' do
       expect(page).to have_content("Welcome to FATE: Digital Assistant,")
     end
-    it 'cannot see private systems' do
+    xit 'cannot see private systems' do
       expect(page).to_not have_content(system.name)
     end
   end
