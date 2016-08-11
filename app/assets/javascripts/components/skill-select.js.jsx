@@ -18,6 +18,9 @@ var SkillSelect = React.createClass({
     this.props.changeParent(newState)
     this.setState(newState)
   },
+  update: function(){
+    this.props.update()
+  },
   render: function(){
     var component = this
     var options = this.state.skills.map(function(skill, index) {
@@ -38,7 +41,7 @@ var SkillSelect = React.createClass({
         <select name='name' onChange={this.changeState}>
           {options}
         </select>
-        <LevelSelect changeParent={this.onChildChange} parent={'skill-select'} />
+        <LevelSelect update={this.props.update} changeParent={this.onChildChange} parent={'skill-select'} />
         <div id={'skillSelectTarget' + this.props.targetId }></div>
       </div>
     )

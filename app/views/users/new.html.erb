@@ -1,16 +1,30 @@
 <div class="row">
-  <div class="form center" id="register">
-    <h3 class="form-header">Register</h3>
+  <div class='col-md-5'></div>
+  <div class="col-md-4" id="register">
+    <h3 class="">Register</h3>
     <%= form_for @user do |f| %>
-      <span class='fa fa-user fa-stack icon'></span>
-      <%= f.text_field :name, placeholder: 'Username', class: 'form-field' %>
-      <span class='fa fa-lock fa-stack icon'></span>
-      <%= f.password_field :password, placeholder: 'password', class: 'form-field' %>
-      <span class='fa fa-lock fa-stack icon'></span>
-      <%= f.password_field :password_again, placeholder: 'confirm password', class: 'form-field' %>
+      <div class="input-group">
+      <span class="input-group-addon">
+        <i class='fa fa-user fa-fw'></i>
+      </span>
+        <%= f.text_field :name, placeholder: 'Username', class: 'form-control' %>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class='fa fa-lock fa-fw'></i>
+        </span>
+        <%= f.password_field :password, placeholder: 'password', class: 'form-control' %>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class='fa fa-lock fa-fw'></i>
+        </span>
+        <%= f.password_field :password_again, placeholder: 'confirm password', class: 'form-control' %>
+      </div>
       <div>
-        <%= f.submit 'Register', class: 'submit' %>
+        <%= f.submit 'Register', class: 'btn' %>
       </div>
     <% end %>
   </div>
+  <div class='col-md-3'></div>
 </div>

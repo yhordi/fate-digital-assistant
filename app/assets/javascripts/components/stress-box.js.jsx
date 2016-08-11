@@ -49,6 +49,7 @@ var StressBox = React.createClass({
     })
   },
   render: function(){
+    // this render function should be refactored to be more dry.
     var phStresses, mStresses;
     phStresses = []
     for (var i = 0; i < this.props.maxPhysicalStress; i++) {

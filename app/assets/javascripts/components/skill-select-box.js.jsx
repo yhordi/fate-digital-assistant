@@ -17,7 +17,6 @@ var SkillSelectBox = React.createClass({
                                     });
         this.showButton()
         this.changeParent(response)
-        // ReactDOM.render(<StressBox maxPhysicalStress={response.data.max_physical_stress} maxMentalStress={response.data.max_mental_stress} mentalStress={response.data.mental_stress} physicalStress={response.data.physical_stress} />, document.getElementById('stress-container'))
         ReactDOM.unmountComponentAtNode(document.getElementById('addSkillTarget'))
       }.bind(this),
       error: function (xhr, status, err) {
@@ -70,14 +69,14 @@ var SkillSelectBox = React.createClass({
       method: 'PUT',
       success: function(response){
         console.log(response)
-      }
+      },
     })
   },
   render: function() {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <SkillSelect skill={this.props.skill} changeParent={this.onChildChange} skills={this.state.skills}  />
+          <SkillSelect update={this.Update} skill={this.props.skill} changeParent={this.onChildChange} skills={this.state.skills}  />
           <input id="add-skill-submit" type='submit' value={this.props.button} />
         </form>
       </div>
