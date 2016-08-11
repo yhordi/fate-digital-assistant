@@ -1,8 +1,17 @@
+<div>
 <% if session[:id] == nil %>
-  <%= form_tag '/sessions' do |f| %>
-    <%= text_field_tag :name, nil, :placeholder => "Username" %>
-    <%= password_field_tag :password, nil, :placeholder => "Password" %>
-    <%= submit_tag "Log In" %>
+  <%= form_tag '/sessions', class: 'navbar-form col-md-3' do |f| %>
+  <!-- <div class="col-md-2"> -->
+      <%= text_field_tag :name, nil, :placeholder => "Username", class: 'form-control' %>
+  <!-- </div> -->
+  <!-- <div class="col-md-2"> -->
+    <div class="input-group">
+      <%= password_field_tag :password, nil, :placeholder => "Password", class: 'form-control' %>
+      <span class="input-group-btn">
+        <%= submit_tag "Log In", class: 'btn btn-default' %>
+      </span>
+    <!-- </div> -->
+  </div>
   <% end %>
   <% else  %>
 <% end %>
@@ -12,3 +21,4 @@
 <p class="notice">
   <%= flash[:notice] %>
 </p>
+</div>
