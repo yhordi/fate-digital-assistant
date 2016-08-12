@@ -21,7 +21,7 @@ describe 'Aspect', js: true do
       end
     end
     it 'can fill out a form and see the new aspect on the page' do
-      click_button('Add New Aspect')
+      page.find('#new-aspect').click
       fill_in 'name', with: aspect_attrs.name
       fill_in 'aspect-desc', with: aspect_attrs.description
       click_button('Create Aspect')

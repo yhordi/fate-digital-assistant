@@ -54,15 +54,30 @@ describe 'Npc', js: true do
       end
     end
     describe 'stress boxes' do
-      it 'should apply the danger class to clicked stress components' do
+      before do
         page.find('#npc1').click
-        within('#physical-stress-target') do
-          page.find('#physical1').click
-        end
+      end
+      it 'applies the .btn-danger class to clicked stress components in #physical-stress-target' do
+        page.find('#physical1').click
         wait_for_ajax
         expect(page.find('#physical1')[:class]).to include('btn-danger')
       end
-    end
+      it 'applies the .btn-danger class to clicked stress components in #mental-stress-target' do
+        page.find('#mental0').click
+        wait_for_ajax
+        expect(page.find('#mental0')[:class]).to include('btn-danger')
+      end
+      it 'has the .btn-danger class applied if the npc has stress' do
+        expect(page.find('#physical0')[:class]).to include('btn-danger')
+      end
+      context 'clear button' do
+        it 'resets the stress buttons with .btn default' do
+          page.first('.clear').click
+          wait_for_ajax
+          expect(page.find('#physical0')[:class]).to include('btn-default')
+        end
+      end
+      end
   end
 
 end

@@ -77,7 +77,7 @@ var StressBox = React.createClass({
           <div>
             Physical:
           </div>
-          <a onClick={this.clearStress}>clear </a>
+          <a className="clear" onClick={this.clearStress}>clear </a>
           <div className="btn-group btn-group-toolbar" onMouseLeave={this.resetBoxes} id='physical-stress-target'>
             {phStresses.reverse()}
           </div>
@@ -86,7 +86,7 @@ var StressBox = React.createClass({
           <div>
             Mental:
           </div>
-          <a onClick={this.clearStress}>clear </a>
+          <a className="clear" onClick={this.clearStress}>clear </a>
           <div className="btn-group" onMouseLeave={this.resetBoxes} id='mental-stress-target'>
             {mStresses.reverse()}
           </div>
