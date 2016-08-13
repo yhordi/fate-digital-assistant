@@ -44,7 +44,8 @@ describe 'Npc', js: true do
         expect(page).to have_content('Fenty Splawn')
       end
       it 'can add a skill to an npc' do
-        click_button 'Add Skill to NPC'
+        page.find('#add-skill').click
+        wait_for_ajax
         page.select skill.name, from: 'name'
         page.select "3", from: 'level'
         page.find('#add-skill-submit').click

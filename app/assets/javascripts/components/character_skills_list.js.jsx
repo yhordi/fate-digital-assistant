@@ -44,7 +44,7 @@ var CharacterSkillsList = React.createClass({
     })
   },
   hideButton: function(){
-    var button = document.getElementById('addSkill')
+    var button = document.getElementById('add-skill')
     button.className += " hidden"
   },
   onChildChanged: function(newState){
@@ -60,7 +60,7 @@ var CharacterSkillsList = React.createClass({
     return(
     <div className="col">
       <h3>
-        Skills <a className='fa fa-plus' id="addSkill" onClick={this.addSkill}></a>
+        Skills <a className='fa fa-plus' id="add-skill" onClick={this.addSkill}></a>
       </h3>
       <div id='addSkillTarget'></div>
       <div className="well well-lg">
