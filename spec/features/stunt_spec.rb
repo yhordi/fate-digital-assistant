@@ -20,7 +20,7 @@ describe 'Stunt', js: true do
     end
     describe 'creating a new stunt' do
       it 'can fill out a form and see their new skill on the page' do
-        click_on 'Add New'
+        page.find('#new-stunt').click
         fill_in 'name', with: stunt_attributes.name
         fill_in 'stunt-desc', with: stunt_attributes.description
         click_button 'Create Stunt'

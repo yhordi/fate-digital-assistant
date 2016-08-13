@@ -20,7 +20,7 @@ var StuntList = React.createClass({
       <div>
         <div>
           <h3>
-            Stunts <a className='fa fa-plus' onClick={this.handleClick}></a>
+            Stunts <a className='fa fa-plus' id="new-stunt"onClick={this.handleClick}></a>
           </h3>
         </div>
         <div id="form-target"></div>

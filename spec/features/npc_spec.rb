@@ -45,7 +45,6 @@ describe 'Npc', js: true do
       end
       it 'can add a skill to an npc' do
         page.find('#add-skill').click
-        wait_for_ajax
         page.select skill.name, from: 'name'
         page.select "3", from: 'level'
         page.find('#add-skill-submit').click
