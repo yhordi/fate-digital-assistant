@@ -5,6 +5,7 @@ class Npc < ActiveRecord::Base
   has_many :character_skills, dependent: :destroy
   has_many :stunts, dependent: :destroy
   has_many :aspects, as: :aspectable
+  has_many :consequences
 
   def adjust_max_stress(skill)
     if skill.name == "Will"
