@@ -73,6 +73,8 @@ var StressBox = React.createClass({
         }
     return(
       <div>
+      <h3>Stress</h3>
+      <div className="well well-lg">
         <div>
           <div>
             Physical:
@@ -91,6 +93,7 @@ var StressBox = React.createClass({
             {mStresses.reverse()}
           </div>
         </div>
+      </div>
       </div>
     )
   }

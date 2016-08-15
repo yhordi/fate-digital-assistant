@@ -55,7 +55,7 @@ var Npc = React.createClass({
     return(
     <div>
       <div className='row'>
-        <div className='col-md-4'>
+        <div className='col-md-12'>
           <h3>
           <a onClick={this.backToNpcs}><span className="fa fa-arrow-left"></span></a>
             NPC Profile: {this.state.data.name}
@@ -74,24 +74,35 @@ var Npc = React.createClass({
             </p>
           </div>
         </div>
-        <h3>Stress</h3>
-        <div className="col-md-4 well well-lg" id='stress-container'>
-          <StressBox changeParent={this.onChildChanged} maxPhysicalStress={this.state.data.max_physical_stress} maxMentalStress={this.state.data.max_mental_stress} mentalStress={this.state.data.mental_stress} physicalStress={this.state.data.physical_stress} npcId={this.state.data.id}/>
-        </div>
       </div>
       <div className="row">
-        <div className="col-md-4" id='characterSkillsListTarget'>
-          <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.characterSkills} />
-        </div>
-        <div id='stunts'>
-        </div>
-        <div className="col-md-4" id="stunts-container">
-          <StuntList data={this.props.data.stunts} npcId={this.props.data.id} npc={this.props} />
-        </div>
-        <div className="col-md-4" id="aspects-container">
+        <div className="col-md-6" id="aspects-container">
           <AspectList data={this.props.data.aspects} npcId={this.props.data.id} npc={this.props} />
         </div>
+        <div className="col-md-6" id='characterSkillsListTarget'>
+          <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.characterSkills} />
+        </div>
       </div>
+        <div className="row">
+          <div className="col-md-6" id="extras-container">
+            <h3>Extras</h3>
+            <div className="well well-lg">
+              This feature is coming soon!
+            </div>
+          </div>
+          <div id='stunts'>
+            <div className="col-md-6" id="stunts-container">
+              <StuntList data={this.props.data.stunts} npcId={this.props.data.id} npc={this.props} />
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4 " id='stress-container'>
+            <StressBox changeParent={this.onChildChanged} maxPhysicalStress={this.state.data.max_physical_stress} maxMentalStress={this.state.data.max_mental_stress} mentalStress={this.state.data.mental_stress} physicalStress={this.state.data.physical_stress} npcId={this.state.data.id}/>
+          </div>
+          <div className="col-md-6" id="consequences-container">
+          </div>
+        </div>
     </div>
     );
   }
