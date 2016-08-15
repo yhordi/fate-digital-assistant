@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160813011152) do
 
   create_table "consequences", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "severity"
     t.text     "description"
     t.integer  "npc_id"
     t.datetime "created_at",  null: false
