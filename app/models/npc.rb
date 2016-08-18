@@ -1,6 +1,14 @@
 class Npc < ActiveRecord::Base
+  class ConsequenceLimit < ActiveModel::Validator
+    def validate(npc)
+      if npc.consequences.length > 4
+        npc.errors[:consequence] << 'Cannot have more than 4 consequences'
+      end
+    end
+  end
   validates :name, :npc_type, presence: true
   validates :max_physical_stress, :max_mental_stress, inclusion: 1..5
+  validates_with ConsequenceLimit
   belongs_to :system
   has_many :character_skills, dependent: :destroy
   has_many :stunts, dependent: :destroy
