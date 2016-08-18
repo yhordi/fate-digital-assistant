@@ -101,7 +101,7 @@ var Npc = React.createClass({
             <StressBox changeParent={this.onChildChanged} maxPhysicalStress={this.state.data.max_physical_stress} maxMentalStress={this.state.data.max_mental_stress} mentalStress={this.state.data.mental_stress} physicalStress={this.state.data.physical_stress} npcId={this.state.data.id}/>
           </div>
           <div className="col-md-6" id="consequences-container">
-            <ConsequenceBox />
+            <ConsequenceBox npcId={this.props.data.id} consequences={this.props.data.consequences} />
           </div>
         </div>
     </div>
