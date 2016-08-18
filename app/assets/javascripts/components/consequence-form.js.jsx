@@ -24,12 +24,12 @@ var ConsequenceForm = React.createClass({
       <form onSubmit={this.create}>
         <div>
           <label for='name'>description</label>
-          <input type='text' name='name' placeholder='consequence text' />
+          <input type='text' name='name' placeholder='consequence text' required />
         </div>
         <div>
           <label for='severity'>severity</label>
-          <select onChange={this.setShiftValue} name="severity">
-            <option>choose a severity</option>
+          <select onChange={this.setShiftValue} name="severity" required >
+            <option disabled selected value=''>choose a severity</option>
             <option>mild</option>
             <option>moderate</option>
             <option>severe</option>
