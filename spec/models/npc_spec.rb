@@ -1,6 +1,6 @@
 describe Npc do
   let(:npc) { FactoryGirl.create :npc }
-  let(:physique) { CharacterSkill.new(name: 'Physique', level: 0, npc_id: 1)}
+  let(:physique) { CharacterSkill.new(name: 'Physique', level: 0)}
   let(:will) { CharacterSkill.new(name: 'Will', level: 0, npc_id: 1)}
   let(:consequence) { FactoryGirl.create :consequence }
 
@@ -28,8 +28,8 @@ describe Npc do
       expect(npc).to be_valid
     end
     it 'does not validate an npc with more than one severe consequence' do
-      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6)
-      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6)
+      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
+      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
       expect(npc).to_not be_valid
     end
   end
@@ -63,11 +63,9 @@ describe Npc do
       npc.consequences << consequence
       expect(npc.mild?).to be(true)
     end
-
     it 'should return nil if the last consequence that was added has a severity attribute other than mild' do
       npc.consequences << Consequence.new(name: 'ajshdfkjha', severity: 'moderate', shift_value: 4)
       expect(npc.mild?).to be(false)
     end
-
   end
 end
