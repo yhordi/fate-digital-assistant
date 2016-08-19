@@ -26,6 +26,11 @@ describe Npc do
       end
       expect(npc).to be_valid
     end
+    it 'does not validate an npc with more than one severe consequence' do
+      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6)
+      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6)
+      expect(npc).to_not be_valid
+    end
   end
   describe '#adjust_max_stress' do
     it 'adjusts the max_physical_stress when physique is added' do

@@ -7,10 +7,21 @@ class Npc < ActiveRecord::Base
     end
   end
 
+  class SevereLimit < ActiveModel::Validator
+    def validate(npc)
+      npc.consequences.each do |consequence|
+        if consequence.severity == 'severe'
+          npc.errors[:consequence] << 'cannot have more than one severe consequence'
+        end
+      end
+    end
+  end
+
   validates :name, :npc_type, presence: true
   validates_uniqueness_of :name, scope: :system
   validates :max_physical_stress, :max_mental_stress, inclusion: 1..5
   validates_with ConsequenceLimit
+  validates_with SevereLimit
   belongs_to :system
   has_many :character_skills, dependent: :destroy
   has_many :stunts, dependent: :destroy
