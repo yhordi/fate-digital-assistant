@@ -45,8 +45,8 @@ FactoryGirl.define do
   end
   factory :consequence do
     name { Faker::Lorem.word }
-    description { Faker::Lorem.paragraph}
     severity { "mild" }
     shift_value { 2 }
+    npc_id { 1 }
   end
 end

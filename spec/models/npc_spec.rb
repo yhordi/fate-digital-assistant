@@ -2,6 +2,7 @@ describe Npc do
   let(:npc) { FactoryGirl.create :npc }
   let(:physique) { CharacterSkill.new(name: 'Physique', level: 0, npc_id: 1)}
   let(:will) { CharacterSkill.new(name: 'Will', level: 0, npc_id: 1)}
+  let(:consequence) { FactoryGirl.create :consequence }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
@@ -57,5 +58,16 @@ describe Npc do
       expect(npc.max_mental_stress).to eq(2)
     end
   end
+  describe 'mild?' do
+    it 'should return true if the last consequence that was added has a severity attribute of mild' do
+      npc.consequences << consequence
+      expect(npc.mild?).to be(true)
+    end
 
+    it 'should return nil if the last consequence that was added has a severity attribute other than mild' do
+      npc.consequences << Consequence.new(name: 'ajshdfkjha', severity: 'moderate', shift_value: 4)
+      expect(npc.mild?).to be(false)
+    end
+
+  end
 end

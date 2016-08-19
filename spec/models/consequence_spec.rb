@@ -3,6 +3,7 @@ describe Consequence do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :severity }
     it { is_expected.to validate_presence_of :shift_value }
+    it { is_expected.to validate_presence_of :npc_id }
     it 'will fail validations when severity is passed a value other than mild, moderate, or severe' do
       consq = Consequence.new(severity: 'hats', name: 'hello', shift_value: 2)
       expect(consq).to_not be_valid
