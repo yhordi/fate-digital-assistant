@@ -15,7 +15,15 @@ class Npc < ActiveRecord::Base
   has_many :character_skills, dependent: :destroy
   has_many :stunts, dependent: :destroy
   has_many :aspects, as: :aspectable
-  has_many :consequences
+  has_many :consequences, before_add: :consequence_limit_validation
+
+  def consequence_limit
+    ConsequenceLimit.new
+  end
+
+  def consequence_limit_validation(npc)
+    consequence_limit.validate(self)
+  end
 
   def adjust_max_stress(skill)
     if skill.name == "Will"
