@@ -56,7 +56,7 @@ var SkillSelectBox = React.createClass({
     this.setState(newState)
   },
   showButton: function(){
-    var button = document.getElementById('addSkill')
+    var button = document.getElementById('add-skill')
     button.className = "fa fa-plus"
   },
   update: function(){
