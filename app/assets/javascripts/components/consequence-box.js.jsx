@@ -1,6 +1,6 @@
 var ConsequenceBox = React.createClass({
   getInitialState: function(){
-    return {}
+    return {consequences: this.props.consequences}
   },
   create: function(form){
     var data = {consequence: {}}
@@ -16,7 +16,8 @@ var ConsequenceBox = React.createClass({
       dataType: 'JSON',
       success: function(response){
         console.log(response)
-        ReactDOM.render(<Consequence key={response.id} id={response.severity + "-target" + response.id} shiftValue={response.shift_value}  severity={response.severity} name={response.name} buildFormData={this.buildFormData} />, container)
+        this.setState(response)
+        // ReactDOM.render(<Consequence key={response.id} id={response.severity + "-target" + response.id} shiftValue={response.shift_value}  npcId={this.props.npcId} severity={response.severity} name={response.name} buildFormData={this.buildFormData} delete={this.handleDelete} edit={this.handleEdit} />, document.getElementById('consequence-list'))
       }.bind(this)
     })
   },
@@ -25,10 +26,13 @@ var ConsequenceBox = React.createClass({
     container = document.getElementById('consequence-form-target')
     ReactDOM.render(<ConsequenceForm create={this.create} container={container}/>, container)
   },
+  onChildChanged: function(newState){
+    this.setState(newState)
+  },
   render: function(){
-    var consequences = this.props.consequences.map(function(consequence, index){
+    var consequences = this.state.consequences.map(function(consequence, index){
       return(
-        <Consequence key={index} id={consequence.severity + "-target" + index} shiftValue={consequence.shift_value} number={this.props.number} severity={consequence.severity} name={consequence.name} buildFormData={this.buildFormData} />
+        <Consequence key={index} npcId={this.props.npcId} consequenceId={consequence.id} id={consequence.severity + "-target" + index} shiftValue={consequence.shift_value} number={this.props.number} severity={consequence.severity} name={consequence.name} buildFormData={this.buildFormData} delete={this.handleDelete} edit={this.handleEdit} changeParent={this.onChildChanged}/>
       )
     }.bind(this))
     return(
@@ -36,7 +40,7 @@ var ConsequenceBox = React.createClass({
         <h3>Consequences <a onClick={this.buildFormData} className="fa fa-plus" id='new-consequence'></a></h3>
         <div className="well well-lg">
           <div id='consequence-form-target'></div>
-          <ul className="list-group">
+          <ul className="list-group" id='consequence-list'>
             {consequences}
           </ul>
         </div>

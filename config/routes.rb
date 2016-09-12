@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :npcs, shallow: true do
     resources :character_skills
     resources :stunts
-    resources :consequences, only: :create
+    resources :consequences, only: [:create, :destroy]
   end
   resources :aspects, except: [:index, :show]
   root 'users#new'

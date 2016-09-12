@@ -6,6 +6,7 @@ var ConsequenceForm = React.createClass({
     var data, form;
     form = e.target
     e.preventDefault()
+    this.handleBack(e)
     this.props.create(e.target)
   },
   handleBack: function(e){

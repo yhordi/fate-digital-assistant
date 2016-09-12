@@ -1,6 +1,6 @@
 var Npc = React.createClass({
   getInitialState: function(){
-    return {data: this.props.data, systemName: this.props.systemName, characterSkills: this.props.characterSkills}
+    return {data: this.props.data, systemName: this.props.systemName, consequences: this.props.consequences, characterSkills: this.props.characterSkills}
   },
   backToNpcs: function(e){
     e.preventDefault()
@@ -45,6 +45,7 @@ var Npc = React.createClass({
     )
   },
   onChildChanged: function(newState){
+    console.log(newState)
     this.setState(newState)
   },
   systemAttributes: function(){

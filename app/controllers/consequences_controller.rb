@@ -2,8 +2,16 @@ class ConsequencesController < ApplicationController
   def create
     consequence = Consequence.new(consequence_params)
     if consequence.save!
-      render json: consequence
+      npc = Npc.find(params[:npc_id])
+      render json: {consequences: npc.consequences}
     end
+  end
+
+  def destroy
+    consequence = Consequence.find(params[:id])
+    consequence.delete
+    npc = Npc.find(params[:npc_id])
+    render json: {consequences: npc.consequences}
   end
 
   private
