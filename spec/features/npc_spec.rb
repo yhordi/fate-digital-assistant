@@ -22,7 +22,7 @@ describe 'Npc', js: true do
       fill_in 'name', with: npc_attributes[:name]
       fill_in 'background', with: npc_attributes[:background]
       click_on 'Create NPC'
-      expect(page).to have_content(npc_attributes[:name])
+      expect(page).to have_content(npc_attributes[:background])
     end
     context 'on the npc show page' do
       before(:each) do

@@ -3,7 +3,7 @@ class NpcsController < ApplicationController
     npc = Npc.new(npc_params)
     npc.system_id = params["npc"]["systemId"]
     npc.save!
-    render json: npc, include: [:character_skills, :stunts, :aspects]
+    render json: npc, include: [:character_skills, :stunts, :aspects, :consequences]
   end
 
   def destroy
