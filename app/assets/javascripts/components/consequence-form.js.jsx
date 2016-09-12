@@ -47,7 +47,7 @@ var ConsequenceForm = React.createClass({
           </select>
         </div>
         <input type='hidden' name='shift' value={this.state.shift} />
-        <input type='submit' />
+        <input className="btn" type='submit' value='Create Consequence'/>
       </form>
     </div>
     )

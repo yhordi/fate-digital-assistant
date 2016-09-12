@@ -33,7 +33,7 @@ var ConsequenceBox = React.createClass({
     }.bind(this))
     return(
       <div>
-        <h3>Consequences <a onClick={this.buildFormData} className="fa fa-plus"></a></h3>
+        <h3>Consequences <a onClick={this.buildFormData} className="fa fa-plus" id='new-consequence'></a></h3>
         <div className="well well-lg">
           <div id='consequence-form-target'></div>
           <ul className="list-group">
