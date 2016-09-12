@@ -34,9 +34,7 @@ describe 'Skill', js: true do
       it 'can click on a delete button and no longer see the skill in the skills list' do
         page.find("#skill#{skill.id}").click
         click_on "Delete"
-        within('#addSkillTarget') do
         expect(page).to_not have_content(skill.name)
-          end
       end
     end
     describe 'editing a skill' do
