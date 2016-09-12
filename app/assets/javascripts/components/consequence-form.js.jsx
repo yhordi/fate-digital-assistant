@@ -8,6 +8,11 @@ var ConsequenceForm = React.createClass({
     e.preventDefault()
     this.props.create(e.target)
   },
+  handleBack: function(e){
+    e.preventDefault()
+    var container = document.getElementById('consequence-form-target')
+    ReactDOM.unmountComponentAtNode(container)
+  },
   setShiftValue: function(e){
     var severity = e.target.value;
     if(severity == 'mild') {
@@ -22,6 +27,12 @@ var ConsequenceForm = React.createClass({
     return(
     <div>
       <form onSubmit={this.create}>
+        <h3>Create Consequence
+          <a className="close-form" onClick={this.handleBack}>
+            <span className="fa fa-close">
+            </span>
+          </a>
+        </h3>
         <div>
           <label for='name'>description</label>
           <input type='text' name='name' placeholder='consequence text' required />
