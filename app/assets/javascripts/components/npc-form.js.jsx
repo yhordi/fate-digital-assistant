@@ -27,7 +27,6 @@ var NpcForm = React.createClass({
         )
       }.bind(this),
       error: function (xhr, status, err) {
-        console.log(xhr)
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     })
