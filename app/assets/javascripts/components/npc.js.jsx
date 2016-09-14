@@ -45,7 +45,6 @@ var Npc = React.createClass({
     )
   },
   onChildChanged: function(newState){
-    console.log(newState)
     this.setState(newState)
   },
   systemAttributes: function(){

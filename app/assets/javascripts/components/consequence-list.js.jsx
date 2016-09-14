@@ -27,7 +27,6 @@ var ConsequenceList = React.createClass({
       method: 'PUT',
       success: function(response){
         ReactDOM.unmountComponentAtNode(container);
-        console.log(response)
         this.setState(response)
       }.bind(this)
     })
