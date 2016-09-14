@@ -14,6 +14,15 @@ class ConsequencesController < ApplicationController
     render json: {consequences: npc.consequences}
   end
 
+  def update
+    p params
+    consequence = Consequence.find(params[:id])
+    consequence.update_attributes(consequence_params)
+    p consequence
+    npc = Npc.find(params[:npc_id])
+    render json: {consequences: npc.consequences}
+  end
+
   private
 
   def consequence_params

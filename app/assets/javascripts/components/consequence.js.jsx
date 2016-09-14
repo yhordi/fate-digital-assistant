@@ -14,7 +14,11 @@ var Consequence = React.createClass({
   },
   handleEdit: function(e){
     e.preventDefault()
-    this.props.edit(id, url)
+    var container = document.getElementById("consequence-form-target")
+    var url = '/consequences/' + this.props.consequenceId
+    ReactDOM.render(
+      <ConsequenceForm name={this.props.name} update={this.props.update} npcId={this.props.npcId} consequenceId={this.props.consequenceId} button="Update Consequence"/>, container
+    )
   },
   changeParent: function(e){
     this.props.changeParent(response)
