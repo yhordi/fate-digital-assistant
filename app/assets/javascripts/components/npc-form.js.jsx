@@ -1,12 +1,12 @@
 var NpcForm = React.createClass({
   componentWillMount: function(){
-    // this.getSkills()
+    this.getSkills()
   },
   getInitialState: function(){
     if(this.props.button == "Update NPC"){
       return {systemId: this.props.systemId, npc_type: this.props.data.npc_type, name: this.props.data.name, background: this.props.data.background}
     } else {
-      return {npc_type: 'Main', system_id: this.props.systemId, characterSkills: []}
+      return {npc_type: 'Main', systemId: this.props.systemId, characterSkills: []}
     }
   },
   container: function(){
@@ -27,10 +27,9 @@ var NpcForm = React.createClass({
         )
       }.bind(this),
       error: function (xhr, status, err) {
+        console.log(xhr)
         console.error(this.props.url, status, err.toString());
       }.bind(this)
-    }).done(function(response){
-      console.log(response)
     })
   },
   getSkills: function(){
