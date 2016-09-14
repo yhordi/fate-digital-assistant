@@ -29,6 +29,8 @@ var NpcForm = React.createClass({
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
+    }).done(function(response){
+      console.log(response)
     })
   },
   getSkills: function(){
