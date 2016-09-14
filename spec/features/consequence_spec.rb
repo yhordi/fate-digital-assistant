@@ -29,11 +29,21 @@ describe 'consequence', js: true do
       it 'removes the consequence from the page' do
         within '#consequences-container' do
           within '#mild-target0' do
-            # figure out the targeting here
             page.find('.delete').click
           end
         end
         expect(page).to_not have_content(consequence.name)
+      end
+    end
+    describe 'Edit consequence button' do
+      it 'updates the consequence on the page' do
+        within '#mild-target0' do
+          page.find('.edit').click
+        end
+        fill_in 'name', with: 'blarneyblarn'
+        page.select 'mild', :from => 'severity'
+        click_on 'Update Consequence'
+        expect(page).to have_content('blarneyblarn')
       end
     end
   end
