@@ -32,7 +32,7 @@ describe 'Stunt', js: true do
         within('.panel-title') do
           page.find('.delete').click
         end
-        expect(page).to_not have_content(stunt.name)
+        expect(page).to_not have_content(stunt.description)
       end
     end
     describe 'editing a stunt' do

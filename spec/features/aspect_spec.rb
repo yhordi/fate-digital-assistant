@@ -32,7 +32,7 @@ describe 'Aspect', js: true do
         within('.panel-title') do
           page.find('.delete').click
         end
-        expect(page).to_not have_content(aspect.name)
+        expect(page).to_not have_content(aspect.description)
       end
     end
     describe 'editing an aspect' do

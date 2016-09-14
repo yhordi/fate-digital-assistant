@@ -1,7 +1,8 @@
 describe 'consequence', js: true do
   let(:user) { FactoryGirl.create :user }
-  let!(:system) { FactoryGirl.create :system }
   let!(:npc) { FactoryGirl.create :npc }
+  let!(:consequence) { FactoryGirl.create :consequence }
+  let!(:system) { FactoryGirl.create :system }
   context 'a logged in user' do
     before(:each) do
       visit root_path
@@ -22,6 +23,17 @@ describe 'consequence', js: true do
           click_on 'Create Consequence'
         end
         expect(page).to have_content('blarg')
+      end
+    end
+    describe 'Delete consequence button' do
+      it 'removes the consequence from the page' do
+        within '#consequences-container' do
+          within '#mild-target0' do
+            # figure out the targeting here
+            page.find('.delete').click
+          end
+        end
+        expect(page).to_not have_content(consequence.name)
       end
     end
   end

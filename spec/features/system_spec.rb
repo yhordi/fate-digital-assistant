@@ -90,7 +90,7 @@ describe 'System', js: true do
         click_on 'Delete'
       end
       it 'will no longer see the system displayed' do
-        expect(page).to_not have_content(system.name)
+        expect(page).to_not have_content(system.description)
       end
       it 'can see a success message' do
         expect(page).to have_content("System deleted")

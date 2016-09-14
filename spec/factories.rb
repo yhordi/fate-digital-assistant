@@ -44,7 +44,7 @@ FactoryGirl.define do
     aspectable_type {'Npc'}
   end
   factory :consequence do
-    name { Faker::Lorem.word }
+    name { Faker::Lorem.sentence }
     severity { "mild" }
     shift_value { 2 }
     npc_id { 1 }
