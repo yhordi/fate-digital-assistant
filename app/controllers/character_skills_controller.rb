@@ -22,10 +22,7 @@ class CharacterSkillsController < ApplicationController
     if character_skill.update!(level: params[:level])
       npc.adjust_max_stress(character_skill)
       character_skills = npc.character_skills.order('name')
-      render json: {
-        data: npc,
-        character_skills: character_skills,
-      }
+      render json: npc, include: :character_skills
     else
       render json: {data: character_skill.errors.full_messages}
     end

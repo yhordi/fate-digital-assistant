@@ -39,7 +39,8 @@ var CharacterSkillsList = React.createClass({
       data: level,
       method: 'PUT',
       success: function(response){
-        this.props.changeParent(response)
+        this.setState({characterSkills: response.character_skills})
+        this.props.changeParent({data: response})
       }.bind(this)
     })
   },
