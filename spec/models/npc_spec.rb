@@ -7,6 +7,7 @@ describe Npc do
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :npc_type }
+    it { is_expected.to validate_presence_of :system_id }
     it "does not validate max_mental_stress outside of 1..5 range" do
       npc.max_mental_stress = 6
       expect(npc).to_not be_valid
