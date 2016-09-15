@@ -75,13 +75,13 @@ var SkillForm = React.createClass({
     return(
       <div className="input-group well well-lg">
         <form onSubmit={this.handleSubmit}>
-          <h3>
+          <div className='panel panel-heading'>
             {this.props.button}
             <a className="close-form" onClick={this.handleBack}>
               <span className="fa fa-close">
               </span>
             </a>
-          </h3>
+          </div>
           <div>
             <input placeholder="Skill Name" className="form-control" onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
           </div>
