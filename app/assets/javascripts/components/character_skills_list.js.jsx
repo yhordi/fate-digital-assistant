@@ -54,7 +54,7 @@ var CharacterSkillsList = React.createClass({
   render: function() {
     var characterSkills = this.state.characterSkills.map(function(characterSkill, index) {
       return (
-        <CharacterSkill delete={this.handleDelete} name={characterSkill.name} npcId={this.props.data.id} level={characterSkill.level} update={this.update} changeParent={this.onChildChanged} systemId={this.props.systemId} data={characterSkill} key={index} />
+        <CharacterSkill id={index} delete={this.handleDelete} name={characterSkill.name} npcId={this.props.data.id} level={characterSkill.level} update={this.update} changeParent={this.onChildChanged} systemId={this.props.systemId} data={characterSkill} key={index} />
       )
     }.bind(this))
     return(

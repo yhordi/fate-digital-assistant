@@ -19,8 +19,19 @@ class CharacterSkillsController < ApplicationController
   def update
     character_skill = CharacterSkill.find(params[:id])
     npc = Npc.find(character_skill.npc_id)
-    character_skill.update(level: params[:level])
-    render json: npc.character_skills.order('name')
+    if character_skill.update!(level: params[:level])
+      npc.adjust_max_stress(character_skill)
+      skills = Skill.names(params[:system_id])
+      character_skills = npc.character_skills.order('name')
+      # render json: {
+      #   data: npc,
+      #   character_skills: character_skills,
+      #   skills: skills,
+      # }
+      render json: npc.character_skills.order('name')
+    else
+      render json: {data: character_skill.errors.full_messages}
+    end
   end
 
   def destroy

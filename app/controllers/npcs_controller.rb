@@ -7,7 +7,6 @@ class NpcsController < ApplicationController
   end
 
   def destroy
-    p params
     npc = Npc.find(params[:id])
     npc.destroy
     render json: Npc.where(system_id: params["system_id"]), include: [:character_skills, :stunts, :aspects, :consequences]

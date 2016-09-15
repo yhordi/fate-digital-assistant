@@ -15,7 +15,7 @@ var LevelSelect = React.createClass({
   },
   render: function(){
     return(
-      <select onChange={this.setLevel} name='level'>
+      <select onChange={this.setLevel} id={'levelSelect + this.props.id'} name='level'>
         <option>select a new level</option>
         <option value='1'>1</option>
         <option value='2'>2</option>

@@ -32,6 +32,16 @@ FactoryGirl.define do
     level { 1 }
     npc_id { 1 }
   end
+  factory :physique, class: CharacterSkill do
+    name { 'Physique' }
+    level { 1 }
+    npc_id { 1 }
+  end
+  factory :will, class: CharacterSkill do
+    name { 'Will' }
+    level { 1 }
+    npc_id { 1 }
+  end
   factory :stunt do
     name { Faker::Lorem.word }
     description { Faker::Lorem.paragraph}

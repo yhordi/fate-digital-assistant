@@ -25,7 +25,7 @@ var CharacterSkill = React.createClass({
   },
   render: function() {
     return(
-      <li className="list-group-item">
+      <li className="list-group-item" id={'characterSkill' + this.props.id}>
         <div>
           <div>
             <h4 className="list-group-item-heading">{this.props.name + " "}
