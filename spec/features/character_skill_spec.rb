@@ -40,9 +40,5 @@ describe 'character_skill', js: true do
       end
       expect(page).to have_css('#mental3')
     end
-    xit 'lowers the physical stress level when the physique level is lowered' do
-    end
-    xit 'lowers the mental stress level when the will level is lowered' do
-    end
   end
 end
