@@ -25,8 +25,9 @@ var AspectList = React.createClass({
             Aspects <a className='fa fa-plus' id='new-aspect' onClick={this.handleClick}></a>
           </h3>
           </div>
-        <div id="aspect-form-target"></div>
+        <div id='aspect-notice'></div>
         <div className='well well-lg'>
+        <div id="aspect-form-target"></div>
           {aspects}
         </div>
       </div>

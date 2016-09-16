@@ -4,8 +4,11 @@ class AspectsController < ApplicationController
     aspect = Aspect.new(aspect_params)
     aspect.aspectable_id = params[:aspect][:aspectable_id].to_i
     aspect.aspectable_type = params[:aspect][:aspectable_type]
-    aspect.save!
-    render json: {aspects: Aspect.where(aspectable_id: aspect.aspectable_id)}
+    if aspect.save
+      render json: { aspects: Aspect.where(aspectable_id: aspect.aspectable_id) }
+    else
+      render json: { errors: aspect.errors.full_messages }
+    end
   end
 
   def destroy

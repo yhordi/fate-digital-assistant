@@ -20,15 +20,18 @@ var AspectForm = React.createClass({
     $.ajax({
       url: url,
       data: data,
-      method: 'POST',
-      success: function(response){
-        ReactDOM.unmountComponentAtNode(document.getElementById('aspect-form-target'));
-        this.props.changeParent(response)
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    })
+      method: 'POST'
+      }).done(function(response) {
+        if(response.aspects == undefined) {
+          console.error(response.errors.toString())
+          $('#aspect-notice').prepend(response.errors.toString())
+          $('#aspect-notice').fadeOut(3000)
+        } else {
+          ReactDOM.unmountComponentAtNode(document.getElementById('aspect-form-target'));
+          this.setState(response)
+          this.props.changeParent(response)
+        }
+      }.bind(this))
   },
   update: function() {
     var url = '/aspects/' + this.props.data.id
@@ -72,7 +75,7 @@ var AspectForm = React.createClass({
             </h3>
             <label for="name">aspect Name</label>
           </div>
-          <input id="name" name="name" className='form-control' onChange={this.changeState} value={this.state.name} type='text'/><span id='nameNotice'></span>
+          <input required id="name" name="name" className='form-control' onChange={this.changeState} value={this.state.name} type='text'/><span id='nameNotice'></span>
           <div>
             <div title="You'll write a brief description here to give players a quick understanding of what your aspect does.">
               <label for="aspect-desc">Description</label>
@@ -80,7 +83,7 @@ var AspectForm = React.createClass({
             <textarea id="aspect-desc" name="description" className='form-control' onChange={this.changeState} value={this.state.description}></textarea>
             <span id="descNotice"></span>
           </div>
-          <input className="btn" type='submit' value={this.props.button}/>
+          <input required className="btn" type='submit' value={this.props.button}/>
         </form>
       </div>
     )

@@ -20,12 +20,22 @@ describe 'Aspect', js: true do
         expect(page).to have_content(aspect.name)
       end
     end
-    it 'can fill out a form and see the new aspect on the page' do
-      page.find('#new-aspect').click
-      fill_in 'name', with: aspect_attrs.name
-      fill_in 'aspect-desc', with: aspect_attrs.description
-      click_button('Create Aspect')
-      expect(page).to have_content(aspect_attrs.name)
+    describe 'creating an aspect' do
+      before(:each) do
+        page.find('#new-aspect').click
+      end
+      it 'can fill out a form and see the new aspect on the page' do
+        fill_in 'name', with: aspect_attrs.name
+        fill_in 'aspect-desc', with: aspect_attrs.description
+        click_button('Create Aspect')
+        expect(page).to have_content(aspect_attrs.name)
+      end
+      it 'can see an error when submitting the form with bad params' do
+        fill_in 'name', with: aspect.name
+        fill_in 'aspect-desc', with: aspect.description
+        click_button('Create Aspect')
+        expect(page).to have_content("Name has already been taken")
+      end
     end
     describe 'deleting a aspect' do
       it 'can click on a delete button and no longer see the aspect on the npc' do
