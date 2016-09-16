@@ -15,14 +15,22 @@ describe 'consequence', js: true do
       page.find('#npc1').click
     end
     describe 'Create consequence button' do
-      it 'adds a new consequence to the page' do
+      before(:each) do
         page.find('#new-consequence').click
+      end
+      it 'adds a new consequence to the page' do
         fill_in 'consequence text', with: 'blarg'
         page.select 'mild', :from => 'severity'
         within 'form' do
           click_on 'Create Consequence'
         end
         expect(page).to have_content('blarg')
+      end
+      it 'renders an error on bad params' do
+        fill_in 'consequence text', with: consequence.name
+        page.select 'mild', :from => 'severity'
+        click_on 'Create Consequence'
+        expect(page).to have_content('Name has already been taken')
       end
     end
     describe 'Delete consequence button' do
