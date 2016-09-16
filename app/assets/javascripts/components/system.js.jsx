@@ -13,7 +13,6 @@ var System = React.createClass({
   handleBack: function(e){
     e.preventDefault(e)
     var container = document.getElementById('container')
-    // ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
       <SystemBox />, container
     )

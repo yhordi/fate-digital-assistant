@@ -1,9 +1,11 @@
 class ConsequencesController < ApplicationController
   def create
     consequence = Consequence.new(consequence_params)
-    if consequence.save!
+    if consequence.save
       npc = Npc.find(params[:npc_id])
       render json: {consequences: npc.consequences}
+    else
+      render json: {errors: consequence.errors.full_messages}
     end
   end
 
@@ -15,10 +17,8 @@ class ConsequencesController < ApplicationController
   end
 
   def update
-    p params
     consequence = Consequence.find(params[:id])
     consequence.update_attributes(consequence_params)
-    p consequence
     npc = Npc.find(params[:npc_id])
     render json: {consequences: npc.consequences}
   end

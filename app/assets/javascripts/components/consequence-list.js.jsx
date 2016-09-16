@@ -13,10 +13,15 @@ var ConsequenceList = React.createClass({
       url: '/npcs/' + data.consequence.npc_id + '/consequences/',
       method: 'POST',
       dataType: 'JSON',
-      success: function(response){
+    }).done(function(response){
+      if(response.consequences == undefined) {
+        console.error(response.errors.toString())
+        $('#consequence-notice').prepend(response.errors.toString())
+        $('#consequence-notice').fadeOut(3000)
+      } else {
         this.setState(response)
-      }.bind(this)
-    })
+      }
+    }.bind(this))
   },
   update: function(consequence) {
     var url = '/consequences/' + consequence.id
@@ -48,6 +53,7 @@ var ConsequenceList = React.createClass({
     return(
       <div>
         <h3>Consequences <a onClick={this.buildFormData} className="fa fa-plus" id='new-consequence'></a></h3>
+        <div id='consequence-notice'></div>
         <div className="well well-lg">
           <div id='consequence-form-target'></div>
           <ul className="list-group" id='consequence-list'>
