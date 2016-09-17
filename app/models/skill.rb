@@ -1,6 +1,7 @@
 class Skill < ActiveRecord::Base
   belongs_to :system
   validates :name, presence: true
+  validates_uniqueness_of :name, scope: :system_id
 
   def self.names(system_id)
     names = []

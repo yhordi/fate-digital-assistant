@@ -8,10 +8,10 @@ var SkillList = React.createClass({
     }.bind(this));
     return (
       <div>
-      <div className='skillList'>
-        {skillLinks}
-      </div>
-      <div className="skillFormTarget co span-7-t"></div>
+        <div className='skillList'>
+          {skillLinks}
+        </div>
+        <div className="skillFormTarget co span-7-t"></div>
       </div>
     );
   }

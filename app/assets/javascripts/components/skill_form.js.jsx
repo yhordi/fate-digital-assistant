@@ -7,13 +7,18 @@ var SkillForm = React.createClass({
       url: url,
       method: 'post',
       data: data,
-      success: function(response) {
-        ReactDOM.unmountComponentAtNode(container)
-        ReactDOM.render(
-          <Skill data={response} systemName={this.props.systemName} />, container
-        )
-      }.bind(this)
-    })
+      // success: function(response) {
+      //   ReactDOM.unmountComponentAtNode(container)
+      //   ReactDOM.render(
+      //     <Skill data={response} systemName={this.props.systemName} />, container
+      //   )
+      // }.bind(this)
+    }).done(function(response){
+      ReactDOM.unmountComponentAtNode(container)
+      ReactDOM.render(
+        <Skill data={response} systemName={this.props.systemName} />, container
+      )
+    }.bind(this))
   },
   getInitialState: function() {
     return {system_id: this.props.systemId}
