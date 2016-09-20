@@ -7,6 +7,6 @@ class Consequence < ActiveRecord::Base
   validates :shift_value, inclusion: { in: [2, 4, 6] }
 
   def mild?
-    Npc.find(self.npc_id).mild?
+    npc.mild?
   end
 end
