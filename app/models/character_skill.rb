@@ -20,6 +20,14 @@ class CharacterSkill < ActiveRecord::Base
     new_level
   end
 
+  def will?
+    self.name == 'Will'
+  end
+
+  def physique?
+    self.name == 'Physique'
+  end
+
   def stress_skill?
     self.name == "Physique" || self.name == "Will"
   end

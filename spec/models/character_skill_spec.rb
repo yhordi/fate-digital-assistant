@@ -31,5 +31,20 @@ describe CharacterSkill do
       end
     end
   end
-
+  describe '#will' do
+    it 'returns true if the name of the skill is will' do
+      expect(will.will?).to eq(true)
+    end
+    it 'returns false if the name of the skill is not will' do
+      expect(physique.will?).to eq(false)
+    end
+  end
+  describe '#physique' do
+    it 'returns true if the name of the skill is physique' do
+      expect(physique.physique?).to eq(true)
+    end
+    it 'returns false if the name of the skill is not physique' do
+      expect(will.physique?).to eq(false)
+    end
+  end
 end
