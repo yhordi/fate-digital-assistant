@@ -7,7 +7,7 @@ class CharacterSkill < ActiveRecord::Base
     return new_stress_level if stress_skill?
   end
 
-   def new_stress_level
+  def new_stress_level
     new_level = 2
     case
       when self.level == 1

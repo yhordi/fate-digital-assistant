@@ -26,18 +26,18 @@ class Npc < ActiveRecord::Base
   end
 
   def adjust_max_stress(skill)
-    if skill.name == "Will"
+    if skill.will?
       self.max_mental_stress = skill.calculate_max_stress
-    elsif skill.name == "Physique"
+    elsif skill.physique?
       self.max_physical_stress = skill.calculate_max_stress
     end
     self.save
   end
 
   def reset_max_stress(skill)
-    if skill.name == "Will"
+    if skill.will?
       self.max_mental_stress = 2
-    elsif skill.name == "Physique"
+    elsif skill.physique?
       self.max_physical_stress = 2
     end
     self.save
