@@ -1,4 +1,6 @@
+require_relative 'concerns/max_stress_levels_helper'
 class CharacterSkill < ActiveRecord::Base
+  include MaxStressLevels
   validates_presence_of :name, :npc_id
   validates_uniqueness_of :name, scope: :npc
   belongs_to :npc
@@ -8,14 +10,14 @@ class CharacterSkill < ActiveRecord::Base
   end
 
   def new_stress_level
-    new_level = 2
+    new_level = MaxStressLevels::Low
     case
       when self.level == 1
-        new_level = 3
+        new_level = MaxStressLevels::Median
       when self.level.between?(2, 4)
-        new_level = 4
+        new_level = MaxStressLevels::High
       when self.level >= 5
-        new_level = 5
+        new_level = MaxStressLevels::Max
     end
     new_level
   end
