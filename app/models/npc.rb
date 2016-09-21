@@ -1,7 +1,9 @@
+require_relative 'concerns/consequence_levels_helper'
 class Npc < ActiveRecord::Base
+  include ConsequenceLevels
   class ConsequenceLimit < ActiveModel::Validator
     def validate(npc)
-      if npc.consequences.length > 4
+      if npc.consequences.length > ConsequenceLevels::Max
         npc.errors[:consequence] << 'Cannot have more than 4 consequences'
       end
     end
@@ -16,10 +18,6 @@ class Npc < ActiveRecord::Base
   has_many :stunts, dependent: :destroy
   has_many :aspects, as: :aspectable
   has_many :consequences, before_add: :consequence_limit_validation
-
-  def consequence_limit
-    ConsequenceLimit.new
-  end
 
   def consequence_limit_validation(npc)
     consequence_limit.validate(self)
@@ -47,5 +45,11 @@ class Npc < ActiveRecord::Base
     unless self.consequences.last == nil
       self.consequences.last.severity == 'mild'
     end
+  end
+
+  private
+
+  def consequence_limit
+    ConsequenceLimit.new
   end
 end
