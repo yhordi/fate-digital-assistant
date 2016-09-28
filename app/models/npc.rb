@@ -1,4 +1,4 @@
-require_relative 'concerns/consequence_levels_helper'
+require 'consequence_levels'
 class Npc < ActiveRecord::Base
   include ConsequenceLevels
   class ConsequenceLimit < ActiveModel::Validator
@@ -8,7 +8,6 @@ class Npc < ActiveRecord::Base
       end
     end
   end
-
   validates :name, :npc_type, :system_id, presence: true
   validates_uniqueness_of :name, scope: :system
   validates :max_physical_stress, :max_mental_stress, inclusion: 1..5

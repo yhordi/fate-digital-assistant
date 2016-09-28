@@ -1,4 +1,4 @@
-require_relative 'concerns/max_stress_levels_helper'
+require 'max_stress_levels'
 class CharacterSkill < ActiveRecord::Base
   include MaxStressLevels
   validates_presence_of :name, :npc_id
