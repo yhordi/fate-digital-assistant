@@ -76,7 +76,7 @@ var SkillSelectBox = React.createClass({
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <SkillSelect update={this.Update} skill={this.props.skill} changeParent={this.onChildChange} skills={this.state.skills}  />
+          <SkillSelect update={this.Update} showButton={this.props.showButton} skill={this.props.skill} changeParent={this.onChildChange} skills={this.state.skills}  />
           <input id="add-skill-submit" type='submit' value={this.props.button} />
         </form>
       </div>

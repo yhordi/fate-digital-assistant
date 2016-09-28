@@ -13,6 +13,12 @@ var SkillSelect = React.createClass({
     this.setState(skill)
     this.props.changeParent(skill)
   },
+  handleBack: function(e){
+    e.preventDefault()
+    this.props.showButton()
+    var container = document.getElementById('addSkillTarget')
+    ReactDOM.unmountComponentAtNode(container)
+  },
   onChildChange: function(newState){
     ReactDOM.unmountComponentAtNode(document.getElementById('skillSelectTarget' + this.props.targetId))
     this.props.changeParent(newState)
@@ -38,6 +44,10 @@ var SkillSelect = React.createClass({
     });
     return(
       <div>
+        <a className="close-form" onClick={this.handleBack}>
+          <span className="fa fa-close">
+          </span>
+        </a>
         <select name='name' onChange={this.changeState}>
           {options}
         </select>
