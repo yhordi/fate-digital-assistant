@@ -59,4 +59,8 @@ FactoryGirl.define do
     shift_value { 2 }
     npc_id { 1 }
   end
+  factory :scenario do
+    name { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph}
+  end
 end

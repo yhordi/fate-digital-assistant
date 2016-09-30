@@ -3,6 +3,7 @@ class System < ActiveRecord::Base
   belongs_to :user
   has_many :skills, dependent: :destroy
   has_many :npcs, dependent: :destroy
+  has_many :scenarios, dependent: :destroy
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, uniqueness: true
   validates :user_id, presence: true
