@@ -1,5 +1,5 @@
 class System < ActiveRecord::Base
-  include DefaultSkillsHelper
+  extend DefaultSkillsHelper
   belongs_to :user
   has_many :skills, dependent: :destroy
   has_many :npcs, dependent: :destroy
@@ -11,8 +11,8 @@ class System < ActiveRecord::Base
     return seed_defaults(self.id, DefaultSkillsHelper.defaults(params['id'])) if params['system']['default_set'] == 'true'
   end
 
-  def seed_defaults(system_id, defaults)
-    defaults.each do |skill|
+  def seed_defaults(system_id)
+    System::DefaultSkillsHelper.defaults(system_id).each do |skill|
       p "seeding #{skill[:name]}"
       new_skill = Skill.new(skill)
       new_skill.system_id = system_id

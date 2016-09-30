@@ -24,7 +24,7 @@ describe System do
   end
   describe '#seed_defaults' do
     it 'seeds default skills in the database' do
-      expect{system.seed_defaults(system.id, DefaultSkillsHelper.defaults(system.id))}.to change{Skill.count}.by(18)
+      expect{system.seed_defaults(system.id)}.to change{Skill.count}.by(18)
     end
   end
 end
