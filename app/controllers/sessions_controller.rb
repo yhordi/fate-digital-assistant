@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user.id)
     else
       if user.nil?
-        redirect_to root_path, :flash => { :error => "That username does not exist" }
+        redirect_to root_path, :flash => { :error => "That username does not exist." }
       else
         redirect_to root_path, :flash => { :error => "That password is invaid." }
       end
