@@ -1,4 +1,13 @@
-<div class="col-md-5">
+<% if flash[:error] %>
+  <div class=" col-md-4 alert alert-danger" role="alert">
+    <%= flash[:error]  %>
+  </div>
+<% elsif flash[:notice] %>
+<div class=" col-md-4 alert alert-success" role="alert">
+  <%= flash[:notice]  %>
+</div>
+<% end%>
+<div class="col-md-2">
 <% if session[:id] == nil %>
   <%= form_tag '/sessions', class: 'navbar-form col-md-3' do |f| %>
       <%= text_field_tag :name, nil, :placeholder => "Username", class: 'form-control' %>
@@ -11,10 +20,4 @@
   <% end %>
   <% else  %>
 <% end %>
-<p class="error">
-  <%= flash[:error]  %>
-</p>
-<p class="notice">
-  <%= flash[:notice] %>
-</p>
 </div>
