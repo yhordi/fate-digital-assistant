@@ -13,7 +13,7 @@ describe SessionsController do
         expect(session[:id]).to eq(user.id)
       end
     end
-    context 'with bad params' do
+    context 'with no username' do
       before(:each) do
         post :create
       end
@@ -21,7 +21,15 @@ describe SessionsController do
         expect(response.status).to eq(302)
       end
       it 'sends an error to the view in a flash message' do
-        expect(session[:flash]["flashes"]["error"]).to eq("Incorrect user name or password. Please try again.")
+        expect(session[:flash]["flashes"]["error"]).to eq("That username does not exist.")
+      end
+    end
+    context 'with an incorrect password' do
+      before(:each) do
+        post :create, name: user.name
+      end
+      it 'sends an error to the view in a flash message' do
+        expect(session[:flash]["flashes"]["error"]).to eq("That password is invaid.")
       end
     end
   end
