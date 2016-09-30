@@ -6,18 +6,18 @@ module DefaultSkillsHelper
     [
       {name: 'Athletics',
       system_id: system_id,
-      description: "The Athletics skill represents your character’s general level of physical fit- ness, whether through training, natural gifts, or genre-specific means (like magic or genetic alteration). It’s how good you are at moving your body. As such, it is a popular choice for nearly any action-y character.
-Athletics is all but ubiquitous among every genre appropriate for Fate—it would only be unnecessary in a game that focused exclusively on interper- sonal interaction and had no physical conflict.",
+      description: "The Athletics skill represents your character’s general level of physical fitness, whether through training, natural gifts, or genre-specific means (like magic or genetic alteration). It’s how good you are at moving your body. As such, it is a popular choice for nearly any action-y character.
+Athletics is all but ubiquitous among every genre appropriate for Fate—it would only be unnecessary in a game that focused exclusively on interpersonal interaction and had no physical conflict.",
       overcome: "Athletics allows you to overcome any obstacle that requires physical movement—jumping, running, climbing, swimming, etc. If it resembles something you’d do in the decathlon, you roll Athletics. You use overcome actions with Athletics to move between zones in a conflict if there’s a situation aspect or other obstacle in your way. You also roll Athletics to chase or race in any contests or challenges that rely on these types of activities.",
       advantage: "When you’re creating an advantage with Athletics, you’re jumping to high ground, running faster than the opponent can keep up with, or performing dazzling acrobatic maneuvers in order to confound your foes.",
       attack: "Athletics is not meant as an attack skill.",
-      defend: "Athletics is a catchall skill to roll for defense in a physical conflict, against closequarters and ranged attacks. You can also use it to defend against characters trying to move past you, if you’re in a position to physically interfere with who-
+      defend: "Athletics is a catchall skill to roll for defense in a physical conflict, against closequarters and ranged attacks. You can also use it to defend against characters trying to move past you, if you’re in a position to physically interfere with who
      ever’s making the attempt.",
       default_set: true},
       {name: 'Burglary',
       system_id: system_id,
       description: "The Burglary skill covers your character’s aptitude for stealing things and getting into places that are off-limits.
-In genres that rely on the use of a lot of technology, this skill also includes a pro- ficiency in the related tech, allowing the character to hack security systems, disable alarm systems, and whatnot.",
+In genres that rely on the use of a lot of technology, this skill also includes a proficiency in the related tech, allowing the character to hack security systems, disable alarm systems, and whatnot.",
       overcome: "As stated above, Burglary allows you to overcome any obstacle related to theft or infiltration. Bypassing locks and traps, pickpocketing and filching, covering your tracks, and other such activities all fall under the purview of this skill.",
       advantage: "You can case a location with Burglary, to determine how hard it will be to break into and what kind of security you’re dealing with, as well as discover any vulnerabilities you might exploit. You can also examine the work of other burglars to determine how a particular heist was done, and create or discover aspects related to whatever evidence they may have left behind.",
       attack: no_conflict,
@@ -36,7 +36,7 @@ In genres that rely on the use of a lot of technology, this skill also includes 
       {name: 'Crafts',
       system_id: system_id,
       description: "Crafts is the skill of working with machinery, for good or ill.
-The default skill is called Crafts because it’s what we use in the exam- ples, but this skill might vary a great deal depending on the setting and what kind of technology is available. In a modern or sci-fi setting, this might be Engineering or Mechanics instead.",
+The default skill is called Crafts because it’s what we use in the examples, but this skill might vary a great deal depending on the setting and what kind of technology is available. In a modern or sci-fi setting, this might be Engineering or Mechanics instead.",
       overcome: "Crafts allows you to build, break, or fix machinery, presuming you have the time and tools you need. Often, actions with Crafts happen as one component of a more complex situation, making it a popular skill for challenges. For example, if you’re just fixing a broken door, neither success nor failure is interesting; you should just succeed and move on. Now, if you’re
     trying to get your car to start while a pack of werewolves is hunting you...",
       advantage: "You can use Crafts to create aspects representing features of a piece of machinery, pointing out useful features or strengths you can use to your advantage (Armor-Plated, Rugged Construction or a vulnerability for you to exploit (Flaw in the Cross-Beam, Hasty Work.
@@ -112,36 +112,36 @@ If your game has a reason to prioritize different fields of knowledge as being s
       {name: 'Notice',
       system_id: system_id,
       description: "The Notice skill involves just that—noticing things. It’s a counterpart to Investigate, representing a character’s overall perception, ability to pick out details at a glance, and other powers of observation. Usually, when you use Notice, it’s very quick compared to Investigate, so the kinds of details you get from it are more superficial, but you also don’t have to expend as much effort to find them.",
-      overcome: "You don’t really use Notice to overcome obstacles too often but when you do it’s used in a reactive way: noticing some- thing in a scene, hearing a faint sound, spotting the concealed gun in that guy’s waistband.
+      overcome: "You don’t really use Notice to overcome obstacles too often but when you do it’s used in a reactive way: noticing something in a scene, hearing a faint sound, spotting the concealed gun in that guy’s waistband.
     Note that this isn’t license for GMs to call for Notice rolls left and right to see how generally observant the players’ characters are; that’s boring. Instead, call for Notice rolls when succeeding would result in something interesting happening and failing would result in something just as interesting.",
-      advantage: "You use Notice to create aspects based on direct observation—looking over a room for details that stand out, finding an escape route in a debris-filled building, notic- ing someone sticking out in a crowd, etc. When you’re watching people, Notice can tell you what’s going on with them externally; for internal changes, see Empathy. You might also use Notice to declare that your character spots something you can use to your advantage in a situation, such as a convenient Escape Route when you’re trying to get out of a building, or a Subtle Weakness in the enemy’s line of defense. For example, if you’re in a barroom brawl you could make a Notice roll to say that you spot a puddle on the floor, right next to your opponent’s feet that could cause him to slip.",
+      advantage: "You use Notice to create aspects based on direct observation—looking over a room for details that stand out, finding an escape route in a debris-filled building, noticing someone sticking out in a crowd, etc. When you’re watching people, Notice can tell you what’s going on with them externally; for internal changes, see Empathy. You might also use Notice to declare that your character spots something you can use to your advantage in a situation, such as a convenient Escape Route when you’re trying to get out of a building, or a Subtle Weakness in the enemy’s line of defense. For example, if you’re in a barroom brawl you could make a Notice roll to say that you spot a puddle on the floor, right next to your opponent’s feet that could cause him to slip.",
       attack: no_attack,
       defend: "You can use Notice to defend against any uses of Stealth to get the drop on you or ambush you, or to discover that you’re being observed.",
       default_set: true},
       {name: 'Physique',
       system_id: system_id,
-      description: "The Physique skill is a counterpart to Athletics, representing the charac- ter’s natural physical aptitudes, such as raw strength and endurance. In our example game, we have this skill broken out as something separate in order to create two distinct types of physical characters—the nimble guy (repre- sented by Athletics) and the strongman (represented by Physique).
+      description: "The Physique skill is a counterpart to Athletics, representing the character’s natural physical aptitudes, such as raw strength and endurance. In our example game, we have this skill broken out as something separate in order to create two distinct types of physical characters—the nimble guy (represented by Athletics) and the strongman (represented by Physique).
 In your game, you might not find this distinction necessary to make with separate skills—though you might still let players make that distinction with stunts and aspects.",
       overcome: "You can use Physique to overcome any obstacles that require the application of brute force—most often to overcome a situation aspect on a zone—or any other physical impedance, like prison bars or locked gates. Of course, Physique is the classic skill for arm-wrestling matches and other contests of applied strength, as well as marathons or other endurance-based challenges.",
-      advantage: " Physique has a lot of potential for advan- tages in physical conflict, usually related to grappling and holding someone in place, making them Pinned or Locked Down. You might also use it as a way of discovering physical impairments pos- sessed by the target—grappling the old mercenary tells you that he has a Bum Leg or somesuch.",
+      advantage: " Physique has a lot of potential for advantages in physical conflict, usually related to grappling and holding someone in place, making them Pinned or Locked Down. You might also use it as a way of discovering physical impairments possessed by the target—grappling the old mercenary tells you that he has a Bum Leg or somesuch.",
       attack: "Physique is not used to harm people directly—see the Fight skill for that.",
       defend: "Though you don’t generally use Physique to defend against attacks, you can use it to provide active opposition to someone else’s movement, provided you’re in a small enough space that you can effectively use your body to block access. You might also interpose something heavy and brace it to stop someone from getting through.",
-      special: "The Physique skill gives you additional physical stress or conse- quence slots. Average (+1 or Fair (+2 gives you a 3-point stress box. Good (+3 or Great (+4 gives you a 3-point and a 4-point stress box. Superb (+5 and above give you an additional mild consequence slot along with the additional stress boxes. This slot can only be used for physical harm.",
+      special: "The Physique skill gives you additional physical stress or consequence slots. Average (+1 or Fair (+2 gives you a 3-point stress box. Good (+3 or Great (+4 gives you a 3-point and a 4-point stress box. Superb (+5 and above give you an additional mild consequence slot along with the additional stress boxes. This slot can only be used for physical harm.",
       default_set: true},
       {name: 'Provoke',
       system_id: system_id,
-      description: "Provoke is the skill about getting someone’s dander up and eliciting nega- tive emotional response from them—fear, anger, shame, etc. It’s the “being a jerk” skill.
+      description: "Provoke is the skill about getting someone’s dander up and eliciting negative emotional response from them—fear, anger, shame, etc. It’s the “being a jerk” skill.
 To use Provoke, you need some kind of justification. That could come entirely from situation, or because you have an aspect that’s appropriate, or because you’ve created an advantage with another skill (like Rapport or Deceive), or because you’ve assessed your target’s aspects (see Empathy).
-This skill requires that your target can feel emotions—robots and zom- bies typically can’t be provoked.",
-      overcome: "You can Provoke someone into doing what you want in a fit of emotional pique. You might intimidate them for infor- mation, piss them off so badly that they act out, or scare them into running away. This will often happen when you’re going up against nameless NPCs or it isn’t worthwhile to play out the par- ticulars. Against PCs or important NPCs, you’ll need to win a contest. They oppose with Will.
+This skill requires that your target can feel emotions—robots and zombies typically can’t be provoked.",
+      overcome: "You can Provoke someone into doing what you want in a fit of emotional pique. You might intimidate them for information, piss them off so badly that they act out, or scare them into running away. This will often happen when you’re going up against nameless NPCs or it isn’t worthwhile to play out the particulars. Against PCs or important NPCs, you’ll need to win a contest. They oppose with Will.
     ",
       advantage: "You can create advantages representing momentary emotional states, like Enraged, Shocked, or Hesitant. Your target opposes with Will.",
-      attack: "You can make mental attacks with Provoke, to do emo- tional harm to an opponent. Your relationship with the target and the circumstances you’re in figure a great deal into whether or not you can use this action.",
+      attack: "You can make mental attacks with Provoke, to do emotional harm to an opponent. Your relationship with the target and the circumstances you’re in figure a great deal into whether or not you can use this action.",
       defend: "Being good at provoking others doesn’t make you better at avoiding it yourself. You need Will for that.",
       default_set:true},
       {name: 'Rapport',
       system_id: system_id,
-      description: "The Rapport skill is all about making positive connections to people and eliciting positive emo- tion. It’s the skill of being liked and trusted.",
+      description: "The Rapport skill is all about making positive connections to people and eliciting positive emotion. It’s the skill of being liked and trusted.",
       overcome: "Use Rapport to charm or inspire people to do what you want, or to establish a good connection with them. Charm your way past the guard, convince someone to take you into their confidence, or
     become the man of the hour at the local tavern. For nameless NPCs, this is just an overcome action, but you may have to enter a contest to sufficiently ingratiate yourself to a named NPC or PC.",
       advantage: "Use Rapport to establish a positive mood on a target or in a scene or to get someone to confide in you out of a genuine sense of trust. You could pep talk someone into having Elevated Confidence, or stir a crowd into a Joyful Fervor, or simply make someone Talkative or Helpful.",
@@ -150,7 +150,7 @@ This skill requires that your target can feel emotions—robots and zom- bies ty
       default_set: true},
       {name: 'Resources',
       system_id: system_id,
-      description: "Resources describes your character’s general level of material wealth in the game world and ability to apply it. This might not always reflect cash on hand, given the different ways you can represent wealth in a particular set- ting—in a medieval game, it might be tied to land or vassals as much as gold; in the modern day, it might mean a number of good lines of credit.
+      description: "Resources describes your character’s general level of material wealth in the game world and ability to apply it. This might not always reflect cash on hand, given the different ways you can represent wealth in a particular setting—in a medieval game, it might be tied to land or vassals as much as gold; in the modern day, it might mean a number of good lines of credit.
 This skill is in the default list to give you a basic, easy way to handle wealth as an abstraction without getting into minutiae or bookkeeping. Some people might consider it odd to give a static skill rating for something that we’re used to seeing as a finite resource. If that bothers you, see the sidebar on page 123 for ways to limit Resources.",
       overcome: "You can use Resources to get yourself out of or past any situation where throwing money at the problem will help, such as committing bribery or acquiring rare and expensive things. Challenges or contests might involve auctions or bidding wars.",
       advantage: "You might use Resources to grease the wheels and make people more friendly, whether that represents an actual bribe (I Scratch Your Back... or simply buying drinks for people (In Vino Veritas. You can also use Resources to declare that you have something you need on hand, or can quickly acquire it, which could give you an aspect representing the object.",
@@ -164,12 +164,12 @@ Again, as with Fight, if it’s important to your setting to make a distinction 
       overcome: "Unless, for some reason, you need to demonstrate your Shoot ability in a non-conflict situation, you probably won’t be using this skill for normal obstacles much. Obviously, contests involving Shoot are a popular staple of adventure fiction, and we recommend you look for the opportunity to have them if you have a character who specializes in this.",
       advantage: "In physical conflicts, Shoot can be used to perform a wide variety of moves, like trick shots, keeping someone under heavy fire, and the like. In cinematic games, you might even be able to disarm people and pin their sleeves to walls—pretty much anything you’ve seen in an action movie. You could also make the argument for creating aspects based on your knowledge of guns (like placing a Prone to Jams aspect on an opponent’s gun.",
       attack: "This skill makes physical attacks. You can make them from up to two zones away, unlike with Fight. (Sometimes the range will change with the weapon.",
-      defend: "Shoot is unique in that it doesn’t really have a defense component to it—you’d use Athletics for that. You could use it to lay down some covering fire—which might act as a defense for your allies or provide opposition to someone else’s movement— though it could just as easily be represented by creating an advan- tage (Covering Fire or Hail of Bullets, for example.",
+      defend: "Shoot is unique in that it doesn’t really have a defense component to it—you’d use Athletics for that. You could use it to lay down some covering fire—which might act as a defense for your allies or provide opposition to someone else’s movement— though it could just as easily be represented by creating an advantage (Covering Fire or Hail of Bullets, for example.",
       default_set: true},
       {name: 'Stealth',
       system_id: system_id,
       description: "The Stealth skill allows you to avoid detection, both when hiding in place and trying to move about unseen. It pairs well with the Burglary skill.",
-      overcome: "You can use Stealth to get past any situation that pri- marily depends on you not being seen. Sneaking past sentries and security, hiding from a pursuer, avoiding leaving evidence as you pass through a place, and any other such uses all fall under the purview of Stealth.",
+      overcome: "You can use Stealth to get past any situation that primarily depends on you not being seen. Sneaking past sentries and security, hiding from a pursuer, avoiding leaving evidence as you pass through a place, and any other such uses all fall under the purview of Stealth.",
       advantage: "You’ll mainly use Stealth to create aspects on yourself, setting yourself in an ideal position for an attack or ambush in a conflict. That way, you can be Well-Hidden when the guards pass by and take advantage of that, or Hard to Pin Down if you’re fighting in the dark.",
       attack: no_attack,
       defend: "You can use this to foil Notice attempts to pinpoint you or seek you out, as well as to try to throw off the scent of an Investigate attempt from someone trying to track you.",
@@ -178,12 +178,12 @@ Again, as with Fight, if it’s important to your setting to make a distinction 
       system_id: system_id,
       description: "The Will skill represents your character’s general level of mental fortitude, the same way that Physique represents your physical fortitude.
 ",
-      overcome: "You can use Will to pit yourself against obstacles that require mental effort. Puzzles and riddles can fall under this cat- egory, as well as any mentally absorbing task, like deciphering a code. Use Will when it’s only a matter of time before you over- come the mental challenge, and Lore if it takes something more than brute mental force to get past it. Many of the obstacles that you go up against with Will might be made part of challenges, to reflect the effort involved.
-    Contests of Will might reflect particularly challenging games, like chess, or competing in a hard set of exams. In settings where magic or psychic abilities are common, contests of Will are popu- lar occurrences.",
-      advantage: "You can use Will to place aspects on your- self, representing a state of deep concentration or focus.",
+      overcome: "You can use Will to pit yourself against obstacles that require mental effort. Puzzles and riddles can fall under this category, as well as any mentally absorbing task, like deciphering a code. Use Will when it’s only a matter of time before you overcome the mental challenge, and Lore if it takes something more than brute mental force to get past it. Many of the obstacles that you go up against with Will might be made part of challenges, to reflect the effort involved.
+    Contests of Will might reflect particularly challenging games, like chess, or competing in a hard set of exams. In settings where magic or psychic abilities are common, contests of Will are popular occurrences.",
+      advantage: "You can use Will to place aspects on yourself, representing a state of deep concentration or focus.",
       attack: "Will isn’t really used for attacks. That said, in settings where you allow psychic abilities, full-on psychic conflict might be something you can do with this skill. That’s the sort of thing that would be added to Will by taking a stunt or extra.",
       defend: "Will is the main skill you use to defend against mental attacks from Provoke, representing your control over your reactions.",
-      special: "The Will skill gives you additional mental stress boxes or con- sequence slots. Average (+1 or Fair (+2 gives you a 3-point stress box. Good (+3 or Great (+4 gives you a 3-point and a 4-point stress box. Superb (+5 and above give you an additional mild consequence slot along with the additional stress boxes. This slot can only be used for mental harm.",
+      special: "The Will skill gives you additional mental stress boxes or consequence slots. Average (+1 or Fair (+2 gives you a 3-point stress box. Good (+3 or Great (+4 gives you a 3-point and a 4-point stress box. Superb (+5 and above give you an additional mild consequence slot along with the additional stress boxes. This slot can only be used for mental harm.",
       default_set: true},
     ]
   end

@@ -34,12 +34,12 @@ class UsersController < ApplicationController
     if session[:id] == nil
       @user = User.new
     else
-      redirect_to user_path(session[:id])
+      redirect_to systems_path
     end
   end
 
   def show
-    @user = User.find(session[:id])  
+    @user = User.find(session[:id])
   end
 
   private

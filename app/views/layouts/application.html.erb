@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FATE: Dimensions</title>
+  <title>Fate: Dimensions</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <%= favicon_link_tag %>
 </head>
 <body>
-  <div class="top row">
-    <div class="pad-left col span-8-d span-8-t">
-      <span class="header"> <%= link_to "FATE: Dimensions", root_path %> </span>
+  <div id="main-container" class="container-fluid">
+    <div class="top row">
+      <div class="navbar navbar-default">
+        <div class='navbar-header col-md-9'>
+          <%= link_to "Fate: Dimensions", root_path, class: "navbar-brand" %>
+        </div>
+        <div class="col-md-3">
+          <% if session[:id] == nil %>
+            <%= render "sessions/new" %>
+          <% else %>
+            <%= render "sessions/show" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="pad-right col span-4-d span-4-t right pad-top">
-      <% if session[:id] == nil %>
-        <%= render "sessions/new" %>
+    <div class='row'>
+      <% if session[:id] %>
+        <div class="col-md-2"role="navigation">
+          <%= react_component('SideBar', {userId: session[:id]}) %>
+        </div>
+        <div id='nav-container' class="col-md-10"></div>
+        <div id="container" class="col-md-9">
+          <%= yield %>
+        </div>
       <% else %>
-        <%= render "sessions/show" %>
+        <div id="container" class="col-md-10">
+          <%= yield %>
+        </div>
       <% end %>
     </div>
   </div>
-    <% if session[:id] %>
-      <%= react_component('SideBar', {userId: session[:id]}) %>
-      <div id="container" class="fl-right-dash">
-        <%= yield %>
-      </div>
-    <% else %>
-      <div id="container">
-        <%= yield %>
-      </div>
-    <% end %>
 </body>
 </html>

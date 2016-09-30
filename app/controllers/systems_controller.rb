@@ -5,7 +5,7 @@ class SystemsController < ApplicationController
     @system = System.new(name: params[:system][:name], description: params[:system][:description])
     @system.user_id = current_user.id
     @system.save
-    @system.default_skills(params)
+    @system.seed_defaults(@system.id)
     if System.last == @system
       render json: System.last
     else
@@ -49,6 +49,6 @@ class SystemsController < ApplicationController
   private
 
   def system_params
-    params.require(:system).permit(:name, :description, :public, :setting, skills_attributes:[:default_set])
+    params.require(:system).permit(:name, :description, :public, :setting)
   end
 end

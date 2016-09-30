@@ -1,4 +1,7 @@
 var System = React.createClass({
+  container: function(){
+    return document.getElementById('container')
+  },
   propTypes: {
     name: React.PropTypes.string,
     id: React.PropTypes.number,
@@ -7,24 +10,9 @@ var System = React.createClass({
   getInitialState: function(){
     return data = {system: this.props};
   },
-  getSkills: function(e){
-    e.preventDefault();
-    var container = document.getElementById('container');
-    var url = e.target.href
-    var systemName = this.props.name
-    var systemId = this.props.id
-    $.ajax({
-      url: url,
-    }).done(function(data){
-      ReactDOM.render(
-        <SkillBox data={data} systemName={systemName} systemId={systemId} />, container
-      );
-    })
-  },
   handleBack: function(e){
     e.preventDefault(e)
     var container = document.getElementById('container')
-    ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
       <SystemBox />, container
     )
@@ -40,6 +28,7 @@ var System = React.createClass({
         var container = document.getElementById('container')
         this.setState({systems: response})
         this.props = this.state
+        ReactDOM.unmountComponentAtNode(document.getElementById('nav-container'))
         ReactDOM.render(
           <SystemBox />, container
         )
@@ -63,22 +52,7 @@ var System = React.createClass({
   },
   render: function() {
     return (
-      <div name={this.props.name} description={this.props.description} className='system row'>
-        <h2 className="no-margin">
-          {this.props.name}
-        </h2>
-        <div className="row">
-          <div className="col span-12-t inline">
-            <ul className="list-hz">
-              <li>
-                <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
-              </li>
-              <li>Games</li>
-              <li>NPC's</li>
-              <li>Locations</li>
-            </ul>
-          </div>
-        </div>
+      <div className="col-md-10" name={this.props.name} description={this.props.description}>
         <p>{this.props.description}</p>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete} className='delete'>Delete</button>

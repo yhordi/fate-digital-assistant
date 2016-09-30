@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323195731) do
+ActiveRecord::Schema.define(version: 20160813011152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,47 @@ ActiveRecord::Schema.define(version: 20160323195731) do
 
   add_index "adventures", ["game_master_id"], name: "index_adventures_on_game_master_id", using: :btree
 
+  create_table "aspects", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "aspectable_id"
+    t.string   "aspectable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "aspects", ["aspectable_type", "aspectable_id"], name: "index_aspects_on_aspectable_type_and_aspectable_id", using: :btree
+
+  create_table "character_skills", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "level"
+    t.integer  "npc_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "consequences", force: :cascade do |t|
+    t.string   "name"
+    t.string   "severity"
+    t.integer  "shift_value"
+    t.integer  "npc_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "npcs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "npc_type"
+    t.text     "background"
+    t.integer  "system_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "mental_stress",       default: 2
+    t.integer  "physical_stress",     default: 2
+    t.integer  "max_mental_stress",   default: 2
+    t.integer  "max_physical_stress", default: 2
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string   "name",                    null: false
     t.integer  "level",       default: 0, null: false
@@ -40,6 +81,16 @@ ActiveRecord::Schema.define(version: 20160323195731) do
     t.text     "defend"
     t.boolean  "default_set"
     t.text     "special"
+  end
+
+  add_index "skills", ["system_id"], name: "index_skills_on_system_id", using: :btree
+
+  create_table "stunts", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.string   "description", null: false
+    t.integer  "npc_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "systems", force: :cascade do |t|

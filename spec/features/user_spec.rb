@@ -3,20 +3,20 @@ describe 'User', js: true do
   context 'a guest user' do
     it 'can sign up and see their profile page' do
       username = "user"
-      visit root_path
-      within '#container form' do
+      visit new_user_path
+      within '#container #new_user' do
         fill_in 'user[name]', with: username
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_again]', with: 'password'
         click_on 'Register'
       end
-      expect(page).to have_content("FATE: Dimensions Account created.")
+      expect(page).to have_content("Account created.")
     end
   end
   context 'logged in and editing their profile' do
     before(:each) do
       visit root_path
-      fill_in 'Username', with: user.name
+      fill_in 'name', with: user.name
       fill_in 'Password', with: user.password
       click_on 'Log In'
       click_on 'Edit Profile/Account Details'

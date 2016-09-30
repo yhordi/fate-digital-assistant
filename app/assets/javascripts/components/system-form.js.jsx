@@ -31,6 +31,9 @@ var Systemform = React.createClass({
         var container = document.getElementById('container')
         this.setState({systems: data})
         ReactDOM.render(
+          <Nav id={data.id} name={data.name} />, document.getElementById('nav-container')
+        )
+        ReactDOM.render(
           <System name={data.name} id={data.id} button="Update System" description={data.description} />, container
         );
         $('#notice').prepend('System Created!').addClass('notice')
@@ -54,11 +57,22 @@ var Systemform = React.createClass({
     return { name: this.props.data.name, description: this.props.data.description }
   },
   handleBack: function(e){
-    e.preventDefault(e)
+    e.preventDefault()
+    if(this.props.button == "Create System") {
+      this.backToSystem()
+    } else {
+    this.backToSystems()
+    }
+  },
+  backToSystem: function(){
+    var container = document.getElementById('form-target')
+    ReactDOM.unmountComponentAtNode(container)
+  },
+  backToSystems: function(){
     var container = document.getElementById('container')
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
-      <SystemBox />, container
+      <System id={this.props.data.id} description={this.props.data.description} name={this.props.data.name} />, container
     )
   },
   handleSubmit: function(e) {
@@ -102,29 +116,27 @@ var Systemform = React.createClass({
   render: function() {
     return (
       <div>
-        <form className='form center system-form' onSubmit={this.handleSubmit}>
-          <div title="Your system's name.">
-            <h3 className="form-header">{this.props.button}
-              <a className="close-form" onClick={this.handleBack}>
-                <span className="fa fa-close">
-                </span>
-              </a>
-            </h3>
-            <label for="name">System Name</label>
-          </div>
-          <input id="name" className='form-field' onChange={this.updateNameState} value={this.state.name} type='text'/><span id='nameNotice'></span>
-          <div>
-            <div title="You'll write a brief description here to give players a quick understanding of what your system is.">
-              <label for="desc">Description</label>
+        <form onSubmit={this.handleSubmit}>
+          <fieldset className="form-group">
+            <div title="Your system's name.">
+              <h3>{this.props.button}
+                <a onClick={this.handleBack}>
+                  <span className="fa fa-close">
+                  </span>
+                </a>
+              </h3>
+              <label for="name">System Name</label>
             </div>
-            <textarea id="desc" className='form-field' rows="50" cols="25" onChange={this.updateDescriptionState} value={this.state.description}></textarea>
-            <span id="descNotice"></span>
-          </div>
-          <div title="Check this box if you want to build your system with the default set of skills as laid out in the fate core rulebook. You can delete or edit the skills at any time. You can also add these skills later.">
-            <label for="default-set">seed with default skills </label>
-            <input id='defaults' name="defult-set" type="checkbox" onChange={this.check}/>
-          </div>
-          <input className="submit" type='submit' value={this.props.button}/>
+            <input id="name" className='form-control' onChange={this.updateNameState} value={this.state.name} type='text'/><span id='nameNotice'></span>
+            <div>
+              <div title="You'll write a brief description here to give players a quick understanding of what your system is.">
+                <label for="desc">Description</label>
+              </div>
+              <textarea id="desc" className='form-control' onChange={this.updateDescriptionState} value={this.state.description}></textarea>
+              <span id="descNotice"></span>
+            </div>
+            <input className="submit" type='submit' value={this.props.button}/>
+          </fieldset>
         </form>
       </div>
     );

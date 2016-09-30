@@ -7,13 +7,18 @@ var SkillForm = React.createClass({
       url: url,
       method: 'post',
       data: data,
-      success: function(response) {
-        ReactDOM.unmountComponentAtNode(container)
-        ReactDOM.render(
-          <Skill data={response} systemName={this.props.systemName} />, container
-        )
-      }.bind(this)
-    })
+      // success: function(response) {
+      //   ReactDOM.unmountComponentAtNode(container)
+      //   ReactDOM.render(
+      //     <Skill data={response} systemName={this.props.systemName} />, container
+      //   )
+      // }.bind(this)
+    }).done(function(response){
+      ReactDOM.unmountComponentAtNode(container)
+      ReactDOM.render(
+        <Skill data={response} systemName={this.props.systemName} />, container
+      )
+    }.bind(this))
   },
   getInitialState: function() {
     return {system_id: this.props.systemId}
@@ -73,32 +78,32 @@ var SkillForm = React.createClass({
   },
   render: function() {
     return(
-      <div>
-        <form className='form skillForm' onSubmit={this.handleSubmit}>
-          <h3 className='form-header'>
+      <div className="input-group well well-lg">
+        <form onSubmit={this.handleSubmit}>
+          <div className='panel panel-heading'>
             {this.props.button}
             <a className="close-form" onClick={this.handleBack}>
               <span className="fa fa-close">
               </span>
             </a>
-          </h3>
-          <div>
-            <input placeholder="Skill Name" className="form-field" onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
           </div>
           <div>
-            <textarea placeholder="Description" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.description} id="skillDescription" name="description"></textarea>
+            <input placeholder="Skill Name" className="form-control" onChange={this.updateState} value={this.props.data.name} id="skillName" name="name" />
           </div>
           <div>
-            <textarea placeholder="Create an Advantage" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.advantage} id="advantage" name="advantage"></textarea>
+            <textarea placeholder="Description" className="form-control" onChange={this.updateState} value={this.props.data.description} id="skillDescription" name="description"></textarea>
           </div>
           <div>
-            <textarea placeholder="Overcome" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.overcome} id="overcome" name="overcome"></textarea>
+            <textarea placeholder="Create an Advantage" className="form-control" onChange={this.updateState} value={this.props.data.advantage} id="advantage" name="advantage"></textarea>
           </div>
           <div>
-            <textarea placeholder="attack" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.attack} id="attack" name="attack"></textarea>
+            <textarea placeholder="Overcome" className="form-control" onChange={this.updateState} value={this.props.data.overcome} id="overcome" name="overcome"></textarea>
           </div>
           <div>
-            <textarea placeholder="defend" rows="50" cols="25" className="form-field" onChange={this.updateState} value={this.props.data.defend} id="defend" name="defend"></textarea>
+            <textarea placeholder="attack" className="form-control" onChange={this.updateState} value={this.props.data.attack} id="attack" name="attack"></textarea>
+          </div>
+          <div>
+            <textarea placeholder="defend" className="form-control" onChange={this.updateState} value={this.props.data.defend} id="defend" name="defend"></textarea>
           </div>
           <input type="hidden" name="systemId" value={this.props.systemId}/>
           <input className='submit' type="submit" value={this.props.button} />
