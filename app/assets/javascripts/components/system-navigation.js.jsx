@@ -44,6 +44,20 @@ var SystemNavigation = React.createClass({
       );
     })
   },
+  getScenarios: function(e){
+    e.preventDefault
+    var container = this.container()
+    var url = e.target.href
+    var systemName = this.props.name
+    var systemId = this.props.id
+    $.ajax({
+      url: url,
+    }).done(function(data){
+      ReactDOM.render(
+        <ScenarioBox data={data} systemName={systemName} systemId={systemId} />, container
+      );
+    })
+  },
   render: function(){
     return(
       <div>
@@ -55,7 +69,7 @@ var SystemNavigation = React.createClass({
             <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
           </li>
           <li>
-            <a>Games</a>
+            <a id="scenariosIndex" onClick={this.getScenarios} href={"/systems/" + this.props.id + "/scenarios/"}>Scenarios</a>
           </li>
           <li>
             <a id="npcIndex" onClick={this.getNpcs} href={"/systems/" + this.props.id + "/npcs/"}>NPCs</a>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :systems do
     resources :skills
     resources :npcs
+    resources :scenarios
   end
   resources :npcs, shallow: true do
     resources :character_skills
