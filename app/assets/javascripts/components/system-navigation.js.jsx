@@ -45,16 +45,20 @@ var SystemNavigation = React.createClass({
     })
   },
   getScenarios: function(e){
-    e.preventDefault
+    e.preventDefault()
+    this.deactivate()
+    skillTab = e.target.parentElement
+    skillTab.setAttribute("class", "active")
     var container = this.container()
     var url = e.target.href
     var systemName = this.props.name
     var systemId = this.props.id
     $.ajax({
       url: url,
-    }).done(function(data){
+    }).done(function(response){
+      console.log(response)
       ReactDOM.render(
-        <ScenarioBox data={data} systemName={systemName} systemId={systemId} />, container
+        <ScenarioList data={response} systemName={systemName} systemId={systemId} />, container
       );
     })
   },

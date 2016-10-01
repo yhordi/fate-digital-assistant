@@ -1,5 +1,4 @@
 var SystemList = React.createClass({
-
   render: function() {
     var systemLinks = this.props.data.map(function(system, index) {
       return (
@@ -7,6 +6,7 @@ var SystemList = React.createClass({
       )
     }.bind(this));
     return (
+
       <div className='systemList'>
         {systemLinks}
       </div>
