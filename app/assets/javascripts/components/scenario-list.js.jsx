@@ -7,9 +7,6 @@ var ScenarioList = React.createClass({
     }.bind(this));
     return(
       <div>
-        <h4>
-          <a onClick={this.handleNew} href="#">Create New</a>
-        </h4>
         {scenarioLinks}
       </div>
     );
