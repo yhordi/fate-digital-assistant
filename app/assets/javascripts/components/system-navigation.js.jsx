@@ -70,10 +70,10 @@ var SystemNavigation = React.createClass({
         </a>
         <ul className="nav nav-tabs">
           <li>
-            <a id="skillsIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
+            <a id="skillIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
           </li>
           <li>
-            <a id="scenariosIndex" onClick={this.getScenarios} href={"/systems/" + this.props.id + "/scenarios/"}>Scenarios</a>
+            <a id="scenarioIndex" onClick={this.getScenarios} href={"/systems/" + this.props.id + "/scenarios/"}>Scenarios</a>
           </li>
           <li>
             <a id="npcIndex" onClick={this.getNpcs} href={"/systems/" + this.props.id + "/npcs/"}>NPCs</a>

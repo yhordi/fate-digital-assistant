@@ -8,7 +8,7 @@ var ScenarioLink = React.createClass({
   render: function(){
     return(
       <div>
-        <a onClick={this.getScenario}>
+        <a id={this.props.id} onClick={this.getScenario}>
           {this.props.data.name}
         </a>
       </div>

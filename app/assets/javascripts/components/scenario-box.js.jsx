@@ -2,7 +2,6 @@ var ScenarioBox = React.createClass({
   handleNew: function(e){
     e.preventDefault()
     container = document.getElementById('scenario-form-target')
-    // ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
       <ScenarioForm data={this.props.data} systemName={this.props.systemName} systemId={this.props.systemId} button="Create Scenario"/>, container
     )
