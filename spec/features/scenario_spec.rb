@@ -28,5 +28,13 @@ describe 'Scenario', js: true do
       page.find('#delete-scenario').click
       expect(page).to_not have_content(scenario.name)
     end
+    it 'can edit an scenario and see the new attribute' do
+      page.find('#edit-scenario').click
+      within('form') do
+        fill_in 'name', with: 'Fanty Splorn'
+        click_button 'Update Scenario'
+      end
+      expect(page).to have_content('Fanty Splorn')
+    end
   end
 end

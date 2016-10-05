@@ -14,6 +14,15 @@ class ScenariosController < ApplicationController
     end
   end
 
+  def update
+    scenario = Scenario.find(params[:id])
+    if scenario.update_attributes(scenario_params)
+      render json: Scenario.where(system_id: params[:system_id])
+    else
+      render json: { errors: scenario.errors.full_messages }
+    end
+  end
+
   def destroy
     scenario = Scenario.find(params[:id])
     scenario.delete

@@ -1,6 +1,6 @@
 var Scenario = React.createClass({
   handleDelete: function(e) {
-    var container, id, url
+    var container, id, url;
     e.preventDefault()
     container = document.getElementById('container')
     id = this.props.data.id
@@ -17,6 +17,15 @@ var Scenario = React.createClass({
         )
       }.bind(this)
     })
+  },
+  handleEdit: function(e){
+    var container;
+    e.preventDefault();
+    container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    ReactDOM.render(
+      <ScenarioForm data={this.props.data} button="Update Scenario" systemName={this.props.systemName} systemId={this.props.systemId} />, container
+    )
   },
   render: function(){
     return(

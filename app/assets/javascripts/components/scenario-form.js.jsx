@@ -12,6 +12,21 @@ var ScenarioForm = React.createClass({
     scenario[prop] = value
     this.setState(scenario)
   },
+  handleBack: function(e){
+    var url, container;
+    e.preventDefault()
+    container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    url = '/systems/' + this.props.data.system_id + '/scenarios'
+    $.ajax({
+      url: url,
+      success: function(response){
+          ReactDOM.render(
+            <ScenarioBox data={response} systemId={response.systemId} />, container
+          )
+      }
+    })
+  },
   handleSubmit: function(e){
     e.preventDefault()
     if(this.props.button[0] == "C"){
@@ -21,17 +36,20 @@ var ScenarioForm = React.createClass({
     }
   },
   update: function() {
-  //   var url = '/scenarios/' + this.props.data.id
-  //   var container = document.getElementById('scenarios-container')
-  //   $.ajax({
-  //     url: url,
-  //     data: {scenario: this.state},
-  //     method: 'PUT',
-  //     success: function(response){
-  //       ReactDOM.unmountComponentAtNode(container);
-  //       ReactDOM.render(<AspectList data={response.scenarios} />, container)
-  //     }.bind(this)
-  //   })
+    var url, container;
+    url = '/systems/' + this.props.data.system_id + '/scenarios/' + this.props.data.id
+    container = document.getElementById('container')
+    $.ajax({
+      url: url,
+      data: {scenario: this.state},
+      method: 'PUT',
+      success: function(response){
+        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.render(
+          <ScenarioBox data={response} systemId={response.systemId} />, container
+        )
+      }.bind(this)
+    })
   },
   create: function(){
     var url = '/systems/' + this.props.systemId + '/scenarios/'
