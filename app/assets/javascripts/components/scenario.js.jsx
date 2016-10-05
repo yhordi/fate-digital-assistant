@@ -45,14 +45,22 @@ var Scenario = React.createClass({
   render: function(){
     return(
       <div>
-        <h2>{this.props.data.name}
-          <a onClick={this.backToScenarios}><span className="fa fa-arrow-left"></span></a>
-          <a id="edit-scenario" title="edit scenario" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
-          <a id="delete-scenario" title="delete scenario" onClick={this.handleDelete} className='delete fa fa-trash'></a>
-        </h2>
-        <p>{this.props.data.description}</p>
-        <div>
-          <h4>Scenes</h4>
+        <div className='row'>
+          <h2>{this.props.data.name}
+            <a onClick={this.backToScenarios}><span className="fa fa-arrow-left"></span></a>
+            <a id="edit-scenario" title="edit scenario" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
+            <a id="delete-scenario" title="delete scenario" onClick={this.handleDelete} className='delete fa fa-trash'></a>
+          </h2>
+          <p>{this.props.data.description}</p>
+        </div>
+        <div className='row'>
+          <div className='col col-md-6'>
+            <h3>Scenes</h3>
+            <p>coming soon</p>
+          </div>
+          <div className="col-md-6" id="aspects-container">
+            <AspectList data={this.props.data.aspects} aspectableType={'Scenario'} aspectableId={this.props.data.id} scenario={this.props} />
+          </div>
         </div>
       </div>
     )

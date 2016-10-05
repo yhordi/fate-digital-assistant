@@ -77,7 +77,7 @@ var Npc = React.createClass({
       </div>
       <div className="row">
         <div className="col-md-6" id="aspects-container">
-          <AspectList data={this.props.data.aspects} npcId={this.props.data.id} npc={this.props} />
+          <AspectList data={this.props.data.aspects} aspectableType={'Npc'} aspectableId={this.props.data.id} parentComponent={this.props} />
         </div>
         <div className="col-md-6" id='characterSkillsListTarget'>
           <CharacterSkillsList changeParent={this.onChildChanged} systemId={this.state.data.system_id} data={this.state.data} characterSkills={this.state.characterSkills} />

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :aspect do
+  factory :npc_aspect, class: Aspect do
     name { Faker::Lorem.word }
     description { Faker::Lorem.paragraph}
     aspectable_id { 1 }

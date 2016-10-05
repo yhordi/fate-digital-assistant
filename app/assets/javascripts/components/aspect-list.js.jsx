@@ -4,10 +4,10 @@ var AspectList = React.createClass({
   },
   handleClick: function(e){
     e.preventDefault
-    var data = {aspectable_type: "Npc",
-                aspectable_id: this.props.npcId}
+    var data = {aspectable_type: this.props.aspectableType,
+                aspectable_id: this.props.aspectableId}
     var container = document.getElementById('aspect-form-target')
-    ReactDOM.render(<AspectForm npc={this.props.npc} changeParent={this.onChildChanged} data={data} button="Create Aspect"/>, container)
+    ReactDOM.render(<AspectForm parentComponent={this.props.npc} changeParent={this.onChildChanged} data={data} button="Create Aspect"/>, container)
   },
   onChildChanged: function(newState){
     this.setState(newState)
@@ -24,7 +24,7 @@ var AspectList = React.createClass({
           <h3>
             Aspects <a className='fa fa-plus' id='new-aspect' onClick={this.handleClick}></a>
           </h3>
-          </div>
+        </div>
         <div id='aspect-notice'></div>
         <div className='well well-lg'>
         <div id="aspect-form-target"></div>
