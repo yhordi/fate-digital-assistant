@@ -2,7 +2,7 @@ var ScenarioLink = React.createClass({
   getScenario: function(e){
     e.preventDefault();
     ReactDOM.render(
-      <Scenario data={this.props.data} />, document.getElementById('container')
+      <Scenario changeParent={this.props.changeParent} data={this.props.data} />, document.getElementById('container')
     )
   },
   render: function(){

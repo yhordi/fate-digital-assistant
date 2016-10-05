@@ -46,9 +46,9 @@ var ScenarioForm = React.createClass({
           $('#scenario-notice').prepend(response.errors.toString())
           $('#scenario-notice').fadeOut(3000)
         } else {
+          this.props.changeParent({data: response.scenarios})
           ReactDOM.unmountComponentAtNode(document.getElementById('scenario-form-target'));
-          this.setState(response)
-          this.props.changeParent(response)
+          // this.setState(response)
         }
       }.bind(this))
   },

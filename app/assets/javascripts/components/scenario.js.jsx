@@ -1,4 +1,23 @@
 var Scenario = React.createClass({
+  handleDelete: function(e) {
+    var container, id, url
+    e.preventDefault()
+    container = document.getElementById('container')
+    id = this.props.data.id
+    url = '/systems/' + this.props.data.system_id + '/scenarios/' + id
+    $.ajax({
+      url: url,
+      data: data,
+      method: 'DELETE',
+      success: function(response){
+        this.props.changeParent(response)
+        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.render(
+          <ScenarioBox data={response} systemId={response.systemId} />, container
+        )
+      }.bind(this)
+    })
+  },
   render: function(){
     return(
       <div>

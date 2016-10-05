@@ -17,10 +17,16 @@ describe 'Scenario', js: true do
     end
   end
   describe 'show page' do
-    it 'displays the scenario information on the page' do
+    before(:each) do
       page.find('#scenarioIndex').click
       page.find('#scenario0').click
+    end
+    it 'displays the scenario information on the page' do
       expect(page).to have_content(scenario.name)
+    end
+    it 'can delete a scenario and see the list of remaining scenarios' do
+      page.find('#delete-scenario').click
+      expect(page).to_not have_content(scenario.name)
     end
   end
 end

@@ -14,6 +14,12 @@ class ScenariosController < ApplicationController
     end
   end
 
+  def destroy
+    scenario = Scenario.find(params[:id])
+    scenario.delete
+    render json: Scenario.where(system_id: params[:system_id])
+  end
+
   private
 
   def scenario_params
