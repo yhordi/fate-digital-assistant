@@ -1,4 +1,19 @@
 var Scenario = React.createClass({
+  backToScenarios: function(e){
+    var container, url;
+    e.preventDefault()
+    container = document.getElementById('container')
+    ReactDOM.unmountComponentAtNode(container)
+    url = '/systems/' + this.props.data.system_id + '/scenarios'
+    $.ajax({
+      url: url,
+      success: function(response){
+        ReactDOM.render(
+          <ScenarioBox data={response} systemId={response.systemId} />, container
+        )
+      }.bind(this)
+    })
+  },
   handleDelete: function(e) {
     var container, id, url;
     e.preventDefault()
@@ -31,6 +46,7 @@ var Scenario = React.createClass({
     return(
       <div>
         <h2>{this.props.data.name}
+          <a onClick={this.backToScenarios}><span className="fa fa-arrow-left"></span></a>
           <a id="edit-scenario" title="edit scenario" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
           <a id="delete-scenario" title="delete scenario" onClick={this.handleDelete} className='delete fa fa-trash'></a>
         </h2>
