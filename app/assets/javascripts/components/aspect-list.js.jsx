@@ -7,7 +7,7 @@ var AspectList = React.createClass({
       <AspectForm changeParent={this.onChildChanged} data={data} button="Update aspect"/>, container
     )
   },
-  handleClick: function(e){
+  getForm: function(e){
     e.preventDefault
     var data = {aspectable_type: this.props.aspectableType,
                 aspectable_id: this.props.aspectableId}
@@ -27,7 +27,7 @@ var AspectList = React.createClass({
       <div>
         <div>
           <h3>
-            Aspects <a className='fa fa-plus' id='new-aspect' onClick={this.handleClick}></a>
+            Aspects <a className='fa fa-plus' id='new-aspect' onClick={this.getForm}></a>
           </h3>
         </div>
         <div id='aspect-notice'></div>

@@ -13,9 +13,10 @@ class AspectsController < ApplicationController
 
   def destroy
     aspect = Aspect.find(params[:id])
+    aspectable = params[:aspect][:aspectable_type].constantize
+    aspects = aspectable.find(params[:aspect][:aspectable_id]).aspects
     aspect.delete
-    npc = Npc.find(params[:aspectable_id])
-    render json: {aspects: npc.aspects}
+    render json: {aspects: aspects}
   end
 
   def update

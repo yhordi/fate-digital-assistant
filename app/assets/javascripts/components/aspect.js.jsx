@@ -8,7 +8,7 @@ var Aspect = React.createClass({
     e.preventDefault()
     var id = this.props.data.id
     var url = '/aspects/'+ id
-    var data = {id: id, aspectable_id: this.props.data.aspectable_id}
+    var data = {id: id, aspect: {aspectable_id: this.props.data.aspectable_id, aspectable_type: this.props.data.aspectable_type}}
     $.ajax({
       url: url,
       data: data,
