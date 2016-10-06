@@ -5,18 +5,16 @@ var Aspect = React.createClass({
     this.props.edit(this.props.data, container)
   },
   handleDelete: function(e) {
+    var data, id;
     e.preventDefault()
-    var id = this.props.data.id
-    var url = '/aspects/'+ id
-    var data = {id: id, aspect: {aspectable_id: this.props.data.aspectable_id, aspectable_type: this.props.data.aspectable_type}}
-    $.ajax({
-      url: url,
-      data: data,
-      method: 'DELETE',
-      success: function(response){
-        this.props.changeParent(response)
-      }.bind(this)
-    })
+    id = this.props.data.id
+    data = {url: '/aspects/' + id,
+            // id: id,
+            aspect: {aspectable_id: this.props.data.aspectable_id,
+                     aspectable_type: this.props.data.aspectable_type
+                    }
+            }
+    this.props.destroy(data)
   },
   render: function() {
     return(

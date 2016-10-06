@@ -42,9 +42,7 @@ var AspectForm = React.createClass({
       method: 'PUT',
       success: function(response){
         ReactDOM.unmountComponentAtNode(container);
-        console.log(response)
         this.props.changeParent(response)
-        // ReactDOM.render(<AspectList data={response.aspects} />, container)
       }.bind(this)
     })
   },

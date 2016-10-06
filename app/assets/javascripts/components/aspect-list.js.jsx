@@ -7,6 +7,16 @@ var AspectList = React.createClass({
       <AspectForm changeParent={this.onChildChanged} data={data} button="Update aspect"/>, container
     )
   },
+  destroy: function(data){
+    $.ajax({
+      url: data.url,
+      data: data,
+      method: 'DELETE',
+      success: function(response){
+        this.setState(response)
+      }.bind(this)
+    })
+  },
   getForm: function(e){
     e.preventDefault
     var data = {aspectable_type: this.props.aspectableType,
@@ -20,7 +30,7 @@ var AspectList = React.createClass({
   render: function(){
     var aspects = this.state.aspects.map(function(aspect, index){
       return (
-        <Aspect edit={this.edit} changeParent={this.onChildChanged} data={aspect} key={index} />
+        <Aspect destroy={this.destroy} edit={this.edit} changeParent={this.onChildChanged} data={aspect} key={index} />
       )
     }.bind(this))
     return(
