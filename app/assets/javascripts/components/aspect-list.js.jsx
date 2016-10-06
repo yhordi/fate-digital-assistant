@@ -2,12 +2,17 @@ var AspectList = React.createClass({
   getInitialState: function(){
     return {aspects: this.props.data}
   },
+  edit: function(data, container){
+    ReactDOM.render(
+      <AspectForm changeParent={this.onChildChanged} data={data} button="Update aspect"/>, container
+    )
+  },
   handleClick: function(e){
     e.preventDefault
     var data = {aspectable_type: this.props.aspectableType,
                 aspectable_id: this.props.aspectableId}
     var container = document.getElementById('aspect-form-target')
-    ReactDOM.render(<AspectForm parentComponent={this.props.npc} changeParent={this.onChildChanged} data={data} button="Create Aspect"/>, container)
+    ReactDOM.render(<AspectForm changeParent={this.onChildChanged} parentComponent={this.props.npc} changeParent={this.onChildChanged} data={data} button="Create Aspect"/>, container)
   },
   onChildChanged: function(newState){
     this.setState(newState)
@@ -15,7 +20,7 @@ var AspectList = React.createClass({
   render: function(){
     var aspects = this.state.aspects.map(function(aspect, index){
       return (
-        <Aspect changeParent={this.onChildChanged} data={aspect} key={index} />
+        <Aspect edit={this.edit} changeParent={this.onChildChanged} data={aspect} key={index} />
       )
     }.bind(this))
     return(

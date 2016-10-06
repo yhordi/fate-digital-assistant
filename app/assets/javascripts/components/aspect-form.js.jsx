@@ -35,14 +35,16 @@ var AspectForm = React.createClass({
   },
   update: function() {
     var url = '/aspects/' + this.props.data.id
-    var container = document.getElementById('aspects-container')
+    var container = document.getElementById('aspect-form-target')
     $.ajax({
       url: url,
       data: {aspect: this.state},
       method: 'PUT',
       success: function(response){
         ReactDOM.unmountComponentAtNode(container);
-        ReactDOM.render(<AspectList data={response.aspects} />, container)
+        console.log(response)
+        this.props.changeParent(response)
+        // ReactDOM.render(<AspectList data={response.aspects} />, container)
       }.bind(this)
     })
   },
