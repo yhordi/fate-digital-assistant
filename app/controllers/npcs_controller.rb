@@ -1,4 +1,5 @@
 class NpcsController < ApplicationController
+  include NpcsHelper
   def create
     npc = Npc.new(npc_params)
     npc.system_id = params["npc"]["system_id"]
@@ -14,6 +15,7 @@ class NpcsController < ApplicationController
 
   def index
     npcs = Npc.where("system_id = #{params[:system_id]}").includes([:character_skills, :stunts, :aspects])
+    return render json: {names: names(npcs)} if params[:names]
     render json: npcs, include: [:character_skills, :stunts, :aspects, :consequences]
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930221657) do
+ActiveRecord::Schema.define(version: 20161007181957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20160930221657) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "npc_scenes", force: :cascade do |t|
+    t.integer  "npc_id"
+    t.integer  "scene_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "npc_scenes", ["npc_id"], name: "index_npc_scenes_on_npc_id", using: :btree
+  add_index "npc_scenes", ["scene_id"], name: "index_npc_scenes_on_scene_id", using: :btree
+
   create_table "npcs", force: :cascade do |t|
     t.string   "name"
     t.string   "npc_type"
@@ -72,6 +82,14 @@ ActiveRecord::Schema.define(version: 20160930221657) do
     t.string   "name"
     t.text     "description"
     t.integer  "system_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "scenes", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "scenario_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

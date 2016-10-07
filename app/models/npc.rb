@@ -17,6 +17,8 @@ class Npc < ActiveRecord::Base
   has_many :stunts, dependent: :destroy
   has_many :aspects, as: :aspectable
   has_many :consequences, before_add: :consequence_limit_validation
+  has_many :character_scenes
+  has_many :scenes, through: :npc_scenes
 
   def consequence_limit_validation(npc)
     consequence_limit.validate(self)

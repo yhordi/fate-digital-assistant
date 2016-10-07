@@ -44,7 +44,7 @@ var Scenario = React.createClass({
   },
   newScene: function(e){
     e.preventDefault()
-    container = document.getElementById('scenario-form-target')
+    container = document.getElementById('scene-form-target')
     ReactDOM.render(
       <SceneForm systemId={this.props.systemId} button="Create Scene"/>, container
     )
@@ -62,7 +62,10 @@ var Scenario = React.createClass({
         </div>
         <div className='row'>
           <div className='col col-md-6'>
-            <h3>Scenes<a className='fa fa-plus' id='new-scene' onClick={this.newScene}></a></h3>
+            <h3>Scenes
+              <a className='fa fa-plus' id='new-scene' onClick={this.newScene}></a>
+            </h3>
+            <SceneList systemId={this.props.data.system_id} scenes={this.props.data.scenes} />
           </div>
           <div className="col-md-6" id="aspects-container">
             <AspectList data={this.props.data.aspects} aspectableType={'Scenario'} aspectableId={this.props.data.id} scenario={this.props} />

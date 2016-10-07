@@ -1,7 +1,7 @@
 class ScenariosController < ApplicationController
   def index
     scenarios = Scenario.where(system_id: params["system_id"])
-    render json: scenarios, include: :aspects
+    render json: scenarios, include: [:aspects, :scenes]
   end
 
   def create

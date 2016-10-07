@@ -36,7 +36,7 @@ var ScenarioBox = React.createClass({
           <a onClick={this.handleNew} id="newScenario">Create New</a>
         </h4>
         <div>
-          <ScenarioList data={this.state.data} changeParent={this.onChildChanged}/>
+          <ScenarioList systemId={this.props.systemId} data={this.state.data} changeParent={this.onChildChanged}/>
         </div>
         <div id="scenario-form-target"></div>
       </div>
