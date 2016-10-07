@@ -12,7 +12,7 @@
     <div class="pad-btm-m">
       <%= link_to("Edit Profile/Account Details", edit_user_path(@user.id), class: "edit_user") %>
     </div>
-      <%= image_tag(@user.avatar.url(:square)) %> 
+      <%= image_tag(@user.avatar.url(:square)) %>
     <p>
       Member since <%= format_time(@user.created_at)  %>
     </p>
@@ -23,7 +23,7 @@
       <%= @user.bio %>
     </p>
     <h4>
-      <%= "#{@user.name.titleize}'s games:"%>
+      <%= "#{@user.name.titleize}'s active games:"%>
     </h4>
   </div>
 </div>

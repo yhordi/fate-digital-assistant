@@ -42,6 +42,13 @@ var Scenario = React.createClass({
       <ScenarioForm data={this.props.data} button="Update Scenario" systemName={this.props.systemName} systemId={this.props.systemId} />, container
     )
   },
+  newScene: function(e){
+    e.preventDefault()
+    container = document.getElementById('scenario-form-target')
+    ReactDOM.render(
+      <SceneForm systemId={this.props.systemId} button="Create Scene"/>, container
+    )
+  },
   render: function(){
     return(
       <div>
@@ -55,8 +62,7 @@ var Scenario = React.createClass({
         </div>
         <div className='row'>
           <div className='col col-md-6'>
-            <h3>Scenes</h3>
-            <p>coming soon</p>
+            <h3>Scenes<a className='fa fa-plus' id='new-scene' onClick={this.newScene}></a></h3>
           </div>
           <div className="col-md-6" id="aspects-container">
             <AspectList data={this.props.data.aspects} aspectableType={'Scenario'} aspectableId={this.props.data.id} scenario={this.props} />

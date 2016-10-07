@@ -3,4 +3,5 @@ class Scenario < ActiveRecord::Base
   validates :name, uniqueness: true
   belongs_to :system
   has_many :aspects, as: :aspectable
+  has_many :scenes, dependent: :destroy
 end
