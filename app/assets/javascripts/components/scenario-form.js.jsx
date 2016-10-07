@@ -52,27 +52,15 @@ var ScenarioForm = React.createClass({
     })
   },
   create: function(){
-    var url = '/systems/' + this.props.systemId + '/scenarios/'
-    var data = {scenario: this.state}
-    $.ajax({
-      url: url,
-      data: data,
-      method: 'POST'
-      }).done(function(response) {
-        if(response.scenarios == undefined) {
-          console.error(response.errors.toString())
-          $('#scenario-notice').prepend(response.errors.toString())
-          $('#scenario-notice').fadeOut(3000)
-        } else {
-          this.props.changeParent({data: response.scenarios})
-          ReactDOM.unmountComponentAtNode(document.getElementById('scenario-form-target'));
-          // this.setState(response)
-        }
-      }.bind(this))
+    var url, data;
+    url = '/systems/' + this.props.systemId + '/scenarios/'
+    data = {url: url, scenario: this.state}
+    this.props.create(data)
   },
   render: function(){
     return(
       <div>
+        <div id="scenario-notice"></div>
         <form className='input-group' onSubmit={this.handleSubmit}>
           <div title="Your scenario's name.">
             <h3 className="form-header">{this.props.button}

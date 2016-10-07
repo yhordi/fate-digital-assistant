@@ -1,6 +1,7 @@
 describe 'Scenario', js: true do
   let(:user) { FactoryGirl.create :user }
   let!(:scenario) { FactoryGirl.create :scenario }
+  let(:scenario_attributes) { FactoryGirl.build :scenario }
   let!(:system) { FactoryGirl.create :system }
   before(:each) do
     visit root_path
@@ -35,6 +36,16 @@ describe 'Scenario', js: true do
         click_button 'Update Scenario'
       end
       expect(page).to have_content('Fanty Splorn')
+    end
+  end
+  describe 'create form' do
+    it 'can fill out a form and see the new scenario in the scenarios list' do
+      page.find('#scenarioIndex').click
+      page.find('#newScenario').click
+      fill_in 'name', with: scenario_attributes[:name]
+      fill_in 'description', with: scenario_attributes[:name]
+      click_on 'Create Scenario'
+      expect(page).to have_content(scenario_attributes[:name])
     end
   end
 end

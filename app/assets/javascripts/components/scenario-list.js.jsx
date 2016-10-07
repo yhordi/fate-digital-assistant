@@ -1,4 +1,7 @@
 var ScenarioList = React.createClass({
+  getInitialState: function() {
+    return {scenarios: this.props.scenarios}
+  },
   render: function() {
     var scenarioLinks = this.props.data.map(function(scenario, index) {
       return (
