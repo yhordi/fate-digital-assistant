@@ -2,7 +2,7 @@ var SceneList = React.createClass({
   handleClick: function(e){
     e.preventDefault()
     ReactDOM.render(
-      <Scene data={this.props.data} />, document.getElementById('container')
+      <Scene systemId={this.props.systemId} data={this.props.data} />, document.getElementById('container')
     )
   },
   render: function(){

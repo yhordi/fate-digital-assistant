@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :skills
     resources :npcs
     resources :scenarios
+    resources :scenes, only: :update
   end
   resources :npcs, shallow: true do
     resources :character_skills
