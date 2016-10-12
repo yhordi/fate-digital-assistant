@@ -25,7 +25,7 @@ var NpcImportForm = React.createClass({
       method: 'PUT',
       data: {names: this.names}
     }).done(function(response){
-
+      console.log(response)
     })
   },
   render: function() {

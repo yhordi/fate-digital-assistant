@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :systems do
     resources :skills
     resources :npcs
-    resources :scenarios
-    resources :scenes, only: :update
+    resources :scenarios, shallow: true do
+      resources :scenes, only: [:update, :index]
+    end
   end
+
   resources :npcs, shallow: true do
     resources :character_skills
     resources :stunts
