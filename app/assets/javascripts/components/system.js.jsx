@@ -52,7 +52,7 @@ var System = React.createClass({
   },
   render: function() {
     return (
-      <div className="col-md-10" name={this.props.name} description={this.props.description}>
+      <div className="col-md-10">
         <p>{this.props.description}</p>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete} className='delete'>Delete</button>

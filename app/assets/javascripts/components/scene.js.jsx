@@ -10,7 +10,7 @@ var Scene = React.createClass({
       )
     }.bind(this))
   },
-  render: function(){
+  render: function() {
     return(
       <div>
         <div>
@@ -18,7 +18,7 @@ var Scene = React.createClass({
           <p>{this.props.data.description}</p>
         </div>
         <div>
-          <a alt='import npcs' title='Import Npcs to scene'  className='fa fa-user-plus' onClick={this.importNpcForm}></a>
+          <a alt='import npcs' title='Add Npcs to scene'  className='fa fa-user-plus' onClick={this.importNpcForm}></a>
           <div id="npc-import-form-target"></div>
         </div>
         <NpcList data={this.props.data.npcs} />

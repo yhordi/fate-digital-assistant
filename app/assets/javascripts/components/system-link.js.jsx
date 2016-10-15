@@ -15,7 +15,7 @@ var Systemlink = React.createClass({
   render: function(){
     return(
     <div>
-      <a onClick={this.handleClick} index={this.props.index} description={this.props.description} id={'systemLink' + this.props.data.id}>
+      <a onClick={this.handleClick} id={'systemLink' + this.props.data.id}>
         {this.props.data.name}
       </a>
     </div>

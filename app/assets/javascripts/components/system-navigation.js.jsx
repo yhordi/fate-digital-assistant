@@ -56,7 +56,6 @@ var SystemNavigation = React.createClass({
     $.ajax({
       url: url,
     }).done(function(response){
-      console.log(response)
       ReactDOM.render(
         <ScenarioBox data={response} systemName={systemName} systemId={systemId} />, container
       );

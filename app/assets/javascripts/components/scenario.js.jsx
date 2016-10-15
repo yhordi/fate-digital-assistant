@@ -1,14 +1,4 @@
 var Scenario = React.createClass({
-  componentDidMount: function(e){
-    $.ajax({
-      url: 'scenarios/' + this.props.data.id + '/scenes',
-      success: function(response){
-        ReactDOM.render(
-          <SceneList systemId={response.system_id} scenes={response} />, document.getElementById('scene-list-target')
-        )
-      }
-    })
-  },
   backToScenarios: function(e){
     var container, url;
     e.preventDefault()
@@ -75,7 +65,9 @@ var Scenario = React.createClass({
             <h3>Scenes
               <a className='fa fa-plus' id='new-scene' onClick={this.newScene}></a>
             </h3>
-            <div id='scene-list-target'></div>
+            <div id='scene-list-target'>
+              <SceneList scenes={this.props.data.scenes} />
+            </div>
           </div>
           <div className="col-md-6" id="aspects-container">
             <AspectList data={this.props.data.aspects} aspectableType={'Scenario'} aspectableId={this.props.data.id} scenario={this.props} />
