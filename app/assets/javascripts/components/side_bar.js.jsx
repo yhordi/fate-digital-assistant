@@ -10,10 +10,12 @@ var SideBar = React.createClass({
   },
   getSystems: function(e){
     e.preventDefault()
+    var url = '/systems/'
+    window.history.pushState("object or string", "Title", url);
     ReactDOM.unmountComponentAtNode(this.container())
     ReactDOM.unmountComponentAtNode(document.getElementById('nav-container'))
     $.ajax({
-      url: 'systems/',
+      url: url,
       success: function(response){
         ReactDOM.render(<SystemBox data={response}/>, this.container())
       }.bind(this)
@@ -23,7 +25,7 @@ var SideBar = React.createClass({
     return (
       <ul className="nav nav-pills nav-stacked">
         <li role="presentation">
-          <a onClick={this.getSystems} href='/systems/'>
+          <a onClick={this.getSystems}>
             <i title="View your systems." className="fa fa-list fa-2x fa-stack"></i>
             SYSTEMS
           </a>

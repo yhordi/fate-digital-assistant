@@ -19,7 +19,7 @@ var Scenario = React.createClass({
     e.preventDefault()
     container = document.getElementById('container')
     id = this.props.data.id
-    url = '/systems/' + this.props.data.system_id + '/scenarios/' + id
+    url = '/scenarios/' + id
     $.ajax({
       url: url,
       data: data,
