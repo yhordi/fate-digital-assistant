@@ -37,11 +37,11 @@ var ScenarioForm = React.createClass({
   },
   update: function() {
     var url, container;
-    url = '/systems/' + this.props.data.system_id + '/scenarios/' + this.props.data.id
+    url = '/scenarios/' + this.props.data.id
     container = document.getElementById('container')
     $.ajax({
       url: url,
-      data: {scenario: this.state},
+      data: {scenario: this.state, system_id: this.props.data.system_id},
       method: 'PUT',
       success: function(response){
         ReactDOM.unmountComponentAtNode(container)
