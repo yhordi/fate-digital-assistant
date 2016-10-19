@@ -5,10 +5,10 @@
   <%= flash[:notice] %>
 </p>
 <div class="row">
-  <div class="col span-3-d span-4-t pic">
-    <h2 class="no-m-btm">
+  <div class="col-md-4">
+    <h3 class="no-m-btm">
       <%= "#{@user.name.titleize}'s profile"  %>
-    </h2>
+    </h3>
     <div class="pad-btm-m">
       <%= link_to("Edit Profile/Account Details", edit_user_path(@user.id), class: "edit_user") %>
     </div>
@@ -16,14 +16,17 @@
     <p>
       Member since <%= format_time(@user.created_at)  %>
     </p>
-  </div>
-  <div class="col span-9-d span-8-t">
     <h4> About <%= "#{@user.name.titleize}" %> </h4>
     <p>
       <%= @user.bio %>
     </p>
-    <h4>
+  </div>
+  <div class="col-md-4">
+    <%= react_component('SystemBox', {data: @systems, url: '/systems.json'}) %>
+  </div>
+  <div class="col-md-4">
+    <h3>
       <%= "#{@user.name.titleize}'s active games:"%>
-    </h4>
+    </h3>
   </div>
 </div>
