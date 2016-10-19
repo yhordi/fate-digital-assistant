@@ -31,9 +31,11 @@ var SystemBox = React.createClass({
     return (
       <div className='systemBox'>
         <div className='row'>
-          <div>
-            <h3>Systems</h3>
-              <button className="btn btn-primary-outline" onClick={this.newSystem} href=''>Create New</button>
+          <div className="panel panel-info">
+            <div className="panel-heading">
+              Systems
+            </div>
+            <button className="btn btn-primary-outline" onClick={this.newSystem} href=''>Create New</button>
             <SystemList data={this.state.systems} />
           </div>
           <div className="col-xs-6" id="form-target"></div>

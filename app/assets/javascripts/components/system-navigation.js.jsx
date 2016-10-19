@@ -64,7 +64,7 @@ var SystemNavigation = React.createClass({
   render: function(){
     return(
       <div>
-        <a className={this.props.headerClass + ' no-margin'}>
+        <a className={this.props.headerClass}>
           {this.props.name}
         </a>
         <ul className="nav nav-tabs">

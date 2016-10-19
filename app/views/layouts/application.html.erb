@@ -29,12 +29,12 @@
       <% if session[:id] %>
         <div role="navigation">
         </div>
-        <div id='nav-container' class="col-md-10"></div>
-        <div id="container" class="col-md-9">
+        <div id='nav-container' class="col-md-12"></div>
+        <div id="container" class="col-md-12">
           <%= yield %>
         </div>
       <% else %>
-        <div id="container" class="col-md-10">
+        <div id="container" class="col-md-12">
           <%= yield %>
         </div>
       <% end %>

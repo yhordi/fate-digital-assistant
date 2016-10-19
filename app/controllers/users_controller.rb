@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     if session[:id] == nil
       @user = User.new
     else
-      redirect_to systems_path
+      redirect_to user_path(session[:id])
     end
   end
 

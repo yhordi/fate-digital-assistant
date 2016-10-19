@@ -6,27 +6,31 @@
 </p>
 <div class="row">
   <div class="col-md-4">
-    <h3 class="no-m-btm">
-      <%= "#{@user.name.titleize}'s profile"  %>
-    </h3>
-    <div class="pad-btm-m">
-      <%= link_to("Edit Profile/Account Details", edit_user_path(@user.id), class: "edit_user") %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <%= "#{@user.name.titleize}'s profile"  %>
+      </div>
+      <div>
+        <%= link_to("Edit Profile/Account Details", edit_user_path(@user.id), class: "edit_user") %>
+      </div>
+        <%= image_tag(@user.avatar.url(:square)) %>
+      <p>
+        Member since <%= format_time(@user.created_at)  %>
+      </p>
+      <h4> About <%= "#{@user.name.titleize}" %> </h4>
+      <p>
+        <%= @user.bio %>
+      </p>
     </div>
-      <%= image_tag(@user.avatar.url(:square)) %>
-    <p>
-      Member since <%= format_time(@user.created_at)  %>
-    </p>
-    <h4> About <%= "#{@user.name.titleize}" %> </h4>
-    <p>
-      <%= @user.bio %>
-    </p>
   </div>
   <div class="col-md-4">
     <%= react_component('SystemBox', {data: @systems, url: '/systems.json'}) %>
   </div>
   <div class="col-md-4">
-    <h3>
-      <%= "#{@user.name.titleize}'s active games:"%>
-    </h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= "#{@user.name.titleize}'s active games:"%>
+      </div>
+    </div>
   </div>
 </div>
