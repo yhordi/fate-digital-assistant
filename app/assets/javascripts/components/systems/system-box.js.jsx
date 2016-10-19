@@ -30,16 +30,14 @@ var SystemBox = React.createClass({
   render: function() {
     return (
       <div className='systemBox'>
-        <div className='row'>
-          <div className="panel panel-info">
-            <div className="panel-heading">
-              Systems
-            </div>
-            <button className="btn btn-primary-outline" onClick={this.newSystem} href=''>Create New</button>
-            <SystemList data={this.state.systems} />
+        <div className="panel panel-info">
+          <div className="panel-heading">
+            Systems
           </div>
-          <div className="col-xs-6" id="form-target"></div>
+          <button className="btn btn-primary-outline" onClick={this.newSystem} href=''>Create New</button>
+          <SystemList data={this.state.systems} />
         </div>
+        <div className="col-xs-6" id="form-target"></div>
       </div>
     );
   }

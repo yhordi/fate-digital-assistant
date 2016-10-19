@@ -76,10 +76,8 @@ var SystemNavigation = React.createClass({
           </a>
         </h3>
         <ul className="nav nav-tabs">
-          <li role="presentation" className="dropdown">
-            <a className="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" id="skillIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills <span className="caret"></span></a>
-            <ul className="dropdown-menu">
-            </ul>
+          <li>
+            <a id="skillIndex" onClick={this.getSkills} href={"/systems/" + this.props.id + "/skills/"}>Skills</a>
           </li>
           <li>
             <a id="scenarioIndex" onClick={this.getScenarios} href={"/systems/" + this.props.id + "/scenarios/"}>Scenarios</a>

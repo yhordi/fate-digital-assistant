@@ -27,10 +27,8 @@
     </div>
     <div class='row'>
       <% if session[:id] %>
-        <div role="navigation">
-        </div>
         <div id='nav-container' class="col-md-12"></div>
-        <div id="container" class="col-md-12">
+        <div id="container">
           <%= yield %>
         </div>
       <% else %>
