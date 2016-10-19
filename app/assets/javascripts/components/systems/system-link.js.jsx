@@ -7,6 +7,11 @@ var SystemLink = React.createClass({
     var systemProps = this.props.data
     ReactDOM.unmountComponentAtNode(document.getElementById('form-target'))
     ReactDOM.unmountComponentAtNode(container)
+    $.ajax({
+      url: url
+    }).done(function(response){
+      console.log(response)
+    })
     ReactDOM.render(
       <System name={systemProps.name} button="Update System" description={systemProps.description} id={systemProps.id} />, container
     ), container

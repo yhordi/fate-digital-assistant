@@ -14,8 +14,24 @@ class SystemsController < ApplicationController
   end
 
   def show
-    @system = System.find(params[:id])
-    render json: @system
+    system = System.find(params[:id])
+    render json: system.as_json(include: [
+                                    {skills:
+                                      {only:
+                                        [:name, :id]
+                                      }
+                                    },
+                                    {npcs:
+                                      {only:
+                                        [:name, :id]
+                                      }
+                                    },
+                                    {scenarios:
+                                      {only:
+                                        [:title, :id]
+                                      }
+                                    }
+                                  ])
   end
 
   def index

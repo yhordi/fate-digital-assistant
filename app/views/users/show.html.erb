@@ -24,13 +24,14 @@
     </div>
   </div>
   <div class="col-md-4">
-    <%= react_component('SystemBox', {data: @systems, url: '/systems.json'}) %>
+    <%= react_component('SystemBox', {systems: @systems, url: '/systems.json'}) %>
   </div>
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
         <%= "#{@user.name.titleize}'s active games:"%>
       </div>
+        <p>This feature coming soon!</p>
     </div>
   </div>
 </div>
