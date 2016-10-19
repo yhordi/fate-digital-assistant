@@ -1,5 +1,4 @@
 var SkillList = React.createClass({
-
   render: function() {
     var skillLinks = this.props.data.map(function(skill, index) {
       return (

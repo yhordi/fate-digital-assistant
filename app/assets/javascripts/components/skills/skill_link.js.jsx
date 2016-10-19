@@ -1,5 +1,7 @@
 var SkillLink = React.createClass({
   handleClick: function(e){
+    e.preventDefault()
+    var container = document.getElementById('skill-target');
     var nodes = $(e.target).parent().parent().children().children()
     nodes.each(function(index){
       if ($(nodes[index]).attr('class').includes('active') == true) {
@@ -7,7 +9,6 @@ var SkillLink = React.createClass({
       }
     })
     $(e.target).toggleClass('active')
-    var container = document.getElementById('skill-target');
     ReactDOM.unmountComponentAtNode(container)
     ReactDOM.render(
       <Skill systemName={this.props.systemName} data={this.props.data}/>, container

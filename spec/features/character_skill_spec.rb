@@ -11,7 +11,6 @@ describe 'character_skill', js: true do
     fill_in 'name', with: user.name
     fill_in 'Password', with: user.password
     click_on 'Log In'
-    click_on 'SYSTEMS'
     page.find('#systemLink1').click
     page.find('#npcIndex').click
     page.find("#npc1").click
