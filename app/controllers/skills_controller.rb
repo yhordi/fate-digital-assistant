@@ -1,7 +1,7 @@
 class SkillsController < ApplicationController
   def index
     return render json: Skill.names(params[:system_id]) if params[:names] == 'true'
-    skills = Skill.where(system_id: params[:system_id])
+    skills = Skill.where(system_id: params[:system_id]).order(:name)
     render json: skills
   end
 

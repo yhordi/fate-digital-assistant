@@ -38,8 +38,7 @@ var SkillBox = React.createClass({
           </h4>
           <SkillList systemId={this.props.systemId} systemName={this.props.systemName} data={this.props.data} />
         </div>
-        <div id='skill-target'>
-
+        <div id='skill-target' className='col-md-9'>
         </div>
       </div>
     );

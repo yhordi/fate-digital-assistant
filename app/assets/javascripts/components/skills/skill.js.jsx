@@ -64,11 +64,13 @@ var Skill = React.createClass({
   },
   render: function() {
     return(
-      <div>
-        <button onClick={this.backToSkills}>Back</button>
-        <h3 className="no-margin">
+      <div className='panel panel-default'>
+        <div className='panel-heading'>
           {this.props.data.name}
-        </h3>
+          <a onClick={this.backToSkills} className='fa fa-close'></a>
+          <a onClick={this.handleEdit} className='fa fa-pencil-square'></a>
+          <a onClick={this.handleDelete} className='fa fa-trash delete'></a>
+        </div>
         <p>
           {this.props.data.description}
         </p>
@@ -88,8 +90,6 @@ var Skill = React.createClass({
           <p>
             {this.props.data.defend}
           </p>
-        <button onClick={this.handleEdit} className='edit'>Edit</button>
-        <button onClick={this.handleDelete} className='delete'>Delete</button>
       </div>
     )
   }
