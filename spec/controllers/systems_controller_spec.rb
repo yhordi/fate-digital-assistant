@@ -37,12 +37,10 @@ describe SystemsController do
     end
   end
   describe '#show' do
-    before(:each) do
+    it 'responds with JSON' do
       session[:id] = user.id
       get :show, {id: saved_system.id}
-    end
-    it 'assigns the @system instance variable as a specific system' do
-      expect(assigns(:system)).to eq(saved_system)
+      expect(JSON.parse(response.body)["id"]).to eq(saved_system.id)
     end
   end
   describe '#update' do

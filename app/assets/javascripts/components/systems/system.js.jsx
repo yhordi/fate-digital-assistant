@@ -32,8 +32,6 @@ var System = React.createClass({
         ReactDOM.render(
           <SystemBox />, container
         )
-        $('#notice').prepend('System deleted').addClass('notice')
-        $('#notice').fadeOut(3000)
       }.bind(this)
     })
   },

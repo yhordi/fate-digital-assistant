@@ -32,7 +32,7 @@ describe 'Aspect', js: true do
           fill_in 'name', with: aspect_attrs.name
           fill_in 'aspect-desc', with: aspect_attrs.description
           click_button('Create Aspect')
-          expect(page).to have_content(aspect_attrs.name)
+          expect(page).to have_content(aspect_attrs.description)
         end
         it 'can see an error when submitting the form with bad params' do
           fill_in 'name', with: npc_aspect.name

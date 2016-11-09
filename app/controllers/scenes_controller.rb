@@ -6,7 +6,6 @@ class ScenesController < ApplicationController
   end
 
   def update
-    p params
     scene = Scene.find(params[:id])
     if params[:names]
       params[:names].each do |name|

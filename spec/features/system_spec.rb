@@ -18,13 +18,13 @@ describe 'System', js: true do
       fill_in 'name', with: user.name
       fill_in 'Password', with: user.password
       click_on 'Log In'
-      visit systems_path
+      # visit systems_path
     end
     it 'sees a list of systems' do
       # allow_any_instance_of(Paperclip).to receive(:get).and return("hello")
       within(".systemList") do
         within('div') do
-        expect(page).to have_content(system.name)
+          expect(page).to have_content(system.name)
         end
       end
     end
@@ -43,7 +43,7 @@ describe 'System', js: true do
         fill_in 'name', with: system_attributes.name
         fill_in 'desc', with: system_attributes.description
         click_on 'Create System'
-        expect(page).to have_content(system_attributes.description)
+        expect(page).to have_content(system_attributes.name)
       end
       xit 'can check the begin with default skills checkbox and see a list of the default skills on the skills page' do
         # pending("I need to figure out an effective way to test this, but there is still a model test for the general behavior.")
@@ -79,10 +79,6 @@ describe 'System', js: true do
         click_on 'Update System'
         expect(page).to have_content("Apple Adventure")
       end
-      it 'sees a success notification' do
-        click_on 'Update System'
-        expect(page).to have_content("System updated successfully!")
-      end
     end
     describe 'deleting an existing system' do
       before(:each) do
@@ -91,9 +87,6 @@ describe 'System', js: true do
       end
       it 'will no longer see the system displayed' do
         expect(page).to_not have_content(system.description)
-      end
-      it 'can see a success message' do
-        expect(page).to have_content("System deleted")
       end
     end
   end

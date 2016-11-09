@@ -31,9 +31,6 @@ var Systemform = React.createClass({
         var container = document.getElementById('container')
         this.setState({systems: data})
         ReactDOM.render(
-          <Nav id={data.id} name={data.name} />, document.getElementById('nav-container')
-        )
-        ReactDOM.render(
           <System name={data.name} id={data.id} button="Update System" description={data.description} />, container
         );
         $('#notice').prepend('System Created!').addClass('notice')
@@ -43,8 +40,8 @@ var Systemform = React.createClass({
         var response = JSON.parse(data.responseText)
         var errors = response.error.errors
         for(i in errors) {
-          $('#notice').prepend(errors[i] + " ").addClass('error')
-          $('#notice').fadeOut(3000)
+          $('#nameNotice').prepend(errors[i] + " ").addClass('error')
+          $('#nameNotice').fadeOut(3000)
         }
       }
     })
@@ -99,8 +96,6 @@ var Systemform = React.createClass({
         ReactDOM.render(
           <System name={data.system.name} button={this.props.button} id={this.props.data.id} description={data.system.description} />, container
         );
-        $('#notice').prepend('System updated successfully!').addClass('notice')
-        $('#notice').fadeOut(3000)
       }.bind(this)
     })
   },

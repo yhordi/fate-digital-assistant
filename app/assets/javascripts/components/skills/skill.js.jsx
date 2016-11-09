@@ -64,7 +64,7 @@ var Skill = React.createClass({
   },
   render: function() {
     return(
-      <div className='panel panel-default'>
+      <div className='panel panel-default' id={this.props.data.name}>
         <div className='panel-heading'>
           {this.props.data.name}
           <a onClick={this.backToSkills} className='fa fa-close'></a>

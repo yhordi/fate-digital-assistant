@@ -31,8 +31,10 @@ group :test do;
   gem 'simplecov', require: false
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'poltergeist'
-
+  # gem 'poltergeist'
+  # gem 'launchy'
+  gem 'selenium-webdriver', '3'
+  gem 'chromedriver-helper'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
 end

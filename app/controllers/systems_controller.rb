@@ -4,9 +4,8 @@ class SystemsController < ApplicationController
   def create
     @system = System.new(name: params[:system][:name], description: params[:system][:description])
     @system.user_id = current_user.id
-    @system.save
-    @system.seed_defaults(@system.id)
-    if System.last == @system
+    if @system.save
+      @system.seed_defaults(@system.id)
       render json: System.last
     else
       render json: { error: { errors: @system.errors.full_messages }}, status: 422
