@@ -11,7 +11,7 @@
 </head>
 <body>
   <div id="main-container" class="container-fluid">
-    <div class="top row">
+    <div class="row">
       <div class="navbar navbar-default">
         <div class='navbar-header col-md-9'>
           <%= link_to "Fate: Dimensions", root_path, class: "navbar-brand" %>
@@ -25,18 +25,16 @@
         </div>
       </div>
     </div>
-    <div class='row'>
-      <% if session[:id] %>
-        <div id='nav-container' class="col-md-12"></div>
-        <div id="container">
-          <%= yield %>
-        </div>
-      <% else %>
-        <div id="container" class="col-md-12">
-          <%= yield %>
-        </div>
-      <% end %>
-    </div>
+    <% if session[:id] %>
+      <div id='nav-container'></div>
+      <div id="container">
+        <%= yield %>
+      </div>
+    <% else %>
+      <div id="container" class="col-md-12">
+        <%= yield %>
+      </div>
+    <% end %>
   </div>
 </body>
 </html>

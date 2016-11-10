@@ -53,15 +53,21 @@ var Scenario = React.createClass({
     return(
       <div>
         <div className='row'>
-          <h2>{this.props.data.name}
-            <a onClick={this.backToScenarios}><span className="fa fa-arrow-left"></span></a>
-            <a id="edit-scenario" title="edit scenario" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
-            <a id="delete-scenario" title="delete scenario" onClick={this.handleDelete} className='delete fa fa-trash'></a>
-          </h2>
-          <p>{this.props.data.description}</p>
+          <div className='col-md-4'>
+            <h2>{this.props.data.name}
+              <a onClick={this.backToScenarios}><span className="fa fa-arrow-left"></span></a>
+              <a id="edit-scenario" title="edit scenario" onClick={this.handleEdit} className='edit fa fa-pencil-square'></a>
+              <a id="delete-scenario" title="delete scenario" onClick={this.handleDelete} className='delete fa fa-trash'></a>
+            </h2>
+          </div>
+          <div className='col-md-8'>
+            <div className='well well-lg'>
+              <p>{this.props.data.description}</p>
+            </div>
+          </div>
         </div>
         <div className='row'>
-          <div className='col col-md-6'>
+          <div className='col-md-4'>
             <h3>Scenes
               <a className='fa fa-plus' id='new-scene' onClick={this.newScene}></a>
             </h3>
