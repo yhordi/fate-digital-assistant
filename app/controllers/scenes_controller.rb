@@ -16,4 +16,19 @@ class ScenesController < ApplicationController
     render json: scene.npcs
   end
 
+  def create
+    scene = Scene.new(scene_params)
+    if scene.save
+      render json: scene
+    else
+      render json: { errors: scene.errors.full_messages }
+    end
+  end
+
+  private
+
+  def scene_params
+    params.require(:scene).permit(:name, :description)
+  end
+
 end

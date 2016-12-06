@@ -46,8 +46,11 @@ var Scenario = React.createClass({
     e.preventDefault()
     container = document.getElementById('scene-form-target')
     ReactDOM.render(
-      <SceneForm systemId={this.props.systemId} button="Create Scene"/>, container
+      <SceneForm systemId={this.props.systemId} scenarioId={this.props.data.id} button="Create Scene"/>, container
     )
+  },
+  onChildChanged: function(newState){
+    this.setState(newState)
   },
   render: function(){
     return(
@@ -72,7 +75,7 @@ var Scenario = React.createClass({
               <a className='fa fa-plus' id='new-scene' onClick={this.newScene}></a>
             </h3>
             <div id='scene-list-target'>
-              <SceneList scenes={this.props.data.scenes} />
+              <SceneList changeParent={this.onChildChanged} scenes={this.props.data.scenes} />
             </div>
           </div>
           <div className="col-md-6" id="aspects-container">

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :skills
     resources :npcs
     resources :scenarios, shallow: true do
-      resources :scenes, only: [:update, :index]
+      resources :scenes, only: [:update, :index, :create]
     end
   end
 
