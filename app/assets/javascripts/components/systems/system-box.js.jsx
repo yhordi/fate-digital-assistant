@@ -9,10 +9,14 @@ var SystemBox = React.createClass({
   componentDidMount: function() {
     this.loadSystemsFromServer()
   },
+  onChildChanged: function(newState){
+    console.log(newState)
+    this.setState(newState)
+  },
   newSystem: function(e) {
     e.preventDefault()
     ReactDOM.render(
-      <Systemform button="Create System" data={[]} />, document.getElementById('form-target')
+      <Systemform changeParent={this.onChildChanged} button="Create System" data={[]} />, document.getElementById('form-target')
     );
   },
   loadSystemsFromServer: function(){
@@ -35,7 +39,7 @@ var SystemBox = React.createClass({
             Systems
           </div>
           <button className="btn btn-primary-outline" onClick={this.newSystem} href=''>Create New</button>
-          <SystemList data={this.state.systems} />
+          <SystemList  data={this.state.systems} />
         </div>
         <div className="col-xs-6" id="form-target"></div>
       </div>

@@ -29,10 +29,7 @@ var Systemform = React.createClass({
       data: data,
       success: function(data){
         var container = document.getElementById('container')
-        this.setState({systems: data})
-        ReactDOM.render(
-          <System name={data.name} id={data.id} button="Update System" description={data.description} />, container
-        );
+        this.props.changeParent({systems: data})
         $('#notice').prepend('System Created!').addClass('notice')
         $('#notice').fadeOut(3000)
       }.bind(this),

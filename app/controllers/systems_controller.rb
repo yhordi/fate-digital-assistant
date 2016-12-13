@@ -6,7 +6,7 @@ class SystemsController < ApplicationController
     @system.user_id = current_user.id
     if @system.save
       @system.seed_defaults(@system.id)
-      render json: System.last
+      render json: System.all
     else
       render json: { error: { errors: @system.errors.full_messages }}, status: 422
     end
