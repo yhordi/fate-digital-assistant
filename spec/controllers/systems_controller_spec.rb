@@ -26,7 +26,7 @@ describe SystemsController do
         expect(System.last.name).to eq(system.name)
       end
       it 'responds with a json object containing the saved system info' do
-        expect(response.body).to eq(System.last.to_json)
+        expect(response.body).to include(System.last.to_json)
       end
     end
     context 'on invalid params' do
