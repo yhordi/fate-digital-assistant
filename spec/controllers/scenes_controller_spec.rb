@@ -14,7 +14,8 @@ describe ScenesController do
   describe '#update' do
     it 'associates an existing NPC with an existing scene' do
       put :update, "/scenes/#{scene.id}", {id: scene.id, names: [npc.name]}
-      expect(response.body).to eq(Npc.where(scene_id: scene.id))
+      json_response = JSON.parse(response.body)
+      expect(json_response[0]['name']).to eq(npc.name)
     end
   end
   xdescribe '#create' do

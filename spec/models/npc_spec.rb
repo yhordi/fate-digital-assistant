@@ -3,6 +3,7 @@ describe Npc do
   let(:physique) { CharacterSkill.new(name: 'Physique', level: 0)}
   let(:will) { CharacterSkill.new(name: 'Will', level: 0, npc_id: 1)}
   let(:consequence) { FactoryGirl.create :consequence }
+  let(:scene) { FactoryGirl.create :scene }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
@@ -32,6 +33,15 @@ describe Npc do
       npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
       npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
       expect(npc).to_not be_valid
+    end
+  end
+  describe 'Associations' do
+    describe 'has_many scenes through npc_scenes' do
+      it 'has many scenes' do
+        npc.scenes << scene
+        npc.save!
+        expect(npc.scenes).to include(scene)
+      end
     end
   end
   describe '#adjust_max_stress' do
