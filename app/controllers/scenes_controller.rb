@@ -18,8 +18,8 @@ class ScenesController < ApplicationController
 
   def create
     scene = Scene.new(scene_params)
-    if scene.save
-      render json: scene
+    if scene.save!
+      render json: Scene.last
     else
       render json: { errors: scene.errors.full_messages }
     end
@@ -28,7 +28,7 @@ class ScenesController < ApplicationController
   private
 
   def scene_params
-    params.require(:scene).permit(:name, :description)
+    params.require(:scene).permit(:name, :description, :scenario_id)
   end
 
 end

@@ -1,12 +1,11 @@
-
 var SystemBox = React.createClass({
-  componentWillMount: function() {
+  componentWillMount() {
     var container = document.getElementById('container')
   },
   getInitialState: function(){
     return { systems: [] }
   },
-  componentDidMount: function() {
+  componentDidMount() {
     this.loadSystemsFromServer()
   },
   onChildChanged: function(newState){
