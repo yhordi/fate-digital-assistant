@@ -1,6 +1,7 @@
 describe ScenesController do
   let(:scenario) { FactoryGirl.create :scenario }
   let(:scene) { FactoryGirl.create :scene }
+  let(:new_scene) { FactoryGirl.build :scene}
   let(:npc) { FactoryGirl.create :npc}
   describe '#index' do
     it "renders a json blob containing all scenes associated with a scenario" do
@@ -18,6 +19,14 @@ describe ScenesController do
       expect(json_response[0]['name']).to eq(npc.name)
     end
   end
-  xdescribe '#create' do
+  describe '#create' do
+    describe 'renders a json blob' do
+      it 'containing the newly created scene on valid params' do
+        post :create, "/scenarios/#{scenario.id}/scenes", {scenario_id: scenario.id, scene: {name: new_scene.name, description: new_scene.description}}
+        expect(response.body).to eq(Scene.last.to_json)
+      end
+      it 'containing error messages on invalid params' do
+      end
+    end
   end
 end
