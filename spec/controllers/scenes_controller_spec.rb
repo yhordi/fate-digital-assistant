@@ -20,13 +20,12 @@ describe ScenesController do
     end
   end
   describe '#create' do
-    describe 'renders a json blob' do
-      it 'containing the newly created scene on valid params' do
+      it ' renders a json blob containing the newly created scene on valid params' do
         post :create, "/scenarios/#{scenario.id}/scenes", {scenario_id: scenario.id, scene: {name: new_scene.name, description: new_scene.description}}
         expect(response.body).to eq(Scene.last.to_json)
       end
-      it 'containing error messages on invalid params' do
+      it 'raises an error on invalid params' do
+        expect{post :create, "/scenarios/#{scenario.id}/scenes", {scene: {name: scene.name, description: scene.description}, scenario_id: scenario.id}}.to raise_error(ActiveRecord::RecordInvalid)
       end
-    end
   end
 end
