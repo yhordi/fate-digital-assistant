@@ -75,7 +75,7 @@ var Scenario = React.createClass({
               <a className='fa fa-plus' id='new-scene' onClick={this.newScene}></a>
             </h3>
             <div id='scene-list-target'>
-              <SceneList changeParent={this.onChildChanged} scenes={this.props.data.scenes} />
+              <SceneList changeParent={this.onChildChanged} systemId={this.props.data.system_id} scenes={this.props.data.scenes} />
             </div>
           </div>
           <div className="col-md-6" id="aspects-container">
