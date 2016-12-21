@@ -18,6 +18,7 @@ class ScenesController < ApplicationController
 
   def create
     scene = Scene.new(scene_params)
+    scene.scenario_id = params[:scenario_id]
     if scene.save!
       render json: Scene.last
     else
