@@ -19,13 +19,15 @@ var NpcImportForm = React.createClass({
   },
   setNpcs: function(e) {
     e.preventDefault()
-    var url = 'systems/' + this.props.systemId + '/scenes/' + this.props.data.id
+    var url = '/scenes/' + this.props.data.id
+    var component = this
     $.ajax({
       url: url,
       method: 'PUT',
       data: {names: this.names}
     }).done(function(response){
       console.log(response)
+      component.props.changeParent({data: {npcs: response}})
     })
   },
   render: function() {

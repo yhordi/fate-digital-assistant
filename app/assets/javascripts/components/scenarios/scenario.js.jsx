@@ -50,6 +50,7 @@ var Scenario = React.createClass({
     )
   },
   onChildChanged: function(newState){
+    console.log(newState)
     this.setState(newState)
   },
   render: function(){
