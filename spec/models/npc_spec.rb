@@ -6,6 +6,8 @@ describe Npc do
   let(:scene) { FactoryGirl.create :scene }
 
   describe 'validations' do
+    let(:nameless_npc) { FactoryGirl.create :npc, name: 'Robot', npc_type: 'Supporting' }
+    let(:nameless_npc_2) { FactoryGirl.build :npc, name: 'Robot', npc_type: 'Supporting' }
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :npc_type }
     it { is_expected.to validate_presence_of :system_id }
@@ -33,6 +35,17 @@ describe Npc do
       npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
       npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
       expect(npc).to_not be_valid
+    end
+    it 'validates an npc with an npc_type of nameless that has a non unique name' do
+      expect(nameless_npc_2).to be_valid
+    end
+    it 'validates a unique npc with an npc_type of "main"' do
+    end
+    it 'validates a unique npc with an npc_type of "supporting"' do
+    end
+    it 'does not validate a non unique npc with an npc_type of "supporting"' do
+    end
+    it 'does not validate a non unique npc with an npc_type of "Main"' do
     end
   end
   describe 'Associations' do
