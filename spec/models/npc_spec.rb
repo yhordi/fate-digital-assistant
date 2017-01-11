@@ -1,51 +1,66 @@
 describe Npc do
-  let(:npc) { FactoryGirl.create :npc }
+  let(:npc) { FactoryGirl.create :npc, name: 'Michael' }
   let(:physique) { CharacterSkill.new(name: 'Physique', level: 0)}
   let(:will) { CharacterSkill.new(name: 'Will', level: 0, npc_id: 1)}
   let(:consequence) { FactoryGirl.create :consequence }
   let(:scene) { FactoryGirl.create :scene }
 
   describe 'validations' do
-    let(:nameless_npc) { FactoryGirl.create :npc, name: 'Robot', npc_type: 'Supporting' }
-    let(:nameless_npc_2) { FactoryGirl.build :npc, name: 'Robot', npc_type: 'Supporting' }
+    let(:npc2) { FactoryGirl.build :npc, name: 'Michael', npc_type: 'Main'}
+    let(:supporting) { FactoryGirl.create :npc, name: 'Tito', npc_type: 'Supporting'}
+    let(:supporting_2) { FactoryGirl.build :npc, name: 'Tito', npc_type: 'Supporting'}
+    let(:nameless_npc) { FactoryGirl.create :npc, name: 'Robot', npc_type: 'Nameless' }
+    let(:nameless_npc_2) { FactoryGirl.create :npc, name: 'Robot', npc_type: 'Nameless' }
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :npc_type }
     it { is_expected.to validate_presence_of :system_id }
-    it "does not validate max_mental_stress outside of 1..5 range" do
-      npc.max_mental_stress = 6
-      expect(npc).to_not be_valid
-    end
-    it "does not validate max_physical_stress outside of 1..5 range" do
-      npc.max_physical_stress = 6
-      expect(npc).to_not be_valid
-    end
-    it 'does not validate an npc with more than 4 consequences' do
-      5.times do
-        npc.consequences << Consequence.new(name: Faker::Lorem.word, severity: 'mild', shift_value: 2)
+    context 'Max stress' do
+      it "does not validate max_mental_stress outside of 1..5 range" do
+        npc.max_mental_stress = 6
+        expect(npc).to_not be_valid
       end
-      expect(npc).to_not be_valid
-    end
-    it 'validates an npc with up to 4 consequences' do
-      4.times do
-        npc.consequences << Consequence.new(name: Faker::Lorem.word, severity: 'mild', shift_value: 2)
+      it "does not validate max_physical_stress outside of 1..5 range" do
+        npc.max_physical_stress = 6
+        expect(npc).to_not be_valid
       end
-      expect(npc).to be_valid
     end
-    it 'does not validate an npc with more than one severe consequence' do
-      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
-      npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
-      expect(npc).to_not be_valid
+    context 'consequences' do
+      it 'does not validate an npc with more than 4 consequences' do
+        5.times do
+          npc.consequences << Consequence.new(name: Faker::Lorem.word, severity: 'mild', shift_value: 2)
+        end
+        expect(npc).to_not be_valid
+      end
+      it 'validates an npc with up to 4 consequences' do
+        4.times do
+          npc.consequences << Consequence.new(name: Faker::Lorem.word, severity: 'mild', shift_value: 2)
+        end
+        expect(npc).to be_valid
+      end
+      it 'does not validate an npc with more than one severe consequence' do
+        npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
+        npc.consequences << Consequence.create(name: Faker::Lorem.word, severity: 'severe', shift_value: 6, npc_id: 1)
+        expect(npc).to_not be_valid
+      end
     end
-    it 'validates an npc with an npc_type of nameless that has a non unique name' do
-      expect(nameless_npc_2).to be_valid
-    end
-    it 'validates a unique npc with an npc_type of "main"' do
-    end
-    it 'validates a unique npc with an npc_type of "supporting"' do
-    end
-    it 'does not validate a non unique npc with an npc_type of "supporting"' do
-    end
-    it 'does not validate a non unique npc with an npc_type of "Main"' do
+    context 'name uniqueness' do
+      it 'validates an npc with an npc_type of nameless that has a non unique name' do
+        expect(nameless_npc_2).to be_valid
+      end
+      it 'validates a unique npc with an npc_type of "main"' do
+        expect(npc).to be_valid
+      end
+      it 'validates a unique npc with an npc_type of "supporting"' do
+        expect(supporting).to be_valid
+      end
+      it 'does not validate a non unique npc with an npc_type of "supporting"' do
+        supporting
+        expect(supporting_2).to_not be_valid
+      end
+      it 'does not validate a non unique npc with an npc_type of "Main"' do
+        npc
+        expect(npc2).to_not be_valid
+      end
     end
   end
   describe 'Associations' do
